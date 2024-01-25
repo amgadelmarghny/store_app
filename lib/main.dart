@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:store_2/shared/style/themes.dart';
 
 void main() {
-  runApp(const StoreAp());
+  runApp(const StoreAp(),
+  );
 }
 
 class StoreAp extends StatelessWidget {
@@ -10,6 +12,9 @@ class StoreAp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return  MaterialApp(
+      theme: ThemeStyle.lightTheme(),
+      darkTheme: ThemeStyle.darkTheme(),
+    );
   }
 }
