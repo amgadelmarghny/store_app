@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 abstract class ThemeStyle {
   static ThemeData darkTheme() {
@@ -20,6 +21,7 @@ abstract class ThemeStyle {
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.tealAccent,
       ),
+      fontFamily: GoogleFonts.amiri().fontFamily,
     );
   }
 
@@ -47,6 +49,7 @@ abstract class ThemeStyle {
         selectedItemColor: Colors.teal,
         elevation: 20,
       ),
+      fontFamily: GoogleFonts.amiri().fontFamily,
     );
   }
 }
