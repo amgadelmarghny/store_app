@@ -5,8 +5,8 @@ import 'package:store_2/shared/componants/custom_buttomt.dart';
 import 'package:store_2/shared/componants/icon_auth_list_view.dart';
 import 'package:store_2/shared/componants/textformfield.dart';
 
-class SliverAuthInfo extends StatelessWidget {
-  const SliverAuthInfo({
+class SliverLoginInfo extends StatelessWidget {
+  const SliverLoginInfo({
     super.key,
   });
 
@@ -18,7 +18,6 @@ class SliverAuthInfo extends StatelessWidget {
         return SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.only(
-              top: 20,
               left: 20,
               right: 20,
             ),

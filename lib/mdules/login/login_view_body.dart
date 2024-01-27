@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:store_2/shared/componants/custom_curve_color_ui.dart';
-import 'package:store_2/shared/componants/sliver_auth_input.dart';
+import 'package:store_2/mdules/login/sliver_login_input.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -27,38 +27,33 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           slivers: [
             const SliverToBoxAdapter(
               child: CurveColorUI(
-                headLine: 'Create Your Account',
+                headLine: 'Welcom back !',
                 subHeadline: 'Please login with your personal information.',
                 color: defaultColor,
               ),
             ),
-            const SliverAuthInfo(),
+            const SliverLoginInfo(),
             SliverFillRemaining(
               hasScrollBody: false,
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 20,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Don\'t have an account?',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don\'t have an account?',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, RegisterView.id);
+                      },
+                      child: Text(
+                        'Sign Up',
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, RegisterView.id);
-                        },
-                        child: Text(
-                          'Sign Up',
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             )

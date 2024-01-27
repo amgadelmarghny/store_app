@@ -14,7 +14,7 @@ abstract class ThemeStyle {
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
-          fontSize: 18,
+          fontSize: 19,
           color: Colors.white,
         ),
         bodyMedium: TextStyle(
@@ -36,7 +36,7 @@ abstract class ThemeStyle {
       brightness: Brightness.light,
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
-          fontSize: 18,
+          fontSize: 19,
           color: Colors.black,
         ),
         bodyMedium: TextStyle(

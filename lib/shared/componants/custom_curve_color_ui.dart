@@ -6,9 +6,12 @@ class CurveColorUI extends StatelessWidget {
     required this.headLine,
     required this.subHeadline,
     required this.color,
+    this.subHeadline2,
   });
   final String headLine;
   final String subHeadline;
+  final String? subHeadline2;
+
   final Color color;
   @override
   Widget build(BuildContext context) {
@@ -47,11 +50,27 @@ class CurveColorUI extends StatelessWidget {
                   const BorderRadius.only(topLeft: Radius.circular(100)),
               color: Theme.of(context).scaffoldBackgroundColor,
             ),
-            child: Center(
-              child: Text(
-                subHeadline,
-                style: Theme.of(context).textTheme.bodyLarge!,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  subHeadline,
+                  style: Theme.of(context).textTheme.bodyLarge!,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                subHeadline2 != null
+                    ? Text(
+                        subHeadline2!,
+                        style: Theme.of(context).textTheme.bodyLarge!,
+                      )
+                    : const SizedBox(
+                        height: 1,
+                        width: 1,
+                      ),
+              ],
             ),
           ),
         )
