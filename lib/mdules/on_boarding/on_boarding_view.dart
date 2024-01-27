@@ -3,9 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/boarding_item.dart';
-import 'package:store_2/models/boarding_model.dart';
+import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/componants/navigation.dart';
-import 'package:store_2/shared/cubit/app_cubit.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -20,23 +19,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget build(BuildContext context) {
     AppCubit appCubit = BlocProvider.of<AppCubit>(context);
     PageController pageController = PageController();
-    List<BoardModel> boardList = [
-      BoardModel(
-        image: 'lib/assets/images/Sale3.jpg',
-        shopeTitle: 'Explore many products',
-        shopeSubTitle: ' Sub. title',
-      ),
-      BoardModel(
-        image: 'lib/assets/images/Sale2.jpg',
-        shopeTitle: 'Choose and Checkout',
-        shopeSubTitle: 'Sub. title',
-      ),
-      BoardModel(
-        image: 'lib/assets/images/Sale1.jpg',
-        shopeTitle: 'Title',
-        shopeSubTitle: 'Sub. title',
-      ),
-    ];
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -59,9 +41,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               child: PageView.builder(
                 physics: const BouncingScrollPhysics(),
                 controller: pageController,
-                itemCount: boardList.length,
+                itemCount: appCubit.boardList.length,
                 itemBuilder: (context, index) => BoardingBuilder(
-                  boardModel: boardList[index],
+                  boardModel: appCubit.boardList[index],
                 ),
                 onPageChanged: (index) {
                   appCubit.pageNum = index;
@@ -72,7 +54,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               children: [
                 SmoothPageIndicator(
                   controller: pageController,
-                  count: boardList.length,
+                  count: appCubit.boardList.length,
                   effect: const ExpandingDotsEffect(
                     expansionFactor: 2,
                     spacing: 7.0,
@@ -88,7 +70,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 const Spacer(),
                 FloatingActionButton(
                   onPressed: () {
-                    if (appCubit.pageNum == boardList.length - 1) {
+                    if (appCubit.pageNum == appCubit.boardList.length - 1) {
                       navigatorPushAndRemove(context, const LoginView());
                     } else {
                       pageController.nextPage(

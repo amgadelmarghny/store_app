@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
-import 'package:store_2/shared/cubit/app_cubit.dart';
+import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/style/themes.dart';
 
 void main() {
