@@ -40,7 +40,6 @@ class CustomTextField extends StatelessWidget {
                 onPressed: suffixOnPressed,
                 icon: Icon(
                   suffixIcon,
-                  size: 30,
                 ),
               )
             : null,
