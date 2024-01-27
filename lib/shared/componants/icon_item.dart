@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class IconItem extends StatelessWidget {
-  const IconItem({super.key, this.onTap});
+  const IconItem({super.key, this.onTap, required this.image});
   final void Function()? onTap;
+  final String image;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,7 +19,7 @@ class IconItem extends StatelessWidget {
             radius: 17,
             backgroundColor: Colors.white,
             child: Image.asset(
-              'lib/assets/images/google.png',
+              image,
               height: 25,
               fit: BoxFit.cover,
             ),
