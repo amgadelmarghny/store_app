@@ -17,4 +17,11 @@ class AuthCubit extends Cubit<AuthState> {
         : suffixIcon = Icons.visibility_outlined;
     emit(ObsecureState());
   }
+
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+  void validateObserver() {
+    autovalidateMode = AutovalidateMode.onUserInteraction;
+    emit(VAlidateState());
+  }
 }

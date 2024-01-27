@@ -5,3 +5,5 @@ sealed class AuthState {}
 
 final class AuthInitial extends AuthState {}
 final class ObsecureState extends AuthState {}
+final class VAlidateState extends AuthState {}
+

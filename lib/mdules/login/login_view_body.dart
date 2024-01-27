@@ -5,14 +5,18 @@ import 'package:store_2/shared/componants/custom_curve_color_ui.dart';
 import 'package:store_2/shared/componants/sliver_auth_input.dart';
 import 'package:store_2/shared/style/colors.dart';
 
-class LoginViewBody extends StatelessWidget {
+class LoginViewBody extends StatefulWidget {
   const LoginViewBody({
     super.key,
   });
 
   @override
+  State<LoginViewBody> createState() => _LoginViewBodyState();
+}
+
+class _LoginViewBodyState extends State<LoginViewBody> {
+  @override
   Widget build(BuildContext context) {
-    GlobalKey<FormState> formKey = GlobalKey();
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         // TODO: implement listener
