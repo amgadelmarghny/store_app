@@ -22,7 +22,7 @@ class CustomButtomShet extends StatelessWidget {
           gradient: LinearGradient(
             colors: [
               defaultColor[500]!,
-              defaultColor[200]!,
+              defaultColor[100]!,
             ],
             begin: Alignment.centerRight,
             end: Alignment.centerLeft,

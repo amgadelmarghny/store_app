@@ -30,7 +30,7 @@ class BoardingBuilder extends StatelessWidget {
         ),
         Text(
           boardModel.shopeSubTitle,
-          style: const TextStyle(fontSize: 30),
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 24),
         ),
         const SizedBox(
           height: 10,

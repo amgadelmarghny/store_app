@@ -16,7 +16,7 @@ class IconItem extends StatelessWidget {
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           radius: 28,
           child: CircleAvatar(
-            radius: 17,
+            radius: 17.5,
             backgroundColor: Colors.white,
             child: Image.asset(
               image,

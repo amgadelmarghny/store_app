@@ -14,6 +14,7 @@ class LoginView extends StatelessWidget {
       create: (context) => AuthCubit(),
       child: Scaffold(
         appBar: AppBar(
+          toolbarHeight: 0,
           systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: defaultColor,
             statusBarIconBrightness: Brightness.light,
@@ -25,4 +26,3 @@ class LoginView extends StatelessWidget {
     );
   }
 }
-

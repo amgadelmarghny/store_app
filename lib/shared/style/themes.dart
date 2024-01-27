@@ -15,7 +15,6 @@ abstract class ThemeStyle {
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
           fontSize: 18,
-          fontWeight: FontWeight.w600,
           color: Colors.white,
         ),
         bodyMedium: TextStyle(
@@ -38,10 +37,9 @@ abstract class ThemeStyle {
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
           fontSize: 18,
-          fontWeight: FontWeight.w500,
           color: Colors.black,
         ),
-        bodySmall: TextStyle(
+        bodyMedium: TextStyle(
           fontSize: 18,
           color: defaultColor,
           fontWeight: FontWeight.w600,

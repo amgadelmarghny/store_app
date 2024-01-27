@@ -4,7 +4,8 @@ class CurveColorUI extends StatelessWidget {
   const CurveColorUI({
     super.key,
     required this.headLine,
-    required this.subHeadline, required this.color,
+    required this.subHeadline,
+    required this.color,
   });
   final String headLine;
   final String subHeadline;
@@ -15,25 +16,29 @@ class CurveColorUI extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: 200,
-          decoration:  BoxDecoration(color: color,),
+          height: 250,
+          decoration: BoxDecoration(
+            color: color,
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                headLine,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
+              Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: Text(
+                  headLine,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                  ),
                 ),
               ),
             ],
           ),
         ),
         Positioned(
-          top: 90,
-          left: 1,
+          bottom: 0,
           child: Container(
             height: 120,
             width: MediaQuery.sizeOf(context).width,

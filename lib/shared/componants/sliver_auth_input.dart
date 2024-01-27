@@ -5,16 +5,11 @@ import 'package:store_2/shared/componants/custom_buttomt.dart';
 import 'package:store_2/shared/componants/icon_auth_list_view.dart';
 import 'package:store_2/shared/componants/textformfield.dart';
 
-class SliverAuthInfo extends StatefulWidget {
+class SliverAuthInfo extends StatelessWidget {
   const SliverAuthInfo({
     super.key,
   });
 
-  @override
-  State<SliverAuthInfo> createState() => _SliverAuthInfoState();
-}
-
-class _SliverAuthInfoState extends State<SliverAuthInfo> {
   @override
   Widget build(BuildContext context) {
     GlobalKey<FormState> formKey = GlobalKey();
@@ -62,7 +57,7 @@ class _SliverAuthInfoState extends State<SliverAuthInfo> {
                     onPressed: () {},
                     child: Text(
                       'Forget you password?',
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                   const SizedBox(

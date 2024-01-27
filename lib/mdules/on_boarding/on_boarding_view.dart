@@ -79,7 +79,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     }
                   },
                   backgroundColor: Colors.teal,
-                  child: const Icon(Icons.navigate_next),
+                  child: const Icon(
+                    Icons.navigate_next,
+                    color: Colors.white,
+                  ),
                 )
               ],
             ),

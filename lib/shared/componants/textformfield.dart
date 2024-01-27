@@ -33,6 +33,8 @@ class CustomTextField extends StatelessWidget {
       },
       onChanged: onChange,
       decoration: InputDecoration(
+        fillColor: defaultColor.withOpacity(0.1),
+        filled: true,
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
         suffixIcon: suffixIcon != null

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:store_2/shared/componants/custom_curve_color_ui.dart';
 import 'package:store_2/shared/componants/sliver_auth_input.dart';
@@ -48,10 +49,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, RegisterView.id);
+                        },
                         child: Text(
                           'Sign Up',
-                          style: Theme.of(context).textTheme.bodySmall,
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ),
                     ],
