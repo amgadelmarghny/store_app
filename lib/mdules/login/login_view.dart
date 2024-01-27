@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:store_2/shared/componants/custom_buttomt.dart';
 import 'package:store_2/shared/componants/custom_curve_color_ui.dart';
+import 'package:store_2/shared/componants/icon_auth_list_view.dart';
 import 'package:store_2/shared/componants/textformfield.dart';
 import 'package:store_2/shared/style/colors.dart';
 
@@ -76,12 +77,27 @@ class LoginView extends StatelessWidget {
                       ),
                       CustomButtomShet(
                         text: 'Login',
-                        onTap: () {
-                        },
+                        onTap: () {},
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Login With',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
                       ),
                     ],
                   ),
                 ),
+                const IconAuthlistView(),
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
