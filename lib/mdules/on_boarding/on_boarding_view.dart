@@ -18,6 +18,7 @@ class OnBoardingView extends StatefulWidget {
 class _OnBoardingViewState extends State<OnBoardingView> {
   @override
   Widget build(BuildContext context) {
+    AppCubit appCubit = BlocProvider.of<AppCubit>(context);
     PageController pageController = PageController();
     List<BoardModel> boardList = [
       BoardModel(
@@ -36,9 +37,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         shopeSubTitle: 'Sub. title',
       ),
     ];
-    int x = 3;
-    bool isLast = false;
-
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -66,16 +64,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   boardModel: boardList[index],
                 ),
                 onPageChanged: (index) {
-                  BlocProvider.of<AppCubit>(context).pageNum = index;
-                  // if () {
-                  //   setState(() {
-                  //     isLast = true;
-                  //   });
-                  // } else {
-                  //   setState(() {
-                  //     isLast = false;
-                  //   });
-                  // }
+                  appCubit.pageNum = index;
                 },
               ),
             ),
@@ -99,8 +88,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 const Spacer(),
                 FloatingActionButton(
                   onPressed: () {
-                    if (BlocProvider.of<AppCubit>(context).pageNum ==
-                        boardList.length - 1) {
+                    if (appCubit.pageNum == boardList.length - 1) {
                       navigatorPushAndRemove(context, const LoginView());
                     } else {
                       pageController.nextPage(
