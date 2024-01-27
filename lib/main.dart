@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
+import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/style/themes.dart';
 
@@ -20,6 +21,7 @@ class StoreAp extends StatelessWidget {
       routes: {
         OnBoardingView.id: (conyext) => const OnBoardingView(),
         LoginView.id: (context) => const LoginView(),
+        RegisterView.id: (context) => const RegisterView(),
       },
       theme: ThemeStyle.lightTheme(),
       darkTheme: ThemeStyle.darkTheme(),
