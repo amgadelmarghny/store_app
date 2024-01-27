@@ -18,6 +18,11 @@ abstract class ThemeStyle {
           fontWeight: FontWeight.w600,
           color: Colors.white,
         ),
+        bodyMedium: TextStyle(
+          fontSize: 18,
+          color: defaultColor,
+          fontWeight: FontWeight.w600,
+        ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.tealAccent,
@@ -33,8 +38,13 @@ abstract class ThemeStyle {
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
           fontSize: 18,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w500,
           color: Colors.black,
+        ),
+        bodySmall: TextStyle(
+          fontSize: 18,
+          color: defaultColor,
+          fontWeight: FontWeight.w600,
         ),
       ),
       appBarTheme: const AppBarTheme(

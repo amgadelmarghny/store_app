@@ -9,7 +9,7 @@ import 'package:store_2/shared/style/colors.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
-
+  static String id = 'OnBoardingView';
   @override
   State<OnBoardingView> createState() => _OnBoardingViewState();
 }
@@ -58,12 +58,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   effect: const ExpandingDotsEffect(
                     expansionFactor: 2,
                     spacing: 7.0,
-                    radius: 30,
-                    dotWidth: 24.0,
-                    dotHeight: 16.0,
+                    dotWidth: 20.0,
+                    dotHeight: 10.0,
                     paintStyle: PaintingStyle.stroke,
                     strokeWidth: 2,
-                    dotColor: defaultColor,
+                    dotColor: Colors.grey,
                     activeDotColor: defaultColor,
                   ),
                 ),
@@ -74,8 +73,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       navigatorPushAndRemove(context, const LoginView());
                     } else {
                       pageController.nextPage(
-                          duration: const Duration(milliseconds: 400),
-                          curve: Curves.linear);
+                        duration: const Duration(milliseconds: 400),
+                        curve: Curves.linear,
+                      );
                     }
                   },
                   backgroundColor: Colors.teal,
