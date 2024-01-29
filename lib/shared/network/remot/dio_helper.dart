@@ -13,13 +13,14 @@ class DioHelper {
   }
 
   static Future<Response> post({
+    required String url,
     required String name,
     required String email,
     required String password,
     required String phone,
   }) async {
     return await dio!.post(
-      'register',
+      url,
       queryParameters: {
         "name": name,
         "email": email,

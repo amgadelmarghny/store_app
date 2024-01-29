@@ -48,20 +48,11 @@ class SliverRegisterInfo extends StatelessWidget {
                     height: 15,
                   ),
                   CustomTextField(
-                    prefixIcon: Icons.phone_outlined,
-                    onChange: (value) {},
-                    hintText: 'Enter Phone Number',
-                    textInputType: TextInputType.phone,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  CustomTextField(
                     obscureText:
                         BlocProvider.of<AuthCubit>(context).obscureText,
                     prefixIcon: Icons.lock_outline,
                     onChange: (value) {},
-                    hintText: 'Password',
+                    hintText: 'Enter Password',
                     textInputType: TextInputType.visiblePassword,
                     suffixIcon: BlocProvider.of<AuthCubit>(context).suffixIcon,
                     suffixOnPressed: () {
@@ -70,6 +61,15 @@ class SliverRegisterInfo extends StatelessWidget {
                   ),
                   const SizedBox(
                     height: 20,
+                  ),
+                  CustomTextField(
+                    prefixIcon: Icons.phone_outlined,
+                    onChange: (value) {},
+                    hintText: 'Enter Phone Number',
+                    textInputType: TextInputType.phone,
+                  ),
+                  const SizedBox(
+                    height: 15,
                   ),
                   CustomButtomShet(
                     text: 'Sign Up',

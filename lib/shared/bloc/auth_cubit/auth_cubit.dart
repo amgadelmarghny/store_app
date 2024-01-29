@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:store_2/models/user_model.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 
 part 'auth_state.dart';
@@ -19,12 +20,24 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-
+  UserModel? user;
   void validateObserver() {
     autovalidateMode = AutovalidateMode.onUserInteraction;
     emit(VAlidateState());
   }
 
-
-
+  Future register({required UserModel userModel}) async {
+    emit(RegisterLodingState());
+    await DioHelper.post(
+            url: 'register',
+            name: userModel.name,
+            email: userModel.email,
+            password: userModel.password,
+            phone: userModel.phone)
+        .then((value) {
+      emit(RegisterSuccessState());
+    }).catchError((err) {
+      emit(RegisterFailureState(err: err));
+    });
+  }
 }
