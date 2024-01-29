@@ -19,7 +19,7 @@ class DioHelper {
     required String phone,
   }) async {
     return await dio!.post(
-      'User',
+      'register',
       queryParameters: {
         "name": name,
         "email": email,

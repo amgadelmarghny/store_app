@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:store_2/shared/network/remot/dio_helper.dart';
 
 part 'auth_state.dart';
 
@@ -23,4 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
     autovalidateMode = AutovalidateMode.onUserInteraction;
     emit(VAlidateState());
   }
+
+
+
 }
