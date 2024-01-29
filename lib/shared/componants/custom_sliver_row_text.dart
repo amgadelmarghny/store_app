@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/mdules/register/register_view.dart';
 
 class CustomSliverRowText extends StatelessWidget {
   const CustomSliverRowText({

@@ -9,6 +9,16 @@ final class ObsecureState extends AuthState {}
 
 final class VAlidateState extends AuthState {}
 
+class LoginLodingState extends AuthState {}
+
+class LoginSuccessState extends AuthState {}
+
+class LoginFailureState extends AuthState {
+  final String err;
+
+  LoginFailureState({required this.err});
+}
+
 class RegisterLodingState extends AuthState {}
 
 class RegisterSuccessState extends AuthState {}

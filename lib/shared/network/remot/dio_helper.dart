@@ -4,7 +4,14 @@ class DioHelper {
   static Dio? dio;
 
   static void initial() {
-    dio = Dio(BaseOptions(baseUrl: 'https://student.valuxapps.com/api/'));
+    dio = Dio(
+      BaseOptions(
+          baseUrl: 'https://student.valuxapps.com/api/',
+          receiveDataWhenStatusError: true,
+          headers: {
+            "Content-Type": 'application/json',
+          }),
+    );
   }
 
   static Future<Response> get(String url,
@@ -12,26 +19,15 @@ class DioHelper {
     return dio!.get(url, queryParameters: queryParameters);
   }
 
-  static Future<Response> post({
+  static Future<Response> postData({
     required String url,
-    required String name,
-    required String email,
-    required String password,
-    required String phone,
+    Object? data,
+    Map<String, dynamic>? queryParameters,
   }) async {
     return await dio!.post(
       url,
-      queryParameters: {
-        "name": name,
-        "email": email,
-        "password": password,
-        "phone": phone,
-      },
-    ).then((value) {
-      print(value);
-      return value;
-    }).catchError((err) {
-      print(err);
-    });
+      data: data,
+      queryParameters: queryParameters,
+    );
   }
 }

@@ -20,7 +20,6 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  UserModel? user;
   void validateObserver() {
     autovalidateMode = AutovalidateMode.onUserInteraction;
     emit(VAlidateState());
@@ -28,16 +27,19 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future register({required UserModel userModel}) async {
     emit(RegisterLodingState());
-    await DioHelper.post(
-            url: 'register',
-            name: userModel.name,
-            email: userModel.email,
-            password: userModel.password,
-            phone: userModel.phone)
-        .then((value) {
+    try {
+      await DioHelper.postData(
+        url: 'register',
+        data: {
+          "name": userModel.name,
+          "email": userModel.email,
+          "password": userModel.password,
+          "phone": userModel.phone,
+        },
+      );
       emit(RegisterSuccessState());
-    }).catchError((err) {
-      emit(RegisterFailureState(err: err));
-    });
+    } on Exception catch (err) {
+      emit(RegisterFailureState(err: err.toString()));
+    }
   }
 }

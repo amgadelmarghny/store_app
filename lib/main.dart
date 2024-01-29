@@ -5,11 +5,13 @@ import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
+import 'package:store_2/shared/bloc/bloc_observer.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/style/themes.dart';
 
 void main() {
   DioHelper.initial();
+  Bloc.observer = MyBlocObserver();
   runApp(const StoreAp());
 }
 
