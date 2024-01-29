@@ -19,7 +19,7 @@ class CurveColorUI extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: 250,
+          height: 200,
           decoration: BoxDecoration(
             color: color,
           ),
@@ -28,7 +28,7 @@ class CurveColorUI extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.only(top: 30),
                 child: Text(
                   headLine,
                   style: const TextStyle(
@@ -43,7 +43,7 @@ class CurveColorUI extends StatelessWidget {
         Positioned(
           bottom: 0,
           child: Container(
-            height: 120,
+            height: 100,
             width: MediaQuery.sizeOf(context).width,
             decoration: BoxDecoration(
               borderRadius:
@@ -51,25 +51,19 @@ class CurveColorUI extends StatelessWidget {
               color: Theme.of(context).scaffoldBackgroundColor,
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Padding(
+                  padding: EdgeInsets.only(top: subHeadline2 == null ? 30 : 0),
+                  child: Text(
+                    subHeadline,
+                    style: Theme.of(context).textTheme.bodyLarge!,
+                  ),
+                ),
                 Text(
-                  subHeadline,
+                  subHeadline2 ?? '',
                   style: Theme.of(context).textTheme.bodyLarge!,
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                subHeadline2 != null
-                    ? Text(
-                        subHeadline2!,
-                        style: Theme.of(context).textTheme.bodyLarge!,
-                      )
-                    : const SizedBox(
-                        height: 1,
-                        width: 1,
-                      ),
+                )
               ],
             ),
           ),

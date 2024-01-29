@@ -18,6 +18,7 @@ class SliverLoginInfo extends StatelessWidget {
         return SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.only(
+              top: 5,
               left: 20,
               right: 20,
             ),
@@ -31,7 +32,7 @@ class SliverLoginInfo extends StatelessWidget {
                   CustomTextField(
                     prefixIcon: Icons.email_outlined,
                     onChange: (value) {},
-                    hintText: 'Email',
+                    hintText: 'Enter Email',
                     textInputType: TextInputType.emailAddress,
                   ),
                   const SizedBox(
@@ -42,7 +43,7 @@ class SliverLoginInfo extends StatelessWidget {
                         BlocProvider.of<AuthCubit>(context).obscureText,
                     prefixIcon: Icons.lock_outline,
                     onChange: (value) {},
-                    hintText: 'Password',
+                    hintText: 'Enter Password',
                     textInputType: TextInputType.visiblePassword,
                     suffixIcon: BlocProvider.of<AuthCubit>(context).suffixIcon,
                     suffixOnPressed: () {

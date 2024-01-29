@@ -31,26 +31,23 @@ class RegisterViewBody extends StatelessWidget {
               hasScrollBody: false,
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Already have account?',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Already have account?',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, LoginView.id);
+                      },
+                      child: Text(
+                        'Login',
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, LoginView.id);
-                        },
-                        child: Text(
-                          'Login',
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             )

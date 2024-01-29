@@ -18,6 +18,7 @@ class SliverRegisterInfo extends StatelessWidget {
         return SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.only(
+              top: 5,
               left: 20,
               right: 20,
             ),
@@ -29,22 +30,31 @@ class SliverRegisterInfo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomTextField(
+                    prefixIcon: Icons.person_outline,
+                    onChange: (value) {},
+                    hintText: 'Enter Name',
+                    textInputType: TextInputType.name,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  CustomTextField(
                     prefixIcon: Icons.email_outlined,
                     onChange: (value) {},
-                    hintText: 'Email',
+                    hintText: ' Enter Email',
                     textInputType: TextInputType.emailAddress,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 15,
                   ),
                   CustomTextField(
                     prefixIcon: Icons.phone_outlined,
                     onChange: (value) {},
-                    hintText: 'Enter Number',
+                    hintText: 'Enter Phone Number',
                     textInputType: TextInputType.phone,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 15,
                   ),
                   CustomTextField(
                     obscureText:
@@ -59,7 +69,7 @@ class SliverRegisterInfo extends StatelessWidget {
                     },
                   ),
                   const SizedBox(
-                    height: 40,
+                    height: 20,
                   ),
                   CustomButtomShet(
                     text: 'Sign Up',
@@ -72,7 +82,7 @@ class SliverRegisterInfo extends StatelessWidget {
                     },
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -84,7 +94,7 @@ class SliverRegisterInfo extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   const IconAuthlistView(),
                 ],

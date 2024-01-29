@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:store_2/models/boarding_model.dart';
 
 part 'app_state.dart';
