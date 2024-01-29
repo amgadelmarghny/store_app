@@ -4,6 +4,7 @@ import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:store_2/shared/componants/custom_curve_color_ui.dart';
 import 'package:store_2/mdules/login/sliver_login_input.dart';
+import 'package:store_2/shared/componants/custom_sliver_row_text.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -33,29 +34,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
             ),
             const SliverLoginInfo(),
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Don\'t have an account?',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, RegisterView.id);
-                      },
-                      child: Text(
-                        'Sign Up',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            CustomSliverRowText(
+              alertSentence: 'Don\'t have an account?',
+              text: 'Sign Up',
+              routeName: RegisterView.id,
             )
           ],
         );
