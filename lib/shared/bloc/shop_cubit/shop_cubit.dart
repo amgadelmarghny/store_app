@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/mdules/categories/categories_view.dart';
 import 'package:store_2/mdules/favorite/favorite_view.dart';
-import 'package:store_2/shared/style/colors.dart';
-
 part 'shop_state.dart';
 
 class ShopCubit extends Cubit<ShopState> {
   ShopCubit() : super(ShopInitial());
-  List<Widget> listMenu(context) {
+  List<Widget> listMenu(context, {required Function(int)? onSelected}) {
     List<Widget> draverItems;
     return draverItems = [
       ListTile(
@@ -40,12 +38,7 @@ class ShopCubit extends Cubit<ShopState> {
         },
       ),
       PopupMenuButton(
-        position: PopupMenuPosition.under,
-        color: defaultColor[200],
-        onSelected: (value) {
-          if (value == 1) {
-          } else if (value == 2) {}
-        },
+        onSelected: onSelected,
         itemBuilder: (context) => [
           PopupMenuItem(
             value: 1,
@@ -58,13 +51,23 @@ class ShopCubit extends Cubit<ShopState> {
             ),
           ),
           PopupMenuItem(
-            value: 1,
+            value: 2,
             child: ListTile(
               title: Text(
                 'Language (En , Ar)',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               leading: const Icon(Icons.translate_outlined),
+            ),
+          ),
+          PopupMenuItem(
+            value: 3,
+            child: ListTile(
+              title: Text(
+                'Logout',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              leading: const Icon(Icons.power_settings_new),
             ),
           ),
         ],

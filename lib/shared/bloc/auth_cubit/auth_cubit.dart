@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:store_2/models/login_model/login_model.dart';
 import 'package:store_2/models/register_model/register_model.dart';
-import 'package:store_2/models/user_model.dart';
+import 'package:store_2/models/user_model/user_model.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
 

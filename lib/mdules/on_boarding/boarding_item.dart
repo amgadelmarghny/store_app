@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/models/boarding_model.dart';
+import 'package:store_2/models/boarding_model/boarding_model.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class BoardingBuilder extends StatelessWidget {

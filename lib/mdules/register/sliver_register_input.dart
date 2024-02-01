@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
-import 'package:store_2/models/user_model.dart';
+import 'package:store_2/models/user_model/user_model.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:store_2/shared/componants/custom_buttomt.dart';
 import 'package:store_2/shared/componants/custom_show_messeges.dart';

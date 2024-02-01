@@ -1,4 +1,4 @@
-import 'package:store_2/models/user_model.dart';
+import 'package:store_2/models/user_model/user_model.dart';
 
 class LoginModel {
   final bool status;

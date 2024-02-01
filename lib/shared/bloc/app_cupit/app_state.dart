@@ -1,5 +1,7 @@
 part of 'app_cubit.dart';
 
-sealed class AppState {}
+sealed class AppStates {}
 
-final class AppInitial extends AppState {}
+final class AppInitial extends AppStates {}
+
+final class AppBritnessChange extends AppStates {}

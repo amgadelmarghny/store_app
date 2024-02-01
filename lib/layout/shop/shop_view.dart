@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/style/colors.dart';
 
@@ -11,26 +12,34 @@ class ShopView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ShopCubit(),
-      child: BlocBuilder<ShopCubit, ShopState>(
+      child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
-          List<Widget> draverItems =
-              BlocProvider.of<ShopCubit>(context).listMenu(context);
-
-          return Scaffold(
-            drawer: Drawer(
-              backgroundColor: defaultColor[300],
-              child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    return draverItems[index];
-                  },
-                  separatorBuilder: (context, index) =>
-                      const Divider(height: 0),
-                  itemCount: draverItems.length),
-            ),
-            appBar: AppBar(
-            
-              title: const Text('Shop'),
-            ),
+          return BlocBuilder<ShopCubit, ShopState>(
+            builder: (context, state) {
+              List<Widget> draverItems =
+                  BlocProvider.of<ShopCubit>(context).listMenu(
+                context,
+                onSelected: (value) {
+                  if (value == 1) {
+                    BlocProvider.of<AppCubit>(context).britnessChanged();
+                  } else if (value == 2) {}
+                },
+              );
+              return Scaffold(
+                drawer: Drawer(
+                  child: ListView.separated(
+                      itemBuilder: (context, index) {
+                        return draverItems[index];
+                      },
+                      separatorBuilder: (context, index) =>
+                          const Divider(height: 0),
+                      itemCount: draverItems.length),
+                ),
+                appBar: AppBar(
+                  title: const Text('Shop'),
+                ),
+              );
+            },
           );
         },
       ),

@@ -8,6 +8,10 @@ abstract class ThemeStyle {
     return ThemeData(
       brightness: Brightness.dark,
       primarySwatch: defaultColor,
+      popupMenuTheme: const PopupMenuThemeData(
+        position: PopupMenuPosition.under,
+        color: defaultColor,
+      ),
       appBarTheme: const AppBarTheme(
         centerTitle: true,
         backgroundColor: defaultColor,
@@ -17,6 +21,9 @@ abstract class ThemeStyle {
           statusBarIconBrightness: Brightness.light,
           statusBarColor: defaultColor,
         ),
+      ),
+      drawerTheme: DrawerThemeData(
+        backgroundColor: defaultColor[600],
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
@@ -40,6 +47,13 @@ abstract class ThemeStyle {
     return ThemeData(
       primarySwatch: defaultColor,
       brightness: Brightness.light,
+      drawerTheme: DrawerThemeData(
+        backgroundColor: defaultColor[400],
+      ),
+      popupMenuTheme: PopupMenuThemeData(
+        position: PopupMenuPosition.under,
+        color: defaultColor[200],
+      ),
       appBarTheme: const AppBarTheme(
         centerTitle: true,
         titleSpacing: 20,

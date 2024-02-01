@@ -37,6 +37,7 @@ dependencies:
   fluttertoast: ^8.2.4
   google_fonts: ^6.1.0
   popover: ^0.2.9
+  shared_preferences: ^2.2.2
   smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
