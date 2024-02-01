@@ -15,7 +15,7 @@ class SliverRegisterInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     String? name, email, phone, password;
     GlobalKey<FormState> formKey = GlobalKey();
-    
+
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         return SliverToBoxAdapter(
@@ -41,7 +41,7 @@ class SliverRegisterInfo extends StatelessWidget {
                     textInputType: TextInputType.name,
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   CustomTextField(
                     prefixIcon: Icons.email_outlined,
@@ -52,7 +52,7 @@ class SliverRegisterInfo extends StatelessWidget {
                     textInputType: TextInputType.emailAddress,
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   CustomTextField(
                     obscureText:
@@ -80,10 +80,10 @@ class SliverRegisterInfo extends StatelessWidget {
                     textInputType: TextInputType.phone,
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 30,
                   ),
                   CustomButtomShet(
-                    text: 'Sign Up',
+                    text: 'SIGN UP',
                     isLoading: state is RegisterLodingState ? true : false,
                     onTap: () {
                       if (formKey.currentState!.validate()) {

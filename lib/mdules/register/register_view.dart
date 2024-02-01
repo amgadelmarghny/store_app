@@ -16,6 +16,16 @@ class RegisterView extends StatelessWidget {
         if (state is RegisterFailureState) {
           snacKBar(context, state.err);
         }
+        if (state is RegisterSuccessState) {
+          if (state.registermodel.status) {
+            debugPrint(state.registermodel.message);
+            debugPrint(state.registermodel.data!.token);
+          } else {
+            toastShown(
+                messege: state.registermodel.message,
+                backgroundColor: Colors.red);
+          }
+        }
       },
       builder: (context, state) {
         return Scaffold(
