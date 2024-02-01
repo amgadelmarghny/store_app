@@ -20,10 +20,14 @@ class DioHelper {
   }
 
   static Future<Response> postData({
+    String? token,
     required String url,
-   required Object data,
+    Object? data,
     Map<String, dynamic>? queryParameters,
   }) async {
+    dio!.options.headers = {
+      "Authorization": token,
+    };
     return await dio!
         .post(
       url,

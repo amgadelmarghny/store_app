@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/mdules/register/register_view_body.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
-import 'package:store_2/shared/componants/custom_snack_bar.dart';
+import 'package:store_2/shared/componants/custom_show_messeges.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class RegisterView extends StatelessWidget {

@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:store_2/models/login_model/login_model.dart';
+import 'package:store_2/models/register_model/register_model.dart';
 import 'package:store_2/models/user_model.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
@@ -26,38 +28,42 @@ class AuthCubit extends Cubit<AuthState> {
     emit(VAlidateState());
   }
 
-  void userLogin({required UserModel userModel}) async {
+  void userLogin({required String email, required String passWord}) async {
     emit(LoginLodingState());
-    await DioHelper.postData(
-      url: login,
-      data: {
-        "email": userModel.email,
-        "password": userModel.password,
-      },
-    ).then((value) {
-      print(value.data);
-      emit(LoginLodingState());
-    }).catchError((err) {
+    try {
+      await DioHelper.postData(
+        url: login,
+        queryParameters: {
+          "email": email,
+          "password": passWord,
+        },
+      ).then((value) {
+        print(value.data);
+        emit(LoginSuccessState(loginModel: LoginModel.fromJson(value.data)));
+      }).catchError((err) {
+        emit(LoginFailureState(err: err.toString()));
+      });
+    } catch (err) {
       emit(LoginFailureState(err: err.toString()));
-    });
+    }
   }
 
   void userRegister({required UserModel userModel}) async {
     emit(RegisterLodingState());
-    try {
-      await DioHelper.postData(
-        url: register,
-        data: {
-          "name": userModel.name,
-          "email": userModel.email,
-          "password": userModel.password,
-          "phone": userModel.phone,
-        },
-      );
-      emit(RegisterSuccessState());
-    } on Exception catch (err) {
-      print(err.toString());
+
+    await DioHelper.postData(
+      url: register,
+      data: {
+        "name": userModel.name,
+        "email": userModel.email,
+        "password": userModel.password,
+        "phone": userModel.phone,
+      },
+    ).then((value) {
+      emit(RegisterSuccessState(
+          registermodel: Registermodel.fromJson(value.data)));
+    }).catchError((err) {
       emit(RegisterFailureState(err: err.toString()));
-    }
+    });
   }
 }

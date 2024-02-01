@@ -11,7 +11,11 @@ final class VAlidateState extends AuthState {}
 
 class LoginLodingState extends AuthState {}
 
-class LoginSuccessState extends AuthState {}
+class LoginSuccessState extends AuthState {
+  final LoginModel loginModel;
+
+  LoginSuccessState({required this.loginModel});
+}
 
 class LoginFailureState extends AuthState {
   final String err;
@@ -21,7 +25,10 @@ class LoginFailureState extends AuthState {
 
 class RegisterLodingState extends AuthState {}
 
-class RegisterSuccessState extends AuthState {}
+class RegisterSuccessState extends AuthState {
+  final  Registermodel registermodel;
+  RegisterSuccessState({required this.registermodel});
+}
 
 class RegisterFailureState extends AuthState {
   final String err;
