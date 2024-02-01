@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
+import 'package:store_2/mdules/categories/categories_view.dart';
+import 'package:store_2/mdules/favorite/favorite_view.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
-import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:store_2/shared/bloc/bloc_observer.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/style/themes.dart';
@@ -23,7 +24,7 @@ class StoreAp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthCubit(),
+      create: (context) => AppCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
@@ -31,13 +32,13 @@ class StoreAp extends StatelessWidget {
           LoginView.id: (context) => const LoginView(),
           RegisterView.id: (context) => const RegisterView(),
           ShopView.id: (context) => const ShopView(),
+          CategoriesView.id: (context) => const CategoriesView(),
+          FavoriteView.id: (context) => const FavoriteView(),
+
         },
         theme: ThemeStyle.lightTheme(),
         darkTheme: ThemeStyle.darkTheme(),
-        home: BlocProvider(
-          create: (context) => AppCubit(),
-          child: const OnBoardingView(),
-        ),
+        home: const OnBoardingView(),
       ),
     );
   }
