@@ -8,25 +8,30 @@ import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/bloc/bloc_observer.dart';
+import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/style/themes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   DioHelper.initial();
+  await CashHelper.init();
   Bloc.observer = MyBlocObserver();
   runApp(const StoreAp());
 }
 
 class StoreAp extends StatelessWidget {
   const StoreAp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    bool? isDark = CashHelper.getBolean();
     return BlocProvider(
-      create: (context) => AppCubit(),
+      
+      create: (context) => AppCubit()..britnessChanged(fromCash:isDark),
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
+          
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             routes: {

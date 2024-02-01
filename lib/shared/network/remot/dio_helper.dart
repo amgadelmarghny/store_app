@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class DioHelper {
   static Dio? dio;
@@ -25,10 +26,10 @@ class DioHelper {
       queryParameters: queryParameters,
     )
         .then((value) {
-      print('value: ${value.data}');
+      debugPrint('value: ${value.data}');
       return value.data;
     }).catchError((err) {
-      print('error: ${err.toString()}');
+      debugPrint('error: ${err.toString()}');
     });
   }
 

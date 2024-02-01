@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:store_2/models/boarding_model/boarding_model.dart';
+import 'package:store_2/shared/network/lockal/shared_helper.dart';
 
 part 'app_state.dart';
 
@@ -26,8 +27,14 @@ class AppCubit extends Cubit<AppStates> {
   ];
   bool isDark = false;
 
-  void britnessChanged() {
-    isDark = !isDark;
-    emit(AppBritnessChange());
+  void britnessChanged({bool? fromCash}) {
+    if (fromCash != null) {
+      isDark = fromCash;
+      emit(AppBritnessChange());
+    } else {
+      isDark = !isDark;
+      CashHelper.setBolean(isDark: isDark);
+      emit(AppBritnessChange());
+    }
   }
 }
