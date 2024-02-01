@@ -25,7 +25,8 @@ class AuthCubit extends Cubit<AuthState> {
     emit(VAlidateState());
   }
 
-  Future register({required UserModel userModel}) async {
+
+  void userRegister({required UserModel userModel}) async {
     emit(RegisterLodingState());
     try {
       await DioHelper.postData(
@@ -39,6 +40,7 @@ class AuthCubit extends Cubit<AuthState> {
       );
       emit(RegisterSuccessState());
     } on Exception catch (err) {
+      print(err.toString());
       emit(RegisterFailureState(err: err.toString()));
     }
   }

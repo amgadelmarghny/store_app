@@ -1,14 +1,14 @@
 class UserModel {
-  final String name;
+  final String? name;
   final String email;
   final String password;
-  final String phone;
+  final String? phone;
 
   UserModel({
-    required this.name,
+    this.name,
     required this.email,
     required this.password,
-    required this.phone,
+    this.phone,
   });
   factory UserModel.fromJson(dynamic json) {
     return UserModel(

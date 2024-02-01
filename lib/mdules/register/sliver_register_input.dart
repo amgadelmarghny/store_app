@@ -95,7 +95,7 @@ class SliverRegisterInfo extends StatelessWidget {
                           phone: phone!,
                         );
                         BlocProvider.of<AuthCubit>(context)
-                            .register(userModel: userModel);
+                            .userRegister(userModel: userModel);
                       } else {
                         BlocProvider.of<AuthCubit>(context).validateObserver();
                       }
