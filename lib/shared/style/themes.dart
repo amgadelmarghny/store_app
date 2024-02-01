@@ -9,8 +9,14 @@ abstract class ThemeStyle {
       brightness: Brightness.dark,
       primarySwatch: defaultColor,
       appBarTheme: const AppBarTheme(
+        centerTitle: true,
+        backgroundColor: defaultColor,
         titleSpacing: 20,
         iconTheme: IconThemeData(size: 30),
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarIconBrightness: Brightness.light,
+          statusBarColor: defaultColor,
+        ),
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
@@ -34,6 +40,16 @@ abstract class ThemeStyle {
     return ThemeData(
       primarySwatch: defaultColor,
       brightness: Brightness.light,
+      appBarTheme: const AppBarTheme(
+        centerTitle: true,
+        titleSpacing: 20,
+        iconTheme: IconThemeData(size: 30),
+        backgroundColor: defaultColor,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarIconBrightness: Brightness.dark,
+          statusBarColor: defaultColor,
+        ),
+      ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
           fontSize: 19,
@@ -43,15 +59,6 @@ abstract class ThemeStyle {
           fontSize: 18,
           color: defaultColor,
           fontWeight: FontWeight.w600,
-        ),
-      ),
-      appBarTheme: const AppBarTheme(
-        titleSpacing: 20,
-        iconTheme: IconThemeData(size: 30),
-        backgroundColor: Colors.white,
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarIconBrightness: Brightness.dark,
-          statusBarColor: Colors.white,
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(

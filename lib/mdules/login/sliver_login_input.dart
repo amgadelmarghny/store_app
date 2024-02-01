@@ -24,6 +24,10 @@ class SliverLoginInfo extends StatelessWidget {
         if (state is LoginSuccessState) {
           if (state.loginModel.status) {
             Navigator.pushNamed(context, ShopView.id);
+            toastShown(
+              messege: state.loginModel.message,
+              backgroundColor: Colors.green,
+            );
             debugPrint(state.loginModel.data!.token);
           } else {
             toastShown(

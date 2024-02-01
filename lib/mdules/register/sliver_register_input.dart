@@ -24,6 +24,10 @@ class SliverRegisterInfo extends StatelessWidget {
         }
         if (state is RegisterSuccessState) {
           if (state.registermodel.status) {
+            toastShown(
+              messege: state.registermodel.message,
+              backgroundColor: Colors.green,
+            );
             Navigator.pushNamed(context, ShopView.id);
           } else {
             toastShown(
@@ -101,7 +105,8 @@ class SliverRegisterInfo extends StatelessWidget {
                     text: 'SIGN UP',
                     isLoading: state is RegisterLodingState ? true : false,
                     onTap: () {
-                      onTapMethod(formKey, name, email, password, phone, context);
+                      onTapMethod(
+                          formKey, name, email, password, phone, context);
                     },
                   ),
                   const SizedBox(
@@ -126,8 +131,9 @@ class SliverRegisterInfo extends StatelessWidget {
     );
   }
 
-  void onTapMethod(GlobalKey<FormState> formKey, String? name, String? email, String? password, String? phone, BuildContext context) {
-     if (formKey.currentState!.validate()) {
+  void onTapMethod(GlobalKey<FormState> formKey, String? name, String? email,
+      String? password, String? phone, BuildContext context) {
+    if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       UserModel userModel = UserModel(
         name: name!,
@@ -135,8 +141,7 @@ class SliverRegisterInfo extends StatelessWidget {
         password: password!,
         phone: phone!,
       );
-      BlocProvider.of<AuthCubit>(context)
-          .userRegister(userModel: userModel);
+      BlocProvider.of<AuthCubit>(context).userRegister(userModel: userModel);
     } else {
       BlocProvider.of<AuthCubit>(context).validateObserver();
     }

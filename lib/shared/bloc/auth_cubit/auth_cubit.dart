@@ -30,22 +30,20 @@ class AuthCubit extends Cubit<AuthState> {
 
   void userLogin({required String email, required String passWord}) async {
     emit(LoginLodingState());
-    try {
-      await DioHelper.postData(
-        url: login,
-        queryParameters: {
-          "email": email,
-          "password": passWord,
-        },
-      ).then((value) {
-        debugPrint(value.data);
-        emit(LoginSuccessState(loginModel: LoginModel.fromJson(value.data)));
-      }).catchError((err) {
-        emit(LoginFailureState(err: err.toString()));
-      });
-    } catch (err) {
+
+    await DioHelper.postData(
+      url: login,
+      data: {
+        "email": email,
+        "password": passWord,
+      },
+    ).then((value) {
+      debugPrint('${value.data}');
+      emit(LoginSuccessState(loginModel: LoginModel.fromJson(value.data)));
+    }).catchError((err) {
+      debugPrint("errorrrrrrrr : ${err.toString()}");
       emit(LoginFailureState(err: err.toString()));
-    }
+    });
   }
 
   void userRegister({required UserModel userModel}) async {
@@ -53,13 +51,15 @@ class AuthCubit extends Cubit<AuthState> {
 
     await DioHelper.postData(
       url: register,
-      data: {
+      queryParameters: {
         "name": userModel.name,
         "email": userModel.email,
         "password": userModel.password,
         "phone": userModel.phone,
       },
     ).then((value) {
+      debugPrint('${value.data}');
+
       emit(RegisterSuccessState(
           registermodel: Registermodel.fromJson(value.data)));
     }).catchError((err) {
