@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:store_2/models/user_model.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
+import 'package:store_2/shared/network/remot/end_points_url.dart';
 
 part 'auth_state.dart';
 
@@ -25,12 +26,27 @@ class AuthCubit extends Cubit<AuthState> {
     emit(VAlidateState());
   }
 
+  void userLogin({required UserModel userModel}) async {
+    emit(LoginLodingState());
+    await DioHelper.postData(
+      url: login,
+      data: {
+        "email": userModel.email,
+        "password": userModel.password,
+      },
+    ).then((value) {
+      print(value.data);
+      emit(LoginLodingState());
+    }).catchError((err) {
+      emit(LoginFailureState(err: err.toString()));
+    });
+  }
 
   void userRegister({required UserModel userModel}) async {
     emit(RegisterLodingState());
     try {
       await DioHelper.postData(
-        url: 'register',
+        url: register,
         data: {
           "name": userModel.name,
           "email": userModel.email,
