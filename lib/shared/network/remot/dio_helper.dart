@@ -28,15 +28,10 @@ class DioHelper {
     dio!.options.headers = {
       "Authorization": token,
     };
-    return await dio!
-        .post(
+    return await dio!.post(
       url,
       data: data,
       queryParameters: queryParameters,
-    )
-        .then((value) {
-      print(value.data);
-      return value;
-    });
+    );
   }
 }

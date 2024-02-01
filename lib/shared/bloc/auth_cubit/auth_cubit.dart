@@ -38,7 +38,7 @@ class AuthCubit extends Cubit<AuthState> {
           "password": passWord,
         },
       ).then((value) {
-        print(value.data);
+        debugPrint(value.data);
         emit(LoginSuccessState(loginModel: LoginModel.fromJson(value.data)));
       }).catchError((err) {
         emit(LoginFailureState(err: err.toString()));

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/mdules/register/register_view.dart';
@@ -29,6 +30,7 @@ class StoreAp extends StatelessWidget {
           OnBoardingView.id: (conyext) => const OnBoardingView(),
           LoginView.id: (context) => const LoginView(),
           RegisterView.id: (context) => const RegisterView(),
+          ShopView.id: (context) => const ShopView(),
         },
         theme: ThemeStyle.lightTheme(),
         darkTheme: ThemeStyle.darkTheme(),
