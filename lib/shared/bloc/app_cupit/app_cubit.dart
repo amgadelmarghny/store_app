@@ -27,14 +27,14 @@ class AppCubit extends Cubit<AppStates> {
   ];
   bool isDark = false;
 
-  void britnessChanged({bool? fromCash}) {
+  void britnessChanged({bool? fromCash}) async {
     if (fromCash != null) {
       isDark = fromCash;
       emit(AppBritnessChange());
     } else {
       isDark = !isDark;
-      CashHelper.setBolean(isDark: isDark);
-      emit(AppBritnessChange());
+      await CashHelper.setBolean(isDark: isDark)
+          .then((value) => emit(AppBritnessChange()));
     }
   }
 }

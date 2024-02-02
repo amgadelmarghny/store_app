@@ -13,7 +13,7 @@ class ShopView extends StatelessWidget {
       create: (context) => ShopCubit(),
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
-          return BlocBuilder<ShopCubit, ShopState>(
+          return BlocBuilder<ShopCubit, ShopStates>(
             builder: (context, state) {
               List<Widget> draverItems =
                   BlocProvider.of<ShopCubit>(context).listMenu(
@@ -21,7 +21,10 @@ class ShopView extends StatelessWidget {
                 onSelected: (value) {
                   if (value == 1) {
                     BlocProvider.of<AppCubit>(context).britnessChanged();
-                  } else if (value == 2) {}
+                  } else if (value == 2) {
+                  } else if (value == 3) {
+                   
+                  }
                 },
               );
               return Scaffold(

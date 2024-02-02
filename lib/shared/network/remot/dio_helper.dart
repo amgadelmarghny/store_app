@@ -17,9 +17,13 @@ class DioHelper {
   }
 
   static Future<Response> get({
+    String? token,
     required String url,
     Map<String, dynamic>? queryParameters,
   }) async {
+    if (token != null) {
+      dio!.options.headers = {"Authorization": token};
+    }
     return await dio!
         .get(
       url,
@@ -39,9 +43,9 @@ class DioHelper {
     Object? data,
     Map<String, dynamic>? queryParameters,
   }) async {
-    dio!.options.headers = {
-      "Authorization": token,
-    };
+    if (token != null) {
+      dio!.options.headers = {"Authorization": token};
+    }
     return await dio!.post(
       url,
       data: data,

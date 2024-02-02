@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/mdules/categories/categories_view.dart';
 import 'package:store_2/mdules/favorite/favorite_view.dart';
+import 'package:store_2/shared/network/remot/dio_helper.dart';
+import 'package:store_2/shared/network/remot/end_points_url.dart';
 part 'shop_state.dart';
 
-class ShopCubit extends Cubit<ShopState> {
-  ShopCubit() : super(ShopInitial());
+class ShopCubit extends Cubit<ShopStates> {
+  ShopCubit() : super(LogoutSuccuss());
+
+  List<Widget>? draverItems;
+
   List<Widget> listMenu(context, {required Function(int)? onSelected}) {
-    List<Widget> draverItems;
     return draverItems = [
       ListTile(
         leading: const Icon(Icons.shopping_cart_outlined),
@@ -79,5 +83,12 @@ class ShopCubit extends Cubit<ShopState> {
         ),
       ),
     ];
+  }
+
+  Future userLogout({required String token}) async {
+    emit(LogoutLoading());
+    return await DioHelper.postData(url: logout, token: token).then((value) {
+      
+    });
   }
 }
