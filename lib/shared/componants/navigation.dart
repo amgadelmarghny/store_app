@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void navigatorPushAndRemove(BuildContext context,Widget widget) {
-  Navigator.pushAndRemoveUntil(context,
-      MaterialPageRoute(builder: (context) => widget), (route) => false);
+void navigatorPushAndRemove(BuildContext context,String routNmae) {
+  Navigator.pushNamedAndRemoveUntil(context,
+   routNmae  , (route) => false);
 }
 
 

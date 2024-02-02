@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/mdules/categories/categories_view.dart';
 import 'package:store_2/mdules/favorite/favorite_view.dart';
+import 'package:store_2/models/logout_model/logout_model.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
 part 'shop_state.dart';
 
 class ShopCubit extends Cubit<ShopStates> {
-  ShopCubit() : super(LogoutSuccuss());
+  ShopCubit() : super(ShopInitial());
 
   List<Widget>? draverItems;
 
@@ -88,7 +89,9 @@ class ShopCubit extends Cubit<ShopStates> {
   Future userLogout({required String token}) async {
     emit(LogoutLoading());
     return await DioHelper.postData(url: logout, token: token).then((value) {
-      
+      emit(LogoutSuccuss(logoutModel: LogoutModel.fromJson(value.data)));
+    }).catchError((err) {
+      emit(LogoutFailure(message: err.toString()));
     });
   }
 }

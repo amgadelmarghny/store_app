@@ -14,7 +14,7 @@ class LogoutModel {
     return LogoutModel(
       status: json['status'],
       message: json['message'],
-      data: json['data'],
+      data: json['data']!= null ? UserModel.fromJson(json['data']) : null,
     );
   }
 }

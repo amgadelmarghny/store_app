@@ -30,7 +30,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         actions: [
           TextButton(
             onPressed: () {
-              navigatorPushAndRemove(context, const LoginView());
+              navigatorPushAndRemove(context,  LoginView.id);
             },
             child: const Text(
               'Skip',
@@ -76,7 +76,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 FloatingActionButton(
                   onPressed: () {
                     if (appCubit.pageNum == appCubit.boardList.length - 1) {
-                      navigatorPushAndRemove(context, const LoginView());
+                      navigatorPushAndRemove(context, LoginView.id);
                     } else {
                       pageController.nextPage(
                         duration: const Duration(milliseconds: 400),
