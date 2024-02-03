@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/boarding_item.dart';
+import 'package:store_2/mdules/on_boarding/custom_smooth_page_indecator.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/componants/navigation.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
@@ -68,20 +68,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             ),
             Row(
               children: [
-                SmoothPageIndicator(
-                  controller: pageController,
-                  count: appCubit.boardList.length,
-                  effect: const ExpandingDotsEffect(
-                    expansionFactor: 2,
-                    spacing: 7.0,
-                    dotWidth: 20.0,
-                    dotHeight: 10.0,
-                    paintStyle: PaintingStyle.stroke,
-                    strokeWidth: 2,
-                    dotColor: Colors.grey,
-                    activeDotColor: defaultColor,
-                  ),
-                ),
+                customSmoothPageIndicator(pageController, appCubit),
                 const Spacer(),
                 FloatingActionButton(
                   onPressed: () {
@@ -107,4 +94,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       ),
     );
   }
+
+  
 }
