@@ -26,7 +26,8 @@ class StoreAp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    bool? isDark = CashHelper.getData(key: isdark);
+    bool isDark = CashHelper.getData(key: isdark);
+    bool isBoarding = CashHelper.getData(key: onboarding);
     return BlocProvider(
       create: (context) => AppCubit()..britnessChanged(fromCash: isDark),
       child: BlocBuilder<AppCubit, AppStates>(
@@ -46,7 +47,7 @@ class StoreAp extends StatelessWidget {
             themeMode: BlocProvider.of<AppCubit>(context).isDark
                 ? ThemeMode.dark
                 : ThemeMode.light,
-            home: const OnBoardingView(),
+            home: isBoarding ? const LoginView() : const OnBoardingView(),
           );
         },
       ),
