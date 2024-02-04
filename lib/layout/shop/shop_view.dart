@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:store_2/mdules/login/login_view.dart';
+import 'package:store_2/mdules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/componants/custom_show_messeges.dart';
@@ -15,7 +16,7 @@ class ShopView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String token = CashHelper.getData(key: tOKENCONST);
+    String? token = CashHelper.getData(key: tOKENCONST);
 
     return BlocBuilder<AppCubit, AppStates>(
       builder: (context, state) {
@@ -55,7 +56,7 @@ class ShopView extends StatelessWidget {
                   } else if (value == 2) {
                   } else if (value == 3) {
                     BlocProvider.of<ShopCubit>(context).userLogout(
-                      token: token,
+                      token: token!,
                     );
                   }
                 },
@@ -74,6 +75,14 @@ class ShopView extends StatelessWidget {
                   ),
                   appBar: AppBar(
                     title: const Text('Shop'),
+                    actions: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, SearchView.id);
+                        },
+                        icon: const Icon(Icons.search),
+                      )
+                    ],
                   ),
                 ),
               );

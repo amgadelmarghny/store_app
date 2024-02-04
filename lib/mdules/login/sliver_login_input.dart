@@ -28,18 +28,19 @@ class SliverLoginInfo extends StatelessWidget {
           if (state.loginModel.status) {
             CashHelper.setData(
                     key: tOKENCONST, value: state.loginModel.data!.token)
-                .then((value) {
-              toastShown(
-                messege: state.loginModel.message,
-                state: ToastState.success,
-                context: context,
-              );
-              navigatorPushAndRemove(
-                context,
-                ShopView.id,
-                arguments: state.loginModel.data!.token,
-              );
-            });
+                .then(
+              (value) {
+                toastShown(
+                  messege: state.loginModel.message,
+                  state: ToastState.success,
+                  context: context,
+                );
+                navigatorPushAndRemove(
+                  context,
+                  ShopView.id,
+                );
+              },
+            );
           } else {
             toastShown(
               messege: state.loginModel.message,

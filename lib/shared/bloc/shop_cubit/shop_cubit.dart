@@ -4,6 +4,7 @@ import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/mdules/categories/categories_view.dart';
 import 'package:store_2/mdules/favorite/favorite_view.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
+import 'package:store_2/shared/componants/navigation.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
 part 'shop_state.dart';
@@ -16,15 +17,7 @@ class ShopCubit extends Cubit<ShopStates> {
   List<Widget> listMenu(context, {required Function(int)? onSelected}) {
     return draverItems = [
       ListTile(
-        leading: const Icon(Icons.shopping_cart_outlined),
-        title: const Text(
-          'Shop',
-        ),
-        onTap: () {
-          Navigator.pushNamed(context, ShopView.id);
-        },
-      ),
-      ListTile(
+        titleAlignment: ListTileTitleAlignment.center,
         leading: const Icon(Icons.favorite_outline),
         title: const Text(
           'Favorite',

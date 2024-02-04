@@ -6,6 +6,7 @@ import 'package:store_2/mdules/favorite/favorite_view.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/mdules/register/register_view.dart';
+import 'package:store_2/mdules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/bloc/bloc_observer.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
@@ -52,6 +53,7 @@ class StoreAp extends StatelessWidget {
               ShopView.id: (context) => const ShopView(),
               CategoriesView.id: (context) => const CategoriesView(),
               FavoriteView.id: (context) => const FavoriteView(),
+              SearchView.id: (context) => const SearchView(),
             },
             theme: ThemeStyle.lightTheme(),
             darkTheme: ThemeStyle.darkTheme(),
