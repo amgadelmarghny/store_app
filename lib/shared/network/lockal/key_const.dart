@@ -1,3 +1,3 @@
-const String isdark = 'isDark';
-const String onboarding = 'isDark';
-const String tOKEN = 'token';
+const String isDarkCONST = 'isDark';
+const String onBoardingCONST = 'onBoarding';
+const String tOKENCONST = 'token';

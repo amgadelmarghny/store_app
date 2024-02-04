@@ -26,12 +26,25 @@ class StoreAp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    bool isDark = CashHelper.getData(key: isdark);
-    bool isBoarding = CashHelper.getData(key: onboarding);
+    bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
+    String? tokengiven = CashHelper.getData(key: tOKENCONST);
+    bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
+    print('Is Shared Dark ::::::: $isSharedDark');
+    Widget widget;
+    if (isBoarding != null) {
+      if (tokengiven != null) {
+        widget = const ShopView();
+      } else {
+        widget = const LoginView();
+      }
+    } else {
+      widget = const OnBoardingView();
+    }
     return BlocProvider(
-      create: (context) => AppCubit()..britnessChanged(fromCash: isDark),
+      create: (context) => AppCubit()..britnessChanged(fromCash: isSharedDark),
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
+          print('IsDark ::::::: ${BlocProvider.of<AppCubit>(context).isDark}');
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             routes: {
@@ -47,7 +60,7 @@ class StoreAp extends StatelessWidget {
             themeMode: BlocProvider.of<AppCubit>(context).isDark
                 ? ThemeMode.dark
                 : ThemeMode.light,
-            home: isBoarding ? const LoginView() : const OnBoardingView(),
+            home: widget,
           );
         },
       ),

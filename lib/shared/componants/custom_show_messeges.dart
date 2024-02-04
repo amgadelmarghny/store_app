@@ -11,13 +11,34 @@ void snacKBar(BuildContext context, String messege) {
   );
 }
 
-void toastShown({required String messege, required Color backgroundColor}) {
+void toastShown(
+    {required String messege,
+    required ToastState state,
+    required BuildContext context}) {
   Fluttertoast.showToast(
       msg: messege,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.TOP,
       timeInSecForIosWeb: 5,
-      backgroundColor: backgroundColor,
-      textColor: Colors.white,
+      backgroundColor: getColorTost(state),
+      textColor: Theme.of(context).textTheme.bodyLarge!.color,
       fontSize: 16.0);
+}
+
+enum ToastState { success, warning, error }
+
+Color getColorTost(ToastState state) {
+  Color color;
+  switch (state) {
+    case ToastState.success:
+      color = Colors.green;
+      break;
+    case ToastState.warning:
+      color = Colors.yellow;
+      break;
+    case ToastState.error:
+      color = Colors.red;
+      break;
+  }
+  return color;
 }

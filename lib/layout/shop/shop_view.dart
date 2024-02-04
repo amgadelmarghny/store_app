@@ -6,6 +6,8 @@ import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/componants/custom_show_messeges.dart';
 import 'package:store_2/shared/componants/navigation.dart';
+import 'package:store_2/shared/network/lockal/key_const.dart';
+import 'package:store_2/shared/network/lockal/shared_helper.dart';
 
 class ShopView extends StatelessWidget {
   const ShopView({super.key});
@@ -13,7 +15,8 @@ class ShopView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String token = ModalRoute.of(context)!.settings.arguments as String;
+    String token = CashHelper.getData(key: tOKENCONST);
+
     return BlocBuilder<AppCubit, AppStates>(
       builder: (context, state) {
         return BlocProvider(
@@ -24,13 +27,15 @@ class ShopView extends StatelessWidget {
                 if (state.logoutModel.status) {
                   toastShown(
                     messege: state.logoutModel.message,
-                    backgroundColor: Colors.yellow,
+                    context: context,
+                    state: ToastState.warning,
                   );
                   navigatorPushAndRemove(context, LoginView.id);
                 } else {
                   toastShown(
                     messege: state.logoutModel.message,
-                    backgroundColor: Colors.red,
+                    state: ToastState.error,
+                    context: context,
                   );
                 }
               }
@@ -47,8 +52,9 @@ class ShopView extends StatelessWidget {
                     BlocProvider.of<AppCubit>(context).britnessChanged();
                   } else if (value == 2) {
                   } else if (value == 3) {
-                    BlocProvider.of<ShopCubit>(context)
-                        .userLogout(token: token);
+                    BlocProvider.of<ShopCubit>(context).userLogout(
+                      token: token,
+                    );
                   }
                 },
               );

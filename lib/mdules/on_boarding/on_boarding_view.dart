@@ -23,7 +23,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     AppCubit appCubit = BlocProvider.of<AppCubit>(context);
     PageController pageController = PageController();
     void onPressed() async {
-      await CashHelper.setData(key: onboarding, value: true).then(
+      await CashHelper.setData(key: onBoardingCONST, value: true).then(
         (value) {
           if (value) {
             navigatorPushAndRemove(context, LoginView.id);
@@ -94,6 +94,4 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       ),
     );
   }
-
-  
 }

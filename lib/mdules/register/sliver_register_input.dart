@@ -6,7 +6,10 @@ import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:store_2/shared/componants/custom_buttomt.dart';
 import 'package:store_2/shared/componants/custom_show_messeges.dart';
 import 'package:store_2/shared/componants/icon_auth_list_view.dart';
+import 'package:store_2/shared/componants/navigation.dart';
 import 'package:store_2/shared/componants/textformfield.dart';
+import 'package:store_2/shared/network/lockal/key_const.dart';
+import 'package:store_2/shared/network/lockal/shared_helper.dart';
 
 class SliverRegisterInfo extends StatelessWidget {
   const SliverRegisterInfo({
@@ -18,21 +21,34 @@ class SliverRegisterInfo extends StatelessWidget {
     String? name, email, phone, password;
     GlobalKey<FormState> formKey = GlobalKey();
     return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is RegisterFailureState) {
           snacKBar(context, state.err);
         }
         if (state is RegisterSuccessState) {
           if (state.registermodel.status) {
-            toastShown(
-              messege: state.registermodel.message,
-              backgroundColor: Colors.green,
+            await CashHelper.setData(
+                    key: tOKENCONST, value: state.registermodel.data!.token)
+                .then(
+              (value) {
+                toastShown(
+                  messege: state.registermodel.message,
+                  state: ToastState.success,
+                  context: context,
+                );
+                navigatorPushAndRemove(
+                  context,
+                  ShopView.id,
+                  arguments: state.registermodel.data!.token,
+                );
+              },
             );
-            Navigator.pushNamed(context, ShopView.id);
           } else {
             toastShown(
-                messege: state.registermodel.message,
-                backgroundColor: Colors.red);
+              messege: state.registermodel.message,
+              state: ToastState.error,
+              context: context,
+            );
           }
         }
       },
@@ -106,7 +122,13 @@ class SliverRegisterInfo extends StatelessWidget {
                     isLoading: state is RegisterLodingState ? true : false,
                     onTap: () {
                       onTapMethod(
-                          formKey, name, email, password, phone, context);
+                        formKey,
+                        name,
+                        email,
+                        password,
+                        phone,
+                        context,
+                      );
                     },
                   ),
                   const SizedBox(

@@ -26,16 +26,17 @@ class AppCubit extends Cubit<AppStates> {
       shopeSubTitle: 'Sub. title',
     ),
   ];
-  bool isDark = false;
+  bool isDark = true;
 
   void britnessChanged({bool? fromCash}) async {
     if (fromCash != null) {
       isDark = fromCash;
+      print('Theme data get from shared pref');
       emit(AppBritnessChange());
     } else {
       isDark = !isDark;
-      await CashHelper.setData(key: isdark, value: isDark)
-          .then((value) => emit(AppBritnessChange()));
+      await CashHelper.setData(key: isDarkCONST, value: isDark);
+      emit(AppBritnessChange());
     }
   }
 }
