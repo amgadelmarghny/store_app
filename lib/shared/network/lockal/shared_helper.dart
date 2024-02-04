@@ -22,4 +22,8 @@ abstract class CashHelper {
     }
     return await sharedPreferences!.setStringList(key, value);
   }
+
+  static Future<bool> deletCash({required String key}) async {
+    return await sharedPreferences!.remove(key);
+  }
 }

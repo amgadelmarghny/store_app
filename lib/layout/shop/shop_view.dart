@@ -22,7 +22,7 @@ class ShopView extends StatelessWidget {
         return BlocProvider(
           create: (context) => ShopCubit(),
           child: BlocConsumer<ShopCubit, ShopStates>(
-            listener: (context, state) {
+            listener: (context, state) async {
               if (state is LogoutSuccuss) {
                 if (state.logoutModel.status) {
                   toastShown(
@@ -30,7 +30,8 @@ class ShopView extends StatelessWidget {
                     context: context,
                     state: ToastState.warning,
                   );
-                  navigatorPushAndRemove(context, LoginView.id);
+                  await CashHelper.deletCash(key: tOKENCONST).then(
+                      (value) => navigatorPushAndRemove(context, LoginView.id));
                 } else {
                   toastShown(
                     messege: state.logoutModel.message,
@@ -40,6 +41,7 @@ class ShopView extends StatelessWidget {
                 }
               }
               if (state is LogoutFailure) {
+                if (!context.mounted) return;
                 snacKBar(context, state.message);
               }
             },

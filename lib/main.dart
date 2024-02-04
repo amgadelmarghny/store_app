@@ -29,7 +29,6 @@ class StoreAp extends StatelessWidget {
     bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
     String? tokengiven = CashHelper.getData(key: tOKENCONST);
     bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
-    print('Is Shared Dark ::::::: $isSharedDark');
     Widget widget;
     if (isBoarding != null) {
       if (tokengiven != null) {
@@ -44,7 +43,6 @@ class StoreAp extends StatelessWidget {
       create: (context) => AppCubit()..britnessChanged(fromCash: isSharedDark),
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
-          print('IsDark ::::::: ${BlocProvider.of<AppCubit>(context).isDark}');
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             routes: {

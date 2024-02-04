@@ -31,7 +31,6 @@ class AppCubit extends Cubit<AppStates> {
   void britnessChanged({bool? fromCash}) async {
     if (fromCash != null) {
       isDark = fromCash;
-      print('Theme data get from shared pref');
       emit(AppBritnessChange());
     } else {
       isDark = !isDark;
