@@ -75,7 +75,7 @@ class ShopView extends StatelessWidget {
                         itemCount: draverItems.length),
                   ),
                   appBar: AppBar(
-                    title: const Text('Shop'),
+                    title: const Text('Noury Store'),
                     actions: [
                       IconButton(
                         onPressed: () {
