@@ -24,7 +24,7 @@ class ShopView extends StatelessWidget {
           create: (context) => ShopCubit(),
           child: BlocConsumer<ShopCubit, ShopStates>(
             listener: (context, state) async {
-              if (state is LogoutSuccuss) {
+              if (state is LogoutSuccussState) {
                 if (state.logoutModel.status) {
                   toastShown(
                     messege: state.logoutModel.message,
@@ -41,12 +41,13 @@ class ShopView extends StatelessWidget {
                   );
                 }
               }
-              if (state is LogoutFailure) {
+              if (state is LogoutFailureState) {
                 if (!context.mounted) return;
                 snacKBar(context, state.message);
               }
             },
             builder: (context, state) {
+              ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
               List<Widget> draverItems =
                   BlocProvider.of<ShopCubit>(context).listMenu(
                 context,
@@ -62,7 +63,7 @@ class ShopView extends StatelessWidget {
                 },
               );
               return ModalProgressHUD(
-                inAsyncCall: state is LogoutLoading,
+                inAsyncCall: state is LogoutLoadingState,
                 child: Scaffold(
                   drawer: Drawer(
                     child: ListView.separated(
@@ -81,9 +82,17 @@ class ShopView extends StatelessWidget {
                           Navigator.pushNamed(context, SearchView.id);
                         },
                         icon: const Icon(Icons.search),
-                      )
+                      ),
                     ],
                   ),
+                  bottomNavigationBar: BottomNavigationBar(
+                    currentIndex: shopCubit.currentIndex,
+                    items: shopCubit.bottomNavBarItems,
+                    onTap: (index) {
+                      shopCubit.selectIconChange(index);
+                    },
+                  ),
+                  body: shopCubit.currentBody[shopCubit.currentIndex],
                 ),
               );
             },

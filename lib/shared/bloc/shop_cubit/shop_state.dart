@@ -5,17 +5,18 @@ sealed class ShopStates {}
 
 final class ShopInitial extends ShopStates {}
 
-final class LogoutLoading extends ShopStates {}
+final class NavBarChangeState extends ShopStates {}
 
-final class LogoutSuccuss extends ShopStates {
-  final LogoutModel  logoutModel;
+final class LogoutLoadingState extends ShopStates {}
 
-  LogoutSuccuss({required this.logoutModel});
+final class LogoutSuccussState extends ShopStates {
+  final LogoutModel logoutModel;
+
+  LogoutSuccussState({required this.logoutModel});
 }
 
-final class LogoutFailure extends ShopStates {
-  final  String message;
+final class LogoutFailureState extends ShopStates {
+  final String message;
 
-  LogoutFailure({required this.message});
-
+  LogoutFailureState({required this.message});
 }

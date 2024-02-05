@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:store_2/mdules/categories/categories_view.dart';
-import 'package:store_2/mdules/favorite/favorite_view.dart';
+import 'package:store_2/mdules/categories/categories_body.dart';
+import 'package:store_2/mdules/favorite/favorite_body.dart';
+import 'package:store_2/mdules/home/home_body.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
@@ -14,27 +15,15 @@ class ShopCubit extends Cubit<ShopStates> {
 
   List<Widget> listMenu(context, {required Function(int)? onSelected}) {
     return draverItems = [
-      ListTile(
-        titleAlignment: ListTileTitleAlignment.center,
-        leading: const Icon(Icons.favorite_outline),
-        title: const Text(
-          'Favorite',
-        ),
-        onTap: () {
-          Navigator.pushNamed(context, FavoriteView.id);
-        },
-      ),
-      ListTile(
-        leading: const Icon(Icons.category_outlined),
-        title: const Text(
-          'Categories',
-        ),
-        onTap: () {
-          Navigator.pushNamed(context, CategoriesView.id);
-        },
-      ),
       PopupMenuButton(
         onSelected: onSelected,
+        child: const ListTile(
+          leading: Icon(Icons.settings_outlined),
+          title: Text(
+            'Settings',
+          ),
+          trailing: Icon(Icons.keyboard_arrow_down),
+        ),
         itemBuilder: (context) => [
           PopupMenuItem(
             value: 1,
@@ -67,22 +56,36 @@ class ShopCubit extends Cubit<ShopStates> {
             ),
           ),
         ],
-        child: const ListTile(
-          leading: Icon(Icons.settings_outlined),
-          title: Text(
-            'Settings',
-          ),
-        ),
       ),
     ];
   }
 
+  int currentIndex = 0;
+
+  List<BottomNavigationBarItem> bottomNavBarItems = const [
+    BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.apps_outlined), label: 'Categories'),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.favorite_outline), label: 'Favotite'),
+  ];
+  void selectIconChange(int index) {
+    currentIndex = index;
+    emit(NavBarChangeState());
+  }
+
+  List<Widget> currentBody = const [
+    HomeBody(),
+    CategoryBody(),
+    FavoriteBody(),
+  ];
+
   Future userLogout({required String token}) async {
-    emit(LogoutLoading());
+    emit(LogoutLoadingState());
     return await DioHelper.postData(url: logout, token: token).then((value) {
-      emit(LogoutSuccuss(logoutModel: LogoutModel.fromJson(value.data)));
+      emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));
     }).catchError((err) {
-      emit(LogoutFailure(message: err.toString()));
+      emit(LogoutFailureState(message: err.toString()));
     });
   }
 }
