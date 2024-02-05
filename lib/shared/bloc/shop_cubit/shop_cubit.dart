@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/mdules/categories/categories_view.dart';
 import 'package:store_2/mdules/favorite/favorite_view.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
-import 'package:store_2/shared/componants/navigation.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
 part 'shop_state.dart';

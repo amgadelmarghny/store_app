@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.suffixOnPressed,
     this.prefixIcon,
+    required this.labelText,
   });
   final IconData? suffixIcon;
   final IconData? prefixIcon;
@@ -19,6 +20,7 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final void Function(String) onChange;
   final Function()? suffixOnPressed;
+  final String labelText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -51,7 +53,7 @@ class CustomTextField extends StatelessWidget {
               )
             : null,
         hintText: hintText,
-        labelText: hintText,
+        labelText: labelText,
         labelStyle: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w500,
