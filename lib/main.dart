@@ -7,6 +7,7 @@ import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/mdules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/bloc/bloc_observer.dart';
+import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -38,8 +39,16 @@ class StoreAp extends StatelessWidget {
     } else {
       widget = const OnBoardingView();
     }
-    return BlocProvider(
-      create: (context) => AppCubit()..britnessChanged(fromCash: isSharedDark),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              AppCubit()..britnessChanged(fromCash: isSharedDark),
+        ),
+        BlocProvider(
+          create: (context) => ShopCubit()..getHome(),
+        ),
+      ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
           return MaterialApp(
