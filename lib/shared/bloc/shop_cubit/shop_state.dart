@@ -16,7 +16,17 @@ final class LogoutSuccussState extends ShopStates {
 }
 
 final class LogoutFailureState extends ShopStates {
-  final String message;
+  final String errMessage;
 
-  LogoutFailureState({required this.message});
+  LogoutFailureState({required this.errMessage});
+}
+
+final class GetHomeDataLoadingState extends ShopStates {}
+
+final class GetHomeDataSuccessState extends ShopStates {}
+
+final class GetHomeDataFailureState extends ShopStates {
+  final String errMessage;
+
+  GetHomeDataFailureState({required this.errMessage});
 }

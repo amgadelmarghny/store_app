@@ -41,9 +41,9 @@ class ShopView extends StatelessWidget {
                   );
                 }
               }
-              if (state is LogoutFailureState) {
+              if (state is GetHomeDataFailureState) {
                 if (!context.mounted) return;
-                snacKBar(context, state.message);
+                snacKBar(context, state.errMessage);
               }
             },
             builder: (context, state) {

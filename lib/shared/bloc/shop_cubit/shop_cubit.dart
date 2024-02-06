@@ -4,6 +4,10 @@ import 'package:store_2/mdules/categories/categories_body.dart';
 import 'package:store_2/mdules/favorite/favorite_body.dart';
 import 'package:store_2/mdules/home/home_body.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
+import 'package:store_2/models/shope_models/home_model.dart';
+import 'package:store_2/models/shope_models/product_model.dart';
+import 'package:store_2/shared/network/lockal/key_const.dart';
+import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
 part 'shop_state.dart';
@@ -85,7 +89,23 @@ class ShopCubit extends Cubit<ShopStates> {
     return await DioHelper.postData(url: logout, token: token).then((value) {
       emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));
     }).catchError((err) {
-      emit(LogoutFailureState(message: err.toString()));
+      emit(GetHomeDataFailureState(errMessage: err.toString()));
+    });
+  }
+
+  List<ProductsModel> productList = [];
+  void getHome() async {
+    emit(GetHomeDataLoadingState());
+    await DioHelper.get(
+      token: CashHelper.getData(key: tOKENCONST),
+      url: 'home',
+    ).then((value) {
+      HomeModel homeModel = HomeModel.fromJson(value.data);
+      print(homeModel.status);
+      print(homeModel.data!.productsList[0].name);
+      emit(GetHomeDataSuccessState());
+    }).catchError((err) {
+      emit(GetHomeDataFailureState(errMessage: err.toString()));
     });
   }
 }

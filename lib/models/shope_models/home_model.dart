@@ -3,7 +3,7 @@ import 'package:store_2/models/shope_models/product_model.dart';
 class HomeModel {
   final bool status;
   final String? message;
-  final DataHomeModel data;
+  final HomeDataModel? data;
 
   HomeModel({
     required this.status,
@@ -14,26 +14,26 @@ class HomeModel {
     return HomeModel(
       status: json['status'],
       message: json['message'],
-      data: DataHomeModel.fromJson(json['data']),
+      data: json['data'] != null ? HomeDataModel.fromJson(json['data']) : null,
     );
   }
 }
 
-class DataHomeModel {
-  final BannersHomeModel banner;
-  final ProductsModel productsModel;
-  final String ad;
+class HomeDataModel {
+  List<BannersHomeModel> bannersList = [];
+  List<ProductsModel> productsList = [];
+  String? ad;
 
-  DataHomeModel({
-    required this.banner,
-    required this.productsModel,
-    required this.ad,
-  });
-  factory DataHomeModel.fromJson(Map<String, dynamic> json) => DataHomeModel(
-      banner: BannersHomeModel.fromJson(json['banners']),
-      productsModel:
-          json['products'] ?? ProductsModel.fromJson(json['products']),
-      ad: json['ad']);
+  HomeDataModel.fromJson(Map<String, dynamic> json) {
+
+    json['banners'].forEach((element) {
+      bannersList.add(BannersHomeModel.fromJson(element));
+    });
+
+    json['products'].forEach((element) {
+      productsList.add(ProductsModel.fromJson(element));
+    });
+  }
 }
 
 class BannersHomeModel {
@@ -44,15 +44,16 @@ class BannersHomeModel {
 
   BannersHomeModel(
       {this.category, this.product, required this.id, required this.image});
-  factory BannersHomeModel.fromJson(dynamic json) {
+  factory BannersHomeModel.fromJson(Map<String, dynamic> json) {
     return BannersHomeModel(
       id: json['id'],
       image: json['image'],
       category: json['category'],
-      product: json['product'] ??
-          ProductsModel.fromJson(
-            json['product'],
-          ),
+      product: json['product'] != null
+          ? ProductsModel.fromJson(
+              json['product'],
+            )
+          : null,
     );
   }
 }

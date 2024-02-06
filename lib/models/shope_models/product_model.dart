@@ -1,13 +1,12 @@
 class ProductsModel {
   final int id;
   final String name;
-  final double price;
-  final int oldPrice;
-
+  final dynamic price;
+  final dynamic oldPrice;
   final String image;
   final String description;
   final dynamic discount;
-  final List<String> images;
+  final List images;
   final bool inFavorites;
   final bool inCart;
 
