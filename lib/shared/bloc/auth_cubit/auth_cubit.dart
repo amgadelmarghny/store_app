@@ -27,8 +27,8 @@ class AuthCubit extends Cubit<AuthState> {
     autovalidateMode = AutovalidateMode.onUserInteraction;
     emit(VAlidateState());
   }
-
-  void userLogin({required String email, required String passWord}) async {
+ String? email, passWord;
+  void userLogin() async {
     emit(LoginLodingState());
 
     await DioHelper.postData(

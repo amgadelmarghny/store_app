@@ -31,7 +31,7 @@ class ShopView extends StatelessWidget {
                     context: context,
                     state: ToastState.warning,
                   );
-                  await CashHelper.deletCash(key: tOKENCONST).then(
+                  await CashHelper.deleteCash(key: tOKENCONST).then(
                       (value) => navigatorPushAndRemove(context, LoginView.id));
                 } else {
                   toastShown(

@@ -7,7 +7,6 @@ import 'package:store_2/shared/componants/textformfield.dart';
 
 Form loginFormInput(
     GlobalKey<FormState> formKey, BuildContext context, AuthState state) {
-  String? email, passWord;
   return Form(
     key: formKey,
     autovalidateMode: BlocProvider.of<AuthCubit>(context).autovalidateMode,
@@ -17,10 +16,11 @@ Form loginFormInput(
         CustomTextField(
           prefixIcon: Icons.email_outlined,
           onChange: (value) {
-            email = value;
+            context.read<AuthCubit>().email = value;
           },
           hintText: 'Enter Email',
-          textInputType: TextInputType.emailAddress, labelText:  "Email",
+          textInputType: TextInputType.emailAddress,
+          labelText: "Email",
         ),
         const SizedBox(
           height: 20,
@@ -29,14 +29,15 @@ Form loginFormInput(
           obscureText: BlocProvider.of<AuthCubit>(context).obscureText,
           prefixIcon: Icons.lock_outline,
           onChange: (value) {
-            passWord = value;
+            context.read<AuthCubit>().passWord = value;
           },
           hintText: 'Enter Password',
           textInputType: TextInputType.visiblePassword,
           suffixIcon: BlocProvider.of<AuthCubit>(context).suffixIcon,
           suffixOnPressed: () {
             BlocProvider.of<AuthCubit>(context).onEyesPressed();
-          }, labelText:  "Password" ,
+          },
+          labelText: "Password",
         ),
         const SizedBox(
           height: 20,
@@ -56,9 +57,7 @@ Form loginFormInput(
           text: 'Login',
           onTap: () {
             if (formKey.currentState!.validate()) {
-              context
-                  .read<AuthCubit>()
-                  .userLogin(email: email!, passWord: passWord!);
+              context.read<AuthCubit>().userLogin();
               formKey.currentState!.save();
             } else {
               BlocProvider.of<AuthCubit>(context).validateObserver();
