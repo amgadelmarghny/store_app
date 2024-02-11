@@ -96,15 +96,12 @@ class ShopCubit extends Cubit<ShopStates> {
   HomeModel? homeModel;
 
   void getHomeData() async {
-    print('get home data');
     emit(GetHomeDataLoadingState());
     await DioHelper.get(
       token: CashHelper.getData(key: tOKENCONST),
       url: 'home',
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
-      print('get data status ${homeModel!.status}');
-      print(homeModel!.data!.productsList[0].name);
       emit(GetHomeDataSuccessState());
     });
   }

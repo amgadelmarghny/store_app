@@ -42,30 +42,30 @@ class StoreAp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
+          create: (context) => ShopCubit()..getHomeData(),
+        ),
+        BlocProvider(
           create: (context) =>
               AppCubit()..britnessChanged(fromCash: isSharedDark),
         ),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
-          return BlocProvider(
-            create: (context) => ShopCubit()..getHomeData(),
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              routes: {
-                OnBoardingView.id: (conyext) => const OnBoardingView(),
-                LoginView.id: (context) => const LoginView(),
-                RegisterView.id: (context) => const RegisterView(),
-                ShopView.id: (context) => const ShopView(),
-                SearchView.id: (context) => const SearchView(),
-              },
-              theme: ThemeStyle.lightTheme(),
-              darkTheme: ThemeStyle.darkTheme(),
-              themeMode: BlocProvider.of<AppCubit>(context).isDark
-                  ? ThemeMode.dark
-                  : ThemeMode.light,
-              home: widget,
-            ),
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            routes: {
+              OnBoardingView.id: (conyext) => const OnBoardingView(),
+              LoginView.id: (context) => const LoginView(),
+              RegisterView.id: (context) => const RegisterView(),
+              ShopView.id: (context) => const ShopView(),
+              SearchView.id: (context) => const SearchView(),
+            },
+            theme: ThemeStyle.lightTheme(),
+            darkTheme: ThemeStyle.darkTheme(),
+            themeMode: BlocProvider.of<AppCubit>(context).isDark
+                ? ThemeMode.dark
+                : ThemeMode.light,
+            home: widget,
           );
         },
       ),

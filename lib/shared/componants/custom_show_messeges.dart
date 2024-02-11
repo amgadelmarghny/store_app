@@ -17,7 +17,7 @@ void toastShown(
     required BuildContext context}) {
   Fluttertoast.showToast(
       msg: messege,
-      toastLength: Toast.LENGTH_SHORT,
+      toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.TOP,
       timeInSecForIosWeb: 5,
       backgroundColor: getColorTost(state),

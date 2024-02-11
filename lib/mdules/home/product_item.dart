@@ -13,17 +13,17 @@ class ProductItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(8),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            spreadRadius: 1,
-            blurRadius: 10,
-            color: Colors.grey,
-            offset: Offset(2, 6),
+            spreadRadius: 0.3,
+            blurRadius: 5,
+            color: Colors.grey.withOpacity(0.6),
+            offset: const Offset(1, 5),
           )
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -33,7 +33,7 @@ class ProductItem extends StatelessWidget {
                 Image.network(
                   productModel.image,
                   width: double.infinity,
-                  height: 100,
+                  height: 160,
                 ),
                 if (productModel.discount != 0)
                   Container(
@@ -73,13 +73,15 @@ class ProductItem extends StatelessWidget {
                       .copyWith(fontSize: 15),
                 ),
                 const Spacer(),
-                Text(
-                  productModel.oldPrice.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall!
-                      .copyWith(decoration: TextDecoration.lineThrough),
-                ),
+                if (productModel.discount != 0)
+                  Text(
+                    productModel.oldPrice.toString(),
+                    maxLines: 1,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(decoration: TextDecoration.lineThrough),
+                  ),
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(

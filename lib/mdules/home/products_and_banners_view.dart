@@ -14,27 +14,45 @@ class ProductAndBannerView extends StatelessWidget {
     ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
     return Padding(
       padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-      child: Column(
-        children: [
-          CarouselSlider(
-            items: shopCubit.homeModel!.data!.bannersList
-                .map(
-                  (e) => Image.network(
-                    e.image,
-                    fit: BoxFit.cover,
-                  ),
-                )
-                .toList(),
-            options: CarouselOptions(
-              autoPlay: true,
-              viewportFraction: 1,
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            CarouselSlider(
+              items: shopCubit.homeModel!.data!.bannersList
+                  .map(
+                    (e) => Image.network(
+                      e.image,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                  .toList(),
+              options: CarouselOptions(
+                autoPlay: true,
+                viewportFraction: 1,
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          ProductItem(productModel: shopCubit.homeModel!.data!.productsList[1])
-        ],
+            const SizedBox(
+              height: 20,
+            ),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1 / 1.472,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 10,
+              ),
+              itemBuilder: (context, index) {
+                return ProductItem(
+                  productModel: shopCubit.homeModel!.data!.productsList[index],
+                );
+              },
+              itemCount: shopCubit.homeModel!.data!.productsList.length,
+            )
+          ],
+        ),
       ),
     );
   }
