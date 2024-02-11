@@ -5,7 +5,6 @@ import 'package:store_2/mdules/favorite/favorite_body.dart';
 import 'package:store_2/mdules/home/home_body.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
 import 'package:store_2/models/shope_models/home_model.dart';
-import 'package:store_2/models/shope_models/product_model.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -73,6 +72,7 @@ class ShopCubit extends Cubit<ShopStates> {
     BottomNavigationBarItem(
         icon: Icon(Icons.favorite_outline), label: 'Favotite'),
   ];
+
   void selectIconChange(int index) {
     currentIndex = index;
     emit(NavBarChangeState());
@@ -93,18 +93,19 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-  List<ProductsModel> productList = [];
   HomeModel? homeModel;
-  void getHome() async {
+
+  void getHomeData() async {
+    print('get home data');
     emit(GetHomeDataLoadingState());
     await DioHelper.get(
       token: CashHelper.getData(key: tOKENCONST),
       url: 'home',
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
+      print('get data status ${homeModel!.status}');
+      print(homeModel!.data!.productsList[0].name);
       emit(GetHomeDataSuccessState());
-    }).catchError((err) {
-      emit(GetHomeDataFailureState(errMessage: err.toString()));
     });
   }
 }

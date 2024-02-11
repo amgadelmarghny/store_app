@@ -1,4 +1,4 @@
-class ProductsModel {
+class ProductModel {
   final int id;
   final String name;
   final dynamic price;
@@ -10,7 +10,7 @@ class ProductsModel {
   final bool inFavorites;
   final bool inCart;
 
-  ProductsModel({
+  ProductModel({
     required this.images,
     required this.id,
     required this.name,
@@ -22,8 +22,8 @@ class ProductsModel {
     required this.inFavorites,
     required this.inCart,
   });
-  factory ProductsModel.fromJson(dynamic json) {
-    return ProductsModel(
+  factory ProductModel.fromJson(dynamic json) {
+    return ProductModel(
       images: json['images'],
       id: json['id'],
       name: json['name'],

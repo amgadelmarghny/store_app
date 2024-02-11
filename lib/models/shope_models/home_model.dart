@@ -21,7 +21,7 @@ class HomeModel {
 
 class HomeDataModel {
   List<BannersHomeModel> bannersList = [];
-  List<ProductsModel> productsList = [];
+  List<ProductModel> productsList = [];
   String? ad;
 
   HomeDataModel.fromJson(Map<String, dynamic> json) {
@@ -30,7 +30,7 @@ class HomeDataModel {
     });
 
     json['products'].forEach((element) {
-      productsList.add(ProductsModel.fromJson(element));
+      productsList.add(ProductModel.fromJson(element));
     });
   }
 }
@@ -39,7 +39,7 @@ class BannersHomeModel {
   final int id;
   final String image;
   String? category;
-  ProductsModel? product;
+  ProductModel? product;
 
   BannersHomeModel(
       {this.category, this.product, required this.id, required this.image});
@@ -49,7 +49,7 @@ class BannersHomeModel {
       image: json['image'],
       category: json['category'],
       product: json['product'] != null
-          ? ProductsModel.fromJson(
+          ? ProductModel.fromJson(
               json['product'],
             )
           : null,

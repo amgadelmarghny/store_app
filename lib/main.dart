@@ -45,27 +45,27 @@ class StoreAp extends StatelessWidget {
           create: (context) =>
               AppCubit()..britnessChanged(fromCash: isSharedDark),
         ),
-        BlocProvider(
-          create: (context) => ShopCubit()..getHome(),
-        ),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            routes: {
-              OnBoardingView.id: (conyext) => const OnBoardingView(),
-              LoginView.id: (context) => const LoginView(),
-              RegisterView.id: (context) => const RegisterView(),
-              ShopView.id: (context) => const ShopView(),
-              SearchView.id: (context) => const SearchView(),
-            },
-            theme: ThemeStyle.lightTheme(),
-            darkTheme: ThemeStyle.darkTheme(),
-            themeMode: BlocProvider.of<AppCubit>(context).isDark
-                ? ThemeMode.dark
-                : ThemeMode.light,
-            home: widget,
+          return BlocProvider(
+            create: (context) => ShopCubit()..getHomeData(),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              routes: {
+                OnBoardingView.id: (conyext) => const OnBoardingView(),
+                LoginView.id: (context) => const LoginView(),
+                RegisterView.id: (context) => const RegisterView(),
+                ShopView.id: (context) => const ShopView(),
+                SearchView.id: (context) => const SearchView(),
+              },
+              theme: ThemeStyle.lightTheme(),
+              darkTheme: ThemeStyle.darkTheme(),
+              themeMode: BlocProvider.of<AppCubit>(context).isDark
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
+              home: widget,
+            ),
           );
         },
       ),
