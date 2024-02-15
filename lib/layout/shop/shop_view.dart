@@ -20,83 +20,80 @@ class ShopView extends StatelessWidget {
 
     return BlocBuilder<AppCubit, AppStates>(
       builder: (context, state) {
-        return BlocProvider(
-          create: (context) => ShopCubit(),
-          child: BlocConsumer<ShopCubit, ShopStates>(
-            listener: (context, state) async {
-              if (state is LogoutSuccussState) {
-                if (state.logoutModel.status) {
-                  toastShown(
-                    messege: state.logoutModel.message,
-                    context: context,
-                    state: ToastState.warning,
-                  );
-                  await CashHelper.deleteCash(key: tOKENCONST).then(
-                      (value) => navigatorPushAndRemove(context, LoginView.id));
-                } else {
-                  toastShown(
-                    messege: state.logoutModel.message,
-                    state: ToastState.error,
-                    context: context,
+        return BlocConsumer<ShopCubit, ShopStates>(
+          listener: (context, state) async {
+            if (state is LogoutSuccussState) {
+              if (state.logoutModel.status) {
+                toastShown(
+                  messege: state.logoutModel.message,
+                  context: context,
+                  state: ToastState.warning,
+                );
+                await CashHelper.deleteCash(key: tOKENCONST).then(
+                    (value) => navigatorPushAndRemove(context, LoginView.id));
+              } else {
+                toastShown(
+                  messege: state.logoutModel.message,
+                  state: ToastState.error,
+                  context: context,
+                );
+              }
+            }
+            if (state is GetHomeDataFailureState) {
+              if (!context.mounted) return;
+              snacKBar(context, state.errMessage);
+            }
+          },
+          builder: (context, state) {
+            ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
+            List<Widget> draverItems =
+                BlocProvider.of<ShopCubit>(context).listMenu(
+              context,
+              onSelected: (value) {
+                if (value == 1) {
+                  BlocProvider.of<AppCubit>(context).britnessChanged();
+                } else if (value == 2) {
+                } else if (value == 3) {
+                  BlocProvider.of<ShopCubit>(context).userLogout(
+                    token: token!,
                   );
                 }
-              }
-              if (state is GetHomeDataFailureState) {
-                if (!context.mounted) return;
-                snacKBar(context, state.errMessage);
-              }
-            },
-            builder: (context, state) {
-              ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
-              List<Widget> draverItems =
-                  BlocProvider.of<ShopCubit>(context).listMenu(
-                context,
-                onSelected: (value) {
-                  if (value == 1) {
-                    BlocProvider.of<AppCubit>(context).britnessChanged();
-                  } else if (value == 2) {
-                  } else if (value == 3) {
-                    BlocProvider.of<ShopCubit>(context).userLogout(
-                      token: token!,
-                    );
-                  }
-                },
-              );
-              return ModalProgressHUD(
-                inAsyncCall: state is LogoutLoadingState,
-                child: Scaffold(
-                  drawer: Drawer(
-                    child: ListView.separated(
-                        itemBuilder: (context, index) {
-                          return draverItems[index];
-                        },
-                        separatorBuilder: (context, index) =>
-                            const Divider(height: 0),
-                        itemCount: draverItems.length),
-                  ),
-                  appBar: AppBar(
-                    title: const Text('Noury Store'),
-                    actions: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, SearchView.id);
-                        },
-                        icon: const Icon(Icons.search),
-                      ),
-                    ],
-                  ),
-                  bottomNavigationBar: BottomNavigationBar(
-                    currentIndex: shopCubit.currentIndex,
-                    items: shopCubit.bottomNavBarItems,
-                    onTap: (index) {
-                      shopCubit.selectIconChange(index);
-                    },
-                  ),
-                  body: shopCubit.currentBody[shopCubit.currentIndex],
+              },
+            );
+            return ModalProgressHUD(
+              inAsyncCall: state is LogoutLoadingState,
+              child: Scaffold(
+                drawer: Drawer(
+                  child: ListView.separated(
+                      itemBuilder: (context, index) {
+                        return draverItems[index];
+                      },
+                      separatorBuilder: (context, index) =>
+                          const Divider(height: 0),
+                      itemCount: draverItems.length),
                 ),
-              );
-            },
-          ),
+                appBar: AppBar(
+                  title: const Text('Nori Store'),
+                  actions: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, SearchView.id);
+                      },
+                      icon: const Icon(Icons.search),
+                    ),
+                  ],
+                ),
+                bottomNavigationBar: BottomNavigationBar(
+                  currentIndex: shopCubit.currentIndex,
+                  items: shopCubit.bottomNavBarItems,
+                  onTap: (index) {
+                    shopCubit.selectIconChange(index);
+                  },
+                ),
+                body: shopCubit.currentBody[shopCubit.currentIndex],
+              ),
+            );
+          },
         );
       },
     );

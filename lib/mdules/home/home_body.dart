@@ -11,40 +11,38 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ShopCubit()..getHomeData(),
-      child: BlocConsumer<ShopCubit, ShopStates>(
-        listener: (context, state) {
-          ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
-          if (shopCubit.homeModel!.message != null) {
-            if (shopCubit.homeModel!.status) {
-              toastShown(
-                messege: shopCubit.homeModel!.message!,
-                state: ToastState.success,
-                context: context,
-              );
-            } else {
-              toastShown(
-                messege: shopCubit.homeModel!.message!,
-                state: ToastState.error,
-                context: context,
-              );
-            }
+    return BlocConsumer<ShopCubit, ShopStates>(
+      listener: (context, state) {
+        ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
+        if (shopCubit.homeModel!.message != null) {
+          if (shopCubit.homeModel!.status) {
+            toastShown(
+              messege: shopCubit.homeModel!.message!,
+              state: ToastState.success,
+              context: context,
+            );
+          } else {
+            toastShown(
+              messege: shopCubit.homeModel!.message!,
+              state: ToastState.error,
+              context: context,
+            );
           }
-        },
-        builder: (context, state) {
-          ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
-          return ConditionalBuilder(
-            condition: shopCubit.homeModel != null,
-            builder: (context) => const ProductAndBannerView(),
-            fallback: (contex) => const Center(
-              child: CircularProgressIndicator(
-                color: defaultColor,
-              ),
+        }
+      },
+      builder: (context, state) {
+        ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
+        return ConditionalBuilder(
+          condition: shopCubit.homeModel != null &&
+              shopCubit.categoriesList.isNotEmpty,
+          builder: (context) => const ProductAndBannerView(),
+          fallback: (contex) => const Center(
+            child: CircularProgressIndicator(
+              color: defaultColor,
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

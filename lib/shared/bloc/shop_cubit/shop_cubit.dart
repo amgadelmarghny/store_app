@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:store_2/mdules/categories/categories_body.dart';
 import 'package:store_2/mdules/favorite/favorite_body.dart';
 import 'package:store_2/mdules/home/home_body.dart';
+import 'package:store_2/models/catergory_model/catergory_model.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
 import 'package:store_2/models/shope_models/home_model.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
@@ -103,6 +104,28 @@ class ShopCubit extends Cubit<ShopStates> {
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
       emit(GetHomeDataSuccessState());
+    }).catchError((err) {
+      emit(GetHomeDataFailureState(errMessage: err));
     });
+  }
+
+  List<DataModel> categoriesList = [];
+
+ void getCategories() {
+    emit(GetCategoriesLoadingState());
+    try {
+      DioHelper.get(url: categories).then((value) {
+        CategoriesModel categoryHomeModel =
+            CategoriesModel.fromJson(value.data);
+        for (var element in categoryHomeModel.dataCatHome!.data) {
+          categoriesList.add(
+            DataModel.fromJson(element),
+          );
+        }
+      });
+      emit(GetCategoriesSuccessState());
+    } catch (e) {
+      emit(GetCategoriesFailureState(errMessage: e.toString()));
+    }
   }
 }

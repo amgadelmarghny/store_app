@@ -42,11 +42,13 @@ class StoreAp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => ShopCubit()..getHomeData(),
-        ),
-        BlocProvider(
           create: (context) =>
               AppCubit()..britnessChanged(fromCash: isSharedDark),
+        ),
+        BlocProvider(
+          create: (context) => ShopCubit()
+            ..getHomeData()
+            ..getCategories(),
         ),
       ],
       child: BlocBuilder<AppCubit, AppStates>(

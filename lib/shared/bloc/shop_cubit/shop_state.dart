@@ -30,3 +30,13 @@ final class GetHomeDataFailureState extends ShopStates {
 
   GetHomeDataFailureState({required this.errMessage});
 }
+
+final class GetCategoriesLoadingState extends ShopStates {}
+
+ class GetCategoriesSuccessState extends ShopStates {}
+
+final class GetCategoriesFailureState extends ShopStates {
+  final String errMessage;
+
+  GetCategoriesFailureState({required this.errMessage});
+}

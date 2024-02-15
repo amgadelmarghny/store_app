@@ -19,10 +19,10 @@ abstract class ThemeStyle {
         centerTitle: true,
         titleSpacing: 20,
         iconTheme: IconThemeData(size: 30),
-        backgroundColor: defaultColor,
+        //backgroundColor: defaultColor,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
-          statusBarColor: defaultColor,
+          // statusBarColor: Colors.transparent,
         ),
       ),
       textTheme: const TextTheme(
@@ -56,12 +56,12 @@ abstract class ThemeStyle {
       ),
       appBarTheme: const AppBarTheme(
         centerTitle: true,
-        backgroundColor: defaultColor,
+        // backgroundColor: defaultColor,
         titleSpacing: 20,
         iconTheme: IconThemeData(size: 30),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.light,
-          statusBarColor: defaultColor,
+          //statusBarColor: defaultColor,
         ),
       ),
       drawerTheme: DrawerThemeData(
