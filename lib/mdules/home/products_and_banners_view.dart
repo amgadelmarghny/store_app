@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_2/mdules/home/category_item.dart';
 import 'package:store_2/mdules/home/product_item.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 
@@ -17,6 +18,7 @@ class ProductAndBannerView extends StatelessWidget {
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CarouselSlider(
               items: shopCubit.homeModel!.data!.bannersList
@@ -34,6 +36,37 @@ class ProductAndBannerView extends StatelessWidget {
             ),
             const SizedBox(
               height: 20,
+            ),
+            /////////////////////////// CATEGORIES lIST ///////////////////
+            const Text('Categories'),
+            const SizedBox(
+              height: 5,
+            ),
+            SizedBox(
+              height: 150,
+              child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  padding: const EdgeInsets.only(left: 1),
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return CategotryItem(
+                      dataModel: shopCubit.categoriesList[index],
+                    );
+                  },
+                  separatorBuilder: (contex, index) {
+                    return const SizedBox(
+                      width: 20,
+                    );
+                  },
+                  itemCount: shopCubit.categoriesList.length),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            //////////////////////////// PRODUCTS LIST /////////////////////////
+            const Text('Products'),
+            const SizedBox(
+              height: 5,
             ),
             GridView.builder(
               shrinkWrap: true,
