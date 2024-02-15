@@ -25,12 +25,12 @@ class CategotryItem extends StatelessWidget {
         children: [
           Image.network(
             dataModel.image,
-            height: 150,
-            width: 150,
+            height: 130,
+            width: 130,
             fit: BoxFit.cover,
           ),
           Container(
-            width: 150,
+            width: 130,
             color: defaultColor[300]!.withOpacity(0.84),
             child: Text(
               dataModel.name,

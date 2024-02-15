@@ -43,22 +43,23 @@ class ProductAndBannerView extends StatelessWidget {
               height: 5,
             ),
             SizedBox(
-              height: 150,
+              height: 130,
               child: ListView.separated(
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.only(left: 1),
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return CategotryItem(
-                      dataModel: shopCubit.categoriesList[index],
-                    );
-                  },
-                  separatorBuilder: (contex, index) {
-                    return const SizedBox(
-                      width: 20,
-                    );
-                  },
-                  itemCount: shopCubit.categoriesList.length),
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.only(left: 1),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return CategotryItem(
+                    dataModel: shopCubit.categoriesList[index],
+                  );
+                },
+                separatorBuilder: (contex, index) {
+                  return const SizedBox(
+                    width: 20,
+                  );
+                },
+                itemCount: shopCubit.categoriesList.length,
+              ),
             ),
             const SizedBox(
               height: 20,

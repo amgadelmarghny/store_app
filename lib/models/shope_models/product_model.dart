@@ -1,14 +1,13 @@
 class ProductModel {
   final int id;
-  final String name;
-  final dynamic price;
-  final dynamic oldPrice;
+  final String? name;
+  final dynamic price, oldPrice;
   final String image;
-  final String description;
+  final String? description;
   final dynamic discount;
-  final List images;
-  final bool inFavorites;
-  final bool inCart;
+  final List? images;
+  final bool? inFavorites;
+  final bool? inCart;
 
   ProductModel({
     required this.images,

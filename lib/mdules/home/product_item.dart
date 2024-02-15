@@ -52,7 +52,7 @@ class ProductItem extends StatelessWidget {
               height: 5,
             ),
             Text(
-              productModel.name,
+              productModel.name!,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context)
