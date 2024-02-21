@@ -4,8 +4,10 @@ import 'package:store_2/mdules/categories/categories_body.dart';
 import 'package:store_2/mdules/favorite/favorite_body.dart';
 import 'package:store_2/mdules/home/home_body.dart';
 import 'package:store_2/models/catergory_model/catergory_model.dart';
+import 'package:store_2/models/get_favorites_model/get_favorites_model.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
 import 'package:store_2/models/shope_models/home_model.dart';
+import 'package:store_2/models/shope_models/product_model.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -146,6 +148,21 @@ class ShopCubit extends Cubit<ShopStates> {
       emit(FavoriteSussiccState(changedFavoriteModel: changedFavoriteModel!));
     }).catchError((err) {
       emit(FavoriteFailureState(errMessage: err));
+    });
+  }
+
+  GetFavoritesModel? favoritesModel;
+  List<Data> dataList = [];
+  void getFavoriteProducts({required String token}) async {
+    emit(GetFavoritesLoadingState());
+    await DioHelper.get(url: favCONST, token: token).then((value) {
+      dataList.clear();
+      favoritesModel = GetFavoritesModel.fromJson(value.data);
+      /// to get data list
+      for (var element in favoritesModel!.favoritesDataModel!.dataModel!) {
+        dataList.add(Data.fromJson(element));
+      }
+      emit(GetFavoritesSuccessState());
     });
   }
 

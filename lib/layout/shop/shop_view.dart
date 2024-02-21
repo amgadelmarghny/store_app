@@ -96,6 +96,9 @@ class ShopView extends StatelessWidget {
                   currentIndex: shopCubit.currentIndex,
                   items: shopCubit.bottomNavBarItems,
                   onTap: (index) {
+                    if (index == 2) {
+                      shopCubit.getFavoriteProducts(token: token!);
+                    }
                     shopCubit.selectIconChange(index);
                   },
                 ),

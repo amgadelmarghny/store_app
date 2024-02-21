@@ -52,7 +52,8 @@ class FavoriteItem extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.only(
+                  left: 15, right: 15, top: 15, bottom: 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -63,7 +64,7 @@ class FavoriteItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!
-                        .copyWith(height: 0.85),
+                        .copyWith(height: 1),
                   ),
                   Text(
                     productModel.description!,
@@ -81,6 +82,7 @@ class FavoriteItem extends StatelessWidget {
                             .bodyMedium!
                             .copyWith(fontSize: 15),
                       ),
+                      const Spacer(),
                       if (productModel.discount != 0)
                         Text(
                           productModel.oldPrice.toString(),
