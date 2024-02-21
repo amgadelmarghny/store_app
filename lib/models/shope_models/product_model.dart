@@ -1,25 +1,24 @@
 class ProductModel {
   final int id;
-  final String? name;
   final dynamic price, oldPrice;
   final String image;
-  final String? description;
+  final String? name, description;
   final dynamic discount;
   final List? images;
   final bool? inFavorites;
   final bool? inCart;
 
   ProductModel({
-    required this.images,
     required this.id,
-    required this.name,
+    this.name,
     required this.price,
     required this.oldPrice,
     required this.image,
-    required this.description,
+    this.description,
     required this.discount,
-    required this.inFavorites,
-    required this.inCart,
+    this.images,
+    this.inFavorites,
+    this.inCart,
   });
   factory ProductModel.fromJson(dynamic json) {
     return ProductModel(

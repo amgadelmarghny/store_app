@@ -43,6 +43,15 @@ class ShopView extends StatelessWidget {
               if (!context.mounted) return;
               snacKBar(context, state.errMessage);
             }
+            if (state is FavoriteSussiccState) {
+              if (!state.changedFavoriteModel.status) {
+                if (!context.mounted) return;
+                toastShown(
+                    messege: state.changedFavoriteModel.message,
+                    state: ToastState.error,
+                    context: context);
+              }
+            }
           },
           builder: (context, state) {
             ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);

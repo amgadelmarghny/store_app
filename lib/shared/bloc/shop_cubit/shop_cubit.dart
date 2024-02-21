@@ -10,6 +10,8 @@ import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
+
+import '../../../models/fav_model/favorite_model.dart';
 part 'shop_state.dart';
 
 class ShopCubit extends Cubit<ShopStates> {
@@ -85,16 +87,8 @@ class ShopCubit extends Cubit<ShopStates> {
     FavoriteBody(),
   ];
 
-  Future userLogout({required String token}) async {
-    emit(LogoutLoadingState());
-    return await DioHelper.postData(url: logout, token: token).then((value) {
-      emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));
-    }).catchError((err) {
-      emit(GetHomeDataFailureState(errMessage: err.toString()));
-    });
-  }
-
   HomeModel? homeModel;
+  Map<int, bool> favoriteProductsMap = {};
 
   void getHomeData() async {
     emit(GetHomeDataLoadingState());
@@ -103,6 +97,9 @@ class ShopCubit extends Cubit<ShopStates> {
       url: 'home',
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
+      for (var element in homeModel!.data!.productsList) {
+        favoriteProductsMap.addAll({element.id: element.inFavorites!});
+      }
       emit(GetHomeDataSuccessState());
     }).catchError((err) {
       emit(GetHomeDataFailureState(errMessage: err));
@@ -111,21 +108,53 @@ class ShopCubit extends Cubit<ShopStates> {
 
   List<DataModel> categoriesList = [];
 
- void getCategories() {
+  void getCategories() {
     emit(GetCategoriesLoadingState());
     try {
-      DioHelper.get(url: categories).then((value) {
-        CategoriesModel categoryHomeModel =
-            CategoriesModel.fromJson(value.data);
-        for (var element in categoryHomeModel.dataCatHome!.data) {
-          categoriesList.add(
-            DataModel.fromJson(element),
-          );
-        }
-      });
+      DioHelper.get(url: categories).then(
+        (value) {
+          CategoriesModel categoryHomeModel =
+              CategoriesModel.fromJson(value.data);
+          for (var element in categoryHomeModel.dataCatHome!.data) {
+            categoriesList.add(
+              DataModel.fromJson(element),
+            );
+          }
+        },
+      );
       emit(GetCategoriesSuccessState());
     } catch (e) {
       emit(GetCategoriesFailureState(errMessage: e.toString()));
     }
+  }
+
+  ChangedFavoriteModel? changedFavoriteModel;
+
+  void addAndRemoveFavorite({required int id, required String token}) async {
+    favoriteProductsMap[id] = !favoriteProductsMap[id]!;
+    emit(FavoriteLoadingState());
+    await DioHelper.postData(
+      url: favCONST,
+      token: token,
+      data: {"product_id": id},
+    ).then((value) {
+      changedFavoriteModel = ChangedFavoriteModel.fromJson(value.data);
+      debugPrint('favvvvvvvv ::::::::: ${changedFavoriteModel!.message}');
+      if (!changedFavoriteModel!.status) {
+        favoriteProductsMap[id] = !favoriteProductsMap[id]!;
+      }
+      emit(FavoriteSussiccState(changedFavoriteModel: changedFavoriteModel!));
+    }).catchError((err) {
+      emit(FavoriteFailureState(errMessage: err));
+    });
+  }
+
+  Future userLogout({required String token}) async {
+    emit(LogoutLoadingState());
+    return await DioHelper.postData(url: logout, token: token).then((value) {
+      emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));
+    }).catchError((err) {
+      emit(GetHomeDataFailureState(errMessage: err.toString()));
+    });
   }
 }

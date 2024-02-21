@@ -27,16 +27,28 @@ final class GetHomeDataSuccessState extends ShopStates {}
 
 final class GetHomeDataFailureState extends ShopStates {
   final String errMessage;
-
   GetHomeDataFailureState({required this.errMessage});
 }
 
 final class GetCategoriesLoadingState extends ShopStates {}
 
- class GetCategoriesSuccessState extends ShopStates {}
+class GetCategoriesSuccessState extends ShopStates {}
 
 final class GetCategoriesFailureState extends ShopStates {
   final String errMessage;
-
   GetCategoriesFailureState({required this.errMessage});
+}
+
+final class FavoriteLoadingState extends ShopStates {}
+
+final class FavoriteSussiccState extends ShopStates {
+  final ChangedFavoriteModel changedFavoriteModel;
+
+  FavoriteSussiccState({required this.changedFavoriteModel});
+}
+
+final class FavoriteFailureState extends ShopStates {
+  final String errMessage;
+
+  FavoriteFailureState({required this.errMessage});
 }

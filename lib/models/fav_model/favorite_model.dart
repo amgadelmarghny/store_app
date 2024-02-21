@@ -1,32 +1,39 @@
 import 'package:store_2/models/shope_models/product_model.dart';
 
-class FavoriteModel {
+class ChangedFavoriteModel {
   final bool status;
   final String message;
-  final DataModel dataModel;
+  final FavDataModel? dataModel;
 
-  FavoriteModel({
+  ChangedFavoriteModel({
     required this.status,
     required this.message,
     required this.dataModel,
   });
-  factory FavoriteModel.fromJson(Map<String, dynamic> json) {
-    return FavoriteModel(
+  factory ChangedFavoriteModel.fromJson(Map<String, dynamic> json) {
+    return ChangedFavoriteModel(
         status: json['status'],
         message: json['message'],
-        dataModel: json['data']);
+        dataModel: json['data'] != null
+            ? FavDataModel.fromJson(json['data'])
+            : json['data']);
   }
 }
 
-class DataModel {
+class FavDataModel {
   final int id;
-  final ProductModel productModel;
+  final ProductModel? productModel;
 
-  DataModel({
+  FavDataModel({
     required this.id,
     required this.productModel,
   });
-  factory DataModel.fromJson(Map<String, dynamic> json) {
-    return DataModel(id: json['id'], productModel: json['product']);
+  factory FavDataModel.fromJson(Map<String, dynamic> json) {
+    return FavDataModel(
+      id: json['id'],
+      productModel: json['product'] != null
+          ? ProductModel.fromJson(json['product'])
+          : null,
+    );
   }
 }
