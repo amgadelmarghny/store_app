@@ -61,7 +61,7 @@ class FavoriteItem extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!
-                        .copyWith(height: 1),
+                        .copyWith(height: 1, color: Colors.black),
                   ),
                   const SizedBox(height: 3),
                   Text(
