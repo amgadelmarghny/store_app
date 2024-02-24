@@ -77,6 +77,8 @@ abstract class ThemeStyle {
           color: defaultColor,
           fontWeight: FontWeight.w600,
         ),
+        bodySmall: TextStyle(fontSize: 15),
+        titleMedium: TextStyle(fontSize: 20),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
