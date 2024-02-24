@@ -16,7 +16,6 @@ class ShopView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<AppCubit, AppStates>(
       builder: (context, state) {
         return BlocConsumer<ShopCubit, ShopStates>(
@@ -54,8 +53,7 @@ class ShopView extends StatelessWidget {
           },
           builder: (context, state) {
             ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
-            List<Widget> draverItems =
-                BlocProvider.of<ShopCubit>(context).listMenu(
+            List<Widget> draverItems = shopCubit.listMenu(
               context,
               onSelected: (value) {
                 if (value == 1) {
@@ -70,13 +68,13 @@ class ShopView extends StatelessWidget {
               inAsyncCall: state is LogoutLoadingState,
               child: Scaffold(
                 drawer: Drawer(
-                  child: ListView.separated(
-                      itemBuilder: (context, index) {
-                        return draverItems[index];
-                      },
-                      separatorBuilder: (context, index) =>
-                          const Divider(height: 0),
-                      itemCount: draverItems.length),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: draverItems,
+                    ),
+                  ),
                 ),
                 appBar: AppBar(
                   title: const Text('Nori Store'),

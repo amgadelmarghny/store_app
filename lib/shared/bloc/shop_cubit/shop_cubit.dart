@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:store_2/mdules/categories/categories_body.dart';
 import 'package:store_2/mdules/favorite/favorite_body.dart';
 import 'package:store_2/mdules/home/home_body.dart';
@@ -22,6 +23,37 @@ class ShopCubit extends Cubit<ShopStates> {
 
   List<Widget> listMenu(context, {required Function(int)? onSelected}) {
     return draverItems = [
+      Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              clipBehavior: Clip.hardEdge,
+              decoration: const BoxDecoration(shape: BoxShape.circle),
+              height: 80,
+              child: Image.network(
+                'https://student.valuxapps.com/storage/assets/defaults/user.jpg',
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'dvbfnnddgfhhhkkn',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+            )
+          ],
+        ),
+      ),
+      const Divider(
+        color: Colors.grey,
+        height: 0,
+        thickness: 1.3,
+      ),
+      const Spacer(),
       PopupMenuButton(
         onSelected: onSelected,
         child: const ListTile(
