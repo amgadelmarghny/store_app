@@ -10,6 +10,7 @@ class CategotryItem extends StatelessWidget {
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(15),
         boxShadow: const [
           BoxShadow(

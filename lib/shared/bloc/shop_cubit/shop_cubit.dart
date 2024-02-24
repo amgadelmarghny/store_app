@@ -87,7 +87,7 @@ class ShopCubit extends Cubit<ShopStates> {
     CategoryBody(),
     FavoriteBody(),
   ];
-
+/////////////////////////////////// GET  HOME  DATA ///////////////////////////////
   HomeModel? homeModel;
   Map<int, bool> favoriteProductsMap = {};
 
@@ -107,6 +107,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
+///////////////////////////////////// GET  CATEGORY /////////////////////////////////
   List<DataModel> categoriesList = [];
 
   void getCategories() async {
@@ -130,6 +131,8 @@ class ShopCubit extends Cubit<ShopStates> {
   }
 
   String? authToken = CashHelper.getData(key: tOKENCONST);
+
+  /////////////////////////////// ADD  AND  REMOVE  FROM  FAVORITES /////////////////////
   ChangedFavoriteModel? changedFavoriteModel;
 
   void addAndRemoveFavorite({required int id}) async {
@@ -154,6 +157,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
+////////////////////////////////////// GET  FAVORITES //////////////////////////////
   GetFavoritesModel? favoritesModel;
   List<Data> dataList = [];
 

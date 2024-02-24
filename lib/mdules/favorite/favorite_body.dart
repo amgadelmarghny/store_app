@@ -36,7 +36,6 @@ class FavoriteBody extends StatelessWidget {
               child: ListView.separated(
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
-                  print(shopCubit.dataList[index].productModel!.name);
                   return FavoriteItem(
                     productModel: shopCubit.dataList[index].productModel!,
                   );
