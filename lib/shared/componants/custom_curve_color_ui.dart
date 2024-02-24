@@ -15,11 +15,13 @@ class CurveColorUI extends StatelessWidget {
   final Color color;
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.sizeOf(context).width;
+    double h = MediaQuery.sizeOf(context).height;
     return Stack(
       children: [
         Container(
-          width: double.infinity,
-          height: 200,
+          width: w,
+          height: h * 0.25,
           decoration: BoxDecoration(
             color: color,
           ),

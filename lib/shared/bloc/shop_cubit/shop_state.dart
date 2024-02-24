@@ -41,7 +41,7 @@ final class FavoriteFailureState extends ShopStates {
 
 final class GetFavoritesLoadingState extends ShopStates {}
 
-final class GetFavoritesSuccessState extends ShopStates {}
+ class GetFavoritesSuccessState extends ShopStates {}
 
 final class GetFavoritesFailureState extends ShopStates {
   final String errMessage;

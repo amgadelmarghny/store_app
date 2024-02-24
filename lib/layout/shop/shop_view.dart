@@ -16,7 +16,6 @@ class ShopView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? token = CashHelper.getData(key: tOKENCONST);
 
     return BlocBuilder<AppCubit, AppStates>(
       builder: (context, state) {
@@ -63,9 +62,7 @@ class ShopView extends StatelessWidget {
                   BlocProvider.of<AppCubit>(context).britnessChanged();
                 } else if (value == 2) {
                 } else if (value == 3) {
-                  BlocProvider.of<ShopCubit>(context).userLogout(
-                    token: token!,
-                  );
+                  BlocProvider.of<ShopCubit>(context).userLogout();
                 }
               },
             );
@@ -96,9 +93,6 @@ class ShopView extends StatelessWidget {
                   currentIndex: shopCubit.currentIndex,
                   items: shopCubit.bottomNavBarItems,
                   onTap: (index) {
-                    if (index == 2) {
-                      shopCubit.getFavoriteProducts(token: token!);
-                    }
                     shopCubit.selectIconChange(index);
                   },
                 ),

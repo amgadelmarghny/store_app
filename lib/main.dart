@@ -48,7 +48,8 @@ class StoreAp extends StatelessWidget {
         BlocProvider(
           create: (context) => ShopCubit()
             ..getHomeData()
-            ..getCategories(),
+            ..getCategories()
+            ..getFavoriteProducts(),
         ),
       ],
       child: BlocBuilder<AppCubit, AppStates>(

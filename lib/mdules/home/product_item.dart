@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/network/lockal/key_const.dart';
-import 'package:store_2/shared/network/lockal/shared_helper.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
@@ -90,10 +88,7 @@ class ProductItem extends StatelessWidget {
                     IconButton(
                       onPressed: () {
                         BlocProvider.of<ShopCubit>(context)
-                            .addAndRemoveFavorite(
-                          id: productModel.id,
-                          token: CashHelper.getData(key: tOKENCONST),
-                        );
+                            .addAndRemoveFavorite(id: productModel.id);
                       },
                       icon: Icon(
                         BlocProvider.of<ShopCubit>(context)
@@ -107,7 +102,7 @@ class ProductItem extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),

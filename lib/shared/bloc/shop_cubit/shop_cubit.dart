@@ -7,7 +7,6 @@ import 'package:store_2/models/catergory_model/catergory_model.dart';
 import 'package:store_2/models/get_favorites_model/get_favorites_model.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
 import 'package:store_2/models/shope_models/home_model.dart';
-import 'package:store_2/models/shope_models/product_model.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -110,10 +109,10 @@ class ShopCubit extends Cubit<ShopStates> {
 
   List<DataModel> categoriesList = [];
 
-  void getCategories() {
+  void getCategories() async {
     emit(GetCategoriesLoadingState());
     try {
-      DioHelper.get(url: categories).then(
+      await DioHelper.get(url: categories).then(
         (value) {
           CategoriesModel categoryHomeModel =
               CategoriesModel.fromJson(value.data);
@@ -130,19 +129,23 @@ class ShopCubit extends Cubit<ShopStates> {
     }
   }
 
+  String? authToken = CashHelper.getData(key: tOKENCONST);
   ChangedFavoriteModel? changedFavoriteModel;
 
-  void addAndRemoveFavorite({required int id, required String token}) async {
+  void addAndRemoveFavorite({required int id}) async {
     favoriteProductsMap[id] = !favoriteProductsMap[id]!;
     emit(FavoriteLoadingState());
     await DioHelper.postData(
       url: favCONST,
-      token: token,
+      token: authToken,
       data: {"product_id": id},
     ).then((value) {
       changedFavoriteModel = ChangedFavoriteModel.fromJson(value.data);
-      debugPrint('favvvvvvvv ::::::::: ${changedFavoriteModel!.message}');
-      if (!changedFavoriteModel!.status) {
+      debugPrint('stateeee ::::::::: ${changedFavoriteModel!.status}');
+      if (changedFavoriteModel!.status == true) {
+        debugPrint('^^^^^^ get fav success ^^^^^^');
+        getFavoriteProducts();
+      } else {
         favoriteProductsMap[id] = !favoriteProductsMap[id]!;
       }
       emit(FavoriteSussiccState(changedFavoriteModel: changedFavoriteModel!));
@@ -153,22 +156,31 @@ class ShopCubit extends Cubit<ShopStates> {
 
   GetFavoritesModel? favoritesModel;
   List<Data> dataList = [];
-  void getFavoriteProducts({required String token}) async {
+
+  void getFavoriteProducts() async {
     emit(GetFavoritesLoadingState());
-    await DioHelper.get(url: favCONST, token: token).then((value) {
-      dataList.clear();
-      favoritesModel = GetFavoritesModel.fromJson(value.data);
-      /// to get data list
-      for (var element in favoritesModel!.favoritesDataModel!.dataModel!) {
-        dataList.add(Data.fromJson(element));
-      }
+    try {
+      await DioHelper.get(url: favCONST, token: authToken).then(
+        (value) {
+          dataList.clear();
+          favoritesModel = GetFavoritesModel.fromJson(value.data);
+
+          /// to get data list
+          for (var element in favoritesModel!.favoritesDataModel!.dataModel!) {
+            dataList.add(Data.fromJson(element));
+          }
+        },
+      );
       emit(GetFavoritesSuccessState());
-    });
+    } on Exception catch (e) {
+      emit(GetFavoritesFailureState(errMessage: e.toString()));
+    }
   }
 
-  Future userLogout({required String token}) async {
+  Future userLogout() async {
     emit(LogoutLoadingState());
-    return await DioHelper.postData(url: logout, token: token).then((value) {
+    return await DioHelper.postData(url: logout, token: authToken)
+        .then((value) {
       emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));
     }).catchError((err) {
       emit(GetHomeDataFailureState(errMessage: err.toString()));
