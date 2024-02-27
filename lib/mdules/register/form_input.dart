@@ -69,7 +69,7 @@ Form registerFormInput(
         const SizedBox(
           height: 30,
         ),
-        CustomButtomShet(
+        CustomButton(
           text: 'SIGN UP',
           isLoading: state is RegisterLodingState ? true : false,
           onTap: () {

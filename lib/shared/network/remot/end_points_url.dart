@@ -1,5 +1,6 @@
 const login = 'login';
 const register = 'register';
+const home = 'home';
 const logout = 'logout';
 const profile = 'profile';
 const updateProfile = 'update-profile';

@@ -21,19 +21,20 @@ class GetFavoritesModel {
 }
 
 class FavoritesDataModel {
-  final int currentPage;
-  final List? dataModel;
+  int? currentPage;
+  List dataModelList = [];
 
   FavoritesDataModel({
     required this.currentPage,
-    required this.dataModel,
+    required this.dataModelList,
   });
 
-  factory FavoritesDataModel.fromJson(Map<String, dynamic> json) {
-    return FavoritesDataModel(
-      currentPage: json['current_page'],
-      dataModel: json['data'],
-    );
+  FavoritesDataModel.fromJson(Map<String, dynamic> json) {
+    currentPage = json['current_page'];
+
+    json['data'].forEach((v) {
+      dataModelList.add(Data.fromJson(v));
+    });
   }
 }
 

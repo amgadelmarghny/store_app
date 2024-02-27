@@ -1,36 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:store_2/shared/style/colors.dart';
 
 class CurveColorUI extends StatelessWidget {
   const CurveColorUI({
     super.key,
     required this.headLine,
     required this.subHeadline,
-    required this.color,
     this.subHeadline2,
   });
   final String headLine;
   final String subHeadline;
   final String? subHeadline2;
-
-  final Color color;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.sizeOf(context).width;
     double h = MediaQuery.sizeOf(context).height;
     return Stack(
+      alignment: AlignmentDirectional.bottomStart,
       children: [
         Container(
           width: w,
-          height: h * 0.25,
+          height: h * 0.3 - 10,
           decoration: BoxDecoration(
-            color: color,
+            gradient: LinearGradient(
+              colors: [
+                defaultColor[600]!,
+                defaultColor[200]!,
+              ],
+              begin: Alignment.centerRight,
+              end: Alignment.centerLeft,
+            ),
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 30),
+                padding: EdgeInsets.only(top: h * 0.15 - 60),
                 child: Text(
                   headLine,
                   style: const TextStyle(
@@ -42,34 +48,34 @@ class CurveColorUI extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
-          bottom: 0,
-          child: Container(
-            height: 100,
-            width: MediaQuery.sizeOf(context).width,
-            decoration: BoxDecoration(
-              borderRadius:
-                  const BorderRadius.only(topLeft: Radius.circular(100)),
-              color: Theme.of(context).scaffoldBackgroundColor,
+        Container(
+          height: 100,
+          width: MediaQuery.sizeOf(context).width,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(
+                100,
+              ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: subHeadline2 == null ? 30 : 0),
-                  child: Text(
-                    subHeadline,
-                    style: Theme.of(context).textTheme.bodyLarge!,
-                  ),
-                ),
-                Text(
-                  subHeadline2 ?? '',
-                  style: Theme.of(context).textTheme.bodyLarge!,
-                )
-              ],
-            ),
+            color: Theme.of(context).scaffoldBackgroundColor,
           ),
-        )
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: subHeadline2 == null ? 30 : 0),
+                child: Text(
+                  subHeadline,
+                  style: Theme.of(context).textTheme.bodyLarge!,
+                ),
+              ),
+              Text(
+                subHeadline2 ?? '',
+                style: Theme.of(context).textTheme.bodyLarge!,
+              )
+            ],
+          ),
+        ),
       ],
     );
   }

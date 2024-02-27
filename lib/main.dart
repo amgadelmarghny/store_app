@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
+import 'package:store_2/mdules/profile/profile_view.dart';
 import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/mdules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
@@ -29,7 +30,7 @@ class StoreAp extends StatelessWidget {
     bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
     String? tokengiven = CashHelper.getData(key: tOKENCONST);
     bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
-    Widget widget;
+    late Widget widget;
     if (isBoarding != null) {
       if (tokengiven != null) {
         widget = const ShopView();
@@ -46,11 +47,14 @@ class StoreAp extends StatelessWidget {
               AppCubit()..britnessChanged(fromCash: isSharedDark),
         ),
         BlocProvider(
-          create: (context) => ShopCubit()
-            ..getHomeData()
-            ..getCategories()
-            ..getFavoriteProducts(),
-        ),
+            create: (context) => ShopCubit()
+              ..getHomeData()
+              ..getCategories()
+              ..getFavoriteProducts()
+              ..getProfileInfo()
+            // ..homeModel
+            // ..profileModel,
+            ),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
@@ -62,6 +66,7 @@ class StoreAp extends StatelessWidget {
               RegisterView.id: (context) => const RegisterView(),
               ShopView.id: (context) => const ShopView(),
               SearchView.id: (context) => const SearchView(),
+              ProfileView.id: (context) => const ProfileView(),
             },
             theme: ThemeStyle.lightTheme(),
             darkTheme: ThemeStyle.darkTheme(),

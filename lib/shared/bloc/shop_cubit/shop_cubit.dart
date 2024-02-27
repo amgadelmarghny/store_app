@@ -1,18 +1,20 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:store_2/mdules/categories/categories_body.dart';
 import 'package:store_2/mdules/favorite/favorite_body.dart';
 import 'package:store_2/mdules/home/home_body.dart';
+import 'package:store_2/mdules/profile/profile_view.dart';
 import 'package:store_2/models/catergory_model/catergory_model.dart';
 import 'package:store_2/models/get_favorites_model/get_favorites_model.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
+import 'package:store_2/models/profile_model/profile_model.dart';
 import 'package:store_2/models/shope_models/home_model.dart';
+import 'package:store_2/shared/componants/avatar_pic.dart';
+import 'package:store_2/shared/componants/navigation.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
-
 import '../../../models/fav_model/favorite_model.dart';
 part 'shop_state.dart';
 
@@ -23,31 +25,30 @@ class ShopCubit extends Cubit<ShopStates> {
 
   List<Widget> listMenu(context, {required Function(int)? onSelected}) {
     return draverItems = [
-      Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: const BoxDecoration(shape: BoxShape.circle),
-              height: 80,
-              child: Image.network(
-                'https://student.valuxapps.com/storage/assets/defaults/user.jpg',
-              ),
+      if (profileModel != null)
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, ProfileView.id);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AvatarPic(image: profileModel!.user!.image!),
+                const SizedBox(height: 10),
+                Text(
+                  profileModel!.user!.name!,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                )
+              ],
             ),
-            const SizedBox(height: 10),
-            Text(
-              'dvbfnnddgfhhhkkn',
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-            )
-          ],
+          ),
         ),
-      ),
       const Divider(
         color: Colors.grey,
         height: 0,
@@ -119,15 +120,15 @@ class ShopCubit extends Cubit<ShopStates> {
     CategoryBody(),
     FavoriteBody(),
   ];
-/////////////////////////////////// GET  HOME  DATA ///////////////////////////////
+/////////////////////////////////// GET  HOME  DATA ////////////////////////////
   HomeModel? homeModel;
   Map<int, bool> favoriteProductsMap = {};
 
-  void getHomeData() async {
+  void getHomeData() {
     emit(GetHomeDataLoadingState());
-    await DioHelper.get(
-      token: CashHelper.getData(key: tOKENCONST),
+    DioHelper.getData(
       url: 'home',
+      token: authToken,
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
       for (var element in homeModel!.data!.productsList) {
@@ -139,38 +140,29 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-///////////////////////////////////// GET  CATEGORY /////////////////////////////////
-  List<DataModel> categoriesList = [];
-
-  void getCategories() async {
+///////////////////////////////////// GET  CATEGORY ////////////////////////////
+  CategoriesModel? categoryHomeModel;
+  void getCategories() {
     emit(GetCategoriesLoadingState());
-    try {
-      await DioHelper.get(url: categories).then(
-        (value) {
-          CategoriesModel categoryHomeModel =
-              CategoriesModel.fromJson(value.data);
-          for (var element in categoryHomeModel.dataCatHome!.data) {
-            categoriesList.add(
-              DataModel.fromJson(element),
-            );
-          }
-        },
-      );
-      emit(GetCategoriesSuccessState());
-    } catch (e) {
-      emit(GetCategoriesFailureState(errMessage: e.toString()));
-    }
+    DioHelper.getData(
+      url: categories,
+    ).then((value) {
+      categoryHomeModel = CategoriesModel.fromJson(value.data);
+      emit(GetCategoriesSuccess());
+    }).catchError((err) {
+      emit(GetCategoriesFailureState(errMessage: err));
+    });
   }
 
   String? authToken = CashHelper.getData(key: tOKENCONST);
 
-  /////////////////////////////// ADD  AND  REMOVE  FROM  FAVORITES /////////////////////
+  /////////////////////////////// ADD  AND  REMOVE  FROM  FAVORITES ////////////
   ChangedFavoriteModel? changedFavoriteModel;
 
-  void addAndRemoveFavorite({required int id}) async {
+  void addAndRemoveFavorite({required int id}) {
     favoriteProductsMap[id] = !favoriteProductsMap[id]!;
     emit(FavoriteLoadingState());
-    await DioHelper.postData(
+    DioHelper.postData(
       url: favCONST,
       token: authToken,
       data: {"product_id": id},
@@ -185,38 +177,48 @@ class ShopCubit extends Cubit<ShopStates> {
       }
       emit(FavoriteSussiccState(changedFavoriteModel: changedFavoriteModel!));
     }).catchError((err) {
-      emit(FavoriteFailureState(errMessage: err));
+      emit(FavoriteFailureState(errMessage: err.toString()));
     });
   }
 
-////////////////////////////////////// GET  FAVORITES //////////////////////////////
+////////////////////////////////////// GET  FAVORITES //////////////////////////
   GetFavoritesModel? favoritesModel;
-  List<Data> dataList = [];
 
-  void getFavoriteProducts() async {
+  void getFavoriteProducts() {
     emit(GetFavoritesLoadingState());
-    try {
-      await DioHelper.get(url: favCONST, token: authToken).then(
-        (value) {
-          dataList.clear();
-          favoritesModel = GetFavoritesModel.fromJson(value.data);
-
-          /// to get data list
-          for (var element in favoritesModel!.favoritesDataModel!.dataModel!) {
-            dataList.add(Data.fromJson(element));
-          }
-        },
-      );
-      emit(GetFavoritesSuccessState());
-    } on Exception catch (e) {
+    DioHelper.getData(
+      url: favCONST,
+      token: authToken,
+    ).then((value) {
+      favoritesModel = GetFavoritesModel.fromJson(value.data);
+      emit(GetFavoritesSuccess());
+    }).catchError((e) {
       emit(GetFavoritesFailureState(errMessage: e.toString()));
-    }
+    });
   }
 
-  Future userLogout() async {
+/////////////////////////////////// GET PROFILE INFO ///////////////////////////
+  ProfileModel? profileModel;
+  void getProfileInfo() {
+    emit(ProfileLoadingState());
+    DioHelper.getData(
+      url: profile,
+      token: authToken,
+    ).then((value) {
+      profileModel = ProfileModel.fromJson(value.data);
+      emit(ProfileSuccessState());
+    }).catchError((err) {
+      emit(ProfileFailureState(errMessage: err.toString()));
+    });
+  }
+
+////////////////////////////////////// LOGOUT //////////////////////////////////
+  void userLogout(BuildContext context, {required String routName}) async {
     emit(LogoutLoadingState());
     return await DioHelper.postData(url: logout, token: authToken)
         .then((value) {
+      navigatorPushAndRemove(context, routName);
+      CashHelper.deleteCash(key: tOKENCONST);
       emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));
     }).catchError((err) {
       emit(GetHomeDataFailureState(errMessage: err.toString()));

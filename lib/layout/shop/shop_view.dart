@@ -60,7 +60,9 @@ class ShopView extends StatelessWidget {
                   BlocProvider.of<AppCubit>(context).britnessChanged();
                 } else if (value == 2) {
                 } else if (value == 3) {
-                  BlocProvider.of<ShopCubit>(context).userLogout();
+                  BlocProvider.of<ShopCubit>(context)
+                      .userLogout(context, routName: LoginView.id);
+                  CashHelper.deleteCash(key: tOKENCONST);
                 }
               },
             );

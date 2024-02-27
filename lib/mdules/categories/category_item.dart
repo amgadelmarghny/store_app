@@ -34,6 +34,9 @@ class CategoryItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Spacer(
+                  flex: 2,
+                ),
                 Text(
                   categoryModel.name,
                   maxLines: 1,
@@ -42,6 +45,14 @@ class CategoryItem extends StatelessWidget {
                       .textTheme
                       .titleMedium!
                       .copyWith(color: Colors.black),
+                ),
+                const Spacer(),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.keyboard_arrow_right,
+                    color: Colors.black,
+                  ),
                 ),
               ],
             ),

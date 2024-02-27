@@ -12,13 +12,15 @@ class CategoriesModel {
 }
 
 class CategoriesDataModel {
-  final int currentPage;
-  final List<dynamic> data;
+  int? currentPage;
+  List<dynamic> dataList = [];
 
-  CategoriesDataModel({required this.currentPage, required this.data});
-  factory CategoriesDataModel.fromJson(Map<String, dynamic> json) {
-    return CategoriesDataModel(
-        currentPage: json['current_page'], data: json['data']);
+  CategoriesDataModel({required this.currentPage, required this.dataList});
+  CategoriesDataModel.fromJson(Map<String, dynamic> json) {
+    currentPage = json['current_page'];
+    json['data'].forEach((element) {
+      dataList.add(DataModel.fromJson(element));
+    });
   }
 }
 

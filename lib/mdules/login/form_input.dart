@@ -52,7 +52,7 @@ Form loginFormInput(
         const SizedBox(
           height: 50,
         ),
-        CustomButtomShet(
+        CustomButton(
           isLoading: state is LoginLodingState ? true : false,
           text: 'Login',
           onTap: () {

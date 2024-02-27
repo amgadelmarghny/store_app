@@ -27,7 +27,7 @@ const UserModel({
       name: json['name'],
       email: json['email'],
       password: json['password'],
-      phone: json['number'],
+      phone: json['phone'],
       id: json['id'],
       image: json['image'],
       point: json['point'],

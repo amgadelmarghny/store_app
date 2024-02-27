@@ -3,7 +3,6 @@ import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/shared/componants/custom_curve_color_ui.dart';
 import 'package:store_2/mdules/login/sliver_login_input.dart';
 import 'package:store_2/shared/componants/custom_sliver_row_text.dart';
-import 'package:store_2/shared/style/colors.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({
@@ -23,7 +22,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           child: CurveColorUI(
             headLine: 'Welcom back !',
             subHeadline: 'Please login with your personal information.',
-            color: defaultColor,
           ),
         ),
         const SliverLoginInfo(),

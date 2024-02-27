@@ -23,13 +23,19 @@ class FavoriteBody extends StatelessWidget {
       },
       builder: (context, state) {
         ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
-        if (BlocProvider.of<ShopCubit>(context).dataList.isEmpty) {
+        if (BlocProvider.of<ShopCubit>(context)
+            .favoritesModel!
+            .favoritesDataModel!
+            .dataModelList
+            .isEmpty) {
           return const Center(child: Text('There is no favorites yet'));
         } else if (state is GetFavoritesFailureState) {
           return const Center(child: Text('There is an error'));
         }
         return ConditionalBuilder(
-          condition: state is! GetFavoritesLoadingState,
+          condition: state is! GetFavoritesLoadingState &&
+              state is! GetFavoritesLoadingState &&
+              state is! FavoriteLoadingState,
           builder: (context) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -37,7 +43,8 @@ class FavoriteBody extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   return FavoriteItem(
-                    productModel: shopCubit.dataList[index].productModel!,
+                    productModel: shopCubit.favoritesModel!.favoritesDataModel!
+                        .dataModelList[index].productModel!,
                   );
                 },
                 separatorBuilder: (context, index) {
@@ -45,7 +52,8 @@ class FavoriteBody extends StatelessWidget {
                     height: 20,
                   );
                 },
-                itemCount: shopCubit.dataList.length,
+                itemCount: shopCubit
+                    .favoritesModel!.favoritesDataModel!.dataModelList.length,
               ),
             );
           },

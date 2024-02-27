@@ -51,7 +51,7 @@ class AuthCubit extends Cubit<AuthState> {
 
     await DioHelper.postData(
       url: register,
-      queryParameters: {
+      data: {
         "name": userModel.name,
         "email": userModel.email,
         "password": userModel.password,
@@ -59,7 +59,6 @@ class AuthCubit extends Cubit<AuthState> {
       },
     ).then((value) {
       debugPrint('${value.data}');
-
       emit(RegisterSuccessState(
           registermodel: Registermodel.fromJson(value.data)));
     }).catchError((err) {

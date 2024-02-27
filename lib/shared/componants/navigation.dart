@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-void navigatorPushAndRemove(BuildContext context, String routNmae,
+void navigatorPushAndRemove(BuildContext context, String routName,
     {Object? arguments}) {
   Navigator.pushNamedAndRemoveUntil(
     context,
     arguments: arguments,
-    routNmae,
+    routName,
     (route) => false,
   );
 }

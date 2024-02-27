@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/mdules/login/login_view_body.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
-import 'package:store_2/shared/style/colors.dart';
+
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
   static String id = 'LoginView';
@@ -10,12 +10,8 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AuthCubit(),
-      child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 0,
-          backgroundColor: defaultColor,
-        ),
-        body: const LoginViewBody(),
+      child: const Scaffold(
+        body: LoginViewBody(),
       ),
     );
   }

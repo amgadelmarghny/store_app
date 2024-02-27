@@ -8,13 +8,6 @@ abstract class ThemeStyle {
     return ThemeData(
       primarySwatch: defaultColor,
       brightness: Brightness.light,
-      drawerTheme: DrawerThemeData(
-        backgroundColor: defaultColor[400],
-      ),
-      popupMenuTheme: PopupMenuThemeData(
-        position: PopupMenuPosition.under,
-        color: defaultColor[200],
-      ),
       appBarTheme: const AppBarTheme(
         centerTitle: true,
         titleSpacing: 20,
@@ -22,8 +15,15 @@ abstract class ThemeStyle {
         //backgroundColor: defaultColor,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
-          // statusBarColor: Colors.transparent,
+          statusBarColor: Colors.transparent,
         ),
+      ),
+      drawerTheme: DrawerThemeData(
+        backgroundColor: defaultColor[400],
+      ),
+      popupMenuTheme: PopupMenuThemeData(
+        position: PopupMenuPosition.under,
+        color: defaultColor[200],
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
@@ -61,7 +61,7 @@ abstract class ThemeStyle {
         iconTheme: IconThemeData(size: 30),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.light,
-          //statusBarColor: defaultColor,
+          statusBarColor: Colors.transparent,
         ),
       ),
       drawerTheme: DrawerThemeData(

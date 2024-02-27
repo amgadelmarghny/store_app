@@ -3,54 +3,63 @@ part of 'shop_cubit.dart';
 @immutable
 sealed class ShopStates {}
 
-final class ShopInitial extends ShopStates {}
+class ShopInitial extends ShopStates {}
 
-final class NavBarChangeState extends ShopStates {}
+class NavBarChangeState extends ShopStates {}
 
-final class GetHomeDataLoadingState extends ShopStates {}
+class GetHomeDataLoadingState extends ShopStates {}
 
-final class GetHomeDataSuccessState extends ShopStates {}
+class GetHomeDataSuccessState extends ShopStates {}
 
-final class GetHomeDataFailureState extends ShopStates {
+class GetHomeDataFailureState extends ShopStates {
   final String errMessage;
   GetHomeDataFailureState({required this.errMessage});
 }
 
-final class GetCategoriesLoadingState extends ShopStates {}
+class GetCategoriesLoadingState extends ShopStates {}
 
-class GetCategoriesSuccessState extends ShopStates {}
+class GetCategoriesSuccess extends ShopStates {}
 
-final class GetCategoriesFailureState extends ShopStates {
+class GetCategoriesFailureState extends ShopStates {
   final String errMessage;
   GetCategoriesFailureState({required this.errMessage});
 }
 
-final class FavoriteLoadingState extends ShopStates {}
+class FavoriteLoadingState extends ShopStates {}
 
-final class FavoriteSussiccState extends ShopStates {
+class FavoriteSussiccState extends ShopStates {
   final ChangedFavoriteModel changedFavoriteModel;
 
   FavoriteSussiccState({required this.changedFavoriteModel});
 }
 
-final class FavoriteFailureState extends ShopStates {
+class FavoriteFailureState extends ShopStates {
   final String errMessage;
 
   FavoriteFailureState({required this.errMessage});
 }
 
-final class GetFavoritesLoadingState extends ShopStates {}
+class GetFavoritesLoadingState extends ShopStates {}
 
-final class GetFavoritesSuccessState extends ShopStates {}
+class GetFavoritesSuccess extends ShopStates {}
 
 final class GetFavoritesFailureState extends ShopStates {
   final String errMessage;
   GetFavoritesFailureState({required this.errMessage});
 }
 
-final class LogoutLoadingState extends ShopStates {}
+class ProfileLoadingState extends ShopStates {}
 
-final class LogoutSuccussState extends ShopStates {
+class ProfileSuccessState extends ShopStates {}
+
+class ProfileFailureState extends ShopStates {
+  final String errMessage;
+  ProfileFailureState({required this.errMessage});
+}
+
+class LogoutLoadingState extends ShopStates {}
+
+class LogoutSuccussState extends ShopStates {
   final LogoutModel logoutModel;
 
   LogoutSuccussState({required this.logoutModel});

@@ -50,7 +50,7 @@ class ProductAndBannerView extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return CategotryItem(
-                    dataModel: shopCubit.categoriesList[index],
+                    dataModel: shopCubit.categoryHomeModel!.dataCatHome!.dataList[index],
                   );
                 },
                 separatorBuilder: (contex, index) {
@@ -58,7 +58,7 @@ class ProductAndBannerView extends StatelessWidget {
                     width: 20,
                   );
                 },
-                itemCount: shopCubit.categoriesList.length,
+                itemCount: shopCubit.categoryHomeModel!.dataCatHome!.dataList.length,
               ),
             ),
             const SizedBox(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:store_2/shared/style/colors.dart';
 
-class CustomButtomShet extends StatelessWidget {
-  const CustomButtomShet({
+class CustomButton extends StatelessWidget {
+  const CustomButton({
     super.key,
     this.onTap,
     this.isLoading = false,
@@ -21,8 +21,8 @@ class CustomButtomShet extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              defaultColor[500]!,
-              defaultColor[100]!,
+              defaultColor[600]!,
+              defaultColor[200]!,
             ],
             begin: Alignment.centerRight,
             end: Alignment.centerLeft,
@@ -35,7 +35,9 @@ class CustomButtomShet extends StatelessWidget {
               ? const SizedBox(
                   height: 24,
                   width: 24,
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    color: defaultColor,
+                  ),
                 )
               : Text(
                   text,
