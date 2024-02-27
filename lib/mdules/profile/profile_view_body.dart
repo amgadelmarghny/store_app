@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/mdules/login/login_view.dart';
-import 'package:store_2/mdules/profile/update_profile.dart';
+import 'package:store_2/mdules/profile/update_profile_view.dart';
 import 'package:store_2/models/user_model/user_model.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/componants/avatar_pic.dart';
@@ -30,10 +30,10 @@ class ProfileViewBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Spacer(),
-          AvatarPic(
-            hight: 120,
-            image: userData.image!,
-          ),
+            AvatarPic(
+              hight: 120,
+              image: userData.image!,
+            ),
           const SizedBox(height: 30),
           CustomTextField(
             isFirstDesign: false,

@@ -1,7 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:store_2/mdules/categories/categories_body.dart';
 import 'package:store_2/mdules/favorite/favorite_body.dart';
 import 'package:store_2/mdules/home/home_body.dart';
@@ -220,31 +218,13 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-  void updateUserInfo(
-      {required String name,
-      required String email,
-      required String phoneNumber}) {
-    DioHelper.postData(
-      url: updateProfile,
-      token: authToken,
-      data: {
-        'name': name,
-        'email': email,
-        'phone': phoneNumber,
-      },
-    ).then((value) {
-      profileModel = ProfileModel.fromJson(value.data);
-      emit(ProfileSuccessState());
-    }).catchError((err) {
-      emit(ProfileFailureState(errMessage: err.toString()));
-    });
-  }
-
 ////////////////////////////////////// LOGOUT //////////////////////////////////
   void userLogout(BuildContext context, {required String routName}) async {
     emit(LogoutLoadingState());
     return await DioHelper.postData(url: logout, token: authToken)
         .then((value) {
+      Navigator.pop(context);
+      Navigator.pop(context);
       navigatorPushAndRemove(context, routName);
       CashHelper.deleteCash(key: tOKENCONST);
       emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));

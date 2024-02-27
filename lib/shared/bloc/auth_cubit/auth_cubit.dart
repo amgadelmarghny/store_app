@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:store_2/models/login_model/login_model.dart';
+import 'package:store_2/models/profile_model/profile_model.dart';
 import 'package:store_2/models/register_model/register_model.dart';
 import 'package:store_2/models/user_model/user_model.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -27,7 +28,8 @@ class AuthCubit extends Cubit<AuthState> {
     autovalidateMode = AutovalidateMode.onUserInteraction;
     emit(VAlidateState());
   }
- String? email, passWord;
+
+  String? email, passWord;
   void userLogin() async {
     emit(LoginLodingState());
 
@@ -63,6 +65,32 @@ class AuthCubit extends Cubit<AuthState> {
           registermodel: Registermodel.fromJson(value.data)));
     }).catchError((err) {
       emit(RegisterFailureState(err: err.toString()));
+    });
+  }
+
+  ///////////////////////////// UPDATE  USER  INFORMATION ////////////////////////
+  ProfileModel? profileModel;
+  Future updateUserInfo(
+      {required String name,
+      required String email,
+      required String phoneNumber,
+      required String authToken}) {
+    emit(UpdateProfileLoadingState());
+   return DioHelper.putData(
+      url: updateProfile,
+      token: authToken,
+      data: {
+        'name': name,
+        'email': email,
+        'phone': phoneNumber,
+      },
+    ).then((value) {
+      profileModel = ProfileModel.fromJson(value.data);
+
+      emit(UpdateProfileSuccessState(profileModel:  profileModel!));
+      
+    }).catchError((err) {
+      emit(UpdateProfileFailureState(errMessage: err.toString()));
     });
   }
 }

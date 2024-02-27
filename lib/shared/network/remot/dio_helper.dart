@@ -49,4 +49,22 @@ abstract class DioHelper {
       data: data,
     );
   }
+  static Future<Response> putData({
+    String? token,
+    String lang = 'en',
+    required String url,
+    Object? data,
+  }) async {
+    if (token != null) {
+      dio!.options.headers = {
+        "Authorization": token,
+        "lang": lang,
+        "Content-Type": 'application/json',
+      };
+    }
+    return await dio!.put(
+      url,
+      data: data,
+    );
+  }
 }
