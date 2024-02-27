@@ -220,6 +220,26 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
+  void updateUserInfo(
+      {required String name,
+      required String email,
+      required String phoneNumber}) {
+    DioHelper.postData(
+      url: updateProfile,
+      token: authToken,
+      data: {
+        'name': name,
+        'email': email,
+        'phone': phoneNumber,
+      },
+    ).then((value) {
+      profileModel = ProfileModel.fromJson(value.data);
+      emit(ProfileSuccessState());
+    }).catchError((err) {
+      emit(ProfileFailureState(errMessage: err.toString()));
+    });
+  }
+
 ////////////////////////////////////// LOGOUT //////////////////////////////////
   void userLogout(BuildContext context, {required String routName}) async {
     emit(LogoutLoadingState());
