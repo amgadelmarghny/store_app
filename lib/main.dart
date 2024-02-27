@@ -4,6 +4,7 @@ import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/mdules/profile/profile_view.dart';
+import 'package:store_2/mdules/profile/update_profile.dart';
 import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/mdules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
@@ -67,6 +68,7 @@ class StoreAp extends StatelessWidget {
               ShopView.id: (context) => const ShopView(),
               SearchView.id: (context) => const SearchView(),
               ProfileView.id: (context) => const ProfileView(),
+              UpadteProfileView.id: (context) => const UpadteProfileView(),
             },
             theme: ThemeStyle.lightTheme(),
             darkTheme: ThemeStyle.darkTheme(),

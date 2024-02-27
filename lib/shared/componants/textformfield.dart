@@ -16,6 +16,8 @@ class CustomTextField extends StatelessWidget {
     this.isFirstDesign = true,
   });
   // first design that switch detween to design
+  // the first design  is for sign in & sign up page
+  // and second one is for profile view
   final bool isFirstDesign;
   final TextEditingController? controller;
   final IconData? suffixIcon;

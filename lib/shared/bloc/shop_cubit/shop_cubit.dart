@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:store_2/mdules/categories/categories_body.dart';
 import 'package:store_2/mdules/favorite/favorite_body.dart';
 import 'package:store_2/mdules/home/home_body.dart';
@@ -26,25 +28,31 @@ class ShopCubit extends Cubit<ShopStates> {
   List<Widget> listMenu(context, {required Function(int)? onSelected}) {
     return draverItems = [
       if (profileModel != null)
-        GestureDetector(
+        InkWell(
           onTap: () {
             Navigator.pushNamed(context, ProfileView.id);
           },
           child: Padding(
             padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
               children: [
-                AvatarPic(image: profileModel!.user!.image!),
-                const SizedBox(height: 10),
-                Text(
-                  profileModel!.user!.name!,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                )
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AvatarPic(image: profileModel!.user!.image!),
+                    const SizedBox(height: 10),
+                    Text(
+                      profileModel!.user!.name!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                    )
+                  ],
+                ),
+                const Spacer(),
+                const Icon(Icons.arrow_forward_ios)
               ],
             ),
           ),

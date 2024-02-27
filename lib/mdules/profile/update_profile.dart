@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class UpadteProfile extends StatelessWidget {
-  const UpadteProfile({super.key});
-
+class UpadteProfileView extends StatelessWidget {
+  const UpadteProfileView({super.key});
+  static String id = "Update Profile";
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(appBar: AppBar());
   }
 }
