@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
-import 'package:store_2/shared/componants/custom_buttomt.dart';
-import 'package:store_2/shared/componants/icon_auth_list_view.dart';
-import 'package:store_2/shared/componants/textformfield.dart';
+import 'package:store_2/shared/components/custom_buttomt.dart';
+import 'package:store_2/shared/components/icon_auth_list_view.dart';
+import 'package:store_2/shared/components/textformfield.dart';
 
 Form loginFormInput(
     GlobalKey<FormState> formKey, BuildContext context, AuthState state) {
@@ -31,6 +31,15 @@ Form loginFormInput(
           onChange: (value) {
             context.read<AuthCubit>().passWord = value;
           },
+          // add on submitted to do the same as on pressed of custom button
+          onFieldSubmitted: (value) {
+            if (formKey.currentState!.validate()) {
+              context.read<AuthCubit>().userLogin();
+              formKey.currentState!.save();
+            } else {
+              BlocProvider.of<AuthCubit>(context).validateObserver();
+            }
+          },
           hintText: 'Enter Password',
           textInputType: TextInputType.visiblePassword,
           suffixIcon: BlocProvider.of<AuthCubit>(context).suffixIcon,
@@ -42,12 +51,17 @@ Form loginFormInput(
         const SizedBox(
           height: 20,
         ),
-        TextButton(
-          onPressed: () {},
-          child: Text(
-            'Forget you password?',
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
+        Row(
+          children: [
+            const Spacer(),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                'Forget you password?',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
+          ],
         ),
         const SizedBox(
           height: 50,

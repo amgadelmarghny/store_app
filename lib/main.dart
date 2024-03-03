@@ -32,7 +32,9 @@ class StoreAp extends StatelessWidget {
     bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
     String? tokengiven = CashHelper.getData(key: tOKENCONST);
     bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
-    log('tokkkkkkkkkken : $tokengiven');
+
+    log('token : $tokengiven');
+    
     late Widget widget;
     if (isBoarding != null) {
       if (tokengiven != null) {

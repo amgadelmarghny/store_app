@@ -5,8 +5,8 @@ import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/componants/custom_show_messeges.dart';
-import 'package:store_2/shared/componants/navigation.dart';
+import 'package:store_2/shared/components/custom_show_messeges.dart';
+import 'package:store_2/shared/components/navigation.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
 

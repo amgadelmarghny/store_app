@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/mdules/categories/category_item.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/componants/custom_show_messeges.dart';
+import 'package:store_2/shared/components/custom_show_messeges.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class CategoryBody extends StatelessWidget {

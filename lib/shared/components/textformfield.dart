@@ -14,6 +14,8 @@ class CustomTextField extends StatelessWidget {
     this.labelText,
     this.controller,
     this.isFirstDesign = true,
+    this.onFieldSubmitted,
+    this.radius = 30,
   });
   // first design that switch detween to design
   // the first design  is for sign in & sign up page
@@ -26,14 +28,17 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final String? hintText;
   final void Function(String)? onChange;
+  final void Function(String)? onFieldSubmitted;
   final Function()? suffixOnPressed;
   final String? labelText;
+  final double radius;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: !isFirstDesign
           ? BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(radius),
               color: Theme.of(context).scaffoldBackgroundColor,
               boxShadow: [
                 BoxShadow(
@@ -57,6 +62,7 @@ class CustomTextField extends StatelessWidget {
         },
         controller: controller,
         onChanged: onChange,
+        onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
           fillColor: defaultColor.withOpacity(0.1),
           filled: isFirstDesign,
@@ -82,7 +88,7 @@ class CustomTextField extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(radius),
             borderSide: BorderSide(
               color: isFirstDesign
                   ? const Color(0xFF000000)
@@ -92,11 +98,11 @@ class CustomTextField extends StatelessWidget {
           focusedBorder: isFirstDesign
               ? OutlineInputBorder(
                   borderSide: const BorderSide(color: defaultColor, width: 1.1),
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(radius),
                 )
               : null,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(radius),
             borderSide: BorderSide(
               color: isFirstDesign
                   ? const Color(0xFF000000)

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/mdules/favorite/favorite_item.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/componants/custom_show_messeges.dart';
+import 'package:store_2/shared/components/custom_show_messeges.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class FavoriteBody extends StatelessWidget {
@@ -34,8 +34,8 @@ class FavoriteBody extends StatelessWidget {
         }
         return ConditionalBuilder(
           condition: state is! GetFavoritesLoadingState &&
-              state is! GetFavoritesLoadingState &&
-              state is! FavoriteLoadingState,
+              state is! FavoriteLoadingState &&
+              state is! FavoriteSussiccState,
           builder: (context) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

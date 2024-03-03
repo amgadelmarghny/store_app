@@ -4,8 +4,8 @@ import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/profile/update_profile_view.dart';
 import 'package:store_2/models/user_model/user_model.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/componants/avatar_pic.dart';
-import 'package:store_2/shared/componants/textformfield.dart';
+import 'package:store_2/shared/components/avatar_pic.dart';
+import 'package:store_2/shared/components/textformfield.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class ProfileViewBody extends StatelessWidget {

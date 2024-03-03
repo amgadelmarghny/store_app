@@ -5,7 +5,7 @@ import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/boarding_item.dart';
 import 'package:store_2/mdules/on_boarding/custom_smooth_page_indecator.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
-import 'package:store_2/shared/componants/navigation.dart';
+import 'package:store_2/shared/components/navigation.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/style/colors.dart';

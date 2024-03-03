@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:store_2/mdules/register/register_view.dart';
-import 'package:store_2/shared/componants/custom_curve_color_ui.dart';
 import 'package:store_2/mdules/login/sliver_login_input.dart';
-import 'package:store_2/shared/componants/custom_sliver_row_text.dart';
+import 'package:store_2/shared/components/custom_curve_color_ui.dart';
+import 'package:store_2/shared/components/custom_sliver_row_text.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/register/sliver_register_input.dart';
-import 'package:store_2/shared/componants/custom_curve_color_ui.dart';
-import 'package:store_2/shared/componants/custom_sliver_row_text.dart';
+import 'package:store_2/shared/components/custom_curve_color_ui.dart';
+import 'package:store_2/shared/components/custom_sliver_row_text.dart';
 
 class RegisterViewBody extends StatelessWidget {
   const RegisterViewBody({super.key});

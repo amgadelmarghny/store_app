@@ -9,8 +9,8 @@ import 'package:store_2/models/get_favorites_model/get_favorites_model.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
 import 'package:store_2/models/profile_model/profile_model.dart';
 import 'package:store_2/models/shope_models/home_model.dart';
-import 'package:store_2/shared/componants/avatar_pic.dart';
-import 'package:store_2/shared/componants/navigation.dart';
+import 'package:store_2/shared/components/avatar_pic.dart';
+import 'package:store_2/shared/components/navigation.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -202,7 +202,6 @@ class ShopCubit extends Cubit<ShopStates> {
       emit(GetFavoritesFailureState(errMessage: e.toString()));
     });
   }
-
 /////////////////////////////////// GET PROFILE INFO ///////////////////////////
   ProfileModel? profileModel;
   void getProfileInfo() {
