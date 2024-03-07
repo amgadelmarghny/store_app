@@ -9,6 +9,7 @@ abstract class ThemeStyle {
       primarySwatch: defaultColor,
       brightness: Brightness.light,
       appBarTheme: const AppBarTheme(
+        elevation: 0,
         centerTitle: true,
         titleSpacing: 20,
         iconTheme: IconThemeData(size: 30),

@@ -45,9 +45,7 @@ class DrawerMenu extends StatelessWidget {
                       .email!,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(),
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_2/models/user_model/user_model.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/constants.dart';
@@ -9,7 +10,8 @@ import 'package:store_2/shared/components/textformfield.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class UpadteProfileViewBody extends StatelessWidget {
-  const UpadteProfileViewBody({super.key});
+  const UpadteProfileViewBody({super.key, required this.userModel});
+  final UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,9 @@ class UpadteProfileViewBody extends StatelessWidget {
           final TextEditingController nameController = TextEditingController();
           final TextEditingController emailController = TextEditingController();
           final TextEditingController phoneController = TextEditingController();
+          nameController.text = userModel.name!;
+          emailController.text = userModel.email!;
+          phoneController.text = userModel.phone!;
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -91,9 +96,11 @@ class UpadteProfileViewBody extends StatelessWidget {
                       height: 15,
                     ),
                     CustomButton(
+                      isAuth: true,
                       text: 'UPDATE',
                       onTap: () {
                         if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
                           BlocProvider.of<AuthCubit>(context)
                               .updateUserInfo(
                             name: nameController.text,
@@ -104,8 +111,8 @@ class UpadteProfileViewBody extends StatelessWidget {
                               .then((value) {
                             BlocProvider.of<ShopCubit>(context)
                                 .getProfileInfo();
+                            Navigator.pop(context);
                           });
-                          formKey.currentState!.save();
                         } else {
                           BlocProvider.of<AuthCubit>(context)
                               .validateObserver();

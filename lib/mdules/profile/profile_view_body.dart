@@ -30,10 +30,10 @@ class ProfileViewBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Spacer(),
-            AvatarPic(
-              hight: 120,
-              image: userData.image!,
-            ),
+          AvatarPic(
+            hight: 120,
+            image: userData.image!,
+          ),
           const SizedBox(height: 30),
           CustomTextField(
             isFirstDesign: false,
@@ -61,7 +61,8 @@ class ProfileViewBody extends StatelessWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, UpadteProfileView.id);
+                  Navigator.pushNamed(context, UpadteProfileView.id,
+                      arguments: userData);
                 },
                 child: Text(
                   'Update your profile',

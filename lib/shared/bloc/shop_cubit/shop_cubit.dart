@@ -120,6 +120,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
+
 /////////////////////////////////// GET PROFILE INFO ///////////////////////////
   ProfileModel? profileModel;
   void getProfileInfo() {
