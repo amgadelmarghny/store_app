@@ -66,16 +66,18 @@ class SearchView extends StatelessWidget {
                   if (state is SearchSuccessState)
                     Expanded(
                       child: ListView.separated(
-                          itemBuilder: (context, index) {
-                            return FavoriteItem(
-                                isSearch: true,
-                                productModel: searchModel
-                                    .favoritesDataModel!.dataModelList[index]);
-                          },
-                          separatorBuilder: (_, __) =>
-                              const SizedBox(height: 20),
-                          itemCount: searchModel!
-                              .favoritesDataModel!.dataModelList.length),
+                        itemBuilder: (context, index) {
+                          return FavoriteItem(
+                            isSearch: true,
+                            productModel: searchModel
+                                .favoritesDataModel!.dataModelList[index],
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(height: 20),
+                        itemCount: searchModel!
+                            .favoritesDataModel!.dataModelList.length,
+                      ),
                     ),
                 ],
               ),

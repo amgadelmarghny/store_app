@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
+import 'package:store_2/mdules/product/product_view.dart';
 import 'package:store_2/mdules/profile/profile_view.dart';
 import 'package:store_2/mdules/profile/update_profile_view.dart';
 import 'package:store_2/mdules/register/register_view.dart';
@@ -11,6 +12,7 @@ import 'package:store_2/mdules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/bloc/bloc_observer.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -30,14 +32,13 @@ class StoreAp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
-    String? tokengiven = CashHelper.getData(key: tOKENCONST);
     bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
 
-    log('token : $tokengiven');
+    log('token : $authToken');
     
     late Widget widget;
     if (isBoarding != null) {
-      if (tokengiven != null) {
+      if (authToken != null) {
         widget = const ShopView();
       } else {
         widget = const LoginView();
@@ -73,6 +74,7 @@ class StoreAp extends StatelessWidget {
               SearchView.id: (context) => const SearchView(),
               ProfileView.id: (context) => const ProfileView(),
               UpadteProfileView.id: (context) => const UpadteProfileView(),
+              ProductView.id :(context) => const ProductView() ,
             },
             theme: ThemeStyle.lightTheme(),
             darkTheme: ThemeStyle.darkTheme(),

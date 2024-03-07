@@ -77,6 +77,8 @@ Form loginFormInput(
               BlocProvider.of<AuthCubit>(context).validateObserver();
             }
           },
+          // to make button color gradient
+          isAuth: true,
         ),
         const SizedBox(
           height: 30,

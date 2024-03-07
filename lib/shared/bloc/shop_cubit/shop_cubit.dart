@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:store_2/mdules/categories/categories_body.dart';
 import 'package:store_2/mdules/favorite/favorite_body.dart';
 import 'package:store_2/mdules/home/home_body.dart';
-import 'package:store_2/mdules/profile/profile_view.dart';
 import 'package:store_2/models/catergory_model/catergory_model.dart';
 import 'package:store_2/models/get_favorites_model/get_favorites_model.dart';
 import 'package:store_2/models/logout_model/logout_model.dart';
 import 'package:store_2/models/profile_model/profile_model.dart';
 import 'package:store_2/models/shope_models/home_model.dart';
-import 'package:store_2/shared/components/avatar_pic.dart';
+import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/components/navigation.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
 import 'package:store_2/shared/network/lockal/shared_helper.dart';
@@ -22,89 +21,6 @@ class ShopCubit extends Cubit<ShopStates> {
   ShopCubit() : super(ShopInitial());
 
   List<Widget>? draverItems;
-
-  List<Widget> listMenu(context, {required Function(int)? onSelected}) {
-    return draverItems = [
-      if (profileModel != null)
-        InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, ProfileView.id);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AvatarPic(image: profileModel!.user!.image!),
-                    const SizedBox(height: 10),
-                    Text(
-                      profileModel!.user!.name!,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
-                    )
-                  ],
-                ),
-                const Spacer(),
-                const Icon(Icons.arrow_forward_ios)
-              ],
-            ),
-          ),
-        ),
-      const Divider(
-        color: Colors.grey,
-        height: 0,
-        thickness: 1.3,
-      ),
-      const Spacer(),
-      PopupMenuButton(
-        onSelected: onSelected,
-        child: const ListTile(
-          leading: Icon(Icons.settings_outlined),
-          title: Text(
-            'Settings',
-          ),
-          trailing: Icon(Icons.keyboard_arrow_down),
-        ),
-        itemBuilder: (context) => [
-          PopupMenuItem(
-            value: 1,
-            child: ListTile(
-              title: Text(
-                'Britness (Light , Dark)',
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              leading: const Icon(Icons.brightness_6_outlined),
-            ),
-          ),
-          PopupMenuItem(
-            value: 2,
-            child: ListTile(
-              title: Text(
-                'Language (En , Ar)',
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              leading: const Icon(Icons.translate_outlined),
-            ),
-          ),
-          PopupMenuItem(
-            value: 3,
-            child: ListTile(
-              title: Text(
-                'Logout',
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              leading: const Icon(Icons.power_settings_new),
-            ),
-          ),
-        ],
-      ),
-    ];
-  }
 
   int currentIndex = 0;
 
@@ -129,6 +45,7 @@ class ShopCubit extends Cubit<ShopStates> {
 /////////////////////////////////// GET  HOME  DATA ////////////////////////////
   HomeModel? homeModel;
   Map<int, bool> favoriteProductsMap = {};
+  Map<int, bool> inCartProductsMap = {};
 
   void getHomeData() {
     emit(GetHomeDataLoadingState());
@@ -139,6 +56,7 @@ class ShopCubit extends Cubit<ShopStates> {
       homeModel = HomeModel.fromJson(value.data);
       for (var element in homeModel!.data!.productsList) {
         favoriteProductsMap.addAll({element.id: element.inFavorites!});
+        inCartProductsMap.addAll({element.id: element.inCart!});
       }
       emit(GetHomeDataSuccessState());
     }).catchError((err) {
@@ -160,8 +78,6 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-  String? authToken = CashHelper.getData(key: tOKENCONST);
-
   /////////////////////////////// ADD  AND  REMOVE  FROM  FAVORITES ////////////
   ChangedFavoriteModel? changedFavoriteModel;
 
@@ -174,10 +90,11 @@ class ShopCubit extends Cubit<ShopStates> {
       data: {"product_id": id},
     ).then((value) {
       changedFavoriteModel = ChangedFavoriteModel.fromJson(value.data);
-      debugPrint('stateeee ::::::::: ${changedFavoriteModel!.status}');
-      if (changedFavoriteModel!.status == true) {
-        debugPrint('^^^^^^ get fav success ^^^^^^');
+      debugPrint(
+          'Add & Remove Favorite stateeee :::::: ${changedFavoriteModel!.status}');
+      if (changedFavoriteModel!.status) {
         getFavoriteProducts();
+        debugPrint('^^^^^^ get fav success ^^^^^^');
       } else {
         favoriteProductsMap[id] = !favoriteProductsMap[id]!;
       }
@@ -190,7 +107,7 @@ class ShopCubit extends Cubit<ShopStates> {
 ////////////////////////////////////// GET  FAVORITES //////////////////////////
   GetFavoritesModel? favoritesModel;
 
-  void getFavoriteProducts() {
+  getFavoriteProducts() {
     emit(GetFavoritesLoadingState());
     DioHelper.getData(
       url: favCONST,
@@ -202,6 +119,7 @@ class ShopCubit extends Cubit<ShopStates> {
       emit(GetFavoritesFailureState(errMessage: e.toString()));
     });
   }
+
 /////////////////////////////////// GET PROFILE INFO ///////////////////////////
   ProfileModel? profileModel;
   void getProfileInfo() {

@@ -7,26 +7,33 @@ class CustomButton extends StatelessWidget {
     this.onTap,
     this.isLoading = false,
     required this.text,
+    this.isAuth = false,
+    this.color,
   });
   final void Function()? onTap;
   final bool isLoading;
   final String text;
+  final bool isAuth;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
         height: 55,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              defaultColor[600]!,
-              defaultColor[200]!,
-            ],
-            begin: Alignment.centerRight,
-            end: Alignment.centerLeft,
-          ),
+          color: color,
+          gradient: isAuth
+              ? LinearGradient(
+                  colors: [
+                    defaultColor[600]!,
+                    defaultColor[200]!,
+                  ],
+                  begin: Alignment.centerRight,
+                  end: Alignment.centerLeft,
+                )
+              : null,
           // color: defaultColor,
           borderRadius: BorderRadius.circular(8),
         ),
@@ -36,7 +43,7 @@ class CustomButton extends StatelessWidget {
                   height: 24,
                   width: 24,
                   child: CircularProgressIndicator(
-                    color: defaultColor,
+                    color: Colors.white,
                   ),
                 )
               : Text(

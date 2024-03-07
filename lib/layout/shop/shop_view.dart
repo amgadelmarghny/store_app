@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:store_2/layout/shop/drower.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
@@ -22,13 +23,14 @@ class ShopView extends StatelessWidget {
           listener: (context, state) async {
             if (state is LogoutSuccussState) {
               if (state.logoutModel.status) {
-                toastShown(
-                  messege: state.logoutModel.message,
-                  context: context,
-                  state: ToastState.warning,
-                );
-                await CashHelper.deleteCash(key: tOKENCONST).then(
-                    (value) => navigatorPushAndRemove(context, LoginView.id));
+                await CashHelper.deleteCash(key: tOKENCONST).then((value) {
+                  navigatorPushAndRemove(context, LoginView.id);
+                  toastShown(
+                    messege: state.logoutModel.message,
+                    context: context,
+                    state: ToastState.warning,
+                  );
+                });
               } else {
                 toastShown(
                   messege: state.logoutModel.message,
@@ -53,31 +55,10 @@ class ShopView extends StatelessWidget {
           },
           builder: (context, state) {
             ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
-            List<Widget> draverItems = shopCubit.listMenu(
-              context,
-              onSelected: (value) {
-                if (value == 1) {
-                  BlocProvider.of<AppCubit>(context).britnessChanged();
-                } else if (value == 2) {
-                } else if (value == 3) {
-                  BlocProvider.of<ShopCubit>(context)
-                      .userLogout(context, routName: LoginView.id);
-                  CashHelper.deleteCash(key: tOKENCONST);
-                }
-              },
-            );
             return ModalProgressHUD(
               inAsyncCall: state is LogoutLoadingState,
               child: Scaffold(
-                drawer: Drawer(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: draverItems,
-                    ),
-                  ),
-                ),
+                drawer: const DrawerMenu(),
                 appBar: AppBar(
                   title: const Text('Nori Store'),
                   actions: [
