@@ -24,11 +24,18 @@ class FavoriteBody extends StatelessWidget {
       builder: (context, state) {
         ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
         if (BlocProvider.of<ShopCubit>(context)
-            .favoritesModel!
+            .favoritesModel
             .favoritesDataModel!
             .dataModelList
             .isEmpty) {
-          return const Center(child: Text('There is no favorites yet'));
+          return const Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.favorite_border, size: 80, color: defaultColor),
+              Text('There is no favorites yet'),
+            ],
+          ));
         } else if (state is GetFavoritesFailureState) {
           return const Center(child: Text('There is an error'));
         }
@@ -43,7 +50,7 @@ class FavoriteBody extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   return FavoriteItem(
-                    productModel: shopCubit.favoritesModel!.favoritesDataModel!
+                    productModel: shopCubit.favoritesModel.favoritesDataModel!
                         .dataModelList[index].productModel!,
                   );
                 },
@@ -53,7 +60,7 @@ class FavoriteBody extends StatelessWidget {
                   );
                 },
                 itemCount: shopCubit
-                    .favoritesModel!.favoritesDataModel!.dataModelList.length,
+                    .favoritesModel.favoritesDataModel!.dataModelList.length,
               ),
             );
           },

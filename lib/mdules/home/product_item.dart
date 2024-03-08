@@ -18,7 +18,7 @@ class ProductItem extends StatelessWidget {
         Navigator.pushNamed(
           context,
           ProductView.id,
-          arguments: productModel,
+          arguments: {'productModel': productModel},
         );
       },
       child: BlocBuilder<ShopCubit, ShopStates>(

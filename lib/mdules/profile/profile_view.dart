@@ -14,7 +14,7 @@ class ProfileView extends StatelessWidget {
     return BlocBuilder<ShopCubit, ShopStates>(
       builder: (context, state) {
         UserModel? userData =
-            BlocProvider.of<ShopCubit>(context).profileModel?.user;
+            BlocProvider.of<ShopCubit>(context).profileModel.user;
 
         return Scaffold(
           appBar: AppBar(),

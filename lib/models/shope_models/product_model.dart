@@ -22,10 +22,10 @@ class ProductModel {
   });
   factory ProductModel.fromJson(dynamic json) {
     return ProductModel(
-      images: json['images'],
       id: json['id'],
       name: json['name'],
       price: json['price'],
+      images: json['images'],
       oldPrice: json['old_price'],
       image: json['image'],
       description: json['description'],

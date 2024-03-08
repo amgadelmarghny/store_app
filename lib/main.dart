@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
+import 'package:store_2/mdules/cart/my_cart_view.dart';
 import 'package:store_2/mdules/login/login_view.dart';
 import 'package:store_2/mdules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/mdules/product/product_view.dart';
@@ -11,6 +12,7 @@ import 'package:store_2/mdules/register/register_view.dart';
 import 'package:store_2/mdules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
 import 'package:store_2/shared/bloc/bloc_observer.dart';
+import 'package:store_2/shared/bloc/product_cubit/product_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/network/lockal/key_const.dart';
@@ -35,7 +37,7 @@ class StoreAp extends StatelessWidget {
     bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
 
     log('token : $authToken');
-    
+
     late Widget widget;
     if (isBoarding != null) {
       if (authToken != null) {
@@ -49,18 +51,21 @@ class StoreAp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
+          create: (context) => ProductCubit()..getCartItems(),
+        ),
+        BlocProvider(
           create: (context) =>
               AppCubit()..britnessChanged(fromCash: isSharedDark),
         ),
         BlocProvider(
-            create: (context) => ShopCubit()
-              ..getHomeData()
-              ..getCategories()
-              ..getFavoriteProducts()
-              ..getProfileInfo()
+          create: (context) => ShopCubit()
+            ..getHomeData()
+            ..getCategories()
+            ..getFavoriteProducts()
+            ..getProfileInfo()
             // ..homeModel
             // ..profileModel,
-            ),
+        ),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
@@ -74,7 +79,8 @@ class StoreAp extends StatelessWidget {
               SearchView.id: (context) => const SearchView(),
               ProfileView.id: (context) => const ProfileView(),
               UpadteProfileView.id: (context) => const UpadteProfileView(),
-              ProductView.id :(context) => const ProductView() ,
+              ProductView.id: (context) => const ProductView(),
+              MyCartView.id: (context) => const MyCartView(),
             },
             theme: ThemeStyle.lightTheme(),
             darkTheme: ThemeStyle.darkTheme(),

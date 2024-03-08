@@ -11,7 +11,10 @@ class MyCartView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('My Cart'),
       ),
-      body: const MyCartViewBody(),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: MyCartViewBody(),
+      ),
     );
   }
 }

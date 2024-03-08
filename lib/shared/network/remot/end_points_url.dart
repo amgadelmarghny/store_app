@@ -10,3 +10,5 @@ const verifyCode = 'verify-code';
 const resertPassword = 'reset-password';
 const changePassword = 'change-password';
 const categories = 'categories';
+const searchForProduct = 'products/search';
+const carts = 'carts';

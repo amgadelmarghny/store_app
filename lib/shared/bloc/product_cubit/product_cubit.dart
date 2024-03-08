@@ -1,26 +1,44 @@
 import 'package:bloc/bloc.dart';
 import 'package:store_2/models/fav_model/favorite_model.dart';
+import 'package:store_2/models/get_cart_model/get_cart_model.dart';
 import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
+import 'package:store_2/shared/network/remot/end_points_url.dart';
 
 part 'product_state.dart';
 
 class ProductCubit extends Cubit<ProductState> {
   ProductCubit() : super(ProductInitial());
 
-   ChangedFavoriteModel? changedCartModel;
+  ChangedFavoriteModel? changedCartModel;
 
-  void addAndRemoveCart({required int productId}) async {
+  Future addAndRemoveCart({required int productId}) async {
     emit(CartLoadingState());
-    DioHelper.postData(
-      url: 'carts',
+    await DioHelper.postData(
+      url: carts,
       token: authToken,
       data: {"product_id": productId},
     ).then((value) {
       changedCartModel = ChangedFavoriteModel.fromJson(value.data);
       emit(CartSussiccState(changedCartModel: changedCartModel!));
-    }).catchError((errMessage){
+    }).catchError((errMessage) {
       emit(CartFailureState(errMessage: errMessage));
+    });
+  }
+
+  //////////////////////////////// CET CART  PRODUCTS ////////////////////////////
+   GetCartModel? cartModel;
+
+  void getCartItems() {
+    emit(GetCartLoadingState());
+    DioHelper.getData(
+      url: carts,
+      token: authToken,
+    ).then((value) {
+      cartModel = GetCartModel.fromJson(value.data);
+      emit(GetCartSuccessState());
+    }).catchError((err) {
+      emit(GetCartFailureState(errMessage: err.toString()));
     });
   }
 }

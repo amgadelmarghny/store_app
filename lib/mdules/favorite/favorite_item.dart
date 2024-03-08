@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/mdules/product/product_view.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
+import 'package:store_2/shared/bloc/product_cubit/product_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 
 class FavoriteItem extends StatelessWidget {
@@ -10,9 +11,12 @@ class FavoriteItem extends StatelessWidget {
     super.key,
     required this.productModel,
     this.isSearch = false,
+    this.isCart = false,
   });
   final bool isSearch;
   final ProductModel productModel;
+  final bool isCart;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -20,7 +24,10 @@ class FavoriteItem extends StatelessWidget {
         Navigator.pushNamed(
           context,
           ProductView.id,
-          arguments: productModel,
+          arguments: {
+            'productModel': productModel,
+            'isCart': isCart,
+          },
         );
       },
       child: Container(
@@ -52,8 +59,9 @@ class FavoriteItem extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       decoration: BoxDecoration(
-                          color: Colors.red[300],
-                          borderRadius: BorderRadius.circular(5)),
+                        color: Colors.red[300],
+                        borderRadius: BorderRadius.circular(5),
+                      ),
                       child: Text(
                         'DISCOUND',
                         style: Theme.of(context).textTheme.titleSmall,
@@ -85,54 +93,78 @@ class FavoriteItem extends StatelessWidget {
                           color: Colors.grey, fontSize: 15, height: 1),
                     ),
                     const Spacer(),
-                    Row(
-                      children: [
-                        Text(
-                          productModel.price.toString(),
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(fontSize: 15),
-                        ),
-                        const Spacer(),
-                        if (!isSearch)
-                          if (productModel.discount != 0)
+                    BlocBuilder<ShopCubit, ShopStates>(
+                      builder: (context, state) {
+                        return Row(
+                          children: [
                             Text(
-                              productModel.oldPrice.toString(),
-                              maxLines: 1,
+                              productModel.price.toString(),
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodySmall!
-                                  .copyWith(
-                                      decoration: TextDecoration.lineThrough),
+                                  .bodyMedium!
+                                  .copyWith(fontSize: 15),
                             ),
-                        if (BlocProvider.of<ShopCubit>(context)
-                                .favoriteProductsMap[productModel.id] !=
-                            null)
-                          BlocBuilder<ShopCubit, ShopStates>(
-                            builder: (context, state) {
-                              return IconButton(
-                                onPressed: () {
-                                  BlocProvider.of<ShopCubit>(context)
-                                      .addAndRemoveFavorite(
-                                          id: productModel.id);
-                                  BlocProvider.of<ShopCubit>(context)
-                                      .getFavoriteProducts();
-                                },
-                                icon: Icon(
-                                  BlocProvider.of<ShopCubit>(context)
-                                          .favoriteProductsMap[productModel.id]!
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color: BlocProvider.of<ShopCubit>(context)
-                                          .favoriteProductsMap[productModel.id]!
-                                      ? Colors.red
-                                      : Colors.grey,
+                            const Spacer(),
+                            if (!isSearch)
+                              if (productModel.discount != 0)
+                                Text(
+                                  productModel.oldPrice.toString(),
+                                  maxLines: 1,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .copyWith(
+                                          decoration:
+                                              TextDecoration.lineThrough),
                                 ),
-                              );
-                            },
-                          ),
-                      ],
+                            if (BlocProvider.of<ShopCubit>(context)
+                                    .favoriteProductsMap[productModel.id] !=
+                                null)
+                              if (!isCart)
+                                IconButton(
+                                  onPressed: () {
+                                    BlocProvider.of<ShopCubit>(context)
+                                        .addAndRemoveFavorite(
+                                            id: productModel.id);
+                                    BlocProvider.of<ShopCubit>(context)
+                                        .getFavoriteProducts();
+                                  },
+                                  icon: Icon(
+                                    BlocProvider.of<ShopCubit>(context)
+                                                .favoriteProductsMap[
+                                            productModel.id]!
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
+                                    color: BlocProvider.of<ShopCubit>(context)
+                                                .favoriteProductsMap[
+                                            productModel.id]!
+                                        ? Colors.red
+                                        : Colors.grey,
+                                  ),
+                                )
+                              else
+                                BlocBuilder<ProductCubit, ProductState>(
+                                  builder: (context, state) {
+                                    return IconButton(
+                                      onPressed: () {
+                                        BlocProvider.of<ProductCubit>(context)
+                                            .addAndRemoveCart(
+                                                productId: productModel.id)
+                                            .then((value) {
+                                          BlocProvider.of<ProductCubit>(context)
+                                              .getCartItems();
+                                        });
+                                      },
+                                      icon: const Icon(
+                                        Icons.shopping_cart,
+                                        color: Colors.red,
+                                      ),
+                                    );
+                                  },
+                                ),
+                          ],
+                        );
+                      },
                     ),
                   ],
                 ),

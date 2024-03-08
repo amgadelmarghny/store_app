@@ -79,7 +79,7 @@ class ShopCubit extends Cubit<ShopStates> {
   }
 
   /////////////////////////////// ADD  AND  REMOVE  FROM  FAVORITES ////////////
-  ChangedFavoriteModel? changedFavoriteModel;
+  late ChangedFavoriteModel changedFavoriteModel;
 
   void addAndRemoveFavorite({required int id}) {
     favoriteProductsMap[id] = !favoriteProductsMap[id]!;
@@ -90,24 +90,22 @@ class ShopCubit extends Cubit<ShopStates> {
       data: {"product_id": id},
     ).then((value) {
       changedFavoriteModel = ChangedFavoriteModel.fromJson(value.data);
-      debugPrint(
-          'Add & Remove Favorite stateeee :::::: ${changedFavoriteModel!.status}');
-      if (changedFavoriteModel!.status) {
+      if (changedFavoriteModel.status) {
         getFavoriteProducts();
         debugPrint('^^^^^^ get fav success ^^^^^^');
       } else {
         favoriteProductsMap[id] = !favoriteProductsMap[id]!;
       }
-      emit(FavoriteSussiccState(changedFavoriteModel: changedFavoriteModel!));
+      emit(FavoriteSussiccState(changedFavoriteModel: changedFavoriteModel));
     }).catchError((err) {
       emit(FavoriteFailureState(errMessage: err.toString()));
     });
   }
 
 ////////////////////////////////////// GET  FAVORITES //////////////////////////
-  GetFavoritesModel? favoritesModel;
+  late GetFavoritesModel favoritesModel;
 
-  getFavoriteProducts() {
+  void getFavoriteProducts() {
     emit(GetFavoritesLoadingState());
     DioHelper.getData(
       url: favCONST,
@@ -122,7 +120,8 @@ class ShopCubit extends Cubit<ShopStates> {
 
 
 /////////////////////////////////// GET PROFILE INFO ///////////////////////////
-  ProfileModel? profileModel;
+  late ProfileModel profileModel;
+
   void getProfileInfo() {
     emit(ProfileLoadingState());
     DioHelper.getData(
