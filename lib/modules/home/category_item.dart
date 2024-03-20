@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:store_2/models/catergory_model/catergory_model.dart';
+import 'package:store_2/models/catergory_model.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class CategotryItem extends StatelessWidget {
