@@ -57,6 +57,13 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                     imageUrl: widget.productModel.images != null
                         ? widget.productModel.images![index]
                         : widget.productModel.image,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(
+                        color: defaultColor,
+                      ),
+                    ),
+                    errorWidget: (context, url, error) =>
+                    const Icon(Icons.error),
                   );
                 },
               ),

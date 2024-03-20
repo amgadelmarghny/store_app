@@ -1,20 +1,20 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:store_2/mdules/categories/categories_body.dart';
-import 'package:store_2/mdules/favorite/favorite_body.dart';
-import 'package:store_2/mdules/home/home_body.dart';
-import 'package:store_2/models/catergory_model/catergory_model.dart';
-import 'package:store_2/models/get_favorites_model/get_favorites_model.dart';
-import 'package:store_2/models/logout_model/logout_model.dart';
-import 'package:store_2/models/profile_model/profile_model.dart';
+import 'package:store_2/modules/categories/categories_body.dart';
+import 'package:store_2/modules/favorite/favorite_body.dart';
+import 'package:store_2/modules/home/home_body.dart';
+import 'package:store_2/models/catergory_model.dart';
+import 'package:store_2/models/get_favorites_model.dart';
+import 'package:store_2/models/logout_model.dart';
+import 'package:store_2/models/profile_model.dart';
 import 'package:store_2/models/shope_models/home_model.dart';
 import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/components/navigation.dart';
-import 'package:store_2/shared/network/lockal/key_const.dart';
-import 'package:store_2/shared/network/lockal/shared_helper.dart';
+import 'package:store_2/shared/network/local/key_const.dart';
+import 'package:store_2/shared/network/local/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
-import '../../../models/fav_model/favorite_model.dart';
+import '../../../models/favorite_model.dart';
 part 'shop_state.dart';
 
 class ShopCubit extends Cubit<ShopStates> {

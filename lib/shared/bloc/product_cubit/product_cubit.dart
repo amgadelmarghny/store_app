@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:store_2/models/fav_model/favorite_model.dart';
-import 'package:store_2/models/get_cart_model/get_cart_model.dart';
+import 'package:store_2/models/favorite_model.dart';
+import 'package:store_2/models/get_cart_model.dart';
 import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';

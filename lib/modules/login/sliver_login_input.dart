@@ -5,8 +5,8 @@ import 'package:store_2/modules/login/form_input.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
 import 'package:store_2/shared/components/navigation.dart';
-import 'package:store_2/shared/network/lockal/key_const.dart';
-import 'package:store_2/shared/network/lockal/shared_helper.dart';
+import 'package:store_2/shared/network/local/key_const.dart';
+import 'package:store_2/shared/network/local/shared_helper.dart';
 
 class SliverLoginInfo extends StatelessWidget {
   const SliverLoginInfo({

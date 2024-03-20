@@ -24,6 +24,7 @@ class ProductItem extends StatelessWidget {
       child: BlocBuilder<ShopCubit, ShopStates>(
         builder: (context, state) {
           return Container(
+            clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
               borderRadius: BorderRadius.circular(8),
@@ -36,12 +37,11 @@ class ProductItem extends StatelessWidget {
                 )
               ],
             ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.white,
+                  child: Stack(
                     alignment: Alignment.bottomLeft,
                     children: [
                       CachedNetworkImage(
@@ -56,66 +56,74 @@ class ProductItem extends StatelessWidget {
                               color: Colors.red[300],
                               borderRadius: BorderRadius.circular(5)),
                           child: Text(
-                            'DISCOUND',
+                            'DISCOUNT',
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                         )
                     ],
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    productModel.name!,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(height: 1.2),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Row(
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        productModel.price.toString(),
+                        productModel.name!,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
                             .textTheme
-                            .bodyMedium!
-                            .copyWith(fontSize: 15),
+                            .titleMedium!
+                            .copyWith(height: 1.2),
                       ),
-                      const Spacer(),
-                      if (productModel.discount != 0)
-                        Text(
-                          productModel.oldPrice.toString(),
-                          maxLines: 1,
-                          style:
-                              Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    decoration: TextDecoration.lineThrough,
-                                  ),
-                        ),
-                      IconButton(
-                        onPressed: () {
-                          BlocProvider.of<ShopCubit>(context)
-                              .addAndRemoveFavorite(id: productModel.id);
-                        },
-                        icon: Icon(
-                          BlocProvider.of<ShopCubit>(context)
-                                  .favoriteProductsMap[productModel.id]!
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: BlocProvider.of<ShopCubit>(context)
-                                  .favoriteProductsMap[productModel.id]!
-                              ? Colors.red
-                              : Colors.grey,
-                        ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            productModel.price.toString(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(fontSize: 15),
+                          ),
+                          const Spacer(),
+                          if (productModel.discount != 0)
+                            Text(
+                              productModel.oldPrice.toString(),
+                              maxLines: 1,
+                              style:
+                                  Theme.of(context).textTheme.bodySmall!.copyWith(
+                                        decoration: TextDecoration.lineThrough,
+                                      ),
+                            ),
+                          IconButton(
+                            onPressed: () {
+                              BlocProvider.of<ShopCubit>(context)
+                                  .addAndRemoveFavorite(id: productModel.id);
+                            },
+                            icon: Icon(
+                              BlocProvider.of<ShopCubit>(context)
+                                      .favoriteProductsMap[productModel.id]!
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: BlocProvider.of<ShopCubit>(context)
+                                      .favoriteProductsMap[productModel.id]!
+                                  ? Colors.red
+                                  : Colors.grey,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
         },

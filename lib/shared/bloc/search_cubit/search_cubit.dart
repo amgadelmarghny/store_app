@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:store_2/models/search_model/search_model.dart';
+import 'package:store_2/models/search_model.dart';
 import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';

@@ -43,6 +43,7 @@ dependencies:
   popover: ^0.2.9
   shared_preferences: ^2.2.2
   smooth_page_indicator: ^1.1.0
+  flutter_stripe: ^10.1.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0

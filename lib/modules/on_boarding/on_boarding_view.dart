@@ -6,8 +6,8 @@ import 'package:store_2/modules/on_boarding/boarding_item.dart';
 import 'package:store_2/modules/on_boarding/custom_smooth_page_indecator.dart';
 import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:store_2/shared/components/navigation.dart';
-import 'package:store_2/shared/network/lockal/key_const.dart';
-import 'package:store_2/shared/network/lockal/shared_helper.dart';
+import 'package:store_2/shared/network/local/key_const.dart';
+import 'package:store_2/shared/network/local/shared_helper.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class OnBoardingView extends StatefulWidget {

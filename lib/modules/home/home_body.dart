@@ -16,7 +16,7 @@ class HomeBody extends StatelessWidget {
           condition: BlocProvider.of<ShopCubit>(context).homeModel != null &&
               BlocProvider.of<ShopCubit>(context).categoryHomeModel != null,
           builder: (context) => const ProductAndBannerView(),
-          fallback: (contex) => const Center(
+          fallback: (context) => const Center(
             child: CircularProgressIndicator(
               color: defaultColor,
             ),

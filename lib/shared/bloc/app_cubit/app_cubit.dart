@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:store_2/models/boarding_model.dart';
-import 'package:store_2/shared/network/lockal/key_const.dart';
-import 'package:store_2/shared/network/lockal/shared_helper.dart';
+import 'package:store_2/shared/network/local/key_const.dart';
+import 'package:store_2/shared/network/local/shared_helper.dart';
 
 part 'app_state.dart';
 

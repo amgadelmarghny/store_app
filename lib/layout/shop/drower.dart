@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/mdules/cart/my_cart_view.dart';
-import 'package:store_2/mdules/login/login_view.dart';
-import 'package:store_2/mdules/profile/profile_view.dart';
-import 'package:store_2/shared/bloc/app_cupit/app_cubit.dart';
+import 'package:store_2/modules/cart/my_cart_view.dart';
+import 'package:store_2/modules/login/login_view.dart';
+import 'package:store_2/modules/profile/profile_view.dart';
+import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/avatar_pic.dart';
-import 'package:store_2/shared/network/lockal/key_const.dart';
-import 'package:store_2/shared/network/lockal/shared_helper.dart';
+import 'package:store_2/shared/network/local/key_const.dart';
+import 'package:store_2/shared/network/local/shared_helper.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
