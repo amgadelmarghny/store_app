@@ -11,6 +11,7 @@ class ProductCubit extends Cubit<ProductState> {
   ProductCubit() : super(ProductInitial());
 
   ChangedFavoriteModel? changedCartModel;
+  bool isAdd = false;
 
   Future addAndRemoveCart({required int productId}) async {
     emit(CartLoadingState());

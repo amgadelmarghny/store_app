@@ -1,4 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:store_2/models/shope_models/product_model.dart';
+import 'package:store_2/modules/product/quantity_counter.dart';
+
+class ProductPriceDetails extends StatelessWidget {
+  const ProductPriceDetails(
+      {super.key, required this.productModel, required this.fromCart});
+  final ProductModel productModel;
+  final bool fromCart;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            children: [
+              if (productModel.discount != 0)
+                OldPrice(
+                    text: 'Discount',
+                    oldPrice: productModel.discount.toString()),
+              if (productModel.discount != 0)
+                OldPrice(
+                  oldPrice: productModel.oldPrice.toString(),
+                  text: 'Old Price',
+                ),
+              Price(
+                price: productModel.price.toString(),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        if (fromCart) const QuantityCounter(),
+      ],
+    );
+  }
+}
 
 class OldPrice extends StatelessWidget {
   const OldPrice({

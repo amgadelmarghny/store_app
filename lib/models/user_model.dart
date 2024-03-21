@@ -1,10 +1,10 @@
 
 
 class UserModel {
-  final int? id;
+  final dynamic id;
   final String? image;
-  final int? point;
-  final int? credit;
+  final dynamic point;
+  final dynamic credit;
   final String? token;
   final String? name;
   final String? email;

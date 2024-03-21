@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
+import 'package:store_2/modules/product/price_row.dart';
 import 'package:store_2/shared/bloc/product_cubit/product_cubit.dart';
 import 'package:store_2/shared/components/custom_buttomt.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
@@ -19,7 +20,7 @@ class ProductViewBody extends StatefulWidget {
 
 class _ProductViewBodyState extends State<ProductViewBody> {
   bool isMore = false;
-
+  bool isAdd = false;
   @override
   Widget build(BuildContext context) {
     PageController pageController = PageController();
@@ -45,7 +46,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
           children: [
             Container(
               color: Colors.white,
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: MediaQuery.of(context).size.height * 0.3 - 20,
               width: double.infinity,
               child: PageView.builder(
                 controller: pageController,
@@ -63,7 +64,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                       ),
                     ),
                     errorWidget: (context, url, error) =>
-                    const Icon(Icons.error),
+                        const Icon(Icons.error),
                   );
                 },
               ),
@@ -89,40 +90,6 @@ class _ProductViewBodyState extends State<ProductViewBody> {
             const SizedBox(
               height: 10,
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('EGP', style: Theme.of(context).textTheme.titleSmall!),
-                Text(
-                  widget.productModel.price.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(fontSize: 24),
-                ),
-                const SizedBox(width: 50),
-                if (widget.productModel.discount != 0)
-                  Text(
-                    widget.productModel.oldPrice.toString(),
-                    maxLines: 1,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          decoration: TextDecoration.lineThrough,
-                        ),
-                  ),
-                const SizedBox(width: 50),
-                if (widget.productModel.discount != 0)
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    decoration: BoxDecoration(
-                        color: Colors.red[300],
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Text(
-                      'DISCOUND',
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
-                  ),
-              ],
-            ),
             const SizedBox(
               height: 10,
             ),
@@ -136,10 +103,17 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                   .copyWith(height: 1.2),
             ),
             const SizedBox(
+              height: 20,
+            ),
+            ProductPriceDetails(
+              productModel: widget.productModel,
+              fromCart: widget.fromCart,
+            ),
+            const SizedBox(
               height: 10,
             ),
             Text(
-              maxLines: isMore ? 1000 : 10,
+              maxLines: isMore ? 10000 : 10,
               widget.productModel.description!,
               overflow: TextOverflow.ellipsis,
               style:
@@ -165,22 +139,22 @@ class _ProductViewBodyState extends State<ProductViewBody> {
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             if (!widget.fromCart)
               CustomButton(
                 isLoading: state is CartLoadingState,
                 color: defaultColor[300]!,
-                text: 'Add to Cart',
+                text: isAdd ? 'Remove' : 'Add to Cart',
                 onTap: () {
                   BlocProvider.of<ProductCubit>(context)
                       .addAndRemoveCart(
-                        productId: widget.productModel.id,
-                      )
-                      .then(
-                        (value) => BlocProvider.of<ProductCubit>(context)
-                            .getCartItems(),
-                      );
+                    productId: widget.productModel.id,
+                  )
+                      .then((value) {
+                    isAdd = !isAdd;
+                    BlocProvider.of<ProductCubit>(context).getCartItems();
+                  });
                 },
               ),
             const SizedBox(

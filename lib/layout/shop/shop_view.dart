@@ -10,6 +10,7 @@ import 'package:store_2/shared/components/custom_show_messeges.dart';
 import 'package:store_2/shared/components/navigation.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
+import 'package:store_2/shared/style/colors.dart';
 
 class ShopView extends StatelessWidget {
   const ShopView({super.key});
@@ -66,13 +67,17 @@ class ShopView extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, SearchView.id);
                       },
-                      icon: const Icon(Icons.search),
+                      icon: const Icon(Icons.manage_search),
                     ),
                   ],
                 ),
                 bottomNavigationBar: BottomNavigationBar(
                   currentIndex: shopCubit.currentIndex,
-                  items: shopCubit.bottomNavBarItems,
+                  items: shopCubit.bottomNavBarItems(
+                    color: shopCubit.currentIndex == 0
+                        ? defaultColor
+                        : Colors.grey,
+                  ),
                   onTap: (index) {
                     shopCubit.selectIconChange(index);
                   },

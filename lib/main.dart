@@ -72,7 +72,7 @@ class StoreAp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             routes: {
-              OnBoardingView.id: (conyext) => const OnBoardingView(),
+              OnBoardingView.id: (context) => const OnBoardingView(),
               LoginView.id: (context) => const LoginView(),
               RegisterView.id: (context) => const RegisterView(),
               ShopView.id: (context) => const ShopView(),

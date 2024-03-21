@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:store_2/modules/categories/categories_body.dart';
 import 'package:store_2/modules/favorite/favorite_body.dart';
 import 'package:store_2/modules/home/home_body.dart';
@@ -24,13 +25,20 @@ class ShopCubit extends Cubit<ShopStates> {
 
   int currentIndex = 0;
 
-  List<BottomNavigationBarItem> bottomNavBarItems = const [
-    BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.apps_outlined), label: 'Categories'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.favorite_outline), label: 'Favotite'),
-  ];
+  List<BottomNavigationBarItem> bottomNavBarItems({required Color? color}) {
+    return [
+      BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'lib/assets/images/shop.svg',
+            color: color,
+          ),
+          label: 'Home'),
+      const BottomNavigationBarItem(
+          icon: Icon(Icons.apps_outlined), label: 'Categories'),
+      const BottomNavigationBarItem(
+          icon: Icon(Icons.favorite_outline), label: 'Favorite'),
+    ];
+  }
 
   void selectIconChange(int index) {
     currentIndex = index;
@@ -117,7 +125,6 @@ class ShopCubit extends Cubit<ShopStates> {
       emit(GetFavoritesFailureState(errMessage: e.toString()));
     });
   }
-
 
 /////////////////////////////////// GET PROFILE INFO ///////////////////////////
   late ProfileModel profileModel;
