@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/modules/cart/my_cart_view.dart';
+import 'package:store_2/modules/category_details/category_details.dart';
 import 'package:store_2/modules/login/login_view.dart';
 import 'package:store_2/modules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/modules/product/product_view.dart';
@@ -58,14 +59,14 @@ class StoreAp extends StatelessWidget {
               AppCubit()..britnessChanged(fromCash: isSharedDark),
         ),
         BlocProvider(
-          create: (context) => ShopCubit()
-            ..getHomeData()
-            ..getCategories()
-            ..getFavoriteProducts()
-            ..getProfileInfo()
+            create: (context) => ShopCubit()
+              ..getHomeData()
+              ..getCategories()
+              ..getFavoriteProducts()
+              ..getProfileInfo()
             // ..homeModel
             // ..profileModel,
-        ),
+            ),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
@@ -81,6 +82,7 @@ class StoreAp extends StatelessWidget {
               UpadteProfileView.id: (context) => const UpadteProfileView(),
               ProductView.id: (context) => const ProductView(),
               MyCartView.id: (context) => const MyCartView(),
+              CategoryDetailsView.id: (context) => const CategoryDetailsView(),
             },
             theme: ThemeStyle.lightTheme(),
             darkTheme: ThemeStyle.darkTheme(),
