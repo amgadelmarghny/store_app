@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/modules/cart/my_cart_view.dart';
-import 'package:store_2/modules/category_details/category_details.dart';
+import 'package:store_2/modules/category_details/category_details_view.dart';
 import 'package:store_2/modules/login/login_view.dart';
 import 'package:store_2/modules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/modules/product/product_view.dart';
@@ -13,6 +13,7 @@ import 'package:store_2/modules/register/register_view.dart';
 import 'package:store_2/modules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:store_2/shared/bloc/bloc_observer.dart';
+import 'package:store_2/shared/bloc/category_cubit/category_cubit.dart';
 import 'package:store_2/shared/bloc/product_cubit/product_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/constants.dart';
@@ -67,6 +68,7 @@ class StoreAp extends StatelessWidget {
             // ..homeModel
             // ..profileModel,
             ),
+        BlocProvider(create: (context) => CategoryCubit()),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {

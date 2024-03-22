@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_2/modules/category_details/category_details_body.dart';
 
 class CategoryDetailsView extends StatelessWidget {
   const CategoryDetailsView({super.key});
@@ -6,7 +7,11 @@ class CategoryDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('sfdvfdbn'),
+      ),
+      body: const CategoryDetailsViewBody(),
     );
   }
 }
+
