@@ -11,9 +11,13 @@ import 'package:store_2/shared/style/colors.dart';
 
 class ProductViewBody extends StatefulWidget {
   const ProductViewBody(
-      {super.key, required this.productModel, required this.fromCart});
+      {super.key,
+      required this.productModel,
+      required this.fromCart,
+      required this.isSearch});
   final ProductModel productModel;
   final bool fromCart;
+  final bool isSearch;
   @override
   State<ProductViewBody> createState() => _ProductViewBodyState();
 }
@@ -90,9 +94,6 @@ class _ProductViewBodyState extends State<ProductViewBody> {
             const SizedBox(
               height: 10,
             ),
-            const SizedBox(
-              height: 10,
-            ),
             Text(
               widget.productModel.name!,
               maxLines: 3,
@@ -108,6 +109,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
             ProductPriceDetails(
               productModel: widget.productModel,
               fromCart: widget.fromCart,
+              isSearch: widget.isSearch,
             ),
             const SizedBox(
               height: 10,

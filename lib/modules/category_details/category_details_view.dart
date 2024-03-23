@@ -6,12 +6,12 @@ class CategoryDetailsView extends StatelessWidget {
   static const id = 'categorias-details';
   @override
   Widget build(BuildContext context) {
+    String categoryName = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('sfdvfdbn'),
+        title: Text(categoryName),
       ),
       body: const CategoryDetailsViewBody(),
     );
   }
 }
-

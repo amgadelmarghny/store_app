@@ -4,9 +4,13 @@ import 'package:store_2/modules/product/quantity_counter.dart';
 
 class ProductPriceDetails extends StatelessWidget {
   const ProductPriceDetails(
-      {super.key, required this.productModel, required this.fromCart});
+      {super.key,
+      required this.productModel,
+      required this.fromCart,
+      required this.isSearch});
   final ProductModel productModel;
   final bool fromCart;
+  final bool isSearch;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -14,11 +18,11 @@ class ProductPriceDetails extends StatelessWidget {
         Expanded(
           child: Column(
             children: [
-              if (productModel.discount != 0)
+              if (productModel.discount != 0 && productModel.discount != null)
                 OldPrice(
                     text: 'Discount',
                     oldPrice: productModel.discount.toString()),
-              if (productModel.discount != 0)
+              if (productModel.discount != 0 && productModel.discount != null)
                 OldPrice(
                   oldPrice: productModel.oldPrice.toString(),
                   text: 'Old Price',

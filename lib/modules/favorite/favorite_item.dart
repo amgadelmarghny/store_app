@@ -27,6 +27,7 @@ class FavoriteItem extends StatelessWidget {
           arguments: {
             'productModel': productModel,
             'isCart': isCart,
+            'isSearch': isSearch,
           },
         );
       },

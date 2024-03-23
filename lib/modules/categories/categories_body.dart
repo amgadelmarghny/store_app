@@ -1,7 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/categories/category_item.dart';
+import 'package:store_2/modules/categories/category_item_large.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
 import 'package:store_2/shared/style/colors.dart';

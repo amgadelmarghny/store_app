@@ -3,14 +3,14 @@ import 'package:store_2/models/shope_models/product_model.dart';
 class CategoryDetailsModel {
   bool? status;
   String? message;
-  CategoryDetailsData? data;
+  CategoryDetailsData? categoryDetailsData;
 
-  CategoryDetailsModel({this.status, this.message, this.data});
+  CategoryDetailsModel({this.status, this.message, this.categoryDetailsData});
 
   CategoryDetailsModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null
+    categoryDetailsData = json['data'] != null
         ? CategoryDetailsData.fromJson(json['data'])
         : null;
   }

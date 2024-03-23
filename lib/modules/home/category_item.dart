@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/models/catergory_model.dart';
 import 'package:store_2/modules/category_details/category_details_view.dart';
+import 'package:store_2/shared/bloc/category_cubit/category_cubit.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class CategotryItem extends StatelessWidget {
@@ -9,12 +11,16 @@ class CategotryItem extends StatelessWidget {
   final DataModel dataModel;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => Navigator.pushNamed(
-        context,
-        CategoryDetailsView.id,
-        arguments: dataModel.id,
-      ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          CategoryDetailsView.id,
+          arguments: dataModel.name,
+        );
+        BlocProvider.of<CategoryCubit>(context)
+            .getCategoryDetails(categoryId: dataModel.id);
+      },
       child: Container(
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(

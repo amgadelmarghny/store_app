@@ -16,6 +16,7 @@ class ProductView extends StatelessWidget {
         child: ProductViewBody(
           productModel: argumentMap['productModel'],
           fromCart: argumentMap['isCart'] ?? false,
+          isSearch: argumentMap['isSearch'] ?? false,
         ),
       ),
     );
