@@ -9,7 +9,9 @@ class ProductItem extends StatelessWidget {
   const ProductItem({
     super.key,
     required this.productModel,
+    this.isCategory = false,
   });
+  final bool isCategory;
   final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
@@ -97,11 +99,31 @@ class ProductItem extends StatelessWidget {
                             Text(
                               productModel.oldPrice.toString(),
                               maxLines: 1,
-                              style:
-                                  Theme.of(context).textTheme.bodySmall!.copyWith(
-                                        decoration: TextDecoration.lineThrough,
-                                      ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                    decoration: TextDecoration.lineThrough,
+                                  ),
                             ),
+                          //////////////!//////////////!//////////!
+                          if (isCategory)
+                            IconButton(
+                              onPressed: () {
+                                BlocProvider.of<ShopCubit>(context)
+                                    .addAndRemoveCart(
+                                        productId: productModel.id)
+                                    .then((value) {
+                                  BlocProvider.of<ShopCubit>(context)
+                                      .getCartItems();
+                                });
+                              },
+                              icon: const Icon(
+                                Icons.shopping_cart,
+                                color: Colors.red,
+                              ),
+                            ),
+                          //////////////!//////////////!//////////!
                           IconButton(
                             onPressed: () {
                               BlocProvider.of<ShopCubit>(context)

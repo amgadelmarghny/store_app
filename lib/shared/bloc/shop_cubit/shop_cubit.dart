@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:store_2/models/get_cart_model.dart';
 import 'package:store_2/modules/categories/categories_body.dart';
 import 'package:store_2/modules/favorite/favorite_body.dart';
 import 'package:store_2/modules/home/home_body.dart';
@@ -154,6 +155,41 @@ class ShopCubit extends Cubit<ShopStates> {
       emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));
     }).catchError((err) {
       emit(GetHomeDataFailureState(errMessage: err.toString()));
+    });
+  }
+  
+///////////////// Add and remove  from Cart /////////////////////////////
+  
+  ChangedFavoriteModel? changedCartModel;
+  bool isAdd = false;
+
+  Future addAndRemoveCart({required int productId}) async {
+    emit(CartLoadingState());
+    await DioHelper.postData(
+      url: carts,
+      token: authToken,
+      data: {"product_id": productId},
+    ).then((value) {
+      changedCartModel = ChangedFavoriteModel.fromJson(value.data);
+      emit(CartSussiccState(changedCartModel: changedCartModel!));
+    }).catchError((errMessage) {
+      emit(CartFailureState(errMessage: errMessage));
+    });
+  }
+
+  //////////////////////////////// CET CART  PRODUCTS ////////////////////////////
+   GetCartModel? cartModel;
+
+  void getCartItems() {
+    emit(GetCartLoadingState());
+    DioHelper.getData(
+      url: carts,
+      token: authToken,
+    ).then((value) {
+      cartModel = GetCartModel.fromJson(value.data);
+      emit(GetCartSuccessState());
+    }).catchError((err) {
+      emit(GetCartFailureState(errMessage: err.toString()));
     });
   }
 }

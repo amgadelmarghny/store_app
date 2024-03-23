@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/modules/product/product_view.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
-import 'package:store_2/shared/bloc/product_cubit/product_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 
 class FavoriteItem extends StatelessWidget {
@@ -144,25 +143,21 @@ class FavoriteItem extends StatelessWidget {
                                   ),
                                 )
                               else
-                                BlocBuilder<ProductCubit, ProductState>(
-                                  builder: (context, state) {
-                                    return IconButton(
-                                      onPressed: () {
-                                        BlocProvider.of<ProductCubit>(context)
-                                            .addAndRemoveCart(
-                                                productId: productModel.id)
-                                            .then((value) {
-                                          BlocProvider.of<ProductCubit>(context)
-                                              .getCartItems();
-                                        });
-                                      },
-                                      icon: const Icon(
-                                        Icons.shopping_cart,
-                                        color: Colors.red,
-                                      ),
-                                    );
+                                IconButton(
+                                  onPressed: () {
+                                    BlocProvider.of<ShopCubit>(context)
+                                        .addAndRemoveCart(
+                                            productId: productModel.id)
+                                        .then((value) {
+                                      BlocProvider.of<ShopCubit>(context)
+                                          .getCartItems();
+                                    });
                                   },
-                                ),
+                                  icon: const Icon(
+                                    Icons.shopping_cart,
+                                    color: Colors.red,
+                                  ),
+                                )
                           ],
                         );
                       },

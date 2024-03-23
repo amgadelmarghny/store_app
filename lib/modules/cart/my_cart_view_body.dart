@@ -2,7 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/modules/favorite/favorite_item.dart';
-import 'package:store_2/shared/bloc/product_cubit/product_cubit.dart';
+import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class MyCartViewBody extends StatelessWidget {
@@ -10,10 +10,10 @@ class MyCartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductCubit, ProductState>(
+    return BlocBuilder<ShopCubit, ShopStates>(
       builder: (context, state) {
         List<dynamic> cartItemList =
-            BlocProvider.of<ProductCubit>(context).cartModel?.data!.cartItems ??
+            BlocProvider.of<ShopCubit>(context).cartModel?.data!.cartItems ??
                 [];
         if (cartItemList.isEmpty) {
           return const Center(

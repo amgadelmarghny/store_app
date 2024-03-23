@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
 import 'package:store_2/modules/product/price_row.dart';
-import 'package:store_2/shared/bloc/product_cubit/product_cubit.dart';
+import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/custom_buttomt.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
 import 'package:store_2/shared/style/colors.dart';
@@ -28,7 +28,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
   @override
   Widget build(BuildContext context) {
     PageController pageController = PageController();
-    return BlocConsumer<ProductCubit, ProductState>(
+    return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {
         if (state is CartSussiccState) {
           toastShown(
@@ -149,13 +149,13 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                 color: defaultColor[300]!,
                 text: isAdd ? 'Remove' : 'Add to Cart',
                 onTap: () {
-                  BlocProvider.of<ProductCubit>(context)
+                  BlocProvider.of<ShopCubit>(context)
                       .addAndRemoveCart(
                     productId: widget.productModel.id,
                   )
                       .then((value) {
                     isAdd = !isAdd;
-                    BlocProvider.of<ProductCubit>(context).getCartItems();
+                    BlocProvider.of<ShopCubit>(context).getCartItems();
                   });
                 },
               ),

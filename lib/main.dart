@@ -14,7 +14,6 @@ import 'package:store_2/modules/search/search_view.dart';
 import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:store_2/shared/bloc/bloc_observer.dart';
 import 'package:store_2/shared/bloc/category_cubit/category_cubit.dart';
-import 'package:store_2/shared/bloc/product_cubit/product_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
@@ -53,9 +52,6 @@ class StoreAp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => ProductCubit()..getCartItems(),
-        ),
-        BlocProvider(
           create: (context) =>
               AppCubit()..britnessChanged(fromCash: isSharedDark),
         ),
@@ -65,6 +61,7 @@ class StoreAp extends StatelessWidget {
               ..getCategories()
               ..getFavoriteProducts()
               ..getProfileInfo()
+              ..getCartItems()
             // ..homeModel
             // ..profileModel,
             ),

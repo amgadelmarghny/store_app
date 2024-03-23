@@ -7,6 +7,7 @@ class ShopInitial extends ShopStates {}
 
 class NavBarChangeState extends ShopStates {}
 
+///////////////////
 class GetHomeDataLoadingState extends ShopStates {}
 
 class GetHomeDataSuccessState extends ShopStates {}
@@ -16,6 +17,7 @@ class GetHomeDataFailureState extends ShopStates {
   GetHomeDataFailureState({required this.errMessage});
 }
 
+////////////////
 class GetCategoriesLoadingState extends ShopStates {}
 
 class GetCategoriesSuccess extends ShopStates {}
@@ -25,6 +27,7 @@ class GetCategoriesFailureState extends ShopStates {
   GetCategoriesFailureState({required this.errMessage});
 }
 
+//////////////
 class FavoriteLoadingState extends ShopStates {}
 
 class FavoriteSussiccState extends ShopStates {
@@ -39,6 +42,7 @@ class FavoriteFailureState extends ShopStates {
   FavoriteFailureState({required this.errMessage});
 }
 
+////////////////////
 class GetFavoritesLoadingState extends ShopStates {}
 
 class GetFavoritesSuccess extends ShopStates {}
@@ -48,6 +52,31 @@ final class GetFavoritesFailureState extends ShopStates {
   GetFavoritesFailureState({required this.errMessage});
 }
 
+//////////////////
+class CartLoadingState extends ShopStates {}
+
+class CartSussiccState extends ShopStates {
+  final ChangedFavoriteModel changedCartModel;
+  CartSussiccState({required this.changedCartModel});
+}
+
+class CartFailureState extends ShopStates {
+  final String errMessage;
+
+  CartFailureState({required this.errMessage});
+}
+
+////////////
+class GetCartLoadingState extends ShopStates {}
+
+class GetCartSuccessState extends ShopStates {}
+
+class GetCartFailureState extends ShopStates {
+  final String errMessage;
+  GetCartFailureState({required this.errMessage});
+}
+
+//////////////////
 class ProfileLoadingState extends ShopStates {}
 
 class ProfileSuccessState extends ShopStates {}

@@ -41,6 +41,7 @@ class CategoryDetailsViewBody extends StatelessWidget {
                     itemCount: categoryDetailsData!.productModelList!.length,
                     itemBuilder: (context, index) {
                       return ProductItem(
+                          isCategory: true,
                           productModel:
                               categoryDetailsData.productModelList![index]);
                     },
