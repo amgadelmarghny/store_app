@@ -9,12 +9,14 @@ class CustomButton extends StatelessWidget {
     required this.text,
     this.isAuth = false,
     this.color,
+    this.prefixIcon = false,
   });
   final void Function()? onTap;
   final bool isLoading;
   final String text;
   final bool isAuth;
   final Color? color;
+  final bool prefixIcon;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -46,12 +48,26 @@ class CustomButton extends StatelessWidget {
                     color: Colors.white,
                   ),
                 )
-              : Text(
-                  text,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600),
+              : Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (prefixIcon)
+                      const Icon(
+                        Icons.do_not_disturb,
+                        color: Colors.red,
+                      ),
+                    if (prefixIcon)
+                      const SizedBox(
+                        width: 5,
+                      ),
+                    Text(
+                      text,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                    )
+                  ],
                 ),
         ),
       ),

@@ -17,20 +17,22 @@ class _QuantityCounterState extends State<QuantityCounter> {
       children: [
         IconButton(
           onPressed: () {
-            quantityNumber--;
-            setState(() {});
+            if (quantityNumber > 0) {
+              quantityNumber--;
+              setState(() {});
+            }
           },
           icon: const Icon(Icons.remove, color: Colors.grey),
         ),
-        Container(height:40,
+        Container(
+          height: 40,
           width: 40,
-          //padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Theme.of(context).scaffoldBackgroundColor,
             boxShadow: const [
               BoxShadow(
-                spreadRadius: 1.5,
+                spreadRadius: 0.5,
                 color: Color(0xFFE2E2E2),
               )
             ],

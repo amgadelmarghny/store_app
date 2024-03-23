@@ -157,13 +157,13 @@ class ShopCubit extends Cubit<ShopStates> {
       emit(GetHomeDataFailureState(errMessage: err.toString()));
     });
   }
-  
+
 ///////////////// Add and remove  from Cart /////////////////////////////
-  
+
   ChangedFavoriteModel? changedCartModel;
-  bool isAdd = false;
 
   Future addAndRemoveCart({required int productId}) async {
+    inCartProductsMap[productId] = !inCartProductsMap[productId]!;
     emit(CartLoadingState());
     await DioHelper.postData(
       url: carts,
@@ -171,6 +171,7 @@ class ShopCubit extends Cubit<ShopStates> {
       data: {"product_id": productId},
     ).then((value) {
       changedCartModel = ChangedFavoriteModel.fromJson(value.data);
+      getCartItems();
       emit(CartSussiccState(changedCartModel: changedCartModel!));
     }).catchError((errMessage) {
       emit(CartFailureState(errMessage: errMessage));
@@ -178,7 +179,7 @@ class ShopCubit extends Cubit<ShopStates> {
   }
 
   //////////////////////////////// CET CART  PRODUCTS ////////////////////////////
-   GetCartModel? cartModel;
+  GetCartModel? cartModel;
 
   void getCartItems() {
     emit(GetCartLoadingState());

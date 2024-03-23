@@ -25,6 +25,7 @@ class ProductItem extends StatelessWidget {
       },
       child: BlocBuilder<ShopCubit, ShopStates>(
         builder: (context, state) {
+          ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
           return Container(
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
@@ -110,31 +111,30 @@ class ProductItem extends StatelessWidget {
                           if (isCategory)
                             IconButton(
                               onPressed: () {
-                                BlocProvider.of<ShopCubit>(context)
-                                    .addAndRemoveCart(
-                                        productId: productModel.id)
-                                    .then((value) {
-                                  BlocProvider.of<ShopCubit>(context)
-                                      .getCartItems();
-                                });
+                                shopCubit.addAndRemoveCart(
+                                    productId: productModel.id);
                               },
-                              icon: const Icon(
-                                Icons.shopping_cart,
-                                color: Colors.red,
+                              icon: Icon(
+                                shopCubit.inCartProductsMap[productModel.id]!
+                                    ? Icons.shopping_cart
+                                    : Icons.shopping_cart_outlined,
+                                color: BlocProvider.of<ShopCubit>(context)
+                                        .inCartProductsMap[productModel.id]!
+                                    ? Colors.red
+                                    : Colors.grey,
                               ),
                             ),
                           //////////////!//////////////!//////////!
                           IconButton(
                             onPressed: () {
-                              BlocProvider.of<ShopCubit>(context)
-                                  .addAndRemoveFavorite(id: productModel.id);
+                              shopCubit.addAndRemoveFavorite(
+                                  id: productModel.id);
                             },
                             icon: Icon(
-                              BlocProvider.of<ShopCubit>(context)
-                                      .favoriteProductsMap[productModel.id]!
+                              shopCubit.favoriteProductsMap[productModel.id]!
                                   ? Icons.favorite
                                   : Icons.favorite_border,
-                              color: BlocProvider.of<ShopCubit>(context)
+                              color: shopCubit
                                       .favoriteProductsMap[productModel.id]!
                                   ? Colors.red
                                   : Colors.grey,

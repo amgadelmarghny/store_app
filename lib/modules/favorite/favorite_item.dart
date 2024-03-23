@@ -95,6 +95,8 @@ class FavoriteItem extends StatelessWidget {
                     const Spacer(),
                     BlocBuilder<ShopCubit, ShopStates>(
                       builder: (context, state) {
+                        ShopCubit shopCubit =
+                            BlocProvider.of<ShopCubit>(context);
                         return Row(
                           children: [
                             Text(
@@ -120,42 +122,42 @@ class FavoriteItem extends StatelessWidget {
                             if (BlocProvider.of<ShopCubit>(context)
                                     .favoriteProductsMap[productModel.id] !=
                                 null)
+                              // if favorite product item used in Favorite View - Favorites button will enable
                               if (!isCart)
                                 IconButton(
                                   onPressed: () {
-                                    BlocProvider.of<ShopCubit>(context)
-                                        .addAndRemoveFavorite(
-                                            id: productModel.id);
-                                    BlocProvider.of<ShopCubit>(context)
-                                        .getFavoriteProducts();
+                                    shopCubit.addAndRemoveFavorite(
+                                        id: productModel.id);
+                                    shopCubit.getFavoriteProducts();
                                   },
                                   icon: Icon(
-                                    BlocProvider.of<ShopCubit>(context)
-                                                .favoriteProductsMap[
+                                    shopCubit.favoriteProductsMap[
                                             productModel.id]!
                                         ? Icons.favorite
                                         : Icons.favorite_border,
-                                    color: BlocProvider.of<ShopCubit>(context)
-                                                .favoriteProductsMap[
+                                    color: shopCubit.favoriteProductsMap[
                                             productModel.id]!
                                         ? Colors.red
                                         : Colors.grey,
                                   ),
                                 )
+                              // but if favorite product item used in Cart View - Cart button will enable
+                              // and fav button will disapper
                               else
                                 IconButton(
                                   onPressed: () {
-                                    BlocProvider.of<ShopCubit>(context)
-                                        .addAndRemoveCart(
-                                            productId: productModel.id)
-                                        .then((value) {
-                                      BlocProvider.of<ShopCubit>(context)
-                                          .getCartItems();
-                                    });
+                                    shopCubit.addAndRemoveCart(
+                                        productId: productModel.id);
                                   },
-                                  icon: const Icon(
-                                    Icons.shopping_cart,
-                                    color: Colors.red,
+                                  icon: Icon(
+                                    shopCubit
+                                            .inCartProductsMap[productModel.id]!
+                                        ? Icons.shopping_cart
+                                        : Icons.shopping_cart_outlined,
+                                    color: BlocProvider.of<ShopCubit>(context)
+                                            .inCartProductsMap[productModel.id]!
+                                        ? Colors.red
+                                        : Colors.grey,
                                   ),
                                 )
                           ],

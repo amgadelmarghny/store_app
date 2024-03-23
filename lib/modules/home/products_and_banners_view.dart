@@ -86,7 +86,7 @@ class ProductAndBannerView extends StatelessWidget {
             //////////////////////////// PRODUCTS LIST /////////////////////////
             const Text('Products'),
             const SizedBox(
-              height: 5,
+              height: 7,
             ),
             GridView.builder(
               shrinkWrap: true,

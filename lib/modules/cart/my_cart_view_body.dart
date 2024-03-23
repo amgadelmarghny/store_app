@@ -34,7 +34,8 @@ class MyCartViewBody extends StatelessWidget {
           return const Center(child: Text('There is an error'));
         }
         return ConditionalBuilder(
-          condition: state is! GetCartLoadingState,
+          condition:
+              state is! GetCartLoadingState && state is! CartLoadingState,
           builder: (context) => ListView.separated(
             itemBuilder: (context, index) => FavoriteItem(
               isCart: true,

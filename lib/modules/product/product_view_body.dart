@@ -24,7 +24,7 @@ class ProductViewBody extends StatefulWidget {
 
 class _ProductViewBodyState extends State<ProductViewBody> {
   bool isMore = false;
-  bool isAdd = false;
+
   @override
   Widget build(BuildContext context) {
     PageController pageController = PageController();
@@ -115,11 +115,11 @@ class _ProductViewBodyState extends State<ProductViewBody> {
               height: 10,
             ),
             Text(
-              maxLines: isMore ? 10000 : 10,
+              maxLines: isMore ? 10000 : 9,
               widget.productModel.description!,
               overflow: TextOverflow.ellipsis,
-              style:
-                  const TextStyle(color: Colors.grey, fontSize: 18, height: 1),
+              style: const TextStyle(
+                  color: Colors.grey, fontSize: 15, height: 1.1),
             ),
             InkWell(
               onTap: () {
@@ -143,22 +143,21 @@ class _ProductViewBodyState extends State<ProductViewBody> {
             const SizedBox(
               height: 30,
             ),
-            if (!widget.fromCart)
-              CustomButton(
-                isLoading: state is CartLoadingState,
-                color: defaultColor[300]!,
-                text: isAdd ? 'Remove' : 'Add to Cart',
-                onTap: () {
-                  BlocProvider.of<ShopCubit>(context)
-                      .addAndRemoveCart(
-                    productId: widget.productModel.id,
-                  )
-                      .then((value) {
-                    isAdd = !isAdd;
-                    BlocProvider.of<ShopCubit>(context).getCartItems();
-                  });
-                },
-              ),
+            CustomButton(
+              prefixIcon: BlocProvider.of<ShopCubit>(context)
+                  .inCartProductsMap[widget.productModel.id]!,
+              isLoading: state is CartLoadingState,
+              color: defaultColor[300]!,
+              text: BlocProvider.of<ShopCubit>(context)
+                      .inCartProductsMap[widget.productModel.id]!
+                  ? 'Remove from Cart'
+                  : 'Add to Cart',
+              onTap: () {
+                BlocProvider.of<ShopCubit>(context).addAndRemoveCart(
+                  productId: widget.productModel.id,
+                );
+              },
+            ),
             const SizedBox(
               height: 20,
             ),
