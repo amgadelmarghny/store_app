@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:store_2/models/shope_models/product_model.dart';
 
 class GetFavoritesModel {
@@ -22,6 +24,7 @@ class GetFavoritesModel {
 
 class FavoritesDataModel {
   int? currentPage;
+  int? total;
   List dataModelList = [];
 
   FavoritesDataModel({
@@ -31,7 +34,7 @@ class FavoritesDataModel {
 
   FavoritesDataModel.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
-
+    total = json['total'];
     json['data'].forEach((v) {
       dataModelList.add(Data.fromJson(v));
     });

@@ -54,6 +54,9 @@ class ProductItem extends StatelessWidget {
                       ),
                       if (productModel.discount != 0)
                         Container(
+                          margin: isCategory
+                              ? const EdgeInsets.only(left: 2, bottom: 2)
+                              : null,
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           decoration: BoxDecoration(
                               color: Colors.red[300],

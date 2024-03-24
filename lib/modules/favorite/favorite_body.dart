@@ -24,7 +24,7 @@ class FavoriteBody extends StatelessWidget {
       builder: (context, state) {
         ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
         if (BlocProvider.of<ShopCubit>(context)
-            .favoritesModel
+            .favoritesModel!
             .favoritesDataModel!
             .dataModelList
             .isEmpty) {
@@ -50,7 +50,7 @@ class FavoriteBody extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   return FavoriteItem(
-                    productModel: shopCubit.favoritesModel.favoritesDataModel!
+                    productModel: shopCubit.favoritesModel!.favoritesDataModel!
                         .dataModelList[index].productModel!,
                   );
                 },
@@ -60,7 +60,7 @@ class FavoriteBody extends StatelessWidget {
                   );
                 },
                 itemCount: shopCubit
-                    .favoritesModel.favoritesDataModel!.dataModelList.length,
+                    .favoritesModel!.favoritesDataModel!.dataModelList.length,
               ),
             );
           },

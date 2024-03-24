@@ -36,13 +36,54 @@ class ShopCubit extends Cubit<ShopStates> {
           label: 'Home'),
       const BottomNavigationBarItem(
           icon: Icon(Icons.apps_outlined), label: 'Categories'),
-      const BottomNavigationBarItem(
-          icon: Icon(Icons.favorite_outline), label: 'Favorite'),
+      BottomNavigationBarItem(
+          icon: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                const Icon(Icons.favorite_outline),
+                if (favoritesModel != null)
+                  if (favoritesModel!.favoritesDataModel!.total! > 0)
+                    //////////////////////////!
+                    if (CashHelper.getData(key: favNotofication) != null)
+                      if (CashHelper.getData(key: favNotofication))
+                        Positioned(
+                          top: -5,
+                          right: -5,
+                          child: Container(
+                            width: 15.5,
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: FittedBox(
+                                child: Text(
+                                  favoritesModel!.favoritesDataModel!.total!
+                                      .toString(),
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+              ],
+            ),
+          ),
+          label: 'Favorite'),
     ];
   }
 
+//////////!
   void selectIconChange(int index) {
     currentIndex = index;
+    if (currentIndex == 2) {
+      CashHelper.deleteCash(key: favNotofication);
+    }
     emit(NavBarChangeState());
   }
 
@@ -91,6 +132,15 @@ class ShopCubit extends Cubit<ShopStates> {
   late ChangedFavoriteModel changedFavoriteModel;
 
   void addAndRemoveFavorite({required int id}) {
+ // when we  want to add a product to favorites ,
+ // the will be red notofication on fav button vav bar
+ // so I cash bool value to allow the notifi. to appear
+    CashHelper.setData(key: favNotofication, value: true);
+    if (currentIndex == 2) {
+      // when pressed on fav button vav bar the notofi.
+      // will dissappear
+      CashHelper.deleteCash(key: favNotofication);
+    }
     favoriteProductsMap[id] = !favoriteProductsMap[id]!;
     emit(FavoriteLoadingState());
     DioHelper.postData(
@@ -112,7 +162,7 @@ class ShopCubit extends Cubit<ShopStates> {
   }
 
 ////////////////////////////////////// GET  FAVORITES //////////////////////////
-  late GetFavoritesModel favoritesModel;
+  GetFavoritesModel? favoritesModel;
 
   void getFavoriteProducts() {
     emit(GetFavoritesLoadingState());
@@ -162,10 +212,10 @@ class ShopCubit extends Cubit<ShopStates> {
 
   ChangedFavoriteModel? changedCartModel;
 
-  Future addAndRemoveCart({required int productId}) async {
+  void addAndRemoveCart({required int productId}) {
     inCartProductsMap[productId] = !inCartProductsMap[productId]!;
     emit(CartLoadingState());
-    await DioHelper.postData(
+    DioHelper.postData(
       url: carts,
       token: authToken,
       data: {"product_id": productId},
