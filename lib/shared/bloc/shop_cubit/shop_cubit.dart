@@ -43,34 +43,38 @@ class ShopCubit extends Cubit<ShopStates> {
               clipBehavior: Clip.none,
               children: [
                 const Icon(Icons.favorite_outline),
+                // when the app oppened and getFavorite requist finish
                 if (favoritesModel != null)
+                  // and user add product to fav then show count of favorites
+                  // then the notification will appear
                   if (favoritesModel!.favoritesDataModel!.total! > 0)
-                    //////////////////////////!
+                    // this to make notification disappear when user press on Favorite screen
+                    // then favoriteNotifi. will deleted
+                    // so I check if it was deleted , the  notification will not appear again
                     if (CashHelper.getData(key: favNotofication) != null)
-                      if (CashHelper.getData(key: favNotofication))
-                        Positioned(
-                          top: -5,
-                          right: -5,
-                          child: Container(
-                            width: 15.5,
-                            decoration: const BoxDecoration(
-                              color: Colors.red,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: FittedBox(
-                                child: Text(
-                                  favoritesModel!.favoritesDataModel!.total!
-                                      .toString(),
-                                  style: const TextStyle(
-                                    fontSize: 13,
-                                    color: Colors.white,
-                                  ),
+                      Positioned(
+                        top: -5,
+                        right: -5,
+                        child: Container(
+                          width: 15.5,
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: FittedBox(
+                              child: Text(
+                                favoritesModel!.favoritesDataModel!.total!
+                                    .toString(),
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
                           ),
                         ),
+                      ),
               ],
             ),
           ),
@@ -81,6 +85,8 @@ class ShopCubit extends Cubit<ShopStates> {
 //////////!
   void selectIconChange(int index) {
     currentIndex = index;
+    // to delete favNotification  from Cash Helper
+    // after pressing on fav button nav bar
     if (currentIndex == 2) {
       CashHelper.deleteCash(key: favNotofication);
     }
@@ -133,14 +139,9 @@ class ShopCubit extends Cubit<ShopStates> {
 
   void addAndRemoveFavorite({required int id}) {
     // when we  want to add a product to favorites ,
-    // the will be red notofication on fav button vav bar
+    // the notification will be red notofication on fav button vav bar
     // so I cash bool value to allow the notifi. to appear
     CashHelper.setData(key: favNotofication, value: true);
-    if (currentIndex == 2) {
-      // when pressed on fav button vav bar the notofi.
-      // will dissappear
-      CashHelper.deleteCash(key: favNotofication);
-    }
     favoriteProductsMap[id] = !favoriteProductsMap[id]!;
     emit(FavoriteLoadingState());
     DioHelper.postData(
