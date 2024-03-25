@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:store_2/models/shope_models/product_model.dart';
 
 class GetFavoritesModel {

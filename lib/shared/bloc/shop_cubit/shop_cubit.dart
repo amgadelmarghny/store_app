@@ -132,9 +132,9 @@ class ShopCubit extends Cubit<ShopStates> {
   late ChangedFavoriteModel changedFavoriteModel;
 
   void addAndRemoveFavorite({required int id}) {
- // when we  want to add a product to favorites ,
- // the will be red notofication on fav button vav bar
- // so I cash bool value to allow the notifi. to appear
+    // when we  want to add a product to favorites ,
+    // the will be red notofication on fav button vav bar
+    // so I cash bool value to allow the notifi. to appear
     CashHelper.setData(key: favNotofication, value: true);
     if (currentIndex == 2) {
       // when pressed on fav button vav bar the notofi.

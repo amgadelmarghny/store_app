@@ -83,7 +83,7 @@ abstract class ThemeStyle {
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.tealAccent,
+        selectedItemColor: defaultColor,
       ),
       fontFamily: GoogleFonts.amiri().fontFamily,
     );

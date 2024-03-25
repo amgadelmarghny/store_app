@@ -25,8 +25,9 @@ class CategoryCubit extends Cubit<CategoryState> {
         emit(CategoryDetailsFaliur(errMessage: err.toString()));
       });
     } else {
-    // If the requested id is not equal to
-      
+      // when sameCategoryId = value
+      // check if the requested category id is the same u presses on it
+      // if wasn't the same then make a request for new category data
       if (sameCategoryId != categoryId) {
         sameCategoryId = categoryId;
         emit(CategoryDetailsLoading());
