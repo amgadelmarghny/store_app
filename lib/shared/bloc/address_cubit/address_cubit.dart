@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:store_2/models/address_models/get_address_model.dart';
 import 'package:store_2/models/address_models/new_address_model.dart';
 import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -16,8 +17,8 @@ class AddressCubit extends Cubit<AddressState> {
     emit(VAlidateState());
   }
 
-  //////////////////////////
-  late NewAddress newAddress;
+  ////////////////////////////////! ADD NEW ADDRESS //////////////////////
+  late NewAddressModel newAddressModel;
   void addNewAddress({
     required String name,
     required String city,
@@ -35,10 +36,22 @@ class AddressCubit extends Cubit<AddressState> {
       'latitude': '30.0616863',
       'longitude': '31.3260088',
     }).then((value) {
-      newAddress = NewAddress.fromJson(value.data);
-      emit(AddressSuccess(newAddress: newAddress));
+      newAddressModel = NewAddressModel.fromJson(value.data);
+      emit(AddressSuccess(newAddressModel: newAddressModel));
     }).catchError((err) {
       emit(AddressFaluir(error: err.toString()));
+    });
+  }
+
+  //////////////////////////////! GET ADDRESSES //////////////////////////
+  late GetAddressesModel getAddressesModel;
+  void getAddresses() {
+    emit(GetAddressLoading());
+    DioHelper.getData(url: addresses).then((value) {
+      getAddressesModel = GetAddressesModel.fromJson(value.data);
+      emit(GetAddressSuccess(getAddressesModel: getAddressesModel));
+    }).catchError((err) {
+      emit(GetAddressFaluir(error: err));
     });
   }
 }

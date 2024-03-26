@@ -1,16 +1,17 @@
 import 'package:store_2/models/address_models/address_model.dart';
 
-class GetAddresses {
+class GetAddressesModel {
   final bool status;
   final String? message;
   final Data? data;
 
-  GetAddresses({
+  GetAddressesModel({
     required this.status,
     required this.message,
     required this.data,
   });
-  factory GetAddresses.fromJson(Map<String, dynamic> json) => GetAddresses(
+  factory GetAddressesModel.fromJson(Map<String, dynamic> json) =>
+      GetAddressesModel(
         status: json["status"],
         message: json["message"],
         data: json["data"] != null ? Data.fromJson(json["data"]) : null,

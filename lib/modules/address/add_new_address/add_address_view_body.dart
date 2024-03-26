@@ -24,14 +24,14 @@ class AddAddressViewBody extends StatelessWidget {
       child: BlocConsumer<AddressCubit, AddressState>(
         listener: (context, state) {
           if (state is AddressSuccess) {
-            if (state.newAddress.status) {
+            if (state.newAddressModel.status) {
               toastShown(
-                  messege: state.newAddress.message!,
+                  messege: state.newAddressModel.message!,
                   state: ToastState.success,
                   context: context);
             } else {
               toastShown(
-                  messege: state.newAddress.message!,
+                  messege: state.newAddressModel.message!,
                   state: ToastState.error,
                   context: context);
             }

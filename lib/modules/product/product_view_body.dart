@@ -164,7 +164,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
             ),
             CustomButton(
               color: defaultColor[600]!,
-              text: 'Buy Now',
+              text: 'Make order',
               onTap: () => Navigator.pushNamed(context, AddAddressView.id),
             ),
           ],
