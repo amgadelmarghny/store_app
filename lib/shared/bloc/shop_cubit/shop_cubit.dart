@@ -31,7 +31,7 @@ class ShopCubit extends Cubit<ShopStates> {
       BottomNavigationBarItem(
           icon: SvgPicture.asset(
             'lib/assets/images/shop.svg',
-            color: color,
+            colorFilter: ColorFilter.mode(color!, BlendMode.srcIn),
           ),
           label: 'Home'),
       const BottomNavigationBarItem(
@@ -43,38 +43,40 @@ class ShopCubit extends Cubit<ShopStates> {
               clipBehavior: Clip.none,
               children: [
                 const Icon(Icons.favorite_outline),
-                // when the app oppened and getFavorite requist finish
-                if (favoritesModel != null)
-                  // and user add product to fav then show count of favorites
-                  // then the notification will appear
-                  if (favoritesModel!.favoritesDataModel!.total! > 0)
-                    // this to make notification disappear when user press on Favorite screen
-                    // then favoriteNotifi. will deleted
-                    // so I check if it was deleted , the  notification will not appear again
-                    if (CashHelper.getData(key: favNotofication) != null)
-                      Positioned(
-                        top: -5,
-                        right: -5,
-                        child: Container(
-                          width: 15.5,
-                          decoration: const BoxDecoration(
-                            color: Colors.red,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: FittedBox(
-                              child: Text(
-                                favoritesModel!.favoritesDataModel!.total!
-                                    .toString(),
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.white,
+                // if user on fav view ,fav notifi. will not show
+                if (currentIndex != 2)
+                  // when the app oppened and getFavorite requist finish
+                  if (favoritesModel != null)
+                    // and user add product to fav then show count of favorites
+                    // then the notification will appear
+                    if (favoritesModel!.favoritesDataModel!.total! > 0)
+                      // this to make notification disappear when user press on Favorite screen
+                      // then favoriteNotifi. will deleted
+                      // so I check if it was deleted , the  notification will not appear again
+                      if (CashHelper.getData(key: favNotofication) != null)
+                        Positioned(
+                          top: -6,
+                          right: -6,
+                          child: Container(
+                            width: 15.5,
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: FittedBox(
+                                child: Text(
+                                  favoritesModel!.favoritesDataModel!.total!
+                                      .toString(),
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
               ],
             ),
           ),
@@ -82,7 +84,7 @@ class ShopCubit extends Cubit<ShopStates> {
     ];
   }
 
-//////////!
+////////////////
   void selectIconChange(int index) {
     currentIndex = index;
     // to delete favNotification  from Cash Helper

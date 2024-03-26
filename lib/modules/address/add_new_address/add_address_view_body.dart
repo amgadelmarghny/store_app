@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/address/add_addres_button.dart';
-import 'package:store_2/modules/address/add_address_builder.dart';
+import 'package:store_2/modules/address/add_new_address/add_addres_button.dart';
+import 'package:store_2/modules/address/add_new_address/add_address_builder.dart';
 import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
 

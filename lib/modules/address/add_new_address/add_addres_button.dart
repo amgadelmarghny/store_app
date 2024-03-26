@@ -30,7 +30,7 @@ class AddAddressButton extends StatelessWidget {
       child: CustomButton(
         isLoading: state is AddressLoading,
         color: defaultColor,
-        text: 'Continue',
+        text: 'Add new address',
         onTap: () {
           if (formKey.currentState!.validate()) {
             BlocProvider.of<AddressCubit>(context).addNewAddress(

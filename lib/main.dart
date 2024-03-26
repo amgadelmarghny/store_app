@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
-import 'package:store_2/modules/address/add_address_view.dart';
+import 'package:store_2/modules/address/add_new_address/add_address_view.dart';
 import 'package:store_2/modules/cart/my_cart_view.dart';
 import 'package:store_2/modules/category_details/category_details_view.dart';
 import 'package:store_2/modules/login/login_view.dart';
