@@ -53,6 +53,8 @@ final class GetFavoritesFailureState extends ShopStates {
 }
 
 //////////////////
+class ShowMoreState extends ShopStates {}
+/////////////////
 class CartLoadingState extends ShopStates {}
 
 class CartSussiccState extends ShopStates {

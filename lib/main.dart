@@ -53,6 +53,7 @@ class StoreAp extends StatelessWidget {
     }
     return MultiBlocProvider(
       providers: [
+
         BlocProvider(
           create: (context) =>
               AppCubit()..britnessChanged(fromCash: isSharedDark),

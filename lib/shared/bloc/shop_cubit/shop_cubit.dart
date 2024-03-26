@@ -212,6 +212,12 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
+///////////////
+  bool isMore = false;
+  void showMore() {
+    isMore = !isMore;
+    emit(ShowMoreState());
+  }
 ///////////////// Add and remove  from Cart /////////////////////////////
 
   ChangedFavoriteModel? changedCartModel;

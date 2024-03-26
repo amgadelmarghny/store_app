@@ -1,16 +1,16 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
-import 'package:store_2/modules/address/add_new_address/add_address_view.dart';
+import 'package:store_2/modules/product/add_to_cart_button.dart';
+import 'package:store_2/modules/product/make_order_button.dart';
 import 'package:store_2/modules/product/price_row.dart';
+import 'package:store_2/modules/product/product_image.dart';
+import 'package:store_2/modules/product/show_more_button.dart';
+import 'package:store_2/modules/product/smoth_page_idecator.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/components/custom_buttomt.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
-import 'package:store_2/shared/style/colors.dart';
 
-class ProductViewBody extends StatefulWidget {
+class ProductViewBody extends StatelessWidget {
   const ProductViewBody(
       {super.key,
       required this.productModel,
@@ -19,13 +19,6 @@ class ProductViewBody extends StatefulWidget {
   final ProductModel productModel;
   final bool fromCart;
   final bool isSearch;
-  @override
-  State<ProductViewBody> createState() => _ProductViewBodyState();
-}
-
-class _ProductViewBodyState extends State<ProductViewBody> {
-  bool isMore = false;
-
   @override
   Widget build(BuildContext context) {
     PageController pageController = PageController();
@@ -49,54 +42,20 @@ class _ProductViewBodyState extends State<ProductViewBody> {
       builder: (context, state) {
         return ListView(
           children: [
-            Container(
-              color: Colors.white,
-              height: MediaQuery.of(context).size.height * 0.3 - 20,
-              width: double.infinity,
-              child: PageView.builder(
-                controller: pageController,
-                itemCount: widget.productModel.images != null
-                    ? widget.productModel.images!.length
-                    : 1,
-                itemBuilder: (context, index) {
-                  return CachedNetworkImage(
-                    imageUrl: widget.productModel.images != null
-                        ? widget.productModel.images![index]
-                        : widget.productModel.image,
-                    placeholder: (context, url) => const Center(
-                      child: CircularProgressIndicator(
-                        color: defaultColor,
-                      ),
-                    ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  );
-                },
-              ),
+            ProductImage(
+              pageController: pageController,
+              productModel: productModel,
             ),
             const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SmoothPageIndicator(
-                  effect: WormEffect(
-                    activeDotColor: defaultColor.shade200,
-                    dotHeight: 10,
-                    dotWidth: 10,
-                    dotColor: Colors.grey.shade400,
-                  ),
-                  controller: pageController,
-                  count: widget.productModel.images != null
-                      ? widget.productModel.images!.length
-                      : 1,
-                ),
-              ],
+            SmoothIndecator(
+              pageController: pageController,
+              productModel: productModel,
             ),
             const SizedBox(
               height: 10,
             ),
             Text(
-              widget.productModel.name!,
+              productModel.name!,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context)
@@ -108,65 +67,32 @@ class _ProductViewBodyState extends State<ProductViewBody> {
               height: 20,
             ),
             ProductPriceDetails(
-              productModel: widget.productModel,
-              fromCart: widget.fromCart,
-              isSearch: widget.isSearch,
+              productModel: productModel,
+              fromCart: fromCart,
+              isSearch: isSearch,
             ),
             const SizedBox(
               height: 10,
             ),
             Text(
-              maxLines: isMore ? 10000 : 9,
-              widget.productModel.description!,
+              maxLines: BlocProvider.of<ShopCubit>(context).isMore ? 10000 : 9,
+              productModel.description!,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                   color: Colors.grey, fontSize: 15, height: 1.1),
             ),
-            InkWell(
-              onTap: () {
-                setState(() {
-                  isMore = !isMore;
-                });
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    isMore ? 'Show less' : 'Show more',
-                  ),
-                  Icon(isMore
-                      ? Icons.keyboard_arrow_up
-                      : Icons.keyboard_arrow_down),
-                ],
-              ),
-            ),
+            const ShowMoreButton(),
             const SizedBox(
               height: 30,
             ),
-            CustomButton(
-              prefixIcon: BlocProvider.of<ShopCubit>(context)
-                  .inCartProductsMap[widget.productModel.id]!,
-              isLoading: state is CartLoadingState,
-              color: defaultColor[300]!,
-              text: BlocProvider.of<ShopCubit>(context)
-                      .inCartProductsMap[widget.productModel.id]!
-                  ? 'Remove from Cart'
-                  : 'Add to Cart',
-              onTap: () {
-                BlocProvider.of<ShopCubit>(context).addAndRemoveCart(
-                  productId: widget.productModel.id,
-                );
-              },
+            AddToCartButton(
+              productModel: productModel,
+              state: state,
             ),
             const SizedBox(
               height: 20,
             ),
-            CustomButton(
-              color: defaultColor[600]!,
-              text: 'Make order',
-              onTap: () => Navigator.pushNamed(context, AddAddressView.id),
-            ),
+            const MakeOrderButton(),
           ],
         );
       },
