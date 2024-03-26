@@ -5,6 +5,7 @@ import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 
 class AddAddressView extends StatelessWidget {
   const AddAddressView({super.key});
+  static const id = '/Add-Address-View';
 
   @override
   Widget build(BuildContext context) {

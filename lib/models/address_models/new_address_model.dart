@@ -1,7 +1,7 @@
 import 'package:store_2/models/address_models/address_model.dart';
 
 class NewAddress {
-  final String status;
+  final bool status;
   final String? message;
   final AddressModel? data;
 

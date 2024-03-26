@@ -1,6 +1,6 @@
 class AddressModel {
   final int id;
-  final String name, city, region, details;
+  final dynamic name, city, region, details;
   final String? notes;
   final dynamic latitude, longitude;
 
