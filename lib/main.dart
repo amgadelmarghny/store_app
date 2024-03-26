@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/modules/address/add_new_address/add_address_view.dart';
+import 'package:store_2/modules/order/order_view.dart';
 import 'package:store_2/modules/cart/my_cart_view.dart';
 import 'package:store_2/modules/category_details/category_details_view.dart';
 import 'package:store_2/modules/login/login_view.dart';
@@ -85,13 +86,14 @@ class StoreAp extends StatelessWidget {
               CategoryDetailsView.id: (context) => const CategoryDetailsView(),
               AddAddressView.id: (BuildContext context) =>
                   const AddAddressView(),
+              OrderView.id: (context) => const OrderView(),
             },
             theme: ThemeStyle.lightTheme(),
             darkTheme: ThemeStyle.darkTheme(),
             themeMode: BlocProvider.of<AppCubit>(context).isDark
                 ? ThemeMode.dark
                 : ThemeMode.light,
-            home: widget,
+            home: widget
           );
         },
       ),
