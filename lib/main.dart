@@ -13,6 +13,7 @@ import 'package:store_2/modules/profile/profile_view.dart';
 import 'package:store_2/modules/profile/update_profile_view.dart';
 import 'package:store_2/modules/register/register_view.dart';
 import 'package:store_2/modules/search/search_view.dart';
+import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:store_2/shared/bloc/bloc_observer.dart';
 import 'package:store_2/shared/bloc/category_cubit/category_cubit.dart';
@@ -53,7 +54,6 @@ class StoreAp extends StatelessWidget {
     }
     return MultiBlocProvider(
       providers: [
-
         BlocProvider(
           create: (context) =>
               AppCubit()..britnessChanged(fromCash: isSharedDark),
@@ -69,33 +69,34 @@ class StoreAp extends StatelessWidget {
             // ..profileModel,
             ),
         BlocProvider(create: (context) => CategoryCubit()),
+        BlocProvider(create: (context) => AddressCubit()..getAddresses()),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
           return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            routes: {
-              OnBoardingView.id: (context) => const OnBoardingView(),
-              LoginView.id: (context) => const LoginView(),
-              RegisterView.id: (context) => const RegisterView(),
-              ShopView.id: (context) => const ShopView(),
-              SearchView.id: (context) => const SearchView(),
-              ProfileView.id: (context) => const ProfileView(),
-              UpadteProfileView.id: (context) => const UpadteProfileView(),
-              ProductView.id: (context) => const ProductView(),
-              MyCartView.id: (context) => const MyCartView(),
-              CategoryDetailsView.id: (context) => const CategoryDetailsView(),
-              AddAddressView.id: (BuildContext context) =>
-                  const AddAddressView(),
-              OrderView.id: (context) => const OrderView(),
-            },
-            theme: ThemeStyle.lightTheme(),
-            darkTheme: ThemeStyle.darkTheme(),
-            themeMode: BlocProvider.of<AppCubit>(context).isDark
-                ? ThemeMode.dark
-                : ThemeMode.light,
-            home: widget
-          );
+              debugShowCheckedModeBanner: false,
+              routes: {
+                OnBoardingView.id: (context) => const OnBoardingView(),
+                LoginView.id: (context) => const LoginView(),
+                RegisterView.id: (context) => const RegisterView(),
+                ShopView.id: (context) => const ShopView(),
+                SearchView.id: (context) => const SearchView(),
+                ProfileView.id: (context) => const ProfileView(),
+                UpadteProfileView.id: (context) => const UpadteProfileView(),
+                ProductView.id: (context) => const ProductView(),
+                MyCartView.id: (context) => const MyCartView(),
+                CategoryDetailsView.id: (context) =>
+                    const CategoryDetailsView(),
+                AddAddressView.id: (BuildContext context) =>
+                    const AddAddressView(),
+                OrderView.id: (context) => const OrderView(),
+              },
+              theme: ThemeStyle.lightTheme(),
+              darkTheme: ThemeStyle.darkTheme(),
+              themeMode: BlocProvider.of<AppCubit>(context).isDark
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
+              home: widget);
         },
       ),
     );

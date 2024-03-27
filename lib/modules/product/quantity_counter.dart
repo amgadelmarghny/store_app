@@ -22,7 +22,7 @@ class _QuantityCounterState extends State<QuantityCounter> {
               setState(() {});
             }
           },
-          icon: const Icon(Icons.remove, color: Colors.grey),
+          icon: Icon(Icons.remove, color: Colors.grey.shade600),
         ),
         Container(
           height: 40,
@@ -30,10 +30,10 @@ class _QuantityCounterState extends State<QuantityCounter> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Theme.of(context).scaffoldBackgroundColor,
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(
-                spreadRadius: 0.5,
-                color: Color(0xFFE2E2E2),
+                spreadRadius: 1,
+                color: Colors.grey.shade400,
               )
             ],
           ),
