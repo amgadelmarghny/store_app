@@ -54,6 +54,7 @@ final class GetFavoritesFailureState extends ShopStates {
 
 //////////////////
 class ShowMoreState extends ShopStates {}
+
 /////////////////
 class CartLoadingState extends ShopStates {}
 
@@ -68,7 +69,7 @@ class CartFailureState extends ShopStates {
   CartFailureState({required this.errMessage});
 }
 
-////////////
+///////////////////////////////////////////////////////////
 class GetCartLoadingState extends ShopStates {}
 
 class GetCartSuccessState extends ShopStates {}
@@ -78,7 +79,17 @@ class GetCartFailureState extends ShopStates {
   GetCartFailureState({required this.errMessage});
 }
 
-//////////////////
+////////////////
+class UpdateCartLoadingState extends ShopStates {}
+
+class UpdateCartSuccessState extends ShopStates {}
+
+class UpdateCartFailureState extends ShopStates {
+  final String errMessage;
+  UpdateCartFailureState({required this.errMessage});
+}
+
+////////////////////////////////////////////////////////////////////
 class ProfileLoadingState extends ShopStates {}
 
 class ProfileSuccessState extends ShopStates {}

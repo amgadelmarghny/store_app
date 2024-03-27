@@ -15,6 +15,7 @@ class AddToCartButton extends StatelessWidget {
 
   final ProductModel productModel;
   final ShopStates state;
+  
 
   @override
   Widget build(BuildContext context) {

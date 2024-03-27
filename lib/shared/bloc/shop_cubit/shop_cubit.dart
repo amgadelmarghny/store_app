@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:store_2/models/get_cart_model.dart';
+import 'package:store_2/models/cart_models/get_cart_model.dart';
+import 'package:store_2/models/cart_models/update_cart.dart';
 import 'package:store_2/modules/categories/categories_body.dart';
 import 'package:store_2/modules/favorite/favorite_body.dart';
 import 'package:store_2/modules/home/home_body.dart';
@@ -251,6 +252,23 @@ class ShopCubit extends Cubit<ShopStates> {
       emit(GetCartSuccessState());
     }).catchError((err) {
       emit(GetCartFailureState(errMessage: err.toString()));
+    });
+  }
+
+  ///////////////////// UPDATE NUM OF ITEMS  IN THE CART ////////////////////////
+  UpdateCartModel? updateCartModel;
+  void updateNumberOfItemInTheCart({
+    required int cartID,
+    required int numberOfItemsInTheCart,
+  }) {
+    emit(UpdateCartLoadingState());
+    DioHelper.putData(url: '$carts/$cartID', token: authToken, data: {
+      'quantity': numberOfItemsInTheCart,
+    }).then((value) {
+      updateCartModel = UpdateCartModel.fromJson(value.data);
+      emit(UpdateCartSuccessState());
+    }).catchError((err) {
+      emit(UpdateCartFailureState(errMessage: err.toString()));
     });
   }
 }
