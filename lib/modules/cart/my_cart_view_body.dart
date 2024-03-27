@@ -12,9 +12,12 @@ class MyCartViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ShopCubit, ShopStates>(
       builder: (context, state) {
-        List<dynamic> cartItemList =
-            BlocProvider.of<ShopCubit>(context).cartModel?.data!.cartItems ??
-                [];
+        List<dynamic> cartItemList = BlocProvider.of<ShopCubit>(context)
+                .cartModel
+                ?.data!
+                .cartItemsList ??
+            [];
+
         if (cartItemList.isEmpty) {
           return const Center(
             child: Column(
@@ -40,6 +43,7 @@ class MyCartViewBody extends StatelessWidget {
             itemBuilder: (context, index) => FavoriteItem(
               isCart: true,
               productModel: cartItemList[index].productModel,
+              cartID: cartItemList[index].id,
             ),
             separatorBuilder: (context, index) => const SizedBox(
               height: 20,

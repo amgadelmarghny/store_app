@@ -15,10 +15,12 @@ class ProductViewBody extends StatelessWidget {
       {super.key,
       required this.productModel,
       required this.fromCart,
-      required this.isSearch});
+      required this.isSearch,
+      required this.cartID});
   final ProductModel productModel;
   final bool fromCart;
   final bool isSearch;
+  final int cartID;
   @override
   Widget build(BuildContext context) {
     PageController pageController = PageController();
@@ -70,6 +72,7 @@ class ProductViewBody extends StatelessWidget {
               productModel: productModel,
               fromCart: fromCart,
               isSearch: isSearch,
+              cartID: cartID,
             ),
             const SizedBox(
               height: 10,
