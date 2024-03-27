@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -241,7 +243,7 @@ class ShopCubit extends Cubit<ShopStates> {
 
   //////////////////////////////// CET CART  PRODUCTS ////////////////////////////
   GetCartModel? cartModel;
-
+  Map<int, int> quantityNumberMap = {};
   void getCartItems() {
     emit(GetCartLoadingState());
     DioHelper.getData(
@@ -249,6 +251,9 @@ class ShopCubit extends Cubit<ShopStates> {
       token: authToken,
     ).then((value) {
       cartModel = GetCartModel.fromJson(value.data);
+      for (var element in cartModel!.data!.cartItemsList) {
+        quantityNumberMap.addAll({element.productModel.id: element.quantity});
+      }
       emit(GetCartSuccessState());
     }).catchError((err) {
       emit(GetCartFailureState(errMessage: err.toString()));
@@ -266,6 +271,7 @@ class ShopCubit extends Cubit<ShopStates> {
       'quantity': numberOfItemsInTheCart,
     }).then((value) {
       updateCartModel = UpdateCartModel.fromJson(value.data);
+      getCartItems();
       emit(UpdateCartSuccessState());
     }).catchError((err) {
       emit(UpdateCartFailureState(errMessage: err.toString()));

@@ -7,10 +7,12 @@ class ProductPriceDetails extends StatelessWidget {
       {super.key,
       required this.productModel,
       required this.fromCart,
-      required this.isSearch});
+      required this.isSearch,
+      required this.cartID});
   final ProductModel productModel;
   final bool fromCart;
   final bool isSearch;
+  final int cartID;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -36,7 +38,11 @@ class ProductPriceDetails extends StatelessWidget {
         const SizedBox(
           width: 20,
         ),
-        if (fromCart) const QuantityCounter(),
+        if (fromCart)
+          QuantityCounter(
+            cartID: cartID,
+            productModel: productModel,
+          ),
       ],
     );
   }

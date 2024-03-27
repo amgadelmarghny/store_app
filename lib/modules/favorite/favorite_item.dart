@@ -11,10 +11,12 @@ class FavoriteItem extends StatelessWidget {
     required this.productModel,
     this.isSearch = false,
     this.isCart = false,
+    this.cartID,
   });
   final bool isSearch;
   final ProductModel productModel;
   final bool isCart;
+  final int? cartID;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class FavoriteItem extends StatelessWidget {
             'productModel': productModel,
             'isCart': isCart,
             'isSearch': isSearch,
+            'cartID': cartID,
           },
         );
       },
