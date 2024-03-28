@@ -38,8 +38,10 @@ class MyCartViewBody extends StatelessWidget {
           return const Center(child: Text('There is an error'));
         }
         return ConditionalBuilder(
-          condition:
-              state is! GetCartLoadingState && state is! CartLoadingState,
+          condition: state is! GetCartLoadingState &&
+              state is! CartLoadingState &&
+              state is! GetCartLoadingState &&
+              state is! CartSussiccState,
           builder: (context) => Column(
             children: [
               Expanded(
@@ -55,13 +57,16 @@ class MyCartViewBody extends StatelessWidget {
                   itemCount: cartItemList.length,
                 ),
               ),
-              MakeOrderButton(
-                total: BlocProvider.of<ShopCubit>(context)
-                    .cartModel!
-                    .data!
-                    .total!
-                    .toInt(),
-                productCoast: cartItemList[0].productModel.price,
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: MakeOrderButton(
+                  total: BlocProvider.of<ShopCubit>(context)
+                      .cartModel!
+                      .data!
+                      .total!
+                      .toInt(),
+                  productCoast: cartItemList[0].productModel.price,
+                ),
               ),
             ],
           ),

@@ -33,12 +33,12 @@ dependencies:
   carousel_slider: ^4.2.1
   conditional_builder_null_safety: ^0.0.6
   cupertino_icons: ^1.0.2
-  dio: ^5.4.0
+  dio: ^5.4.2+1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.5
   fluttertoast: ^8.2.4
-  google_fonts: ^6.1.0
+  google_fonts: ^6.2.1
   modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.2.2
   smooth_page_indicator: ^1.1.0
@@ -46,7 +46,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
 
 dev_dependencies:
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.2
   flutter_test:
     sdk: flutter
 
