@@ -1,8 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_2/modules/favorite/product_image.dart';
 import 'package:store_2/modules/product/product_view.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
+import 'package:store_2/modules/product/quantity_counter.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 
 class FavoriteItem extends StatelessWidget {
@@ -42,36 +43,7 @@ class FavoriteItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Stack(
-              alignment: Alignment.bottomLeft,
-              children: [
-                Container(
-                  width: 150,
-                  height: 150,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: CachedNetworkImage(
-                    imageUrl: productModel.image,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                if (!isSearch)
-                  if (productModel.discount != 0)
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      decoration: BoxDecoration(
-                        color: Colors.red[300],
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Text(
-                        'DISCOUND',
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                    )
-              ],
-            ),
+            ProductImageFavItem(productModel: productModel, isSearch: isSearch),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
@@ -88,13 +60,22 @@ class FavoriteItem extends StatelessWidget {
                           .copyWith(height: 1, color: Colors.black),
                     ),
                     const SizedBox(height: 3),
-                    Text(
-                      productModel.description!,
-                      maxLines: 4,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          color: Colors.grey, fontSize: 15, height: 1),
-                    ),
+                    if (!isCart)
+                      Text(
+                        productModel.description!,
+                        maxLines: 4,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            color: Colors.grey, fontSize: 15, height: 1),
+                      )
+                    else if (cartID != null)
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          QuantityCounter(
+                              cartID: cartID!, productModel: productModel),
+                        ],
+                      ),
                     const Spacer(),
                     BlocBuilder<ShopCubit, ShopStates>(
                       builder: (context, state) {

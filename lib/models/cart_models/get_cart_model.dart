@@ -20,8 +20,10 @@ class GetCartModel {
 }
 
 class Data {
+  dynamic total;
   List cartItemsList = [];
   Data.fromJson(Map<String, dynamic> json) {
+    total = json['total'];
     for (var element in json['cart_items']) {
       cartItemsList.add(CartItem.fromJson(element));
     }

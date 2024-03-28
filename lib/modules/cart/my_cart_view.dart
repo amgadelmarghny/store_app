@@ -12,7 +12,7 @@ class MyCartView extends StatelessWidget {
         title: const Text('My Cart'),
       ),
       body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: MyCartViewBody(),
       ),
     );

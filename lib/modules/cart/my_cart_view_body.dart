@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_2/modules/cart/make_order_button.dart';
 import 'package:store_2/modules/favorite/favorite_item.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/style/colors.dart';
@@ -39,16 +40,30 @@ class MyCartViewBody extends StatelessWidget {
         return ConditionalBuilder(
           condition:
               state is! GetCartLoadingState && state is! CartLoadingState,
-          builder: (context) => ListView.separated(
-            itemBuilder: (context, index) => FavoriteItem(
-              isCart: true,
-              productModel: cartItemList[index].productModel,
-              cartID: cartItemList[index].id,
-            ),
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 20,
-            ),
-            itemCount: cartItemList.length,
+          builder: (context) => Column(
+            children: [
+              Expanded(
+                child: ListView.separated(
+                  itemBuilder: (context, index) => FavoriteItem(
+                    isCart: true,
+                    productModel: cartItemList[index].productModel,
+                    cartID: cartItemList[index].id,
+                  ),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    height: 20,
+                  ),
+                  itemCount: cartItemList.length,
+                ),
+              ),
+              MakeOrderButton(
+                total: BlocProvider.of<ShopCubit>(context)
+                    .cartModel!
+                    .data!
+                    .total!
+                    .toInt(),
+                productCoast: cartItemList[0].productModel.price,
+              ),
+            ],
           ),
           fallback: (context) => const Center(
             child: CircularProgressIndicator(
