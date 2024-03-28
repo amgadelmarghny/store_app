@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:store_2/shared/components/custom_buttomt.dart';
 
 class OrderSheet extends StatelessWidget {
   const OrderSheet({
@@ -9,13 +12,13 @@ class OrderSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: const EdgeInsets.only(top: 10),
               height: 4,
               width: 35,
               decoration: BoxDecoration(
@@ -29,19 +32,13 @@ class OrderSheet extends StatelessWidget {
           onTap: () {},
           trailing: const Icon(Icons.arrow_forward_ios),
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        const Divider(),
         ListTile(
           title: const Text('Address'),
           onTap: () {},
           trailing: const Icon(Icons.arrow_forward_ios),
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        const Divider(),
         ListTile(
           title: const Text('Total Coast'),
           onTap: () {},
@@ -60,6 +57,35 @@ class OrderSheet extends StatelessWidget {
               ),
             ],
           ),
+        ),
+        const Divider(),
+        Text(
+          'By placing an order you agree to our',
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                fontSize: 14,
+                color: Colors.grey,
+                fontFamily: '',
+                fontWeight: FontWeight.normal,
+              ),
+        ),
+        Row(
+          children: [
+            TextButton(onPressed: () {}, child: const Text('Terms')),
+            Text(
+              'and',
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    fontFamily: '',
+                    fontWeight: FontWeight.normal,
+                  ),
+            ),
+            TextButton(onPressed: () {}, child: const Text('Conditions')),
+          ],
+        ),
+        const SizedBox(height: 20),
+        const CustomButton(
+          text: 'Place Order',
         ),
       ],
     );

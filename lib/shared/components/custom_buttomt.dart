@@ -8,7 +8,7 @@ class CustomButton extends StatelessWidget {
     this.isLoading = false,
     required this.text,
     this.isAuth = false,
-    this.color,
+    this.color = defaultColor,
     this.prefixIcon = false,
   });
   final void Function()? onTap;

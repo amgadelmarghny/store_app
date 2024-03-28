@@ -41,8 +41,11 @@ class MakeOrderButton extends StatelessWidget {
                         topRight: Radius.circular(30),
                       ),
                     ),
-                    builder: (context) => OrderSheet(
-                      total: total,
+                    builder: (context) => Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: OrderSheet(
+                        total: total,
+                      ),
                     ),
                   );
                 }

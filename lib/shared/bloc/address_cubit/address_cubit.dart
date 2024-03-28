@@ -47,13 +47,16 @@ class AddressCubit extends Cubit<AddressState> {
   late GetAddressesModel getAddressesModel;
   void getAddresses() {
     emit(GetAddressLoading());
-    DioHelper.getData(url: addresses).then((value) {
-      getAddressesModel = GetAddressesModel.fromJson(value.data);
-      emit(GetAddressSuccess(getAddressesModel: getAddressesModel));
-    }).catchError((err) {
-      emit(GetAddressFaluir(error: err));
-    });
+    try {
+      DioHelper.getData(url: addresses).then((value) {
+        getAddressesModel = GetAddressesModel.fromJson(value.data);
+        emit(GetAddressSuccess(getAddressesModel: getAddressesModel));
+      }).catchError((err) {
+        emit(GetAddressFaluir(error: err));
+      });
+    } on Exception catch (err) {
+      emit(GetAddressFaluir(error: err.toString()));
+    }
   }
   //////////////////////////! Add Order //////////////////////////
-  
 }
