@@ -78,7 +78,7 @@ Form loginFormInput(
             }
           },
           // to make button color gradient
-          isAuth: true,
+          isGradientColor: true,
         ),
         const SizedBox(
           height: 30,

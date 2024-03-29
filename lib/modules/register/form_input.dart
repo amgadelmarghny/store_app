@@ -88,7 +88,7 @@ Form registerFormInput(
             }
           },
           // to make button color gradient
-          isAuth: true,
+          isGradientColor: true,
         ),
         const SizedBox(
           height: 20,

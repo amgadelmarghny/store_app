@@ -19,15 +19,15 @@ class AddressCubit extends Cubit<AddressState> {
 
   ////////////////////////////////! ADD NEW ADDRESS //////////////////////
   late NewAddressModel newAddressModel;
-  void addNewAddress({
+  Future addNewAddress({
     required String name,
     required String city,
     required String region,
     required String details,
     required String? notes,
-  }) {
+  }) async {
     emit(AddressLoading());
-    DioHelper.postData(token: authToken, url: addresses, data: {
+    return await DioHelper.postData(token: authToken, url: addresses, data: {
       'name': name,
       'city': city,
       'region': region,
@@ -37,6 +37,7 @@ class AddressCubit extends Cubit<AddressState> {
       'longitude': '31.3260088',
     }).then((value) {
       newAddressModel = NewAddressModel.fromJson(value.data);
+      getAddresses();
       emit(AddressSuccess(newAddressModel: newAddressModel));
     }).catchError((err) {
       emit(AddressFaluir(error: err.toString()));

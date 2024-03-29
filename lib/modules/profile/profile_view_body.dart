@@ -65,7 +65,7 @@ class ProfileViewBody extends StatelessWidget {
                       arguments: userData);
                 },
                 child: Text(
-                  'Update your profile',
+                  'Modify your profile',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         decoration: TextDecoration.underline,
                         decorationColor: defaultColor,

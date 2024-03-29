@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:store_2/shared/components/custom_buttomt.dart';
 
 class OrderSheet extends StatelessWidget {

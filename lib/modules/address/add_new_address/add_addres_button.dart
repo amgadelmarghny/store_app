@@ -33,13 +33,15 @@ class AddAddressButton extends StatelessWidget {
         text: 'Add new address',
         onTap: () {
           if (formKey.currentState!.validate()) {
-            BlocProvider.of<AddressCubit>(context).addNewAddress(
-              name: nameContoller.text,
-              city: cityContoller.text,
-              region: regionContoller.text,
-              details: detailsContoller.text,
-              notes: notesContoller.text,
-            );
+            BlocProvider.of<AddressCubit>(context)
+                .addNewAddress(
+                  name: nameContoller.text,
+                  city: cityContoller.text,
+                  region: regionContoller.text,
+                  details: detailsContoller.text,
+                  notes: notesContoller.text,
+                )
+                .then((value) => Navigator.pop(context));
           } else {
             BlocProvider.of<AddressCubit>(context).validateObserver();
           }

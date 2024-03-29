@@ -97,8 +97,7 @@ class UpadteProfileViewBody extends StatelessWidget {
                       height: 15,
                     ),
                     CustomButton(
-                      isAuth: true,
-                      text: 'UPDATE',
+                      text: 'MODIFY',
                       onTap: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();

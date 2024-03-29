@@ -7,14 +7,14 @@ class CustomButton extends StatelessWidget {
     this.onTap,
     this.isLoading = false,
     required this.text,
-    this.isAuth = false,
+    this.isGradientColor = false,
     this.color = defaultColor,
     this.prefixIcon = false,
   });
   final void Function()? onTap;
   final bool isLoading;
   final String text;
-  final bool isAuth;
+  final bool isGradientColor;
   final Color? color;
   final bool prefixIcon;
   @override
@@ -26,7 +26,7 @@ class CustomButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           color: color,
-          gradient: isAuth
+          gradient: isGradientColor
               ? LinearGradient(
                   colors: [
                     defaultColor[600]!,

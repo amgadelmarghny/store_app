@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
@@ -15,7 +14,6 @@ class AddToCartButton extends StatelessWidget {
 
   final ProductModel productModel;
   final ShopStates state;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,6 @@ class AddToCartButton extends StatelessWidget {
       prefixIcon: BlocProvider.of<ShopCubit>(context)
           .inCartProductsMap[productModel.id]!,
       isLoading: state is CartLoadingState,
-      color: defaultColor[300]!,
       text: BlocProvider.of<ShopCubit>(context)
               .inCartProductsMap[productModel.id]!
           ? 'Remove from Cart'

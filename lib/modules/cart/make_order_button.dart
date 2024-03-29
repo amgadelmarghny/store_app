@@ -4,7 +4,6 @@ import 'package:store_2/modules/address/add_new_address/add_address_view.dart';
 import 'package:store_2/modules/cart/order_sheet.dart';
 import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:store_2/shared/components/custom_buttomt.dart';
-import 'package:store_2/shared/style/colors.dart';
 
 class MakeOrderButton extends StatelessWidget {
   const MakeOrderButton({
@@ -22,7 +21,6 @@ class MakeOrderButton extends StatelessWidget {
         return Stack(
           children: [
             CustomButton(
-              color: defaultColor[600]!,
               text: 'Make Order',
               onTap: () {
                 if (BlocProvider.of<AddressCubit>(context)
