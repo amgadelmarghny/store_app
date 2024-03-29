@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_2/modules/address/get_address/addresses_view.dart';
 import 'package:store_2/shared/components/custom_buttomt.dart';
 
 class OrderSheet extends StatelessWidget {
@@ -7,6 +8,7 @@ class OrderSheet extends StatelessWidget {
     this.total,
   });
   final dynamic total;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,7 +35,9 @@ class OrderSheet extends StatelessWidget {
         const Divider(),
         ListTile(
           title: const Text('Address'),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(AddressesView.id);
+          },
           trailing: const Icon(Icons.arrow_forward_ios),
         ),
         const Divider(),
@@ -60,9 +64,10 @@ class OrderSheet extends StatelessWidget {
         Text(
           'By placing an order you agree to our',
           style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                fontSize: 14,
+                fontSize: 15,
                 color: Colors.grey,
                 fontFamily: '',
+                height: 0,
                 fontWeight: FontWeight.normal,
               ),
         ),
@@ -72,7 +77,7 @@ class OrderSheet extends StatelessWidget {
             Text(
               'and',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    fontSize: 14,
+                    fontSize: 15,
                     color: Colors.grey,
                     fontFamily: '',
                     fontWeight: FontWeight.normal,
