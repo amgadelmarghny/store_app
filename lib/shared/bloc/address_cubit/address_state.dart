@@ -33,3 +33,12 @@ final class GetAddressFaluir extends AddressState {
   final String error;
   GetAddressFaluir({required this.error});
 }
+
+final class UpdateAddressLoading extends AddressState {}
+
+final class UpdateAddressSuccess extends AddressState {}
+
+final class UpdateAddressFaluir extends AddressState {
+  final String error;
+  UpdateAddressFaluir({required this.error});
+}

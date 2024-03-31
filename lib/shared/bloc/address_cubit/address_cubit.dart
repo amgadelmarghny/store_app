@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:store_2/models/address_models/address_model.dart';
 import 'package:store_2/models/address_models/get_address_model.dart';
 import 'package:store_2/models/address_models/new_address_model.dart';
+import 'package:store_2/models/address_models/update_address_model.dart';
 import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
@@ -62,5 +64,32 @@ class AddressCubit extends Cubit<AddressState> {
       emit(GetAddressFaluir(error: err));
     });
   }
-  //////////////////////////! Add Order //////////////////////////
+
+  //////////////////////////! UPDATE ADDRESS /////////////////////////////
+  late UpdateAddressModel updateAddressModel;
+
+  Future updateAddress({
+    required int id,
+    required String name,
+    required String city,
+    required String region,
+    required String details,
+    required String? notes,
+  }) async {
+    emit(UpdateAddressLoading());
+    return await DioHelper.putData(url: '$addresses/$id', data: {
+      'name': name,
+      'city': city,
+      'region': region,
+      'details': details,
+      'notes': notes,
+      'latitude': '30.0616863',
+      'longitude': '31.3260088',
+    }).then((value) {
+      updateAddressModel = UpdateAddressModel.fromJson(value.data);
+      emit(UpdateAddressSuccess());
+    }).catchError((err) {
+      emit(UpdateAddressFaluir(error: err.toString()));
+    });
+  }
 }
