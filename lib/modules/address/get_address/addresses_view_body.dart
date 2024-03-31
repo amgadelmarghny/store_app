@@ -28,7 +28,7 @@ class AddressesViewBody extends StatelessWidget {
         Row(
           children: [
             const SizedBox(width: 20),
-            const Text('Total Addresses'),
+            const Text('Total Addresses :'),
             const Spacer(),
             Text(BlocProvider.of<AddressCubit>(context)
                 .getAddressesModel

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/modules/cart/my_cart_view.dart';
 import 'package:store_2/modules/login/login_view.dart';
 import 'package:store_2/modules/profile/profile_view.dart';
-import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/avatar_pic.dart';
@@ -56,7 +55,7 @@ class DrawerMenu extends StatelessWidget {
               leading: const Icon(Icons.shopping_cart_outlined),
               title: const Text('My Cart'),
               onTap: () {
-                AddressCubit().getAddresses();
+                //AddressCubit().getAddresses();
                 Navigator.pushNamed(context, MyCartView.id);
               },
               trailing: const Icon(Icons.arrow_forward_ios),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:popover/popover.dart';
 import 'package:store_2/models/address_models/address_model.dart';
+import 'package:store_2/modules/address/get_address/menu_items.dart';
 import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:store_2/shared/style/colors.dart';
 
 class AddressItem extends StatefulWidget {
   const AddressItem({
@@ -43,7 +46,17 @@ class _AddressItemState extends State<AddressItem> {
           title: Text(widget.addressModel.name),
           subtitle: Text(
               '${widget.addressModel.city}, ${widget.addressModel.region}'),
-          onTap: () {},
+          onTap: () {
+            showPopover(
+              backgroundColor: defaultColor[300]!,
+              context: context,
+              bodyBuilder: (context) => MenuItems(
+                addressModelID: widget.addressModel.id,
+              ),
+              width: 250,
+              height: 100,
+            );
+          },
           trailing: const Icon(Icons.arrow_forward_ios),
         );
       },
