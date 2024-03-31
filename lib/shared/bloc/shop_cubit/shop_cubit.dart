@@ -183,7 +183,7 @@ class ShopCubit extends Cubit<ShopStates> {
   }
 
 /////////////////////////////////// GET PROFILE INFO ///////////////////////////
-  late ProfileModel profileModel;
+   ProfileModel? profileModel;
 
   void getProfileInfo() {
     emit(ProfileLoadingState());

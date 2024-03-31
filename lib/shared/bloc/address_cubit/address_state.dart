@@ -19,6 +19,8 @@ final class AddressFaluir extends AddressState {
   AddressFaluir({required this.error});
 }
 
+final class CheckSetState extends AddressState {}
+
 final class GetAddressLoading extends AddressState {}
 
 final class GetAddressSuccess extends AddressState {

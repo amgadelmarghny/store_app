@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:store_2/models/address_models/address_model.dart';
 import 'package:store_2/models/address_models/get_address_model.dart';
 import 'package:store_2/models/address_models/new_address_model.dart';
 import 'package:store_2/shared/components/constants.dart';
@@ -44,20 +45,22 @@ class AddressCubit extends Cubit<AddressState> {
     });
   }
 
+  bool? isChecked;
+  void checkSetState() {
+    emit(CheckSetState());
+  }
+
   //////////////////////////////! GET ADDRESSES //////////////////////////
+  AddressModel? addressModel;
   late GetAddressesModel getAddressesModel;
   void getAddresses() {
     emit(GetAddressLoading());
-    try {
-      DioHelper.getData(url: addresses).then((value) {
-        getAddressesModel = GetAddressesModel.fromJson(value.data);
-        emit(GetAddressSuccess(getAddressesModel: getAddressesModel));
-      }).catchError((err) {
-        emit(GetAddressFaluir(error: err));
-      });
-    } on Exception catch (err) {
-      emit(GetAddressFaluir(error: err.toString()));
-    }
+    DioHelper.getData(url: addresses, token: authToken).then((value) {
+      getAddressesModel = GetAddressesModel.fromJson(value.data);
+      emit(GetAddressSuccess(getAddressesModel: getAddressesModel));
+    }).catchError((err) {
+      emit(GetAddressFaluir(error: err));
+    });
   }
   //////////////////////////! Add Order //////////////////////////
 }

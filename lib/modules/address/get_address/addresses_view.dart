@@ -11,7 +11,7 @@ class AddressesView extends StatelessWidget {
         title: const Text('Address'),
       ),
       body: const Padding(
-        padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+        padding: EdgeInsets.only(top: 20, bottom: 20),
         child: AddressesViewBody(),
       ),
     );
