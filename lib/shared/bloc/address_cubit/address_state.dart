@@ -42,3 +42,12 @@ final class UpdateAddressFaluir extends AddressState {
   final String error;
   UpdateAddressFaluir({required this.error});
 }
+
+final class DeleteAddressLoading extends AddressState {}
+
+final class DeleteAddressSuccess extends AddressState {}
+
+final class DeleteAddressFaluir extends AddressState {
+  final String error;
+  DeleteAddressFaluir({required this.error});
+}

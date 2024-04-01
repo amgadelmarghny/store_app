@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:store_2/models/address_models/address_model.dart';
 import 'package:store_2/models/address_models/get_address_model.dart';
@@ -69,7 +68,7 @@ class AddressCubit extends Cubit<AddressState> {
   late UpdateAddressModel updateAddressModel;
 
   Future updateAddress({
-    required int id,
+    required int addressId,
     required String name,
     required String city,
     required String region,
@@ -77,19 +76,38 @@ class AddressCubit extends Cubit<AddressState> {
     required String? notes,
   }) async {
     emit(UpdateAddressLoading());
-    return await DioHelper.putData(url: '$addresses/$id', data: {
-      'name': name,
-      'city': city,
-      'region': region,
-      'details': details,
-      'notes': notes,
-      'latitude': '30.0616863',
-      'longitude': '31.3260088',
-    }).then((value) {
+    return await DioHelper.putData(
+        url: '$addresses/$addressId',
+        token: authToken,
+        data: {
+          'name': name,
+          'city': city,
+          'region': region,
+          'details': details,
+          'notes': notes,
+          'latitude': '30.0616863',
+          'longitude': '31.3260088',
+        }).then((value) {
       updateAddressModel = UpdateAddressModel.fromJson(value.data);
+      getAddresses();
       emit(UpdateAddressSuccess());
     }).catchError((err) {
       emit(UpdateAddressFaluir(error: err.toString()));
+    });
+  }
+
+  //////////////////////////! DELETE ADDRESS /////////////////////////////
+  late UpdateAddressModel deleteAddressModel;
+  Future deleteAddress({required int addressId}) async {
+    emit(DeleteAddressLoading());
+    return await DioHelper.deleteData(
+            url: "$addresses/$addressId", token: authToken)
+        .then((value) {
+      deleteAddressModel = UpdateAddressModel.fromJson(value.data);
+      getAddresses();
+      emit(DeleteAddressSuccess());
+    }).catchError((err) {
+      emit(DeleteAddressFaluir(error: err.toString()));
     });
   }
 }

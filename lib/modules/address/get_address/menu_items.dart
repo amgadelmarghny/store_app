@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class MenuItems extends StatelessWidget {
@@ -13,19 +15,38 @@ class MenuItems extends StatelessWidget {
           height: 50,
           minWidth: 250,
           color: defaultColor[300],
-          child: const Text(
-            'Modify',
-            style: TextStyle(fontSize: 20),
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.edit_note_sharp),
+              Text(
+                'Modify',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
           ),
         ),
         MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            BlocProvider.of<AddressCubit>(context)
+                .deleteAddress(addressId: addressModelID)
+                .then((value) => Navigator.pop(context));
+          },
           height: 50,
           minWidth: 250,
           color: defaultColor[200],
-          child: const Text(
-            'Delete',
-            style: TextStyle(fontSize: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.delete_outline,
+                color: Colors.red.shade700,
+              ),
+              const Text(
+                'Delete',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
           ),
         ),
       ],
