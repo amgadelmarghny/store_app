@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/modules/register/register_view_body.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
@@ -12,13 +11,20 @@ class RegisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AuthCubit(),
-      child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 0,
-          systemOverlayStyle:
-              const SystemUiOverlayStyle(statusBarColor: defaultColor),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              defaultColor[600]!,
+              defaultColor[200]!,
+            ],
+            begin: Alignment.centerRight,
+            end: Alignment.centerLeft,
+          ),
         ),
-        body: const RegisterViewBody(),
+        child: const Scaffold(
+          body: RegisterViewBody(),
+        ),
       ),
     );
   }

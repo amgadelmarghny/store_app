@@ -55,7 +55,6 @@ class DrawerMenu extends StatelessWidget {
               leading: const Icon(Icons.shopping_cart_outlined),
               title: const Text('My Cart'),
               onTap: () {
-                //AddressCubit().getAddresses();
                 Navigator.pushNamed(context, MyCartView.id);
               },
               trailing: const Icon(Icons.arrow_forward_ios),

@@ -15,6 +15,15 @@ class OrderSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AddressCubit, AddressState>(
       builder: (context, state) {
+        // this condition added to delete the address in cubit
+        //  when no addresses available in list (app run state).
+        if (BlocProvider.of<AddressCubit>(context)
+            .getAddressesModel
+            .data!
+            .addressModelsList
+            .isEmpty) {
+          BlocProvider.of<AddressCubit>(context).addressModel = null;
+        }
         return Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,21 +54,29 @@ class OrderSheet extends StatelessWidget {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    BlocProvider.of<AddressCubit>(context).addressModel != null
-                        ? BlocProvider.of<AddressCubit>(context)
-                            .addressModel!
-                            .name
-                        : BlocProvider.of<AddressCubit>(context)
-                            .getAddressesModel
-                            .data!
-                            .addressModelsList[0]
-                            .name,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall!
-                        .copyWith(fontSize: 18),
-                  ),
+                  // this condition added to delete the address neme
+                  // if addresses empty
+                  if (BlocProvider.of<AddressCubit>(context)
+                      .getAddressesModel
+                      .data!
+                      .addressModelsList
+                      .isNotEmpty)
+                    Text(
+                      BlocProvider.of<AddressCubit>(context).addressModel !=
+                              null
+                          ? BlocProvider.of<AddressCubit>(context)
+                              .addressModel!
+                              .name
+                          : BlocProvider.of<AddressCubit>(context)
+                              .getAddressesModel
+                              .data!
+                              .addressModelsList[0]
+                              .name,
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleSmall!
+                          .copyWith(fontSize: 18),
+                    ),
                   const Icon(Icons.arrow_forward_ios)
                 ],
               ),

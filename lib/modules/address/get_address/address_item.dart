@@ -32,32 +32,36 @@ class _AddressItemState extends State<AddressItem> {
           }
         }
         return ListTile(
-          leading: Checkbox(
-            value: isChecked,
-            onChanged: (value) {
-              setState(() {
-                isChecked = value;
-                addressCubit.isChecked = isChecked;
-                addressCubit.addressModel = widget.addressModel;
-                addressCubit.checkSetState();
-              });
-            },
-          ),
+          leading: addressCubit.getAddressesModel.data!.total! > 1
+              ? Checkbox(
+                  value: isChecked,
+                  onChanged: (value) {
+                    setState(() {
+                      isChecked = value;
+                      addressCubit.isChecked = isChecked;
+                      addressCubit.addressModel = widget.addressModel;
+                      addressCubit.checkSetState();
+                    });
+                  },
+                )
+              : null,
           title: Text(widget.addressModel.name),
           subtitle: Text(
               '${widget.addressModel.city}, ${widget.addressModel.region}'),
-          onTap: () {
-            showPopover(
-              backgroundColor: defaultColor[300]!,
-              context: context,
-              bodyBuilder: (context) => MenuItems(
-                addressModelID: widget.addressModel.id,
-              ),
-              width: 250,
-              height: 100,
-            );
-          },
-          trailing: const Icon(Icons.arrow_forward_ios),
+          trailing: IconButton(
+            onPressed: () {
+              showPopover(
+                backgroundColor: defaultColor[300]!,
+                context: context,
+                bodyBuilder: (context) => MenuItems(
+                  addressModelID: widget.addressModel.id,
+                ),
+                width: MediaQuery.sizeOf(context).width / 1.5,
+                height: 100,
+              );
+            },
+            icon: const Icon(Icons.more_vert),
+          ),
         );
       },
     );

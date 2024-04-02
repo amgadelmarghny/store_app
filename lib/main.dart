@@ -19,7 +19,6 @@ import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:store_2/shared/bloc/bloc_observer.dart';
 import 'package:store_2/shared/bloc/category_cubit/category_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -41,11 +40,11 @@ class StoreAp extends StatelessWidget {
     bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
     bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
 
-    log('token : $authToken');
+    log('token : $CashHelper.getData(key: tOKENCONST)');
 
     late Widget widget;
     if (isBoarding != null) {
-      if (authToken != null) {
+      if (CashHelper.getData(key: tOKENCONST) != null) {
         widget = const ShopView();
       } else {
         widget = const LoginView();
@@ -67,7 +66,7 @@ class StoreAp extends StatelessWidget {
               ..getProfileInfo()
               ..getCartItems()
             // ..homeModel
-            // ..profileModel,
+            //..profileModel,
             ),
         BlocProvider(create: (context) => CategoryCubit()),
         BlocProvider<AddressCubit>(

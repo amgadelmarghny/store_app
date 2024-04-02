@@ -11,7 +11,6 @@ import 'package:store_2/models/get_favorites_model.dart';
 import 'package:store_2/models/logout_model.dart';
 import 'package:store_2/models/profile_model.dart';
 import 'package:store_2/models/shope_models/home_model.dart';
-import 'package:store_2/shared/components/constants.dart';
 import 'package:store_2/shared/components/navigation.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
@@ -111,7 +110,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(GetHomeDataLoadingState());
     DioHelper.getData(
       url: 'home',
-      token: authToken,
+      token: CashHelper.getData(key: tOKENCONST),
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
       for (var element in homeModel!.data!.productsList) {
@@ -150,7 +149,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(FavoriteLoadingState());
     DioHelper.postData(
       url: favCONST,
-      token: authToken,
+      token: CashHelper.getData(key: tOKENCONST),
       data: {"product_id": id},
     ).then((value) {
       changedFavoriteModel = ChangedFavoriteModel.fromJson(value.data);
@@ -173,7 +172,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(GetFavoritesLoadingState());
     DioHelper.getData(
       url: favCONST,
-      token: authToken,
+      token: CashHelper.getData(key: tOKENCONST),
     ).then((value) {
       favoritesModel = GetFavoritesModel.fromJson(value.data);
       emit(GetFavoritesSuccess());
@@ -183,13 +182,13 @@ class ShopCubit extends Cubit<ShopStates> {
   }
 
 /////////////////////////////////// GET PROFILE INFO ///////////////////////////
-   ProfileModel? profileModel;
+  ProfileModel? profileModel;
 
-  void getProfileInfo() {
+  Future getProfileInfo() async {
     emit(ProfileLoadingState());
-    DioHelper.getData(
+    await DioHelper.getData(
       url: profile,
-      token: authToken,
+      token: CashHelper.getData(key: tOKENCONST),
     ).then((value) {
       profileModel = ProfileModel.fromJson(value.data);
       emit(ProfileSuccessState());
@@ -201,7 +200,8 @@ class ShopCubit extends Cubit<ShopStates> {
 ////////////////////////////////////// LOGOUT //////////////////////////////////
   void userLogout(BuildContext context, {required String routName}) async {
     emit(LogoutLoadingState());
-    return await DioHelper.postData(url: logout, token: authToken)
+    return await DioHelper.postData(
+            url: logout, token: CashHelper.getData(key: tOKENCONST))
         .then((value) {
       Navigator.pop(context);
       Navigator.pop(context);
@@ -228,7 +228,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(CartLoadingState());
     DioHelper.postData(
       url: carts,
-      token: authToken,
+      token: CashHelper.getData(key: tOKENCONST),
       data: {"product_id": productId},
     ).then((value) {
       changedCartModel = ChangedFavoriteModel.fromJson(value.data);
@@ -246,7 +246,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(GetCartLoadingState());
     DioHelper.getData(
       url: carts,
-      token: authToken,
+      token: CashHelper.getData(key: tOKENCONST),
     ).then((value) {
       cartModel = GetCartModel.fromJson(value.data);
       for (var element in cartModel!.data!.cartItemsList) {
@@ -265,9 +265,12 @@ class ShopCubit extends Cubit<ShopStates> {
     required int numberOfItemsInTheCart,
   }) {
     emit(UpdateCartLoadingState());
-    DioHelper.putData(url: '$carts/$cartID', token: authToken, data: {
-      'quantity': numberOfItemsInTheCart,
-    }).then((value) {
+    DioHelper.putData(
+        url: '$carts/$cartID',
+        token: CashHelper.getData(key: tOKENCONST),
+        data: {
+          'quantity': numberOfItemsInTheCart,
+        }).then((value) {
       updateCartModel = UpdateCartModel.fromJson(value.data);
       getCartItems();
       emit(UpdateCartSuccessState());
