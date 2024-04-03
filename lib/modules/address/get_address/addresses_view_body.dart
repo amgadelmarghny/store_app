@@ -62,7 +62,7 @@ class AddressesViewBody extends StatelessWidget {
                       const Spacer(),
                       Text(
                           '(${BlocProvider.of<AddressCubit>(context).getAddressesModel.data!.total.toString()})'),
-                      const SizedBox(width: 30),
+                      const SizedBox(width: 20),
                     ],
                   ),
                   const SizedBox(height: 20),
