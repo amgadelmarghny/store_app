@@ -21,8 +21,8 @@ class UpdateAddressDataModel {
   dynamic region;
   dynamic details;
   dynamic notes;
-  double? latitude;
-  double? longitude;
+  dynamic latitude;
+  dynamic longitude;
 
   UpdateAddressDataModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

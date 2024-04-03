@@ -27,7 +27,7 @@ class _AddressItemState extends State<AddressItem> {
       builder: (context, state) {
         AddressCubit addressCubit = BlocProvider.of<AddressCubit>(context);
         if (addressCubit.addressModel != null) {
-          if (addressCubit.addressModel!.id == widget.addressModel.id) {
+          if (addressCubit.addressModel! == widget.addressModel) {
             isChecked = addressCubit.isChecked;
           }
         }
@@ -54,7 +54,7 @@ class _AddressItemState extends State<AddressItem> {
                 backgroundColor: defaultColor[300]!,
                 context: context,
                 bodyBuilder: (context) => MenuItems(
-                  addressModelID: widget.addressModel.id,
+                  addressModel: widget.addressModel,
                 ),
                 width: MediaQuery.sizeOf(context).width / 1.5,
                 height: 100,

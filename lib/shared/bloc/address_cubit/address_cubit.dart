@@ -96,9 +96,7 @@ class AddressCubit extends Cubit<AddressState> {
         }).then((value) {
       updateAddressModel = UpdateAddressModel.fromJson(value.data);
       getAddresses();
-      emit(UpdateAddressSuccess());
-    }).catchError((err) {
-      emit(UpdateAddressFaluir(error: err.toString()));
+      emit(UpdateAddressSuccess(updateAddressModel: updateAddressModel));
     });
   }
 

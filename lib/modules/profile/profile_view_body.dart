@@ -61,7 +61,7 @@ class ProfileViewBody extends StatelessWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, UpadteProfileView.id,
+                  Navigator.pushNamed(context, UpdateProfileView.id,
                       arguments: userData);
                 },
                 child: Text(

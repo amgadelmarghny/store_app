@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/modules/address/add_new_address/add_address_view.dart';
 import 'package:store_2/modules/address/get_address/addresses_view.dart';
+import 'package:store_2/modules/address/modify_address/update_address_view.dart';
 import 'package:store_2/modules/order/order_view.dart';
 import 'package:store_2/modules/cart/my_cart_view.dart';
 import 'package:store_2/modules/category_details/category_details_view.dart';
@@ -40,7 +41,7 @@ class StoreAp extends StatelessWidget {
     bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
     bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
 
-    log('token : $CashHelper.getData(key: tOKENCONST)');
+    log('token : ${CashHelper.getData(key: tOKENCONST)}');
 
     late Widget widget;
     if (isBoarding != null) {
@@ -83,7 +84,7 @@ class StoreAp extends StatelessWidget {
                 ShopView.id: (context) => const ShopView(),
                 SearchView.id: (context) => const SearchView(),
                 ProfileView.id: (context) => const ProfileView(),
-                UpadteProfileView.id: (context) => const UpadteProfileView(),
+                UpdateProfileView.id: (context) => const UpdateProfileView(),
                 ProductView.id: (context) => const ProductView(),
                 MyCartView.id: (context) => const MyCartView(),
                 CategoryDetailsView.id: (context) =>
@@ -93,6 +94,7 @@ class StoreAp extends StatelessWidget {
                 AddressesView.id: (BuildContext context) =>
                     const AddressesView(),
                 OrderView.id: (context) => const OrderView(),
+                UpdateAddressView.id: (context) => const UpdateAddressView(),
               },
               theme: ThemeStyle.lightTheme(),
               darkTheme: ThemeStyle.darkTheme(),

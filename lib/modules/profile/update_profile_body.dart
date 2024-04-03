@@ -10,8 +10,8 @@ import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
 import 'package:store_2/shared/style/colors.dart';
 
-class UpadteProfileViewBody extends StatelessWidget {
-  const UpadteProfileViewBody({super.key, required this.userModel});
+class UpdateProfileViewBody extends StatelessWidget {
+  const UpdateProfileViewBody({super.key, required this.userModel});
   final UserModel userModel;
 
   @override
