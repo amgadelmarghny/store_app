@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:store_2/models/cart_models/get_cart_model.dart';
 import 'package:store_2/models/cart_models/update_cart.dart';
+import 'package:store_2/models/shope_models/product_model.dart';
 import 'package:store_2/modules/categories/categories_body.dart';
 import 'package:store_2/modules/favorite/favorite_body.dart';
 import 'package:store_2/modules/home/home_body.dart';
@@ -242,6 +243,7 @@ class ShopCubit extends Cubit<ShopStates> {
   //////////////////////////////// CET CART  PRODUCTS ////////////////////////////
   GetCartModel? cartModel;
   Map<int, int> quantityNumberMap = {};
+   ProductModel? productCheck;
   void getCartItems() {
     emit(GetCartLoadingState());
     DioHelper.getData(

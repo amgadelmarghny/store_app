@@ -15,64 +15,82 @@ class QuantityCounter extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ShopCubit, ShopStates>(
       builder: (context, state) {
-        int quantityNumber = BlocProvider.of<ShopCubit>(context)
-            .quantityNumberMap[productModel.id]!;
+        ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
+        int quantityNumber = shopCubit.quantityNumberMap[productModel.id]!;
         return ConditionalBuilder(
-            condition: BlocProvider.of<ShopCubit>(context)
-                .quantityNumberMap
-                .isNotEmpty,
-            builder: (context) => Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        if (quantityNumber != 1) {
-                          quantityNumber = quantityNumber - 1;
-                          BlocProvider.of<ShopCubit>(context)
-                              .updateNumberOfItemInTheCart(
-                            cartID: cartID,
-                            numberOfItemsInTheCart: quantityNumber,
-                          );
-                        }
-                      },
-                      icon: Icon(Icons.remove, color: Colors.grey.shade600),
-                    ),
-                    Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        boxShadow: [
-                          BoxShadow(
-                            spreadRadius: 1,
-                            color: Colors.grey.shade400,
-                          )
-                        ],
-                      ),
-                      child: Center(
-                        child: Text(
-                          quantityNumber.toString(),
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        quantityNumber = quantityNumber + 1;
-                        BlocProvider.of<ShopCubit>(context)
-                            .updateNumberOfItemInTheCart(
-                          cartID: cartID,
-                          numberOfItemsInTheCart: quantityNumber,
-                        );
-                      },
-                      icon: const Icon(Icons.add, color: defaultColor),
-                    ),
+          // condition to build indecator when quantaty changed
+          condition: shopCubit.productCheck != null
+              // this to check if the product that u want to change
+              // is the same one in the My cart liat or not
+              // if yes, the indicator will show up
+              ? (shopCubit.productCheck!.id == productModel.id)
+                  ? state is! UpdateCartLoadingState &&
+                      state is! GetCartLoadingState &&
+                      state is! UpdateCartSuccessState
+                  // if no it will be false and nothing will show up
+                  : true
+              : true,
+          builder: (context) => Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              IconButton(
+                onPressed: () {
+                  if (quantityNumber != 1) {
+                    shopCubit.productCheck = productModel;
+                    quantityNumber = quantityNumber - 1;
+                    BlocProvider.of<ShopCubit>(context)
+                        .updateNumberOfItemInTheCart(
+                      cartID: cartID,
+                      numberOfItemsInTheCart: quantityNumber,
+                    );
+                  }
+                },
+                icon: Icon(Icons.remove, color: Colors.grey.shade600),
+              ),
+              Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  boxShadow: [
+                    BoxShadow(
+                      spreadRadius: 1,
+                      color: Colors.grey.shade400,
+                    )
                   ],
                 ),
-            fallback: (context) => const CircularProgressIndicator(
-                  color: defaultColor,
-                ));
+                child: Center(
+                  child: Text(
+                    quantityNumber.toString(),
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  shopCubit.productCheck = productModel;
+                  quantityNumber = quantityNumber + 1;
+                  BlocProvider.of<ShopCubit>(context)
+                      .updateNumberOfItemInTheCart(
+                    cartID: cartID,
+                    numberOfItemsInTheCart: quantityNumber,
+                  );
+                },
+                icon: const Icon(Icons.add, color: defaultColor),
+              ),
+            ],
+          ),
+          fallback: (context) => const Padding(
+            padding: EdgeInsets.only(top: 25),
+            child: SizedBox(
+              width: 136,
+              child: LinearProgressIndicator(
+                color: defaultColor,
+              ),
+            ),
+          ),
+        );
       },
     );
   }
