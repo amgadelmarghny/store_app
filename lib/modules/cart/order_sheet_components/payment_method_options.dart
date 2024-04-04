@@ -10,6 +10,7 @@ class PaymantMethodOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
+      position: PopupMenuPosition.under,
       onSelected: (value) {
         BlocProvider.of<AddressCubit>(context).setSelectedValue(value);
       },
