@@ -10,7 +10,6 @@ class TotalCoastListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: const Text('Total Coast'),
-      onTap: () {},
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.baseline,

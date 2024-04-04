@@ -82,7 +82,7 @@ class QuantityCounter extends StatelessWidget {
             ],
           ),
           fallback: (context) => const Padding(
-            padding: EdgeInsets.only(top: 25),
+            padding: EdgeInsets.symmetric(vertical: 23),
             child: SizedBox(
               width: 136,
               child: LinearProgressIndicator(

@@ -115,4 +115,19 @@ class AddressCubit extends Cubit<AddressState> {
       emit(DeleteAddressFaluir(error: err.toString()));
     });
   }
+
+  ////////////// payment method option  for order sheet ////////////
+  int selectedValue = 1;
+  String selectedType = 'Cash';
+  void setSelectedValue(value) {
+    if (value == 1) {
+      selectedValue = value;
+      selectedType = 'Cash';
+    }
+    if (value == 2) {
+      selectedValue = value;
+      selectedType = 'Card';
+    }
+    emit(CheckSetState());
+  }
 }

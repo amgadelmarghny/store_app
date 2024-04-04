@@ -9,26 +9,30 @@ class ShowMoreButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        BlocProvider.of<ShopCubit>(context).showMore();
+    return BlocBuilder<ShopCubit, ShopStates>(
+      builder: (context, state) {
+        return InkWell(
+          onTap: () => BlocProvider.of<ShopCubit>(context)
+              .showMore() // show more details in the product page
+          ,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                BlocProvider.of<ShopCubit>(context).isMore
+                    ? 'Show less'
+                    : 'Show more',
+              ),
+              Icon(
+                BlocProvider.of<ShopCubit>(context).isMore
+                    ? Icons.keyboard_arrow_up
+                    : Icons.keyboard_arrow_down,
+              ),
+            ],
+          ),
+        );
       },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            BlocProvider.of<ShopCubit>(context).isMore
-                ? 'Show less'
-                : 'Show more',
-          ),
-          Icon(
-            BlocProvider.of<ShopCubit>(context).isMore
-                ? Icons.keyboard_arrow_up
-                : Icons.keyboard_arrow_down,
-          ),
-        ],
-      ),
     );
   }
 }
