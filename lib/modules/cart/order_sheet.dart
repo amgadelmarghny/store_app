@@ -6,6 +6,7 @@ import 'package:store_2/modules/cart/order_sheet_components/hint_text.dart';
 import 'package:store_2/modules/cart/order_sheet_components/payment_method_options.dart';
 import 'package:store_2/modules/cart/order_sheet_components/total_coast_list_tile.dart';
 import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/custom_buttomt.dart';
 
 class OrderSheet extends StatelessWidget {
@@ -19,16 +20,13 @@ class OrderSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AddressCubit, AddressState>(
       builder: (context, state) {
+        AddressCubit addressCubit = BlocProvider.of<AddressCubit>(context);
         // this condition added to delete the address in cubit
         //  when no addresses available in list (app run state).
         // and that will remove the last selected address name that
         // appear in  order sheet.
-        if (BlocProvider.of<AddressCubit>(context)
-            .getAddressesModel
-            .data!
-            .addressModelsList
-            .isEmpty) {
-          BlocProvider.of<AddressCubit>(context).addressModel = null;
+        if (addressCubit.getAddressesModel.data!.addressModelsList.isEmpty) {
+          addressCubit.addressModel = null;
         }
         return Column(
           mainAxisSize: MainAxisSize.min,

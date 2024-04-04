@@ -4,6 +4,7 @@ import 'package:store_2/models/address_models/address_model.dart';
 import 'package:store_2/models/address_models/get_address_model.dart';
 import 'package:store_2/models/address_models/new_address_model.dart';
 import 'package:store_2/models/address_models/update_address_model.dart';
+import 'package:store_2/models/order_models/add_order_model.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -129,5 +130,25 @@ class AddressCubit extends Cubit<AddressState> {
       selectedType = 'Card';
     }
     emit(CheckSetState());
+  }
+
+  ////////////////////// ! add order  ///////////////////////////
+  late AddOrderModel addOrderModel;
+  Future addNewOrder(
+      {required int addressId,
+      required int paymentMethod,
+      required bool usePoints}) async {
+    emit(AddOrderLoading());
+    await DioHelper.postData(
+        url: order,
+        token: CashHelper.getData(key: tOKENCONST),
+        data: {
+          "address_id": addressId,
+          "payment_method": 1,
+          "use_points": true,
+        }).then((value) {
+      addOrderModel = AddOrderModel.fromJson(value.data);
+      emit(AddOrderSuccess(addOrderModel: addOrderModel));
+    });
   }
 }

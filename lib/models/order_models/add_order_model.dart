@@ -19,7 +19,7 @@ class AddOrderModel {
 }
 
 class Data {
-  final int id;
+  final dynamic id;
   final String paymentMethod;
   final double total;
   final dynamic cost, vat, points, discount;
@@ -36,8 +36,8 @@ class Data {
 
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
-      id: json['id'],
       paymentMethod: json['payment_method'],
+      id: json['id'],
       total: json['total'],
       cost: json['cost'],
       vat: json["vat"],

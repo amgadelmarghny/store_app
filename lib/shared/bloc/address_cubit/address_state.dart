@@ -55,3 +55,16 @@ final class DeleteAddressFaluir extends AddressState {
   final String error;
   DeleteAddressFaluir({required this.error});
 }
+
+final class AddOrderLoading extends AddressState {}
+
+final class AddOrderSuccess extends AddressState {
+  final AddOrderModel addOrderModel;
+
+  AddOrderSuccess({required this.addOrderModel});
+}
+
+final class AddOrderFaluir extends AddressState {
+  final String error;
+  AddOrderFaluir({required this.error});
+}

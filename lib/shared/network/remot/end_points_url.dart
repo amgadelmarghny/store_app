@@ -12,4 +12,5 @@ const changePassword = 'change-password';
 const categories = 'categories';
 const searchForProduct = 'products/search';
 const carts = 'carts';
-const addresses =  'addresses';
+const addresses = 'addresses';
+const order = 'orders';
