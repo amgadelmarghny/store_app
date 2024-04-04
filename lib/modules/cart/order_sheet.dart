@@ -41,8 +41,28 @@ class OrderSheet extends StatelessWidget {
             const Divider(),
             const HintTextOrderSheet(),
             const SizedBox(height: 20),
-            const CustomButton(
-              text: 'Place Order',
+            CustomButton(
+              text: 'Take Order',
+              isLoading: state is AddOrderLoading,
+              onTap: () {
+                addressCubit
+                    .addNewOrder(
+                  addressId: BlocProvider.of<AddressCubit>(context)
+                              .addressModel !=
+                          null
+                      ? BlocProvider.of<AddressCubit>(context).addressModel!.id
+                      : BlocProvider.of<AddressCubit>(context)
+                          .getAddressesModel
+                          .data!
+                          .addressModelsList[0]
+                          .id,
+                  paymentMethod: addressCubit.selectedValue,
+                  usePoints: false,
+                )
+                    .then((value) {
+                  BlocProvider.of<ShopCubit>(context).getCartItems();
+                });
+              },
             ),
           ],
         );
