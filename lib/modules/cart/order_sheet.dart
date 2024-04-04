@@ -8,6 +8,7 @@ import 'package:store_2/modules/cart/order_sheet_components/total_coast_list_til
 import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/custom_buttomt.dart';
+import 'package:store_2/shared/components/custom_show_messeges.dart';
 
 class OrderSheet extends StatelessWidget {
   const OrderSheet({
@@ -18,7 +19,27 @@ class OrderSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AddressCubit, AddressState>(
+    return BlocConsumer<AddressCubit, AddressState>(
+      listener: (context, state) {
+        if (state is AddOrderSuccess) {
+          if (state.addOrderModel.status) {
+            toastShown(
+              messege: state.addOrderModel.message,
+              state: ToastState.success,
+              context: context,
+            );
+          } else {
+            toastShown(
+              messege: state.addOrderModel.message,
+              state: ToastState.error,
+              context: context,
+            );
+          }
+        }
+        if (state is AddOrderFaluir) {
+          snacKBar(context, state.error);
+        }
+      },
       builder: (context, state) {
         AddressCubit addressCubit = BlocProvider.of<AddressCubit>(context);
         // this condition added to delete the address in cubit
