@@ -57,7 +57,10 @@ class PaymantMethodOptions extends StatelessWidget {
                 );
               },
             ),
-            const Icon(Icons.arrow_forward_ios)
+            const Icon(
+              Icons.arrow_forward_ios,
+              size: 18,
+            )
           ],
         ),
       ),

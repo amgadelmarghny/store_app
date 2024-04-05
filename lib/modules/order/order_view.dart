@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_2/modules/order/order_view_body.dart';
+import 'package:store_2/shared/style/colors.dart';
 
 class OrderView extends StatelessWidget {
   const OrderView({super.key});
@@ -8,13 +9,12 @@ class OrderView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(mainAxisSize: MainAxisSize.min, children: [
-          Image.asset(
-            'lib/assets/images/order.png',
-            color: Theme.of(context).iconTheme.color,
-            height: 30,
+        title: const Row(mainAxisSize: MainAxisSize.min, children: [
+          Icon(
+            Icons.shopping_bag_outlined,
+            color: defaultColor,
           ),
-          const Text('Order'),
+          Text('Order'),
         ]),
       ),
       body: const OrderViewBody(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/modules/cart/my_cart_view.dart';
 import 'package:store_2/modules/login/login_view.dart';
+import 'package:store_2/modules/order/order_view.dart';
 import 'package:store_2/modules/profile/profile_view.dart';
 import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
@@ -57,10 +58,29 @@ class DrawerMenu extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, MyCartView.id);
               },
-              trailing: const Icon(Icons.arrow_forward_ios),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 18,
+              ),
             ),
-            const Divider(
-              color: Colors.grey,
+            Divider(
+              color: Colors.grey.shade400,
+              height: 0,
+              thickness: 1.3,
+            ),
+            ListTile(
+              leading: const Icon(Icons.shopping_bag_outlined),
+              title: const Text('Orders'),
+              onTap: () {
+                Navigator.pushNamed(context, OrderView.id);
+              },
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 18,
+              ),
+            ),
+            Divider(
+              color: Colors.grey.shade400,
               height: 0,
               thickness: 1.3,
             ),
