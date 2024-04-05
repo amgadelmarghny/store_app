@@ -144,8 +144,8 @@ class AddressCubit extends Cubit<AddressState> {
         token: CashHelper.getData(key: tOKENCONST),
         data: {
           "address_id": addressId,
-          "payment_method": 1,
-          "use_points": true,
+          "payment_method": paymentMethod,
+          "use_points": usePoints,
         }).then((value) {
       addOrderModel = AddOrderModel.fromJson(value.data);
       emit(AddOrderSuccess(addOrderModel: addOrderModel));

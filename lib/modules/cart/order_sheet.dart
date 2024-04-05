@@ -82,6 +82,8 @@ class OrderSheet extends StatelessWidget {
                 )
                     .then((value) {
                   BlocProvider.of<ShopCubit>(context).getCartItems();
+                  BlocProvider.of<ShopCubit>(context).getHomeData();
+                  Navigator.pop(context);
                 });
               },
             ),
