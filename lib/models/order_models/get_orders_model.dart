@@ -1,23 +1,23 @@
-class GerOrdersModel {
+class GetOrdersModel {
   final bool status;
   final String? message;
   final GetOrderData? data;
 
-  GerOrdersModel(
+  GetOrdersModel(
       {required this.status, required this.message, required this.data});
-  factory GerOrdersModel.fromJson(Map<String, dynamic> json) => GerOrdersModel(
-        status: json['Status'],
-        message: json['Message'],
-        data: json['Data'] != null ? GetOrderData.fromJson(json['Data']) : null,
+  factory GetOrdersModel.fromJson(Map<String, dynamic> json) => GetOrdersModel(
+        status: json['status'],
+        message: json['sessage'],
+        data: json['data'] != null ? GetOrderData.fromJson(json['data']) : null,
       );
 }
 
 class GetOrderData {
-  List listOfOrder = [];
+  List listOfOrders = [];
 
   GetOrderData.fromJson(Map<String, dynamic> json) {
     json['data'].forEach(
-      (element) => listOfOrder.add(
+      (element) => listOfOrders.add(
         OrderModel.fromJson(element),
       ),
     );
@@ -27,7 +27,7 @@ class GetOrderData {
 class OrderModel {
   final int id;
   final dynamic total;
-  final DateTime dateTime;
+  final String dateTime;
   final String status;
 
   OrderModel({
@@ -39,7 +39,7 @@ class OrderModel {
   factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
         id: json['id'],
         total: json['total'],
-        dateTime: DateTime.parse(json['date']),
+        dateTime: json['date'],
         status: json['status'],
       );
 }

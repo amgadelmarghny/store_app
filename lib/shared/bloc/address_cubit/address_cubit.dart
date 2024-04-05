@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:store_2/models/address_models/address_model.dart';
@@ -5,6 +7,7 @@ import 'package:store_2/models/address_models/get_address_model.dart';
 import 'package:store_2/models/address_models/new_address_model.dart';
 import 'package:store_2/models/address_models/update_address_model.dart';
 import 'package:store_2/models/order_models/add_order_model.dart';
+import 'package:store_2/models/order_models/get_orders_model.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -148,9 +151,33 @@ class AddressCubit extends Cubit<AddressState> {
           "use_points": usePoints,
         }).then((value) {
       addOrderModel = AddOrderModel.fromJson(value.data);
+      getAllOrders();
       emit(AddOrderSuccess(addOrderModel: addOrderModel));
     }).catchError((error) {
       emit(AddOrderFaluir(error: error.toString()));
+    });
+  }
+
+  ////////////////////// ! get orders  ///////////////////////////
+  List<OrderModel> newOrdersList = [];
+  List<OrderModel> cancelledOrdersList = [];
+  late GetOrdersModel getOrdersModel;
+  void getAllOrders() async {
+    emit(GetOrderLoading());
+    await DioHelper.getData(
+            url: order, token: CashHelper.getData(key: tOKENCONST))
+        .then((value) {
+      getOrdersModel = GetOrdersModel.fromJson(value.data);
+      for (var element in getOrdersModel.data!.listOfOrders) {
+        if (element.status == 'New' || element.status == 'جديد') {
+          newOrdersList.add(element);
+          log('neeww orders ${newOrdersList[0].status}');
+        } else if (element.status == 'Cancelled' || element.status == 'ملغي') {
+          cancelledOrdersList.add(element);
+          log('neeww orders ${cancelledOrdersList[0].status}');
+        }
+      }
+      emit(GetOrderSuccess(getOrdersModel: getOrdersModel));
     });
   }
 }

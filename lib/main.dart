@@ -71,7 +71,9 @@ class StoreAp extends StatelessWidget {
             ),
         BlocProvider(create: (context) => CategoryCubit()),
         BlocProvider<AddressCubit>(
-            create: (context) => AddressCubit()..getAddresses()),
+            create: (context) => AddressCubit()
+              ..getAddresses()
+              ..getAllOrders()),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
