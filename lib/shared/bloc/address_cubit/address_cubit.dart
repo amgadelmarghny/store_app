@@ -161,14 +161,14 @@ class AddressCubit extends Cubit<AddressState> {
   ////////////////////// ! get orders  ///////////////////////////
   List<OrderModel> newOrdersList = [];
   List<OrderModel> cancelledOrdersList = [];
-  late GetOrdersModel getOrdersModel;
+  GetOrdersModel? getOrdersModel;
   void getAllOrders() async {
     emit(GetOrderLoading());
     await DioHelper.getData(
             url: order, token: CashHelper.getData(key: tOKENCONST))
         .then((value) {
       getOrdersModel = GetOrdersModel.fromJson(value.data);
-      for (var element in getOrdersModel.data!.listOfOrders) {
+      for (var element in getOrdersModel!.data!.listOfOrders) {
         if (element.status == 'New' || element.status == 'جديد') {
           newOrdersList.add(element);
           log('neeww orders ${newOrdersList[0].status}');
@@ -177,7 +177,9 @@ class AddressCubit extends Cubit<AddressState> {
           log('neeww orders ${cancelledOrdersList[0].status}');
         }
       }
-      emit(GetOrderSuccess(getOrdersModel: getOrdersModel));
+      emit(GetOrderSuccess(getOrdersModel: getOrdersModel!));
+    }).catchError((error) {
+      emit(GetOrderFaluir(error: error.toString()));
     });
   }
 }
