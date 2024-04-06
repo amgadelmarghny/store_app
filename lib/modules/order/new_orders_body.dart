@@ -18,9 +18,10 @@ class NewOrdersBody extends StatelessWidget {
         if (state is GetOrderSuccess) {
           if (!state.getOrdersModel.status) {
             toastShown(
-                messege: state.getOrdersModel.message!,
-                state: ToastState.error,
-                context: context);
+              messege: state.getOrdersModel.message!,
+              state: ToastState.error,
+              context: context,
+            );
           }
         }
       },
@@ -71,9 +72,10 @@ class NewOrdersBody extends StatelessWidget {
           },
           fallback: (BuildContext context) {
             return const Center(
-                child: CircularProgressIndicator(
-              color: defaultColor,
-            ));
+              child: CircularProgressIndicator(
+                color: defaultColor,
+              ),
+            );
           },
         );
       },

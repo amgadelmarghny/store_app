@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:store_2/models/address_models/address_model.dart';
@@ -171,10 +169,8 @@ class AddressCubit extends Cubit<AddressState> {
       for (var element in getOrdersModel!.data!.listOfOrders) {
         if (element.status == 'New' || element.status == 'جديد') {
           newOrdersList.add(element);
-          log('neeww orders ${newOrdersList[0].status}');
         } else if (element.status == 'Cancelled' || element.status == 'ملغي') {
           cancelledOrdersList.add(element);
-          log('neeww orders ${cancelledOrdersList[0].status}');
         }
       }
       emit(GetOrderSuccess(getOrdersModel: getOrdersModel!));

@@ -32,8 +32,11 @@ class _AddressItemState extends State<AddressItem> {
           }
         }
         return ListTile(
-          leading: addressCubit.getAddressesModel.data!.total! > 1
-              ? Checkbox(
+          leading: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (addressCubit.getAddressesModel.data!.total! > 1)
+                Checkbox(
                   value: isChecked,
                   onChanged: (value) {
                     setState(() {
@@ -43,8 +46,13 @@ class _AddressItemState extends State<AddressItem> {
                       addressCubit.checkSetState();
                     });
                   },
-                )
-              : null,
+                ),
+              CircleAvatar(
+                backgroundColor: defaultColor.shade200,
+                child: const Icon(Icons.location_on_outlined),
+              ),
+            ],
+          ),
           title: Text(widget.addressModel.name),
           subtitle: Text(
               '${widget.addressModel.city}, ${widget.addressModel.region}'),

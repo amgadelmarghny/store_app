@@ -70,7 +70,7 @@ class DrawerMenu extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.shopping_bag_outlined),
-              title: const Text('Orders'),
+              title: const Text('My Orders'),
               onTap: () {
                 Navigator.pushNamed(context, OrderView.id);
               },
