@@ -19,11 +19,11 @@ class OrderViewBody extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.shopping_bag_outlined,
-                    color: defaultColor,
+                    size: 25,
                   ),
                   Text(
-                    'Order',
-                    style: TextStyle(color: Colors.black),
+                    'Orders',
+                    style: TextStyle(),
                   ),
                 ],
               ),
