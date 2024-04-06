@@ -20,7 +20,7 @@ class OrderItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              blurRadius: 3,
+              blurRadius: 5,
               color: color,
             )
           ]),
@@ -54,7 +54,7 @@ class OrderItem extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
-                      "${orderModel.total} EGP",
+                      "${orderModel.total.round()} EGP",
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],
