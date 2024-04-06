@@ -51,11 +51,15 @@ class AddressField extends StatelessWidget {
                       borderSide: BorderSide(color: defaultColor, width: 1.5),
                     ),
               enabledBorder: isRequired
-                  ? const UnderlineInputBorder(
-                      borderSide: BorderSide(),
+                  ? UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).textTheme.bodyLarge!.color!,
+                      ),
                     )
-                  : const OutlineInputBorder(
-                      borderSide: BorderSide(),
+                  : OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).textTheme.bodyLarge!.color!,
+                      ),
                     ),
             ),
           ),

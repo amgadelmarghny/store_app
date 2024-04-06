@@ -91,7 +91,7 @@ class CustomTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(radius),
             borderSide: BorderSide(
               color: isFirstDesign
-                  ? const Color(0xFF000000)
+                  ? Theme.of(context).textTheme.bodyLarge!.color!
                   : Theme.of(context).scaffoldBackgroundColor,
             ),
           ),
@@ -105,7 +105,7 @@ class CustomTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(radius),
             borderSide: BorderSide(
               color: isFirstDesign
-                  ? const Color(0xFF000000)
+                  ? Theme.of(context).textTheme.bodyLarge!.color!
                   : Theme.of(context).scaffoldBackgroundColor,
             ),
           ),

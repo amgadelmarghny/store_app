@@ -22,6 +22,9 @@ class UpdateProfileViewBody extends StatelessWidget {
       create: (context) => AuthCubit(),
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
+          if (state is UpdateProfileLoadingState) {
+            FocusScope.of(context).unfocus();
+          }
           if (state is UpdateProfileSuccessState) {
             if (state.profileModel.status) {
               toastShown(

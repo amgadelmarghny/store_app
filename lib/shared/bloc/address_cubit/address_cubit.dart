@@ -59,14 +59,14 @@ class AddressCubit extends Cubit<AddressState> {
 
   //////////////////////////////! GET ADDRESSES //////////////////////////
   AddressModel? addressModel;
-  late GetAddressesModel getAddressesModel;
+   GetAddressesModel? getAddressesModel;
   Future getAddresses() async {
     emit(GetAddressLoading());
     DioHelper.getData(
             url: addresses, token: CashHelper.getData(key: tOKENCONST))
         .then((value) {
       getAddressesModel = GetAddressesModel.fromJson(value.data);
-      emit(GetAddressSuccess(getAddressesModel: getAddressesModel));
+      emit(GetAddressSuccess(getAddressesModel: getAddressesModel!));
     }).catchError((err) {
       emit(GetAddressFaluir(error: err));
     });

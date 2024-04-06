@@ -46,7 +46,7 @@ class OrderSheet extends StatelessWidget {
         //  when no addresses available in list (app run state).
         // and that will remove the last selected address name that
         // appear in  order sheet.
-        if (addressCubit.getAddressesModel.data!.addressModelsList.isEmpty) {
+        if (addressCubit.getAddressesModel!.data!.addressModelsList.isEmpty) {
           addressCubit.addressModel = null;
         }
         return Column(
@@ -73,7 +73,7 @@ class OrderSheet extends StatelessWidget {
                           null
                       ? BlocProvider.of<AddressCubit>(context).addressModel!.id
                       : BlocProvider.of<AddressCubit>(context)
-                          .getAddressesModel
+                          .getAddressesModel!
                           .data!
                           .addressModelsList[0]
                           .id,

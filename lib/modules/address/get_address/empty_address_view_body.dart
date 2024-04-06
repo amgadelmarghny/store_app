@@ -29,6 +29,7 @@ class EmptyAddressViewBody extends StatelessWidget {
             child: const Text(
               'Add New Address',
               style: TextStyle(
+                color: Colors.black,
                 fontSize: 18,
               ),
             ),

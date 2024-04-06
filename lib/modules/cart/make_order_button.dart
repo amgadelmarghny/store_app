@@ -24,7 +24,7 @@ class MakeOrderButton extends StatelessWidget {
               text: 'Make Order',
               onTap: () {
                 if (BlocProvider.of<AddressCubit>(context)
-                    .getAddressesModel
+                    .getAddressesModel!
                     .data!
                     .addressModelsList
                     .isEmpty) {

@@ -33,11 +33,16 @@ class AddressesViewBody extends StatelessWidget {
       },
       builder: (context, state) {
         AddressCubit addressCubit = BlocProvider.of<AddressCubit>(context);
+        if (addressCubit.getAddressesModel != null &&
+            addressCubit.getAddressesModel!.data!.addressModelsList.isEmpty) {
+          return const EmptyAddressViewBody();
+        }
         return ModalProgressHUD(
           inAsyncCall: state is DeleteAddressLoading,
           child: ConditionalBuilder(
-            condition: addressCubit
-                .getAddressesModel.data!.addressModelsList.isNotEmpty,
+            condition: addressCubit.getAddressesModel != null &&
+                addressCubit
+                    .getAddressesModel!.data!.addressModelsList.isNotEmpty,
             builder: (context) => SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
@@ -52,7 +57,10 @@ class AddressesViewBody extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamed(context, AddAddressView.id);
                     },
-                    child: const Text('Add New Address'),
+                    child: const Text(
+                      'Add New Address',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                   const SizedBox(height: 40),
                   Row(
@@ -61,7 +69,7 @@ class AddressesViewBody extends StatelessWidget {
                       const Text('Total Addresses :'),
                       const Spacer(),
                       Text(
-                          '(${BlocProvider.of<AddressCubit>(context).getAddressesModel.data!.total.toString()})'),
+                          '(${BlocProvider.of<AddressCubit>(context).getAddressesModel!.data!.total.toString()})'),
                       const SizedBox(width: 20),
                     ],
                   ),
@@ -71,7 +79,7 @@ class AddressesViewBody extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (contex, index) {
                         return AddressItem(
-                            addressModel: addressCubit.getAddressesModel.data!
+                            addressModel: addressCubit.getAddressesModel!.data!
                                 .addressModelsList[index]);
                       },
                       separatorBuilder: (context, index) => const Divider(
@@ -79,11 +87,12 @@ class AddressesViewBody extends StatelessWidget {
                             indent: 20,
                           ),
                       itemCount: addressCubit
-                          .getAddressesModel.data!.addressModelsList.length)
+                          .getAddressesModel!.data!.addressModelsList.length)
                 ],
               ),
             ),
-            fallback: (context) => const EmptyAddressViewBody(),
+            fallback: (context) => const Center(
+                child: CircularProgressIndicator(color: defaultColor)),
           ),
         );
       },

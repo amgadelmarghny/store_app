@@ -21,7 +21,7 @@ class AdressOptions extends StatelessWidget {
           // this condition added to delete the address neme
           // if addresses is empty
           if (BlocProvider.of<AddressCubit>(context)
-              .getAddressesModel
+              .getAddressesModel!
               .data!
               .addressModelsList
               .isNotEmpty)
@@ -29,7 +29,7 @@ class AdressOptions extends StatelessWidget {
               BlocProvider.of<AddressCubit>(context).addressModel != null
                   ? BlocProvider.of<AddressCubit>(context).addressModel!.name
                   : BlocProvider.of<AddressCubit>(context)
-                      .getAddressesModel
+                      .getAddressesModel!
                       .data!
                       .addressModelsList[0]
                       .name,

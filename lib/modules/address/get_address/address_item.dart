@@ -35,7 +35,7 @@ class _AddressItemState extends State<AddressItem> {
           leading: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (addressCubit.getAddressesModel.data!.total! > 1)
+              if (addressCubit.getAddressesModel!.data!.total! > 1)
                 Checkbox(
                   value: isChecked,
                   onChanged: (value) {
