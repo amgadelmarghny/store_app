@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_2/modules/order/cancelled_order_body.dart';
 import 'package:store_2/modules/order/new_orders_body.dart';
 import 'package:store_2/shared/style/colors.dart';
 
@@ -41,7 +42,7 @@ class OrderViewBody extends StatelessWidget {
         body: const TabBarView(
           children: [
             NewOrdersBody(),
-            NewOrdersBody(),
+            CancelledOrdersBody(),
           ],
         ),
       ),

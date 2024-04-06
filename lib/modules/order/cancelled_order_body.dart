@@ -5,8 +5,8 @@ import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
 import 'package:store_2/shared/style/colors.dart';
 
-class NewOrdersBody extends StatelessWidget {
-  const NewOrdersBody({super.key});
+class CancelledOrdersBody extends StatelessWidget {
+  const CancelledOrdersBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,9 @@ class NewOrdersBody extends StatelessWidget {
           );
         }
         if (BlocProvider.of<AddressCubit>(context).getOrdersModel != null &&
-            BlocProvider.of<AddressCubit>(context).newOrdersList.isEmpty) {
+            BlocProvider.of<AddressCubit>(context)
+                .cancelledOrdersList
+                .isEmpty) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -47,18 +49,20 @@ class NewOrdersBody extends StatelessWidget {
                 'lib/assets/images/empty_box.png',
                 height: 200,
               ),
-              const Text('You havn\'t placed an order yet')
+              const Text('There is no cannceld order')
             ],
           );
         }
         return ConditionalBuilder(
-          condition: BlocProvider.of<AddressCubit>(context).getOrdersModel !=
-                  null &&
-              BlocProvider.of<AddressCubit>(context).newOrdersList.isNotEmpty,
+          condition:
+              BlocProvider.of<AddressCubit>(context).getOrdersModel != null &&
+                  BlocProvider.of<AddressCubit>(context)
+                      .cancelledOrdersList
+                      .isNotEmpty,
           builder: (BuildContext context) {
             return ListView.separated(
                 itemBuilder: (context, index) {
-                  return Container(color: Colors.amber, height: 10);
+                  return Container(color: Colors.red, height: 10);
                 },
                 separatorBuilder: (context, index) {
                   return const SizedBox(
@@ -66,7 +70,7 @@ class NewOrdersBody extends StatelessWidget {
                   );
                 },
                 itemCount: BlocProvider.of<AddressCubit>(context)
-                    .newOrdersList
+                    .cancelledOrdersList
                     .length);
           },
           fallback: (BuildContext context) {
