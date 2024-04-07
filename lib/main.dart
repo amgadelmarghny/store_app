@@ -5,6 +5,7 @@ import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/modules/address/add_new_address/add_address_view.dart';
 import 'package:store_2/modules/address/get_address/addresses_view.dart';
 import 'package:store_2/modules/address/modify_address/update_address_view.dart';
+import 'package:store_2/modules/order/order_item/order_item_view.dart';
 import 'package:store_2/modules/order/order_view.dart';
 import 'package:store_2/modules/cart/my_cart_view.dart';
 import 'package:store_2/modules/category_details/category_details_view.dart';
@@ -97,6 +98,7 @@ class StoreAp extends StatelessWidget {
                     const AddressesView(),
                 OrderView.id: (context) => const OrderView(),
                 UpdateAddressView.id: (context) => const UpdateAddressView(),
+                OrderItemView.id: (context) => const OrderItemView(),
               },
               theme: ThemeStyle.lightTheme(),
               darkTheme: ThemeStyle.darkTheme(),

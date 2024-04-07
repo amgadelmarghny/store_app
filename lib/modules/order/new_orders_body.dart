@@ -61,6 +61,7 @@ class NewOrdersBody extends StatelessWidget {
                 BlocProvider.of<AddressCubit>(context).newOrdersList.isNotEmpty,
             builder: (BuildContext context) {
               return ListView.separated(
+                clipBehavior: Clip.none,
                 itemBuilder: (context, index) {
                   return OrderItem(
                     color: const Color.fromARGB(255, 255, 157, 0),

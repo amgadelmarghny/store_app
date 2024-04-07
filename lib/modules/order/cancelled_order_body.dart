@@ -65,6 +65,7 @@ class CancelledOrdersBody extends StatelessWidget {
                         .isNotEmpty,
             builder: (BuildContext context) {
               return ListView.separated(
+                  clipBehavior: Clip.none,
                   itemBuilder: (context, index) {
                     return OrderItem(
                         color: Colors.red,
