@@ -6,6 +6,7 @@ import 'package:store_2/models/address_models/new_address_model.dart';
 import 'package:store_2/models/address_models/update_address_model.dart';
 import 'package:store_2/models/order_models/add_order_model.dart';
 import 'package:store_2/models/order_models/get_orders_model.dart';
+import 'package:store_2/models/order_models/order_details_model.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -59,7 +60,7 @@ class AddressCubit extends Cubit<AddressState> {
 
   //////////////////////////////! GET ADDRESSES //////////////////////////
   AddressModel? addressModel;
-   GetAddressesModel? getAddressesModel;
+  GetAddressesModel? getAddressesModel;
   Future getAddresses() async {
     emit(GetAddressLoading());
     DioHelper.getData(
@@ -176,6 +177,18 @@ class AddressCubit extends Cubit<AddressState> {
       emit(GetOrderSuccess(getOrdersModel: getOrdersModel!));
     }).catchError((error) {
       emit(GetOrderFaluir(error: error.toString()));
+    });
+  }
+
+  ////////////////////! Get Order details /////////////////////
+  OrderDetailsModel? orderDetailsModel;
+  Future<void> getOrderDetails({required String id}) async {
+    emit(OrderDetailsLoading());
+    await DioHelper.getData(url: "$order/$id").then((value) {
+      orderDetailsModel = OrderDetailsModel.fromJson(value.data);
+      emit(OrderDetailsSuccess(orderDetailsModel: orderDetailsModel!));
+    }).catchError((error) {
+      emit(OrderDetailsFaluir(error: error));
     });
   }
 }

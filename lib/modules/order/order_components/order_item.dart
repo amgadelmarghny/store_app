@@ -13,17 +13,18 @@ class OrderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110,
+      height: 90,
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 5,
-              color: color,
-            )
-          ]),
+        color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 5,
+            color: color,
+          )
+        ],
+      ),
       child: Row(
         children: [
           Stack(
@@ -31,12 +32,14 @@ class OrderItem extends StatelessWidget {
             children: [
               CircleAvatar(
                 backgroundColor: defaultColor.shade300,
-                radius: 50,
-                child: Text(orderModel.id.toString()),
+                radius: 40,
+                child: FittedBox(
+                  child: Text(orderModel.id.toString()),
+                ),
               ),
               Text(
                 'ID',
-                style: Theme.of(context).textTheme.titleMedium,
+                style: Theme.of(context).textTheme.bodySmall,
               )
             ],
           ),

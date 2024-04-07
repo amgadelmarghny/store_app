@@ -22,7 +22,7 @@ class OrderViewBody extends StatelessWidget {
                     size: 25,
                   ),
                   Text(
-                    'Orders',
+                    'My Orders',
                     style: TextStyle(),
                   ),
                 ],

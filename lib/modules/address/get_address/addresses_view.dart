@@ -8,7 +8,7 @@ class AddressesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Addresses'),
+        title: const Text('My Addresses'),
       ),
       body: const Padding(
         padding: EdgeInsets.only(top: 20, bottom: 20),

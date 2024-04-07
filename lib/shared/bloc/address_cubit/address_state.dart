@@ -81,3 +81,16 @@ final class GetOrderFaluir extends AddressState {
   final String error;
   GetOrderFaluir({required this.error});
 }
+
+final class OrderDetailsLoading extends AddressState {}
+
+final class OrderDetailsSuccess extends AddressState {
+  final OrderDetailsModel orderDetailsModel;
+
+  OrderDetailsSuccess({required this.orderDetailsModel});
+}
+
+final class OrderDetailsFaluir extends AddressState {
+  final String error;
+  OrderDetailsFaluir({required this.error});
+}
