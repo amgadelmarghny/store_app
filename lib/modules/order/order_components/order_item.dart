@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/models/order_models/get_orders_model.dart';
+import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:store_2/shared/style/colors.dart';
 
 class OrderItem extends StatelessWidget {
@@ -12,67 +14,73 @@ class OrderItem extends StatelessWidget {
   final OrderModel orderModel;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 90,
-      padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 5,
-            color: color,
-          )
-        ],
-      ),
-      child: Row(
-        children: [
-          Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              CircleAvatar(
-                backgroundColor: defaultColor.shade300,
-                radius: 40,
-                child: FittedBox(
-                  child: Text(orderModel.id.toString()),
-                ),
-              ),
-              Text(
-                'ID',
-                style: Theme.of(context).textTheme.bodySmall,
-              )
-            ],
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return InkWell(
+      onTap: () {
+        BlocProvider.of<AddressCubit>(context)
+            .getOrderDetails(id: orderModel.id);
+      },
+      child: Container(
+        height: 90,
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 5,
+              color: color,
+            )
+          ],
+        ),
+        child: Row(
+          children: [
+            Stack(
+              alignment: Alignment.topCenter,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Total Price:',
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    Text(
-                      "${orderModel.total.round()} EGP",
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ],
+                CircleAvatar(
+                  backgroundColor: defaultColor.shade300,
+                  radius: 40,
+                  child: FittedBox(
+                    child: Text(orderModel.id.toString()),
+                  ),
                 ),
-                const Spacer(),
-                Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                  Text(
-                    orderModel.dateTime,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  )
-                ]),
+                Text(
+                  'ID',
+                  style: Theme.of(context).textTheme.bodySmall,
+                )
               ],
             ),
-          )
-        ],
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Total Price:',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      Text(
+                        "${orderModel.total.round()} EGP",
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                    Text(
+                      orderModel.dateTime,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    )
+                  ]),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

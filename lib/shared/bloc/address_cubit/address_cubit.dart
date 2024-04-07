@@ -182,9 +182,9 @@ class AddressCubit extends Cubit<AddressState> {
 
   ////////////////////! Get Order details /////////////////////
   OrderDetailsModel? orderDetailsModel;
-  Future<void> getOrderDetails({required String id}) async {
+  void getOrderDetails({required int id}) {
     emit(OrderDetailsLoading());
-    await DioHelper.getData(url: "$order/$id").then((value) {
+    DioHelper.getData(url: "$order/$id").then((value) {
       orderDetailsModel = OrderDetailsModel.fromJson(value.data);
       emit(OrderDetailsSuccess(orderDetailsModel: orderDetailsModel!));
     }).catchError((error) {

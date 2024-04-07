@@ -16,12 +16,12 @@ class OrderDetailsModel {
 
 class Data {
   int? id;
-  int? cost;
-  int? discount;
-  double? points;
-  double? vat;
-  double? total;
-  int? pointsCommission;
+  dynamic cost;
+  dynamic discount;
+  dynamic points;
+  dynamic vat;
+  dynamic total;
+  dynamic pointsCommission;
   String? promoCode;
   String? paymentMethod;
   String? date;
