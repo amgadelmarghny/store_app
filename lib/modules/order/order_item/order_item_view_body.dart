@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_2/modules/order/order_item/order_product_item.dart';
 
 class OrderItemViewBody extends StatelessWidget {
   const OrderItemViewBody({
@@ -12,7 +13,20 @@ class OrderItemViewBody extends StatelessWidget {
       child: ListView(
         primary: false,
         shrinkWrap: true,
-        children: const [],
+        children: [
+          const Text('Products'),
+          const SizedBox(
+            height: 15,
+          ),
+          ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return const OrderProductItem();
+              },
+              separatorBuilder: (context, index) => const SizedBox(height: 18),
+              itemCount: 2),
+        ],
       ),
     );
   }
