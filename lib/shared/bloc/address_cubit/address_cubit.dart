@@ -5,6 +5,7 @@ import 'package:store_2/models/address_models/get_address_model.dart';
 import 'package:store_2/models/address_models/new_address_model.dart';
 import 'package:store_2/models/address_models/update_address_model.dart';
 import 'package:store_2/models/order_models/add_order_model.dart';
+import 'package:store_2/models/order_models/cancle_order.dart';
 import 'package:store_2/models/order_models/get_orders_model.dart';
 import 'package:store_2/models/order_models/order_details_model.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
@@ -191,6 +192,18 @@ class AddressCubit extends Cubit<AddressState> {
       emit(OrderDetailsSuccess(orderDetailsModel: orderDetailsModel!));
     }).catchError((error) {
       emit(OrderDetailsFaluir(error: error));
+    });
+  }
+
+  ////////////////////! Cancle  the Order /////////////////////
+  late CancleOrderModel cancleOrderModel;
+  Future<void> cancleTheOrder({required int orderId}) async {
+    emit(CancleOrderLoading());
+    DioHelper.getData(url: '$order/$orderId/cancel').then((value) {
+      cancleOrderModel = CancleOrderModel.fromJson(value.data);
+      emit(CancleOrderSuccess(cancleOrderModel: cancleOrderModel));
+    }).catchError((error) {
+      emit(CancleOrderFaluir(error: error));
     });
   }
 }

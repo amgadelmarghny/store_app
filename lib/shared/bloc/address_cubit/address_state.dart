@@ -19,8 +19,10 @@ final class AddressFaluir extends AddressState {
   AddressFaluir({required this.error});
 }
 
+////////////////////////
 final class CheckSetState extends AddressState {}
 
+///////////////////////////////////
 final class GetAddressLoading extends AddressState {}
 
 final class GetAddressSuccess extends AddressState {
@@ -34,6 +36,7 @@ final class GetAddressFaluir extends AddressState {
   GetAddressFaluir({required this.error});
 }
 
+//////////////////////
 final class UpdateAddressLoading extends AddressState {}
 
 final class UpdateAddressSuccess extends AddressState {
@@ -47,6 +50,7 @@ final class UpdateAddressFaluir extends AddressState {
   UpdateAddressFaluir({required this.error});
 }
 
+///////////////
 final class DeleteAddressLoading extends AddressState {}
 
 final class DeleteAddressSuccess extends AddressState {}
@@ -56,6 +60,7 @@ final class DeleteAddressFaluir extends AddressState {
   DeleteAddressFaluir({required this.error});
 }
 
+/////////////////
 final class AddOrderLoading extends AddressState {}
 
 final class AddOrderSuccess extends AddressState {
@@ -69,6 +74,7 @@ final class AddOrderFaluir extends AddressState {
   AddOrderFaluir({required this.error});
 }
 
+//////////////
 final class GetOrderLoading extends AddressState {}
 
 final class GetOrderSuccess extends AddressState {
@@ -82,6 +88,7 @@ final class GetOrderFaluir extends AddressState {
   GetOrderFaluir({required this.error});
 }
 
+///////////////////
 final class OrderDetailsLoading extends AddressState {}
 
 final class OrderDetailsSuccess extends AddressState {
@@ -93,4 +100,18 @@ final class OrderDetailsSuccess extends AddressState {
 final class OrderDetailsFaluir extends AddressState {
   final String error;
   OrderDetailsFaluir({required this.error});
+}
+
+///////////////////////
+final class CancleOrderLoading extends AddressState {}
+
+final class CancleOrderSuccess extends AddressState {
+  final CancleOrderModel cancleOrderModel;
+
+  CancleOrderSuccess({required this.cancleOrderModel});
+}
+
+final class CancleOrderFaluir extends AddressState {
+  final String error;
+  CancleOrderFaluir({required this.error});
 }
