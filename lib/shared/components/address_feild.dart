@@ -4,14 +4,14 @@ import 'package:store_2/shared/style/colors.dart';
 class AddressField extends StatelessWidget {
   const AddressField(
       {super.key,
-      required this.messageValidationName,
+      this.messageValidationName,
       this.hintText,
       this.maxLine = 1,
       this.width = double.infinity,
       this.isRequired = true,
       required this.textEditingController,
       this.isOrderView = false});
-  final String messageValidationName;
+  final String? messageValidationName;
   final String? hintText;
   final int maxLine;
   final double width;

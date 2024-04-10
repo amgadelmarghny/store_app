@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_2/modules/order/order_item/components/address_view.dart';
 import 'package:store_2/modules/order/order_item/components/product_coast.dart';
 import 'package:store_2/modules/order/order_item/components/total_coast.dart';
 import 'package:store_2/modules/order/order_item/order_product_item.dart';
@@ -11,6 +12,16 @@ class OrderItemViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController nameController = TextEditingController();
+    TextEditingController cityController = TextEditingController();
+    TextEditingController regionController = TextEditingController();
+    TextEditingController detailsController = TextEditingController();
+    TextEditingController notesController = TextEditingController();
+    nameController.text = '';
+    cityController.text = '';
+    regionController.text = '';
+    detailsController.text = '';
+    notesController.text = '';
     return Padding(
       padding: const EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 16),
       child: ListView(
@@ -60,10 +71,12 @@ class OrderItemViewBody extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: decorationBuilder(context),
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [],
+            child: AddressView(
+              nameController: nameController,
+              cityController: cityController,
+              regionController: regionController,
+              detailsController: detailsController,
+              notesController: notesController,
             ),
           )
         ],
