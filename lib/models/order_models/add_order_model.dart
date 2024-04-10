@@ -21,8 +21,7 @@ class AddOrderModel {
 class Data {
   final dynamic id;
   final String paymentMethod;
-  final int total;
-  final dynamic cost, vat, points, discount;
+  final dynamic cost, vat, points, discount, total;
 
   Data({
     required this.id,

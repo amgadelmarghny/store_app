@@ -152,6 +152,8 @@ class AddressCubit extends Cubit<AddressState> {
       addOrderModel = AddOrderModel.fromJson(value.data);
       getAllOrders();
       emit(AddOrderSuccess(addOrderModel: addOrderModel));
+    }).catchError((error) {
+      emit(AddOrderFaluir(error: error.toString()));
     });
   }
 

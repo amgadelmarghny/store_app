@@ -10,17 +10,21 @@ class OrderItem extends StatelessWidget {
     super.key,
     required this.color,
     required this.orderModel,
+    this.isNewOrderBody = false,
   });
   final Color color;
   final OrderModel orderModel;
+  final bool isNewOrderBody;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        BlocProvider.of<AddressCubit>(context)
-            .getOrderDetails(id: orderModel.id);
-        Navigator.pushNamed(context, OrderItemView.id);
-      },
+      onTap: isNewOrderBody
+          ? () {
+              BlocProvider.of<AddressCubit>(context)
+                  .getOrderDetails(id: orderModel.id);
+              Navigator.pushNamed(context, OrderItemView.id);
+            }
+          : null,
       child: Container(
         height: 90,
         padding: const EdgeInsets.all(5),

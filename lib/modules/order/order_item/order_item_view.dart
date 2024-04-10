@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,9 +25,11 @@ class OrderItemView extends StatelessWidget {
           OrderDetailsModel? orderDetailsModel =
               BlocProvider.of<AddressCubit>(context).orderDetailsModel;
           return ConditionalBuilder(
-            condition: orderDetailsModel != null,
+            condition:
+                orderDetailsModel != null && state is! OrderDetailsLoading,
             builder: (context) {
               return CustomScrollView(
+                physics: const BouncingScrollPhysics(),
                 slivers: [
                   SliverPersistentHeader(
                     pinned: true,

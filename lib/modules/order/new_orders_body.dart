@@ -67,6 +67,7 @@ class NewOrdersBody extends StatelessWidget {
                     color: const Color.fromARGB(255, 255, 157, 0),
                     orderModel: BlocProvider.of<AddressCubit>(context)
                         .newOrdersList[index],
+                    isNewOrderBody: true,
                   );
                 },
                 separatorBuilder: (context, index) {

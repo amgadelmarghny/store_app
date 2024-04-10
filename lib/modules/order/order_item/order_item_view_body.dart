@@ -50,6 +50,7 @@ class OrderItemViewBody extends StatelessWidget {
       padding: const EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 16),
       child: ListView(
         primary: false,
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         children: [
           const Text('Products'),
