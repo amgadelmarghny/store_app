@@ -15,10 +15,11 @@ class OrderProductItem extends StatelessWidget {
         color: Theme.of(context).scaffoldBackgroundColor,
         boxShadow: [
           BoxShadow(
-              color: BlocProvider.of<AppCubit>(context).isDark
-                  ? Colors.grey.shade400
-                  : Colors.black87,
-              spreadRadius: 1.2),
+            color: BlocProvider.of<AppCubit>(context).isDark
+                ? Colors.grey.shade400
+                : Colors.black87,
+            spreadRadius: 1.2,
+          ),
         ],
       ),
       height: 90,
@@ -41,10 +42,10 @@ class OrderProductItem extends StatelessWidget {
                     'scdv',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(height: 1.2, fontSize: 21),
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          height: 1.2,
+                          fontSize: 21,
+                        ),
                   ),
                 ),
                 const SizedBox(height: 4),
