@@ -167,8 +167,9 @@ class AddressCubit extends Cubit<AddressState> {
     cancelledOrdersList.clear();
     emit(GetOrderLoading());
     await DioHelper.getData(
-            url: order, token: CashHelper.getData(key: tOKENCONST))
-        .then((value) {
+      url: order,
+      token: CashHelper.getData(key: tOKENCONST),
+    ).then((value) {
       getOrdersModel = GetOrdersModel.fromJson(value.data);
       for (var element in getOrdersModel!.data!.listOfOrders) {
         if (element.status == 'New' || element.status == 'جديد') {
@@ -199,7 +200,11 @@ class AddressCubit extends Cubit<AddressState> {
   late CancleOrderModel cancleOrderModel;
   Future<void> cancleTheOrder({required int orderId}) async {
     emit(CancleOrderLoading());
-    DioHelper.getData(url: '$order/$orderId/cancel').then((value) {
+    DioHelper.getData(
+        url: '$order/$orderId/cancel',
+        token: CashHelper.getData(
+          key: tOKENCONST,
+        )).then((value) {
       cancleOrderModel = CancleOrderModel.fromJson(value.data);
       emit(CancleOrderSuccess(cancleOrderModel: cancleOrderModel));
     }).catchError((error) {
