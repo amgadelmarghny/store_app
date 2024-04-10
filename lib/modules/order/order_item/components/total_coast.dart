@@ -23,11 +23,6 @@ class TotalCoast extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.baseline,
           textBaseline: TextBaseline.alphabetic,
           children: [
-            Text('EGP',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleSmall!
-                    .copyWith(fontSize: 13)),
             Text(
               number.toString(),
               style: Theme.of(context)
@@ -35,6 +30,11 @@ class TotalCoast extends StatelessWidget {
                   .titleMedium!
                   .copyWith(fontWeight: FontWeight.w600),
             ),
+            Text('EGP',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall!
+                    .copyWith(fontSize: 13)),
           ],
         ),
       ],

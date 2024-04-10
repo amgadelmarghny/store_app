@@ -15,7 +15,7 @@ class AddressView extends StatelessWidget {
   final TextEditingController cityController;
   final TextEditingController regionController;
   final TextEditingController detailsController;
-  final TextEditingController notesController;
+  final TextEditingController? notesController;
 
   @override
   Widget build(BuildContext context) {
@@ -48,13 +48,14 @@ class AddressView extends StatelessWidget {
           textEditingController: detailsController,
         ),
         const SizedBox(height: 20),
-        AddressField(
-          maxLine: 3,
-          hintText: 'Note',
-          isRequired: false,
-          isOrderView: true,
-          textEditingController: notesController,
-        ),
+        if (notesController!.text != '')
+          AddressField(
+            maxLine: 3,
+            hintText: 'Note',
+            isRequired: false,
+            isOrderView: true,
+            textEditingController: notesController!,
+          ),
       ],
     );
   }

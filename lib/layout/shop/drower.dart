@@ -28,35 +28,45 @@ class DrawerMenu extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, ProfileView.id);
                   },
-                  child: UserAccountsDrawerHeader(
-                    decoration: const BoxDecoration(color: Colors.transparent),
-                    currentAccountPicture: AvatarPic(
-                      image: BlocProvider.of<ShopCubit>(context)
-                          .profileModel!
-                          .user!
-                          .image!,
-                    ),
-                    accountName: Text(
-                      BlocProvider.of<ShopCubit>(context)
-                          .profileModel!
-                          .user!
-                          .name!,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            fontWeight: FontWeight.w600,
+                  child: BlocProvider.of<ShopCubit>(context).profileModel !=
+                          null
+                      ? UserAccountsDrawerHeader(
+                          decoration:
+                              const BoxDecoration(color: Colors.transparent),
+                          currentAccountPicture: AvatarPic(
+                            image: BlocProvider.of<ShopCubit>(context)
+                                .profileModel!
+                                .user!
+                                .image!,
                           ),
-                    ),
-                    accountEmail: Text(
-                      BlocProvider.of<ShopCubit>(context)
-                          .profileModel!
-                          .user!
-                          .email!,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(),
-                    ),
-                  ),
+                          accountName: Text(
+                            BlocProvider.of<ShopCubit>(context)
+                                .profileModel!
+                                .user!
+                                .name!,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                          accountEmail: Text(
+                            BlocProvider.of<ShopCubit>(context)
+                                .profileModel!
+                                .user!
+                                .email!,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(),
+                          ),
+                        )
+                      : null,
                 ),
                 ListTile(
                   leading: const Icon(Icons.shopping_cart_outlined),

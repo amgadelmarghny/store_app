@@ -55,7 +55,7 @@ class Data {
 class Products {
   int? id;
   int? quantity;
-  int? price;
+  dynamic price;
   String? name;
   String? image;
 

@@ -63,7 +63,7 @@ class OrderSheet extends StatelessWidget {
             const HintTextOrderSheet(),
             const SizedBox(height: 20),
             CustomButton(
-              text: 'Take Order',
+              text: 'Place Order',
               isLoading: state is AddOrderLoading,
               onTap: () {
                 addressCubit

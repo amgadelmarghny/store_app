@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_2/models/order_models/order_details_model.dart';
 import 'package:store_2/modules/order/order_item/components/address_view.dart';
 import 'package:store_2/modules/order/order_item/components/product_coast.dart';
 import 'package:store_2/modules/order/order_item/components/total_coast.dart';
@@ -8,7 +9,27 @@ import 'package:store_2/shared/components/container_decoration.dart';
 class OrderItemViewBody extends StatelessWidget {
   const OrderItemViewBody({
     super.key,
+    required this.productModelList,
+    required this.name,
+    required this.city,
+    required this.details,
+    required this.region,
+    required this.note,
+    required this.discount,
+    required this.coast,
+    required this.vat,
+    required this.total,
   });
+  final List<Products> productModelList;
+  final String name;
+  final String city;
+  final dynamic details;
+  final String region;
+  final String? note;
+  final dynamic discount;
+  final dynamic coast;
+  final dynamic vat;
+  final dynamic total;
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +38,14 @@ class OrderItemViewBody extends StatelessWidget {
     TextEditingController regionController = TextEditingController();
     TextEditingController detailsController = TextEditingController();
     TextEditingController notesController = TextEditingController();
-    nameController.text = '';
-    cityController.text = '';
-    regionController.text = '';
-    detailsController.text = '';
-    notesController.text = '';
+    nameController.text = name;
+    cityController.text = city;
+    regionController.text = region;
+    detailsController.text = details;
+    if (note != null) {
+      notesController.text = note!;
+    }
+
     return Padding(
       padding: const EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 16),
       child: ListView(
@@ -34,29 +58,37 @@ class OrderItemViewBody extends StatelessWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                return const OrderProductItem();
+                return OrderProductItem(
+                  productModel: productModelList[index],
+                );
               },
               separatorBuilder: (context, index) => const SizedBox(height: 18),
-              itemCount: 2),
+              itemCount: productModelList.length),
           const Divider(
             thickness: 1.5,
             height: 50,
           ),
-          const ProductCoast(
-            title: 'Discount',
-          ),
-          const ProductCoast(
+          if (discount > 0)
+            ProductCoast(
+              title: 'Discount',
+              number: discount,
+            ),
+          ProductCoast(
             title: 'Coast',
+            number: coast,
           ),
-          const ProductCoast(
+          ProductCoast(
             title: 'Vat',
+            number: vat.round(),
           ),
           const Divider(
             thickness: 1.5,
             endIndent: 60,
             indent: 60,
           ),
-          const TotalCoast(),
+          TotalCoast(
+            number: total,
+          ),
           const Divider(
             thickness: 1.5,
             height: 20,

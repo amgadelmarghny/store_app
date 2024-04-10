@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CustomSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  const CustomSliverAppBarDelegate({required this.expandedHeigh});
+  const CustomSliverAppBarDelegate({
+    required this.id,
+    required this.status,
+    required this.date,
+    required this.expandedHeigh,
+  });
   final double expandedHeigh;
+  final int id;
+  final String status;
+  final String date;
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -35,20 +43,20 @@ class CustomSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
                     children: [
                       //! ID
                       Text(
-                        'Order ID: 3435666',
+                        'Order ID: $id',
                         style: Theme.of(context)
                             .textTheme
                             .titleLarge!
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       //! sratus
-                      Text('Status: New',
+                      Text('Status: $status',
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium!
                               .copyWith(color: Colors.amber)),
                       Text(
-                        '12 / 07 / 2021',
+                        date,
                         style: Theme.of(context).textTheme.bodySmall,
                       )
                     ],

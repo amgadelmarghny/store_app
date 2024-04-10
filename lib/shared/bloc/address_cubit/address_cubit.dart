@@ -152,8 +152,6 @@ class AddressCubit extends Cubit<AddressState> {
       addOrderModel = AddOrderModel.fromJson(value.data);
       getAllOrders();
       emit(AddOrderSuccess(addOrderModel: addOrderModel));
-    }).catchError((error) {
-      emit(AddOrderFaluir(error: error.toString()));
     });
   }
 
@@ -162,6 +160,8 @@ class AddressCubit extends Cubit<AddressState> {
   List<OrderModel> cancelledOrdersList = [];
   GetOrdersModel? getOrdersModel;
   void getAllOrders() async {
+    newOrdersList.clear();
+    cancelledOrdersList.clear();
     emit(GetOrderLoading());
     await DioHelper.getData(
             url: order, token: CashHelper.getData(key: tOKENCONST))

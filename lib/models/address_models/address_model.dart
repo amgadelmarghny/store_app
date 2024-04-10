@@ -19,7 +19,7 @@ class AddressModel {
         name: json['name'],
         city: json['city'],
         region: json['region'],
-        details: json['address'],
+        details: json['details'],
         notes: json['notes'],
         latitude: json['latitude'],
         longitude: json['longitude'],
