@@ -9,12 +9,14 @@ class AddressField extends StatelessWidget {
       this.maxLine = 1,
       this.width = double.infinity,
       this.isRequired = true,
-      required this.textEditingController});
+      required this.textEditingController,
+      this.isOrderView = false});
   final String messageValidationName;
   final String? hintText;
   final int maxLine;
   final double width;
   final bool isRequired;
+  final bool isOrderView;
   final TextEditingController textEditingController;
   @override
   Widget build(BuildContext context) {
@@ -22,24 +24,28 @@ class AddressField extends StatelessWidget {
       width: width,
       child: Stack(
         children: [
-          if (isRequired)
-            const Icon(
-              Icons.star,
-              color: Colors.red,
-              size: 10.0,
-            ),
+          if (!isOrderView)
+            if (isRequired)
+              const Icon(
+                Icons.star,
+                color: Colors.red,
+                size: 10.0,
+              ),
           TextFormField(
+            readOnly: isRequired,
             style: const TextStyle(fontSize: 18),
             cursorColor: defaultColor,
             maxLines: maxLine,
             controller: textEditingController,
-            validator: isRequired
-                ? (value) {
-                    if (value?.isEmpty ?? true) {
-                      return '$messageValidationName' ' is required';
-                    }
-                    return null;
-                  }
+            validator: !isOrderView
+                ? isRequired
+                    ? (value) {
+                        if (value?.isEmpty ?? true) {
+                          return '$messageValidationName' ' is required';
+                        }
+                        return null;
+                      }
+                    : null
                 : null,
             decoration: InputDecoration(
               hintText: hintText,
