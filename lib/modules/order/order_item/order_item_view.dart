@@ -42,6 +42,7 @@ class OrderItemView extends StatelessWidget {
                   ),
                   SliverToBoxAdapter(
                     child: OrderItemViewBody(
+                      orderId: orderDetailsModel.data!.id!,
                       name: orderDetailsModel.data!.addressModel!.name,
                       city: orderDetailsModel.data!.addressModel!.city,
                       region: orderDetailsModel.data!.addressModel!.region,

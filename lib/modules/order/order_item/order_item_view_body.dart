@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_2/models/order_models/order_details_model.dart';
 import 'package:store_2/modules/order/order_item/components/address_view.dart';
+import 'package:store_2/modules/order/order_item/components/calcellation_button.dart';
 import 'package:store_2/modules/order/order_item/components/product_coast.dart';
 import 'package:store_2/modules/order/order_item/components/total_coast.dart';
 import 'package:store_2/modules/order/order_item/order_product_item.dart';
@@ -19,8 +20,10 @@ class OrderItemViewBody extends StatelessWidget {
     required this.coast,
     required this.vat,
     required this.total,
+    required this.orderId,
   });
   final List<Products> productModelList;
+  final int orderId;
   final String name;
   final String city;
   final dynamic details;
@@ -48,14 +51,27 @@ class OrderItemViewBody extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 16),
-      child: ListView(
-        primary: false,
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        children: [
-          const Text('Products'),
-          const SizedBox(height: 15),
-          ListView.separated(
+      child: Transform.translate(
+        offset: const Offset(0, -15),
+        child: ListView(
+          primary: false,
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                CancllationButton(
+                  orderId: orderId,
+                ),
+                const SizedBox(
+                  width: 30,
+                )
+              ],
+            ),
+            const Text('Products'),
+            const SizedBox(height: 15),
+            ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
@@ -64,55 +80,57 @@ class OrderItemViewBody extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, index) => const SizedBox(height: 18),
-              itemCount: productModelList.length),
-          const Divider(
-            thickness: 1.5,
-            height: 50,
-          ),
-          if (discount > 0)
+              itemCount: productModelList.length,
+            ),
+            const Divider(
+              thickness: 1.5,
+              height: 50,
+            ),
+            if (discount > 0)
+              ProductCoast(
+                title: 'Discount',
+                number: discount,
+              ),
             ProductCoast(
-              title: 'Discount',
-              number: discount,
+              title: 'Coast',
+              number: coast,
             ),
-          ProductCoast(
-            title: 'Coast',
-            number: coast,
-          ),
-          ProductCoast(
-            title: 'Vat',
-            number: vat.round(),
-          ),
-          const Divider(
-            thickness: 1.5,
-            endIndent: 60,
-            indent: 60,
-          ),
-          TotalCoast(
-            number: total,
-          ),
-          const Divider(
-            thickness: 1.5,
-            height: 20,
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          const Text('Address'),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: decorationBuilder(context),
-            child: AddressView(
-              nameController: nameController,
-              cityController: cityController,
-              regionController: regionController,
-              detailsController: detailsController,
-              notesController: notesController,
+            ProductCoast(
+              title: 'Vat',
+              number: vat.round(),
             ),
-          )
-        ],
+            const Divider(
+              thickness: 1.5,
+              endIndent: 60,
+              indent: 60,
+            ),
+            TotalCoast(
+              number: total,
+            ),
+            const Divider(
+              thickness: 1.5,
+              height: 20,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const Text('Address'),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: decorationBuilder(context),
+              child: AddressView(
+                nameController: nameController,
+                cityController: cityController,
+                regionController: regionController,
+                detailsController: detailsController,
+                notesController: notesController,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

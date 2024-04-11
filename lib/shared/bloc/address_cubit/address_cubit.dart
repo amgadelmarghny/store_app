@@ -197,15 +197,16 @@ class AddressCubit extends Cubit<AddressState> {
   }
 
   ////////////////////! Cancle  the Order /////////////////////
-  late CancleOrderModel cancleOrderModel;
-  Future<void> cancleTheOrder({required int orderId}) async {
+  late CancelOrderModel cancleOrderModel;
+  Future<void> cancelTheOrder({required int orderId}) async {
     emit(CancleOrderLoading());
     DioHelper.getData(
         url: '$order/$orderId/cancel',
         token: CashHelper.getData(
           key: tOKENCONST,
         )).then((value) {
-      cancleOrderModel = CancleOrderModel.fromJson(value.data);
+      cancleOrderModel = CancelOrderModel.fromJson(value.data);
+      getAllOrders();
       emit(CancleOrderSuccess(cancleOrderModel: cancleOrderModel));
     }).catchError((error) {
       emit(CancleOrderFaluir(error: error));

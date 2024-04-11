@@ -106,7 +106,7 @@ final class OrderDetailsFaluir extends AddressState {
 final class CancleOrderLoading extends AddressState {}
 
 final class CancleOrderSuccess extends AddressState {
-  final CancleOrderModel cancleOrderModel;
+  final CancelOrderModel cancleOrderModel;
 
   CancleOrderSuccess({required this.cancleOrderModel});
 }

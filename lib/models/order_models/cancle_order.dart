@@ -1,10 +1,10 @@
-class CancleOrderModel {
+class CancelOrderModel {
   final bool status;
   final String message;
 
-  CancleOrderModel({required this.status, required this.message});
-  factory CancleOrderModel.fromJson(Map<String, dynamic> json) {
-    return CancleOrderModel(
+  CancelOrderModel({required this.status, required this.message});
+  factory CancelOrderModel.fromJson(Map<String, dynamic> json) {
+    return CancelOrderModel(
       status: json['status'],
       message: json['message'],
     );

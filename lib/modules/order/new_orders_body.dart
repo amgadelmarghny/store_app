@@ -12,7 +12,7 @@ class NewOrdersBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
       child: BlocConsumer<AddressCubit, AddressState>(
         listener: (context, state) {
           if (state is GetOrderFaluir) {
