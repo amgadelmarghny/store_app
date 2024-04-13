@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 
-class CustomDivider extends StatelessWidget {
-  const CustomDivider({
+class CustomSmallDivider extends StatelessWidget {
+  const CustomSmallDivider({
     super.key,
   });
 

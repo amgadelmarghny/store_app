@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/modules/cart/order_sheet_components/address_options.dart';
-import 'package:store_2/modules/cart/order_sheet_components/custpm_divider.dart';
+import 'package:store_2/modules/cart/order_sheet_components/custom_small_divider.dart';
 import 'package:store_2/modules/cart/order_sheet_components/hint_text.dart';
 import 'package:store_2/modules/cart/order_sheet_components/payment_method_options.dart';
 import 'package:store_2/modules/cart/order_sheet_components/total_coast_list_tile.dart';
@@ -53,7 +53,7 @@ class OrderSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomDivider(),
+            const CustomSmallDivider(),
             const PaymantMethodOptions(),
             const Divider(),
             const AdressOptions(),
