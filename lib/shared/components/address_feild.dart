@@ -11,6 +11,7 @@ class AddressField extends StatelessWidget {
     this.isRequired = true,
     this.textEditingController,
     this.isOrderView = false,
+    this.keyboardType,
   });
   final String? messageValidationName;
   final String? hintText;
@@ -19,6 +20,7 @@ class AddressField extends StatelessWidget {
   final bool isRequired;
   final bool isOrderView;
   final TextEditingController? textEditingController;
+  final TextInputType? keyboardType;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -33,6 +35,7 @@ class AddressField extends StatelessWidget {
                 size: 10.0,
               ),
           TextFormField(
+            keyboardType: keyboardType,
             readOnly: isOrderView,
             style: const TextStyle(fontSize: 18),
             cursorColor: defaultColor,

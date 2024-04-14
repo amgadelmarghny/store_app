@@ -1,38 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:store_2/shared/components/address_feild.dart';
 
-class ComplaintDialogBuilder extends StatelessWidget {
-  const ComplaintDialogBuilder({
+class ComplaintDialogContent extends StatelessWidget {
+  const ComplaintDialogContent({
     super.key,
+    required this.nameController,
+    required this.emailController,
+    required this.phoneController,
+    required this.messageController,
+    required this.autovalidateMode,
+    required this.formKey,
   });
+  final AutovalidateMode autovalidateMode;
+  final GlobalKey<FormState> formKey;
+  final TextEditingController nameController;
+  final TextEditingController emailController;
+  final TextEditingController phoneController;
+  final TextEditingController messageController;
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<FormState> formKey = GlobalKey();
-    AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-    TextEditingController nameController = TextEditingController();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController phoneController = TextEditingController();
-    TextEditingController messageController = TextEditingController();
-
-    return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      actionsPadding: const EdgeInsets.all(0),
-      contentPadding: const EdgeInsets.all(25),
-      iconPadding: const EdgeInsets.all(0),
-      title: const Text('Complaint'),
-      icon: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: const Icon(Icons.close),
-          ),
-        ],
-      ),
-      content: Form(
+    return SingleChildScrollView(
+      child: Form(
         key: formKey,
         autovalidateMode: autovalidateMode,
         child: Column(
@@ -42,6 +31,7 @@ class ComplaintDialogBuilder extends StatelessWidget {
             AddressField(
               hintText: 'name',
               messageValidationName: 'name',
+              keyboardType: TextInputType.name,
               textEditingController: nameController,
             ),
             const SizedBox(
@@ -57,6 +47,7 @@ class ComplaintDialogBuilder extends StatelessWidget {
             ),
             AddressField(
               hintText: 'phone number',
+              keyboardType: TextInputType.phone,
               messageValidationName: 'phone number',
               textEditingController: phoneController,
             ),
@@ -72,14 +63,6 @@ class ComplaintDialogBuilder extends StatelessWidget {
           ],
         ),
       ),
-      actions: [
-        TextButton(
-            onPressed: () {},
-            child: const Text(
-              'Send',
-              style: TextStyle(fontSize: 20, color: Colors.teal),
-            ))
-      ],
     );
   }
 }

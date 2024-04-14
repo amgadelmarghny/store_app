@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:store_2/models/cart_models/get_cart_model.dart';
 import 'package:store_2/models/cart_models/update_cart.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
@@ -30,57 +29,61 @@ class ShopCubit extends Cubit<ShopStates> {
   List<BottomNavigationBarItem> bottomNavBarItems({required Color color}) {
     return [
       BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            'lib/assets/images/shop.svg',
-            colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-          ),
+          icon: currentIndex == 0
+              ? const Icon(
+                  Icons.store_mall_directory,
+                  size: 27,
+                )
+              : const Icon(Icons.store_mall_directory_outlined),
           label: 'Home'),
       const BottomNavigationBarItem(
           icon: Icon(Icons.apps_outlined), label: 'Categories'),
       BottomNavigationBarItem(
-          icon: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                const Icon(Icons.favorite_outline),
-                // if user on fav view ,fav notifi. will not show
-                if (currentIndex != 2)
-                  // when the app oppened and getFavorite requist finish
-                  if (favoritesModel != null)
-                    // and user add product to fav then show count of favorites
-                    // then the notification will appear
-                    if (favoritesModel!.favoritesDataModel != null)
-                      if (favoritesModel!.favoritesDataModel!.total! > 0)
-                        // this to make notification disappear when user press on Favorite screen
-                        // then favoriteNotifi. will deleted
-                        // so I check if it was deleted , the  notification will not appear again
-                        if (CashHelper.getData(key: favNotofication) != null)
-                          Positioned(
-                            top: -6,
-                            right: -6,
-                            child: Container(
-                              width: 15.5,
-                              decoration: const BoxDecoration(
-                                color: Colors.red,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: FittedBox(
-                                  child: Text(
-                                    favoritesModel!.favoritesDataModel!.total!
-                                        .toString(),
-                                    style: const TextStyle(
-                                      fontSize: 13,
-                                      color: Colors.white,
-                                    ),
+          icon: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              currentIndex == 2
+                  ? const Icon(
+                      Icons.favorite,
+                      size: 26,
+                    )
+                  : const Icon(Icons.favorite_outline),
+              // if user on fav view ,fav notifi. will not show
+              if (currentIndex != 2)
+                // when the app oppened and getFavorite requist finish
+                if (favoritesModel != null)
+                  // and user add product to fav then show count of favorites
+                  // then the notification will appear
+                  if (favoritesModel!.favoritesDataModel != null)
+                    if (favoritesModel!.favoritesDataModel!.total! > 0)
+                      // this to make notification disappear when user press on Favorite screen
+                      // then favoriteNotifi. will deleted
+                      // so I check if it was deleted , the  notification will not appear again
+                      if (CashHelper.getData(key: favNotofication) != null)
+                        Positioned(
+                          top: -6,
+                          right: -6,
+                          child: Container(
+                            width: 15.5,
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: FittedBox(
+                                child: Text(
+                                  favoritesModel!.favoritesDataModel!.total!
+                                      .toString(),
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ),
                             ),
                           ),
-              ],
-            ),
+                        ),
+            ],
           ),
           label: 'Favorite'),
     ];
@@ -243,7 +246,7 @@ class ShopCubit extends Cubit<ShopStates> {
   //////////////////////////////// CET CART  PRODUCTS ////////////////////////////
   GetCartModel? cartModel;
   Map<int, int> quantityNumberMap = {};
-   ProductModel? productCheck;
+  ProductModel? productCheck;
   void getCartItems() {
     emit(GetCartLoadingState());
     DioHelper.getData(

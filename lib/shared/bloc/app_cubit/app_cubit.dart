@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:store_2/models/boarding_model.dart';
 import 'package:store_2/models/complaint_model.dart';
@@ -42,12 +44,12 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   ////////////////! Add Complaint /////////////////
-  late ComplaintModel complaintModel;
+   ComplaintModel ? complaintModel;
   void addComplaint(
       {required String name,
       required String email,
       required String phone,
-      required String messege}) async {
+      required String message}) async {
     emit(AddComplainLoading());
     DioHelper.postData(
         url: 'complaints',
@@ -56,7 +58,7 @@ class AppCubit extends Cubit<AppStates> {
           'name': name,
           'phone': phone,
           'email': email,
-          'message': messege,
+          'message': message,
         }).then((value) {
       complaintModel = ComplaintModel.fromJson(value.data);
       emit(AddComplainSuccess());
