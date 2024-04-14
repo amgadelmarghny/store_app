@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:store_2/models/cart_models/get_cart_model.dart';
 import 'package:store_2/models/cart_models/update_cart.dart';
+import 'package:store_2/models/change_password.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
 import 'package:store_2/modules/categories/categories_body.dart';
 import 'package:store_2/modules/favorite/favorite_body.dart';
@@ -198,6 +199,22 @@ class ShopCubit extends Cubit<ShopStates> {
       emit(ProfileSuccessState());
     }).catchError((err) {
       emit(ProfileFailureState(errMessage: err.toString()));
+    });
+  }
+
+  ////////////////////////? Change Password /////////////////////////////
+  ChangePasswordModel? changePasswordModel;
+  void changeAccPassword() {
+    emit(ChangePasswordLoadingState());
+    DioHelper.postData(
+      url: changePassword,
+      token: CashHelper.getData(key: tOKENCONST),
+    ).then((value) {
+      changePasswordModel = ChangePasswordModel.fromJson(value.data);
+      getProfileInfo();
+      emit(ChangePasswordSuccessState());
+    }).catchError((error) {
+      emit(ChangePasswordFailureState(errMessage: error.toString()));
     });
   }
 

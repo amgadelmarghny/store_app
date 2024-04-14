@@ -99,6 +99,17 @@ class ProfileFailureState extends ShopStates {
   ProfileFailureState({required this.errMessage});
 }
 
+////////////////////////////////////////////////////////////////////
+class ChangePasswordLoadingState extends ShopStates {}
+
+class ChangePasswordSuccessState extends ShopStates {}
+
+class ChangePasswordFailureState extends ShopStates {
+  final String errMessage;
+  ChangePasswordFailureState({required this.errMessage});
+}
+
+///////////////////////////////////////////////////////////////////
 class LogoutLoadingState extends ShopStates {}
 
 class LogoutSuccussState extends ShopStates {
