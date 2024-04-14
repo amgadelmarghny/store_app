@@ -5,7 +5,6 @@ import 'package:store_2/layout/shop/drower_components/settings_menu.dart';
 import 'package:store_2/layout/shop/drower_components/user_profile.dart';
 import 'package:store_2/modules/address/get_address/addresses_view.dart';
 import 'package:store_2/modules/cart/my_cart_view.dart';
-import 'package:store_2/modules/cart/order_sheet_components/custom_small_divider.dart';
 import 'package:store_2/modules/order/order_view.dart';
 import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:store_2/shared/components/custom_divider.dart';

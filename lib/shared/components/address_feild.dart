@@ -9,7 +9,7 @@ class AddressField extends StatelessWidget {
     this.maxLine = 1,
     this.width = double.infinity,
     this.isRequired = true,
-    required this.textEditingController,
+    this.textEditingController,
     this.isOrderView = false,
   });
   final String? messageValidationName;
@@ -18,7 +18,7 @@ class AddressField extends StatelessWidget {
   final double width;
   final bool isRequired;
   final bool isOrderView;
-  final TextEditingController textEditingController;
+  final TextEditingController? textEditingController;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
