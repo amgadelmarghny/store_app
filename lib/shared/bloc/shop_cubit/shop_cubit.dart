@@ -218,8 +218,9 @@ class ShopCubit extends Cubit<ShopStates> {
       },
     ).then((value) {
       changePasswordModel = ChangePasswordModel.fromJson(value.data);
+      emit(ChangePasswordSuccessState(
+          changePasswordModel: changePasswordModel!));
       getProfileInfo();
-      emit(ChangePasswordSuccessState());
     }).catchError((error) {
       emit(ChangePasswordFailureState(errMessage: error.toString()));
     });

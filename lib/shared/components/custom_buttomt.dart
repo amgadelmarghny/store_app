@@ -10,6 +10,7 @@ class CustomButton extends StatelessWidget {
     this.isGradientColor = false,
     this.color = defaultColor,
     this.prefixIcon = false,
+    this.textColor = Colors.white,
   });
   final void Function()? onTap;
   final bool isLoading;
@@ -17,6 +18,7 @@ class CustomButton extends StatelessWidget {
   final bool isGradientColor;
   final Color? color;
   final bool prefixIcon;
+  final Color textColor;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -62,10 +64,11 @@ class CustomButton extends StatelessWidget {
                       ),
                     Text(
                       text,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                        color: textColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
                     )
                   ],
                 ),

@@ -102,7 +102,11 @@ class ProfileFailureState extends ShopStates {
 ////////////////////////////////////////////////////////////////////
 class ChangePasswordLoadingState extends ShopStates {}
 
-class ChangePasswordSuccessState extends ShopStates {}
+class ChangePasswordSuccessState extends ShopStates {
+  final ChangePasswordModel changePasswordModel;
+
+  ChangePasswordSuccessState({required this.changePasswordModel});
+}
 
 class ChangePasswordFailureState extends ShopStates {
   final String errMessage;
