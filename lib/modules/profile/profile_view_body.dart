@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/modules/login/login_view.dart';
+import 'package:store_2/modules/profile/change_password_view.dart';
 import 'package:store_2/modules/profile/update_profile_view.dart';
 import 'package:store_2/models/user_model.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
@@ -57,8 +58,18 @@ class ProfileViewBody extends StatelessWidget {
             height: 20,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ChangePasswordView.id,
+                      arguments: userData);
+                },
+                child: Text(
+                  'Change your password',
+                  style: underLineDecoration(context),
+                ),
+              ),
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, UpdateProfileView.id,
@@ -66,10 +77,7 @@ class ProfileViewBody extends StatelessWidget {
                 },
                 child: Text(
                   'Modify your profile',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        decoration: TextDecoration.underline,
-                        decorationColor: defaultColor,
-                      ),
+                  style: underLineDecoration(context),
                 ),
               ),
             ],
@@ -93,5 +101,12 @@ class ProfileViewBody extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  TextStyle underLineDecoration(BuildContext context) {
+    return Theme.of(context).textTheme.bodyMedium!.copyWith(
+          decoration: TextDecoration.underline,
+          decorationColor: defaultColor,
+        );
   }
 }

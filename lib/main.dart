@@ -12,6 +12,7 @@ import 'package:store_2/modules/category_details/category_details_view.dart';
 import 'package:store_2/modules/login/login_view.dart';
 import 'package:store_2/modules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/modules/product/product_view.dart';
+import 'package:store_2/modules/profile/change_password_view.dart';
 import 'package:store_2/modules/profile/profile_view.dart';
 import 'package:store_2/modules/profile/update_profile_view.dart';
 import 'package:store_2/modules/register/register_view.dart';
@@ -79,33 +80,33 @@ class StoreAp extends StatelessWidget {
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
           return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              routes: {
-                OnBoardingView.id: (context) => const OnBoardingView(),
-                LoginView.id: (context) => const LoginView(),
-                RegisterView.id: (context) => const RegisterView(),
-                ShopView.id: (context) => const ShopView(),
-                SearchView.id: (context) => const SearchView(),
-                ProfileView.id: (context) => const ProfileView(),
-                UpdateProfileView.id: (context) => const UpdateProfileView(),
-                ProductView.id: (context) => const ProductView(),
-                MyCartView.id: (context) => const MyCartView(),
-                CategoryDetailsView.id: (context) =>
-                    const CategoryDetailsView(),
-                AddAddressView.id: (BuildContext context) =>
-                    const AddAddressView(),
-                AddressesView.id: (BuildContext context) =>
-                    const AddressesView(),
-                OrderView.id: (context) => const OrderView(),
-                UpdateAddressView.id: (context) => const UpdateAddressView(),
-                OrderItemView.id: (context) => const OrderItemView(),
-              },
-              theme: ThemeStyle.lightTheme(),
-              darkTheme: ThemeStyle.darkTheme(),
-              themeMode: BlocProvider.of<AppCubit>(context).isDark
-                  ? ThemeMode.dark
-                  : ThemeMode.light,
-              home: widget);
+            debugShowCheckedModeBanner: false,
+            routes: {
+              OnBoardingView.id: (context) => const OnBoardingView(),
+              LoginView.id: (context) => const LoginView(),
+              RegisterView.id: (context) => const RegisterView(),
+              ShopView.id: (context) => const ShopView(),
+              SearchView.id: (context) => const SearchView(),
+              ProfileView.id: (context) => const ProfileView(),
+              UpdateProfileView.id: (context) => const UpdateProfileView(),
+              ProductView.id: (context) => const ProductView(),
+              MyCartView.id: (context) => const MyCartView(),
+              CategoryDetailsView.id: (context) => const CategoryDetailsView(),
+              AddAddressView.id: (BuildContext context) =>
+                  const AddAddressView(),
+              AddressesView.id: (BuildContext context) => const AddressesView(),
+              OrderView.id: (context) => const OrderView(),
+              UpdateAddressView.id: (context) => const UpdateAddressView(),
+              OrderItemView.id: (context) => const OrderItemView(),
+              ChangePasswordView.id: (context) => const ChangePasswordView()
+            },
+            theme: ThemeStyle.lightTheme(),
+            darkTheme: ThemeStyle.darkTheme(),
+            themeMode: BlocProvider.of<AppCubit>(context).isDark
+                ? ThemeMode.dark
+                : ThemeMode.light,
+            home: widget,
+          );
         },
       ),
     );

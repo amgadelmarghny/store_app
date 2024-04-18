@@ -204,11 +204,18 @@ class ShopCubit extends Cubit<ShopStates> {
 
   ////////////////////////? Change Password /////////////////////////////
   ChangePasswordModel? changePasswordModel;
-  void changeAccPassword() {
+  void changeAccPassword({
+    required String currentPassword,
+    required String newPassword,
+  }) {
     emit(ChangePasswordLoadingState());
     DioHelper.postData(
       url: changePassword,
       token: CashHelper.getData(key: tOKENCONST),
+      data: {
+        'current_password': currentPassword,
+        'new_password': newPassword,
+      },
     ).then((value) {
       changePasswordModel = ChangePasswordModel.fromJson(value.data);
       getProfileInfo();
@@ -218,7 +225,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-////////////////////////////////////// LOGOUT //////////////////////////////////
+//////////////////////////////////////? LOGOUT //////////////////////////////////
   void userLogout(BuildContext context, {required String routName}) async {
     emit(LogoutLoadingState());
     return await DioHelper.postData(
@@ -280,7 +287,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-  ///////////////////// UPDATE NUM OF ITEMS  IN THE CART ////////////////////////
+  ///////////////////// UPDATE NUM OF ITEMS  IN THE CART ///////////////////////
   UpdateCartModel? updateCartModel;
   void updateNumberOfItemInTheCart({
     required int cartID,
