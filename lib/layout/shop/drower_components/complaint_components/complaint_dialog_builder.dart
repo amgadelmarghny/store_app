@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:store_2/layout/shop/drower_components/complain_dialog_builder_content.dart';
+import 'package:store_2/layout/shop/drower_components/complaint_components/complain_dialog_builder_content.dart';
+import 'package:store_2/layout/shop/drower_components/complaint_components/complaint_response.dart';
 import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
 
@@ -32,17 +33,7 @@ class _ComplaintDialogBuilderState extends State<ComplaintDialogBuilder> {
           showDialog(
               context: context,
               builder: (context) {
-                return AlertDialog(
-                  content: Text(
-                    BlocProvider.of<AppCubit>(context).complaintModel!.message,
-                    style: TextStyle(color: Colors.yellow.shade600),
-                  ),
-                  actions: [
-                    ElevatedButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: const Text('OK'))
-                  ],
-                );
+                return const ComplaintResponse();
               });
         } else {
           toastShown(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/layout/shop/drower_components/complaint_dialog_builder.dart';
+import 'package:store_2/layout/shop/drower_components/complaint_components/complaint_dialog_builder.dart';
 
 class ComplaintContainer extends StatelessWidget {
   const ComplaintContainer({
