@@ -10,7 +10,7 @@ class CategoryBody extends StatelessWidget {
   const CategoryBody({super.key});
   @override
   Widget build(BuildContext context) {
-       return Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: BlocConsumer<ShopCubit, ShopStates>(
         listener: (context, state) {
@@ -23,10 +23,10 @@ class CategoryBody extends StatelessWidget {
           }
         },
         builder: (context, state) {
-           List categoriesList = BlocProvider.of<ShopCubit>(context)
-        .categoryHomeModel!
-        .dataCatHome!
-        .dataList ;
+          List categoriesList = BlocProvider.of<ShopCubit>(context)
+              .categoryHomeModel!
+              .dataCatHome!
+              .dataList;
           if (state is GetCategoriesFailureState) {
             return const Center(child: Text('Somthing went wrong'));
           }

@@ -1,5 +1,3 @@
-
-
 class UserModel {
   final dynamic id;
   final String? image;
@@ -11,15 +9,15 @@ class UserModel {
   final String? password;
   final String? phone;
 
-const UserModel({
+  const UserModel({
     this.id,
     this.image,
     this.point,
     this.credit,
     this.token,
     this.name,
-     this.email,
-     this.password,
+    this.email,
+    this.password,
     this.phone,
   });
   factory UserModel.fromJson(dynamic json) {

@@ -94,6 +94,4 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       ),
     );
   }
-
-  
 }

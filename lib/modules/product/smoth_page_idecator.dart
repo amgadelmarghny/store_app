@@ -26,9 +26,7 @@ class SmoothIndecator extends StatelessWidget {
             dotColor: Colors.grey.shade400,
           ),
           controller: pageController,
-          count: productModel.images != null
-              ? productModel.images!.length
-              : 1,
+          count: productModel.images != null ? productModel.images!.length : 1,
         ),
       ],
     );

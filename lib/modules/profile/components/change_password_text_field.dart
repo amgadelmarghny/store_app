@@ -5,7 +5,8 @@ class ChangePasswordField extends StatelessWidget {
     super.key,
     required this.validationMessage,
     required this.prefixIcon,
-    required this.hintText, required this.textInputControl,
+    required this.hintText,
+    required this.textInputControl,
   });
   final String validationMessage;
   final IconData prefixIcon;

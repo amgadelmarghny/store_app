@@ -4,7 +4,8 @@ class CustomSliverRowText extends StatelessWidget {
   const CustomSliverRowText({
     super.key,
     required this.alertSentence,
-    required this.text, required this.routeName,
+    required this.text,
+    required this.routeName,
   });
   final String alertSentence;
   final String text;
@@ -25,7 +26,7 @@ class CustomSliverRowText extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context,  routeName);
+                Navigator.pushNamed(context, routeName);
               },
               child: Text(
                 text,

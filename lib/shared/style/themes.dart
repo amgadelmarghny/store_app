@@ -21,7 +21,6 @@ abstract class ThemeStyle {
       ),
       popupMenuTheme: const PopupMenuThemeData(
         position: PopupMenuPosition.over,
-        color: defaultColor,
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
@@ -50,7 +49,6 @@ abstract class ThemeStyle {
       primarySwatch: defaultColor,
       popupMenuTheme: const PopupMenuThemeData(
         position: PopupMenuPosition.under,
-        color: defaultColor,
       ),
       appBarTheme: const AppBarTheme(
         centerTitle: true,

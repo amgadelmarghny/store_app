@@ -76,7 +76,7 @@ class AuthCubit extends Cubit<AuthState> {
       required String phoneNumber,
       required String authToken}) {
     emit(UpdateProfileLoadingState());
-   return DioHelper.putData(
+    return DioHelper.putData(
       url: updateProfile,
       token: authToken,
       data: {
@@ -87,8 +87,7 @@ class AuthCubit extends Cubit<AuthState> {
     ).then((value) {
       profileModel = ProfileModel.fromJson(value.data);
 
-      emit(UpdateProfileSuccessState(profileModel:  profileModel!));
-      
+      emit(UpdateProfileSuccessState(profileModel: profileModel!));
     }).catchError((err) {
       emit(UpdateProfileFailureState(errMessage: err.toString()));
     });

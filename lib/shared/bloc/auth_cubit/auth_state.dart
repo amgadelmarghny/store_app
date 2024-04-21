@@ -42,7 +42,6 @@ class UpdateProfileSuccessState extends AuthState {
   final ProfileModel profileModel;
 
   UpdateProfileSuccessState({required this.profileModel});
-  
 }
 
 class UpdateProfileFailureState extends AuthState {

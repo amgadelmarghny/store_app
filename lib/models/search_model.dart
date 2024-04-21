@@ -13,9 +13,8 @@ class SearchModel {
     return SearchModel(
       status: json['status'],
       message: json['message'],
-      favoritesDataModel: json['data'] != null
-          ? SearchDataModel.fromJson(json['data'])
-          : null,
+      favoritesDataModel:
+          json['data'] != null ? SearchDataModel.fromJson(json['data']) : null,
     );
   }
 }

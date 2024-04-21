@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/models/search_model.dart';
@@ -72,8 +71,8 @@ class SearchViewBody extends StatelessWidget {
                     },
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 20),
-                    itemCount: searchModel!
-                        .favoritesDataModel!.dataModelList.length,
+                    itemCount:
+                        searchModel!.favoritesDataModel!.dataModelList.length,
                   ),
                 ),
             ],

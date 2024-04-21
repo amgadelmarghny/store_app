@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class ProductCoast extends StatelessWidget {
   const ProductCoast({
     super.key,
-   required this.number, required this.title,
+    required this.number,
+    required this.title,
   });
   final String title;
   final dynamic number;

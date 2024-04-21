@@ -42,7 +42,7 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   ////////////////! Add Complaint /////////////////
-   ComplaintModel ? complaintModel;
+  ComplaintModel? complaintModel;
   void addComplaint(
       {required String name,
       required String email,
