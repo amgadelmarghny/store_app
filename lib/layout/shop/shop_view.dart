@@ -61,7 +61,7 @@ class ShopView extends StatelessWidget {
               child: Scaffold(
                 drawer: const DrawerMenu(),
                 appBar: AppBar(
-                  title: const Text('Nori Store'),
+                  title: const Text('soanbur'),
                   actions: [
                     IconButton(
                       onPressed: () {
