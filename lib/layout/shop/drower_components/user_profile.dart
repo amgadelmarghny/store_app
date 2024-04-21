@@ -17,6 +17,7 @@ class UserProfile extends StatelessWidget {
       },
       child: BlocProvider.of<ShopCubit>(context).profileModel != null
           ? UserAccountsDrawerHeader(
+              margin: const EdgeInsets.all(0),
               decoration: const BoxDecoration(color: Colors.transparent),
               currentAccountPicture: AvatarPic(
                 image: BlocProvider.of<ShopCubit>(context)

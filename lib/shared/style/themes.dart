@@ -19,12 +19,9 @@ abstract class ThemeStyle {
           statusBarColor: Colors.transparent,
         ),
       ),
-      drawerTheme: DrawerThemeData(
-        backgroundColor: defaultColor[400],
-      ),
-      popupMenuTheme: PopupMenuThemeData(
-        position: PopupMenuPosition.under,
-        color: defaultColor[200],
+      popupMenuTheme: const PopupMenuThemeData(
+        position: PopupMenuPosition.over,
+        color: defaultColor,
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
@@ -64,9 +61,6 @@ abstract class ThemeStyle {
           statusBarIconBrightness: Brightness.light,
           statusBarColor: Colors.transparent,
         ),
-      ),
-      drawerTheme: DrawerThemeData(
-        backgroundColor: defaultColor[600],
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(

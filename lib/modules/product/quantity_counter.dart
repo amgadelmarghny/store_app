@@ -52,7 +52,7 @@ class QuantityCounter extends StatelessWidget {
                 width: 40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).scaffoldBackgroundColor,
+                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       spreadRadius: 1,
@@ -63,7 +63,10 @@ class QuantityCounter extends StatelessWidget {
                 child: Center(
                   child: Text(
                     quantityNumber.toString(),
-                    style: Theme.of(context).textTheme.headlineSmall,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall!
+                        .copyWith(color: Colors.black87),
                   ),
                 ),
               ),
