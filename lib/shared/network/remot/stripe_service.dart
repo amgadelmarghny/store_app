@@ -20,14 +20,15 @@ abstract class StripeService {
 
   static Future intentPaymentSheet(
       {required String paymentIntentClientSecret}) async {
-    Stripe.instance.initPaymentSheet(
+    await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
       merchantDisplayName: 'Soanbur',
       paymentIntentClientSecret: paymentIntentClientSecret,
     ));
   }
 
-  static Future displayPaymentSheet() => Stripe.instance.presentPaymentSheet();
+  static Future displayPaymentSheet() async =>
+      await Stripe.instance.presentPaymentSheet();
 
   static Future makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
