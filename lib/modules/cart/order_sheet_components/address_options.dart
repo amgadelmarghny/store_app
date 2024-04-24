@@ -38,6 +38,9 @@ class AdressOptions extends StatelessWidget {
                   .titleSmall!
                   .copyWith(fontSize: 18),
             ),
+          const SizedBox(
+            width: 3,
+          ),
           const Icon(
             Icons.arrow_forward_ios,
             size: 18,

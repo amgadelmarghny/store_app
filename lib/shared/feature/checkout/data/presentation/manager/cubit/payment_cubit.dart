@@ -10,14 +10,13 @@ class PaymentCubit extends Cubit<PaymentState> {
   void makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     emit(PaymentLoading());
-
     await checkoutRedo
         .makePayment(paymentIntentInputModel: paymentIntentInputModel)
-        .then((value) {
-      value.fold(
-        (l) => emit(PaymentFailur(errMessage: l.errMessage)),
-        (r) => emit(PaymentSuccess()),
-      );
-    });
+        .then(
+          (value) => value.fold(
+            (l) => emit(PaymentFailur(errMessage: l.errMessage)),
+            (r) => emit(PaymentSuccess()),
+          ),
+        );
   }
 }

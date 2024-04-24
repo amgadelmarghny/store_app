@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:store_2/shared/network/local/key_const.dart';
+import 'package:store_2/shared/network/local/shared_helper.dart';
 
 class PaymentMethodItem extends StatelessWidget {
   const PaymentMethodItem({
@@ -35,13 +37,16 @@ class PaymentMethodItem extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).dialogBackgroundColor,
+          color: CashHelper.getData(key: isDarkCONST)
+              ? const Color(0xFF2E2B38)
+              : Colors.white,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Center(
           child: SvgPicture.asset(
             image,
-            // fit: BoxFit.scaleDown,
+            height: 45,
+            fit: BoxFit.scaleDown,
           ),
         ),
       ),

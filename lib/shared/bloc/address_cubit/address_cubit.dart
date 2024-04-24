@@ -130,7 +130,7 @@ class AddressCubit extends Cubit<AddressState> {
     }
     if (value == 2) {
       selectedValue = value;
-      selectedType = 'Card';
+      selectedType = 'Credit/Debit Card';
     }
     emit(CheckSetState());
   }
