@@ -73,7 +73,7 @@ class OrderSheet extends StatelessWidget {
             BlocProvider(
               create: (context) => PaymentCubit(CheckoutRepoImpl()),
               child: PlaceOrderButton(
-                amount : total,
+                amount: total,
                 addressCubit: addressCubit,
                 addressState: state,
               ),

@@ -9,7 +9,7 @@ final class PaymentLoading extends PaymentState {}
 final class PaymentSuccess extends PaymentState {}
 
 final class PaymentFailur extends PaymentState {
-  final  String errMessage;
+  final String errMessage;
 
-   PaymentFailur({required this.errMessage});
+  PaymentFailur({required this.errMessage});
 }

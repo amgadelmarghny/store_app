@@ -24,7 +24,7 @@ class PlaceOrderButton extends StatelessWidget {
       listener: (context, state) {
         if (state is PaymentFailur) {
           toastShown(
-            messege: state.errMessage,
+            messege: 'The payment method has not been completed yet',
             state: ToastState.error,
             context: context,
           );

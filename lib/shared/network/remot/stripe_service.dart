@@ -6,10 +6,24 @@ import 'package:store_2/shared/network/local/api_keys.dart';
 import 'package:store_2/shared/network/remot/api_service.dart';
 
 abstract class StripeService {
+  // for payment intent
   static Future<PaymentIntentModel> createPaymentIntent(
       PaymentIntentInputModel paymentIntentInputModel) async {
     Response response = await ApiService.postData(
-        url: 'https://api.stripe.com/v1/payment_intents',
+        url: 'payment_intents',
+        body: paymentIntentInputModel.toJson(),
+        token: ApiKeys.secretKey);
+
+    PaymentIntentModel paymentIntentModel =
+        PaymentIntentModel.fromJson(response.data);
+    return paymentIntentModel;
+  }
+
+  // for custoners
+  static Future<PaymentIntentModel> createACustomer(
+      PaymentIntentInputModel paymentIntentInputModel) async {
+    Response response = await ApiService.postData(
+        url: 'customers',
         body: paymentIntentInputModel.toJson(),
         token: ApiKeys.secretKey);
 
