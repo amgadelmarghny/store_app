@@ -5,6 +5,9 @@ import 'package:store_2/shared/components/custom_buttomt.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
 import 'package:store_2/shared/feature/checkout/data/models/payment_intent_input_model.dart';
 import 'package:store_2/shared/feature/checkout/data/presentation/manager/cubit/payment_cubit.dart';
+import 'package:store_2/shared/network/local/shared_helper.dart';
+
+import '../../../shared/network/local/key_const.dart';
 
 class PlaceOrderButton extends StatelessWidget {
   const PlaceOrderButton({
@@ -75,6 +78,7 @@ class PlaceOrderButton extends StatelessWidget {
                   PaymentIntentInputModel(
                 currency: 'EGP',
                 amount: '$totalAmount',
+                customerId: CashHelper.getData(key: customerID),
               );
               BlocProvider.of<PaymentCubit>(context).makePayment(
                 paymentIntentInputModel: paymentIntentInputModel,

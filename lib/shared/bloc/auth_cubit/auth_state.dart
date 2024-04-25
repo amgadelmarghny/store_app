@@ -4,10 +4,13 @@ part of 'auth_cubit.dart';
 sealed class AuthState {}
 
 final class AuthInitial extends AuthState {}
+////////////////? form obsecure /////////////////////
 
 final class ObsecureState extends AuthState {}
+////////////////? form validation /////////////////////
 
 final class VAlidateState extends AuthState {}
+////////////////? Login /////////////////////
 
 class LoginLodingState extends AuthState {}
 
@@ -23,6 +26,18 @@ class LoginFailureState extends AuthState {
   LoginFailureState({required this.err});
 }
 
+////////////? creaye a custpmer for payment ///////////
+class CustomerPatymentLoding extends AuthState {}
+
+class CustomerPatymentSuccess extends AuthState {}
+
+class CustomerPatymentFailure extends AuthState {
+  final String errMessage;
+
+  CustomerPatymentFailure({required this.errMessage});
+}
+////////////////? Registeration /////////////////////
+
 class RegisterLodingState extends AuthState {}
 
 class RegisterSuccessState extends AuthState {
@@ -35,6 +50,7 @@ class RegisterFailureState extends AuthState {
 
   RegisterFailureState({required this.err});
 }
+//////////////// ? update profile /////////////////////
 
 class UpdateProfileLoadingState extends AuthState {}
 

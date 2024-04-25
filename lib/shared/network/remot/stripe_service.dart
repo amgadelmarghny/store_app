@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:store_2/shared/feature/checkout/data/models/customer_payment_input_model.dart';
+import 'package:store_2/shared/feature/checkout/data/models/customer_payment_model.dart';
 import 'package:store_2/shared/feature/checkout/data/models/payment_intent_input_model.dart';
 import 'package:store_2/shared/feature/checkout/data/models/payment_intent_model/payment_intent_model.dart';
 import 'package:store_2/shared/network/local/api_keys.dart';
@@ -20,16 +22,16 @@ abstract class StripeService {
   }
 
   // for custoners
-  static Future<PaymentIntentModel> createACustomer(
-      PaymentIntentInputModel paymentIntentInputModel) async {
+  static Future<CustomerPaymentModel> createACustomer(
+      CustomerPaymentInputModel customerPaymentInputModel) async {
     Response response = await ApiService.postData(
-        url: 'customers',
-        body: paymentIntentInputModel.toJson(),
-        token: ApiKeys.secretKey);
-
-    PaymentIntentModel paymentIntentModel =
-        PaymentIntentModel.fromJson(response.data);
-    return paymentIntentModel;
+      url: 'customers',
+      body: customerPaymentInputModel.toJson(),
+      token: ApiKeys.secretKey,
+    );
+    CustomerPaymentModel customerPaymentModel =
+        CustomerPaymentModel.fromJson(response.data);
+    return customerPaymentModel;
   }
 
   static Future intentPaymentSheet(

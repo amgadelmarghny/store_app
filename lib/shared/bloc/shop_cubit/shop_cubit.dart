@@ -106,7 +106,7 @@ class ShopCubit extends Cubit<ShopStates> {
     CategoryBody(),
     FavoriteBody(),
   ];
-/////////////////////////////////// GET  HOME  DATA ////////////////////////////
+////////////////////////////////////? GET  HOME  DATA ////////////////////////////
   HomeModel? homeModel;
   Map<int, bool> favoriteProductsMap = {};
   Map<int, bool> inCartProductsMap = {};
@@ -128,7 +128,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-///////////////////////////////////// GET  CATEGORY ////////////////////////////
+////////////////////////////////////? GET  CATEGORY ////////////////////////////
   CategoriesModel? categoryHomeModel;
   void getCategories() {
     emit(GetCategoriesLoadingState());
@@ -142,7 +142,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-  /////////////////////////////// ADD  AND  REMOVE  FROM  FAVORITES ////////////
+  //////////////////////////////? ADD  AND  REMOVE  FROM  FAVORITES ////////////
   late ChangedFavoriteModel changedFavoriteModel;
 
   void addAndRemoveFavorite({required int id}) {
@@ -170,7 +170,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-////////////////////////////////////// GET  FAVORITES //////////////////////////
+//////////////////////////////////////? GET  FAVORITES //////////////////////////
   GetFavoritesModel? favoritesModel;
 
   void getFavoriteProducts() {
@@ -186,7 +186,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-/////////////////////////////////// GET PROFILE INFO ///////////////////////////
+//////////////////////////////////? GET PROFILE INFO ///////////////////////////
   ProfileModel? profileModel;
 
   Future getProfileInfo() async {
@@ -232,10 +232,9 @@ class ShopCubit extends Cubit<ShopStates> {
     return await DioHelper.postData(
             url: logout, token: CashHelper.getData(key: tOKENCONST))
         .then((value) {
-      Navigator.pop(context);
-      Navigator.pop(context);
       navigatorPushAndRemove(context, routName);
       CashHelper.deleteCash(key: tOKENCONST);
+      CashHelper.deleteCash(key: customerID);
       emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));
     }).catchError((err) {
       emit(GetHomeDataFailureState(errMessage: err.toString()));

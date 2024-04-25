@@ -4,8 +4,13 @@ import 'package:store_2/models/login_model.dart';
 import 'package:store_2/models/profile_model.dart';
 import 'package:store_2/models/register_model.dart';
 import 'package:store_2/models/user_model.dart';
+import 'package:store_2/shared/feature/checkout/data/models/customer_payment_input_model.dart';
+import 'package:store_2/shared/feature/checkout/data/models/customer_payment_model.dart';
+import 'package:store_2/shared/network/local/key_const.dart';
+import 'package:store_2/shared/network/local/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
+import 'package:store_2/shared/network/remot/stripe_service.dart';
 
 part 'auth_state.dart';
 
@@ -14,6 +19,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   IconData suffixIcon = Icons.visibility_off_outlined;
   bool obscureText = true;
+//////////////////?  obsecure password //////////////////
 
   void onEyesPressed() {
     obscureText = !obscureText;
@@ -22,6 +28,7 @@ class AuthCubit extends Cubit<AuthState> {
         : suffixIcon = Icons.visibility_outlined;
     emit(ObsecureState());
   }
+//////////////////?  form validation //////////////////
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   void validateObserver() {
@@ -29,25 +36,39 @@ class AuthCubit extends Cubit<AuthState> {
     emit(VAlidateState());
   }
 
-  String? email, passWord;
-  void userLogin() async {
+//////////////////?  Login //////////////////
+  void userLogin({required String email, required String password}) async {
     emit(LoginLodingState());
-
     await DioHelper.postData(
       url: login,
       data: {
         "email": email,
-        "password": passWord,
+        "password": password,
       },
     ).then((value) {
-      debugPrint('${value.data}');
       emit(LoginSuccessState(loginModel: LoginModel.fromJson(value.data)));
     }).catchError((err) {
-      debugPrint("errorrrrrrrr : ${err.toString()}");
       emit(LoginFailureState(err: err.toString()));
     });
   }
 
+//////////////? create acustomer payment ///////////
+  Future creatACustomForPayment(
+      CustomerPaymentInputModel customerPaymentInputModel) async {
+    emit(CustomerPatymentLoding());
+    try {
+      await StripeService.createACustomer(customerPaymentInputModel)
+          .then((value) {
+        CashHelper.setData(key: customerID, value: value.id);
+        emit(CustomerPatymentSuccess());
+      }).catchError((errMessage) {
+        emit(CustomerPatymentFailure(errMessage: errMessage));
+      });
+    } catch (e) {
+      emit(CustomerPatymentFailure(errMessage: e.toString()));
+    }
+  }
+//////////////////////? registeration  /////////////
   void userRegister({required UserModel userModel}) async {
     emit(RegisterLodingState());
 
@@ -60,7 +81,6 @@ class AuthCubit extends Cubit<AuthState> {
         "phone": userModel.phone,
       },
     ).then((value) {
-      debugPrint('${value.data}');
       emit(RegisterSuccessState(
           registermodel: Registermodel.fromJson(value.data)));
     }).catchError((err) {
@@ -68,7 +88,7 @@ class AuthCubit extends Cubit<AuthState> {
     });
   }
 
-  ///////////////////////////// UPDATE  USER  INFORMATION ////////////////////////
+  ////////////////////////////? UPDATE  USER  INFORMATION ////////////////////////
   ProfileModel? profileModel;
   Future updateUserInfo(
       {required String name,
@@ -86,7 +106,6 @@ class AuthCubit extends Cubit<AuthState> {
       },
     ).then((value) {
       profileModel = ProfileModel.fromJson(value.data);
-
       emit(UpdateProfileSuccessState(profileModel: profileModel!));
     }).catchError((err) {
       emit(UpdateProfileFailureState(errMessage: err.toString()));

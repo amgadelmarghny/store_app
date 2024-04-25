@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:store_2/modules/register/register_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/layout/shop/shop_view.dart';
-import 'package:store_2/modules/register/form_input.dart';
 import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
-import 'package:store_2/shared/components/custom_show_messeges.dart';
-import 'package:store_2/shared/components/navigation.dart';
-import 'package:store_2/shared/network/local/key_const.dart';
-import 'package:store_2/shared/network/local/shared_helper.dart';
+import 'package:store_2/shared/components/icon_auth_list_view.dart';
+import 'package:store_2/shared/components/textformfield.dart';
 
 class SliverRegisterInfo extends StatelessWidget {
   const SliverRegisterInfo({
@@ -16,49 +13,89 @@ class SliverRegisterInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GlobalKey<FormState> formKey = GlobalKey();
-    return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) async {
-        if (state is RegisterFailureState) {
-          snacKBar(context, state.err);
-        }
-        if (state is RegisterSuccessState) {
-          if (state.registermodel.status) {
-            await CashHelper.setData(
-                    key: tOKENCONST, value: state.registermodel.data!.token)
-                .then(
-              (value) {
-                toastShown(
-                  messege: state.registermodel.message,
-                  state: ToastState.success,
-                  context: context,
-                );
-                navigatorPushAndRemove(
-                  context,
-                  ShopView.id,
-                );
-              },
-            );
-          } else {
-            toastShown(
-              messege: state.registermodel.message,
-              state: ToastState.error,
-              context: context,
-            );
-          }
-        }
-      },
-      builder: (context, state) {
-        return SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: 5,
-              left: 20,
-              right: 20,
-            ),
-            child: registerFormInput(formKey, context, state),
+    TextEditingController nameController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
+
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 5, left: 20, right: 20),
+        child: Form(
+          key: formKey,
+          autovalidateMode:
+              BlocProvider.of<AuthCubit>(context).autovalidateMode,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomTextField(
+                prefixIcon: Icons.person_outline,
+                controller: nameController,
+                hintText: 'Enter Name',
+                textInputType: TextInputType.name,
+                labelText: "Name",
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CustomTextField(
+                prefixIcon: Icons.email_outlined,
+                controller: emailController,
+                hintText: ' Enter Email',
+                textInputType: TextInputType.emailAddress,
+                labelText: "Email",
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CustomTextField(
+                obscureText: BlocProvider.of<AuthCubit>(context).obscureText,
+                prefixIcon: Icons.lock_outline,
+                controller: passwordController,
+                hintText: 'Enter Password',
+                textInputType: TextInputType.visiblePassword,
+                suffixIcon: BlocProvider.of<AuthCubit>(context).suffixIcon,
+                suffixOnPressed: () {
+                  BlocProvider.of<AuthCubit>(context).onEyesPressed();
+                },
+                labelText: "Password",
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CustomTextField(
+                prefixIcon: Icons.phone_outlined,
+                controller: phoneController,
+                hintText: 'Enter Phone Number',
+                textInputType: TextInputType.phone,
+                labelText: 'Phone',
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              RegisterButttonConsumer(
+                  nameController: nameController,
+                  emailController: emailController,
+                  passwordController: passwordController,
+                  phoneController: phoneController,
+                  formKey: formKey),
+              const SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: Text(
+                  'Sign up With',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const IconAuthlistView(),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

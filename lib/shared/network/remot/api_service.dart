@@ -1,7 +1,12 @@
 import 'package:dio/dio.dart';
 
 abstract class ApiService {
-  static Dio dio = Dio(BaseOptions(baseUrl: 'https://api.stripe.com/v1/'));
+  static Dio dio = Dio(
+    BaseOptions(
+      baseUrl: 'https://api.stripe.com/v1/',
+      receiveDataWhenStatusError: true,
+    ),
+  );
 
   static Future<Response> postData(
       {required String url,
