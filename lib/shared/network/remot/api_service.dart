@@ -12,13 +12,12 @@ abstract class ApiService {
       {required String url,
       required body,
       required String token,
+      Map<String, String>? headers,
       String contentType = Headers.formUrlEncodedContentType}) async {
     Response response = await dio.post(url,
         options: Options(
           contentType: contentType,
-          headers: {
-            "Authorization": "Bearer $token",
-          },
+          headers: headers ?? {"Authorization": 'Bearer $token'},
         ),
         data: body);
     return response;
