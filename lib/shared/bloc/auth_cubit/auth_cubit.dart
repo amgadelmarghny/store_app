@@ -5,7 +5,6 @@ import 'package:store_2/models/profile_model.dart';
 import 'package:store_2/models/register_model.dart';
 import 'package:store_2/models/user_model.dart';
 import 'package:store_2/shared/feature/checkout/data/models/customer_payment_input_model.dart';
-import 'package:store_2/shared/feature/checkout/data/models/customer_payment_model.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
 import 'package:store_2/shared/network/remot/dio_helper.dart';
@@ -61,13 +60,12 @@ class AuthCubit extends Cubit<AuthState> {
           .then((value) {
         CashHelper.setData(key: customerID, value: value.id);
         emit(CustomerPatymentSuccess());
-      }).catchError((errMessage) {
-        emit(CustomerPatymentFailure(errMessage: errMessage));
       });
     } catch (e) {
       emit(CustomerPatymentFailure(errMessage: e.toString()));
     }
   }
+
 //////////////////////? registeration  /////////////
   void userRegister({required UserModel userModel}) async {
     emit(RegisterLodingState());
