@@ -3,6 +3,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:store_2/shared/feature/checkout/data/models/customer_payment_input_model.dart';
 import 'package:store_2/shared/feature/checkout/data/models/customer_payment_model.dart';
 import 'package:store_2/shared/feature/checkout/data/models/ephemeral_key_model/ephemeral_key_model.dart';
+import 'package:store_2/shared/feature/checkout/data/models/init_payment_sheet_input.dart';
 import 'package:store_2/shared/feature/checkout/data/models/payment_intent_input_model.dart';
 import 'package:store_2/shared/feature/checkout/data/models/payment_intent_model/payment_intent_model.dart';
 import 'package:store_2/shared/network/local/api_keys.dart';
@@ -49,12 +50,14 @@ abstract class StripeService {
     return ephemeralKeyModel;
   }
 
-  static Future intintPaymentSheet(
-      {required String paymentIntentClientSecret}) async {
+  static Future intitPaymentSheet(
+      {required InitPaymentInputSheet initPaymentInputSheet, }) async {
     await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
       merchantDisplayName: 'Soanbur',
-      paymentIntentClientSecret: paymentIntentClientSecret,
+      customerEphemeralKeySecret: initPaymentInputSheet.ephemeralKey,
+      customerId: initPaymentInputSheet.customerId,
+      paymentIntentClientSecret: initPaymentInputSheet.clientSecret,
     ));
   }
 
@@ -66,7 +69,7 @@ abstract class StripeService {
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     PaymentIntentModel paymenyIntentModel =
         await createPaymentIntent(paymentIntentInputModel);
-    await intintPaymentSheet(
+    await intitPaymentSheet(
         paymentIntentClientSecret: paymenyIntentModel.clientSecret!);
     await displayPaymentSheet();
   }
