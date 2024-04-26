@@ -21,13 +21,18 @@ class HintTextOrderSheet extends StatelessWidget {
               ),
         ),
         Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             TextButton(
               onPressed: () {},
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: const Size(0, 0),
+              ),
               child: const Text('Terms'),
             ),
             Text(
-              'and',
+              'and ',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     fontSize: 15,
                     color: Colors.grey,
@@ -37,6 +42,10 @@ class HintTextOrderSheet extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {},
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: const Size(0, 0),
+              ),
               child: const Text('Conditions'),
             ),
           ],

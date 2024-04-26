@@ -23,11 +23,13 @@ class MakeOrderButton extends StatelessWidget {
             CustomButton(
               text: 'Make Order',
               onTap: () {
-                if (BlocProvider.of<AddressCubit>(context)
-                    .getAddressesModel!
-                    .data!
-                    .addressModelsList
-                    .isEmpty) {
+                if (BlocProvider.of<AddressCubit>(context).getAddressesModel !=
+                        null &&
+                    BlocProvider.of<AddressCubit>(context)
+                        .getAddressesModel!
+                        .data!
+                        .addressModelsList
+                        .isEmpty) {
                   Navigator.pushNamed(context, AddAddressView.id);
                 } else {
                   showModalBottomSheet(

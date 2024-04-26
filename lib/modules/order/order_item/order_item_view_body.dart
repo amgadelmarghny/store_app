@@ -105,7 +105,7 @@ class OrderItemViewBody extends StatelessWidget {
               indent: 60,
             ),
             TotalCoast(
-              number: total,
+              number: total.round(),
             ),
             const Divider(
               thickness: 1.5,

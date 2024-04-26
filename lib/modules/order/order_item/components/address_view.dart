@@ -47,8 +47,9 @@ class AddressView extends StatelessWidget {
           isOrderView: true,
           textEditingController: detailsController,
         ),
-        const SizedBox(height: 20),
-        if (notesController!.text != '')
+        if (notesController!.text != '' && notesController?.text != null)
+          const SizedBox(height: 20),
+        if (notesController!.text != '' && notesController?.text != null)
           AddressField(
             maxLine: 3,
             hintText: 'Note',
