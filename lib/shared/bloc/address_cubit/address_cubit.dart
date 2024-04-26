@@ -123,7 +123,10 @@ class AddressCubit extends Cubit<AddressState> {
   ////////////// payment method option  for order sheet ////////////
   int selectedValue = 1;
   String selectedType = 'Cash';
+  int isChoose = 0;
   void setSelectedValue(value) {
+    isChoose = value;
+    value++;
     if (value == 1) {
       selectedValue = value;
       selectedType = 'Cash';
