@@ -125,6 +125,9 @@ class AddressCubit extends Cubit<AddressState> {
   String selectedType = 'Cash';
   int isChoose = 0;
   void setSelectedValue(value) {
+    // for making selected payment method item
+    // still selected even close payment sheet
+    // as $selectedType 
     isChoose = value;
     value++;
     if (value == 1) {

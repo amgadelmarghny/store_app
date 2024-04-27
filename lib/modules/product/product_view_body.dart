@@ -4,12 +4,11 @@ import 'package:store_2/models/shope_models/product_model.dart';
 import 'package:store_2/modules/product/add_to_cart_button.dart';
 import 'package:store_2/modules/product/price_row.dart';
 import 'package:store_2/modules/product/product_image.dart';
-import 'package:store_2/modules/product/show_more_button.dart';
 import 'package:store_2/modules/product/smoth_page_idecator.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
 
-class ProductViewBody extends StatelessWidget {
+class ProductViewBody extends StatefulWidget {
   const ProductViewBody({
     super.key,
     required this.productModel,
@@ -21,6 +20,13 @@ class ProductViewBody extends StatelessWidget {
   final bool fromCart;
   final bool isSearch;
   final int cartID;
+
+  @override
+  State<ProductViewBody> createState() => _ProductViewBodyState();
+}
+
+class _ProductViewBodyState extends State<ProductViewBody> {
+  bool isMore = false;
   @override
   Widget build(BuildContext context) {
     PageController pageController = PageController();
@@ -42,6 +48,8 @@ class ProductViewBody extends StatelessWidget {
         }
       },
       builder: (context, state) {
+        final maxLine = isMore ? null : 6;
+        final overflow = isMore ? TextOverflow.visible : TextOverflow.ellipsis;
         return Column(
           children: [
             Expanded(
@@ -49,18 +57,18 @@ class ProductViewBody extends StatelessWidget {
                 children: [
                   ProductImage(
                     pageController: pageController,
-                    productModel: productModel,
+                    productModel: widget.productModel,
                   ),
                   const SizedBox(height: 8),
                   SmoothIndecator(
                     pageController: pageController,
-                    productModel: productModel,
+                    productModel: widget.productModel,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
-                    productModel.name!,
+                    widget.productModel.name!,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context)
@@ -72,30 +80,49 @@ class ProductViewBody extends StatelessWidget {
                     height: 20,
                   ),
                   ProductPriceDetails(
-                    productModel: productModel,
-                    fromCart: fromCart,
-                    isSearch: isSearch,
-                    cartID: cartID,
+                    productModel: widget.productModel,
+                    fromCart: widget.fromCart,
+                    isSearch: widget.isSearch,
+                    cartID: widget.cartID,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
-                    maxLines:
-                        BlocProvider.of<ShopCubit>(context).isMore ? 10000 : 9,
-                    productModel.description!,
-                    overflow: TextOverflow.ellipsis,
+                    widget.productModel.description!,
+                    maxLines: maxLine,
+                    overflow: overflow,
                     style: const TextStyle(
                         color: Colors.grey, fontSize: 15, height: 1.1),
                   ),
-                  const ShowMoreButton(),
+                  InkWell(
+                    onTap: () {
+                      isMore = !isMore;
+                      setState(() {});
+                    } // show more details in the product page
+                    ,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          isMore ? 'Show less' : 'Show more',
+                        ),
+                        Icon(
+                          isMore
+                              ? Icons.keyboard_arrow_up
+                              : Icons.keyboard_arrow_down,
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: AddToCartButton(
-                productModel: productModel,
+                productModel: widget.productModel,
                 state: state,
               ),
             ),
