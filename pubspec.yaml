@@ -44,6 +44,7 @@ dependencies:
   google_fonts: ^6.2.1
   modal_progress_hud_nsn: ^0.5.1
   popover: ^0.3.0
+  readmore: ^3.0.0
   shared_preferences: ^2.2.2
   smooth_page_indicator: ^1.1.0
 

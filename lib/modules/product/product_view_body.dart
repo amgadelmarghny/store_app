@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
 import 'package:store_2/modules/product/add_to_cart_button.dart';
 import 'package:store_2/modules/product/price_row.dart';
 import 'package:store_2/modules/product/product_image.dart';
 import 'package:store_2/modules/product/smoth_page_idecator.dart';
 
-class ProductViewBody extends StatefulWidget {
+class ProductViewBody extends StatelessWidget {
   const ProductViewBody({
     super.key,
     required this.productModel,
@@ -19,16 +20,9 @@ class ProductViewBody extends StatefulWidget {
   final int cartID;
 
   @override
-  State<ProductViewBody> createState() => _ProductViewBodyState();
-}
-
-class _ProductViewBodyState extends State<ProductViewBody> {
-  bool isMore = false;
-  @override
   Widget build(BuildContext context) {
     PageController pageController = PageController();
-    final maxLine = isMore ? null : 6;
-    final overflow = isMore ? TextOverflow.visible : TextOverflow.ellipsis;
+
     return Column(
       children: [
         Expanded(
@@ -36,18 +30,18 @@ class _ProductViewBodyState extends State<ProductViewBody> {
             children: [
               ProductImage(
                 pageController: pageController,
-                productModel: widget.productModel,
+                productModel: productModel,
               ),
               const SizedBox(height: 8),
               SmoothIndecator(
                 pageController: pageController,
-                productModel: widget.productModel,
+                productModel: productModel,
               ),
               const SizedBox(
                 height: 10,
               ),
               Text(
-                widget.productModel.name!,
+                productModel.name!,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)
@@ -59,49 +53,30 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                 height: 20,
               ),
               ProductPriceDetails(
-                productModel: widget.productModel,
-                fromCart: widget.fromCart,
-                isSearch: widget.isSearch,
-                cartID: widget.cartID,
+                productModel: productModel,
+                fromCart: fromCart,
+                isSearch: isSearch,
+                cartID: cartID,
               ),
               const SizedBox(
                 height: 10,
               ),
-              Text(
-                widget.productModel.description!,
-                maxLines: maxLine,
-                overflow: overflow,
+              //product details
+              ReadMoreText(
+                productModel.description!,
+                trimLines: 12,
                 style: const TextStyle(
-                    color: Colors.grey, fontSize: 15, height: 1.1),
-              ),
-              InkWell(
-                onTap: () {
-                  isMore = !isMore;
-                  setState(() {});
-                } // show more details in the product page
-                ,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      isMore ? 'Show less' : 'Show more',
-                    ),
-                    Icon(
-                      isMore
-                          ? Icons.keyboard_arrow_up
-                          : Icons.keyboard_arrow_down,
-                    ),
-                  ],
-                ),
+                    color: Colors.grey, fontSize: 15.5, height: 1.2),
+                colorClickableText: Colors.teal,
+                trimMode: TrimMode.Line,
+                trimCollapsedText: 'Read more',
+                trimExpandedText: 'Read less',
+                moreStyle: const TextStyle(color: Colors.teal),
               )
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: AddToCartButton(productModel: widget.productModel),
-        ),
+        AddToCartButton(productModel: productModel),
       ],
     );
   }

@@ -33,19 +33,22 @@ class AddToCartButton extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return CustomButton(
-          prefixIcon: BlocProvider.of<ShopCubit>(context)
-              .inCartProductsMap[productModel.id]!,
-          isLoading: state is CartLoadingState,
-          text: BlocProvider.of<ShopCubit>(context)
-                  .inCartProductsMap[productModel.id]!
-              ? 'Remove from Cart'
-              : 'Add to Cart',
-          onTap: () {
-            BlocProvider.of<ShopCubit>(context).addAndRemoveCart(
-              productId: productModel.id,
-            );
-          },
+        return Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: CustomButton(
+            prefixIcon: BlocProvider.of<ShopCubit>(context)
+                .inCartProductsMap[productModel.id]!,
+            isLoading: state is CartLoadingState,
+            text: BlocProvider.of<ShopCubit>(context)
+                    .inCartProductsMap[productModel.id]!
+                ? 'Remove from Cart'
+                : 'Add to Cart',
+            onTap: () {
+              BlocProvider.of<ShopCubit>(context).addAndRemoveCart(
+                productId: productModel.id,
+              );
+            },
+          ),
         );
       },
     );
