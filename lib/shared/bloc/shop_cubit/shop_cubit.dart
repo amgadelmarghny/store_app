@@ -4,7 +4,7 @@ import 'package:store_2/models/cart_models/get_cart_model.dart';
 import 'package:store_2/models/cart_models/update_cart.dart';
 import 'package:store_2/models/change_password.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
-import 'package:store_2/modules/categories/categories_body.dart';
+import 'package:store_2/modules/category/categories/categories_body.dart';
 import 'package:store_2/modules/favorite/favorite_body.dart';
 import 'package:store_2/modules/home/home_body.dart';
 import 'package:store_2/models/catergory_model.dart';

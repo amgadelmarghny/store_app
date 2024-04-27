@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/favorite/product_image.dart';
+import 'package:store_2/modules/favorite/widgets/product_image.dart';
 import 'package:store_2/modules/product/product_view.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
-import 'package:store_2/modules/product/quantity_counter.dart';
+import 'package:store_2/modules/product/widgets/quantity_counter.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 
 class FavoriteItem extends StatelessWidget {

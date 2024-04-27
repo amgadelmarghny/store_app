@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/models/search_model.dart';
-import 'package:store_2/modules/favorite/favorite_item.dart';
+import 'package:store_2/modules/favorite/widgets/favorite_item.dart';
 import 'package:store_2/shared/bloc/search_cubit/search_cubit.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
 import 'package:store_2/shared/components/textformfield.dart';

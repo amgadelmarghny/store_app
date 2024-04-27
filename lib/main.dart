@@ -6,10 +6,10 @@ import 'package:store_2/layout/shop/shop_view.dart';
 import 'package:store_2/modules/address/add_new_address/add_address_view.dart';
 import 'package:store_2/modules/address/get_address/addresses_view.dart';
 import 'package:store_2/modules/address/modify_address/update_address_view.dart';
-import 'package:store_2/modules/order/order_item/order_item_view.dart';
+import 'package:store_2/modules/order/components/order_item/order_item_view.dart';
 import 'package:store_2/modules/order/order_view.dart';
 import 'package:store_2/modules/cart/my_cart_view.dart';
-import 'package:store_2/modules/category_details/category_details_view.dart';
+import 'package:store_2/modules/category/category_details/category_details_view.dart';
 import 'package:store_2/modules/login/login_view.dart';
 import 'package:store_2/modules/on_boarding/on_boarding_view.dart';
 import 'package:store_2/modules/product/product_view.dart';
@@ -48,15 +48,15 @@ class StoreAp extends StatelessWidget {
 
     log('token : ${CashHelper.getData(key: tOKENCONST)}');
 
-    late Widget widget;
+    late String routeApp;
     if (isBoarding != null) {
       if (CashHelper.getData(key: tOKENCONST) != null) {
-        widget = const ShopView();
+        routeApp = ShopView.id;
       } else {
-        widget = const LoginView();
+        routeApp = LoginView.id;
       }
     } else {
-      widget = const OnBoardingView();
+      routeApp = OnBoardingView.id;
     }
     return MultiBlocProvider(
       providers: [
@@ -108,7 +108,7 @@ class StoreAp extends StatelessWidget {
             themeMode: BlocProvider.of<AppCubit>(context).isDark
                 ? ThemeMode.dark
                 : ThemeMode.light,
-            home: widget,
+            initialRoute: routeApp,
           );
         },
       ),

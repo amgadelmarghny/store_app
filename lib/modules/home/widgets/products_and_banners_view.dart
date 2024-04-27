@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/home/category_item.dart';
-import 'package:store_2/modules/home/product_item.dart';
+import 'package:store_2/modules/home/widgets/category_item.dart';
+import 'package:store_2/modules/home/widgets/product_item.dart';
 import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/style/colors.dart';
 

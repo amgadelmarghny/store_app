@@ -2,8 +2,8 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/models/order_models/order_details_model.dart';
-import 'package:store_2/modules/order/order_item/order_item_view_body.dart';
-import 'package:store_2/modules/order/order_item/sliver_app_bar.dart';
+import 'package:store_2/modules/order/components/order_item/order_item_view_body.dart';
+import 'package:store_2/modules/order/components/order_item/sliver_app_bar.dart';
 import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:store_2/shared/components/custom_show_messeges.dart';
 import 'package:store_2/shared/style/colors.dart';

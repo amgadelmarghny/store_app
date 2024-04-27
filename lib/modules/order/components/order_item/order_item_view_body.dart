@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:store_2/models/order_models/order_details_model.dart';
-import 'package:store_2/modules/order/order_item/components/address_view.dart';
-import 'package:store_2/modules/order/order_item/components/calcellation_button.dart';
-import 'package:store_2/modules/order/order_item/components/product_coast.dart';
-import 'package:store_2/modules/order/order_item/components/total_coast.dart';
-import 'package:store_2/modules/order/order_item/order_product_item.dart';
+import 'package:store_2/modules/order/components/order_item/components/address_view.dart';
+import 'package:store_2/modules/order/components/order_item/components/calcellation_button.dart';
+import 'package:store_2/modules/order/components/order_item/components/product_coast.dart';
+import 'package:store_2/modules/order/components/order_item/components/total_coast.dart';
+import 'package:store_2/modules/order/components/order_item/order_product_item.dart';
 import 'package:store_2/shared/components/container_decoration.dart';
 
 class OrderItemViewBody extends StatelessWidget {

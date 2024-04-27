@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:store_2/models/shope_models/product_model.dart';
-import 'package:store_2/modules/product/add_to_cart_button.dart';
-import 'package:store_2/modules/product/price_row.dart';
-import 'package:store_2/modules/product/product_image.dart';
-import 'package:store_2/modules/product/smoth_page_idecator.dart';
+import 'package:store_2/modules/product/widgets/add_to_cart_button.dart';
+import 'package:store_2/modules/product/widgets/price_row.dart';
+import 'package:store_2/modules/product/widgets/product_image.dart';
+import 'package:store_2/modules/product/widgets/smoth_page_idecator.dart';
 
 class ProductViewBody extends StatelessWidget {
   const ProductViewBody({

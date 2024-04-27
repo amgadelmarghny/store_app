@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_2/models/order_models/get_orders_model.dart';
-import 'package:store_2/modules/order/order_item/order_item_view.dart';
+import 'package:store_2/modules/order/components/order_item/order_item_view.dart';
 import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:store_2/shared/style/colors.dart';
 

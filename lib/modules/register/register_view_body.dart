@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_2/modules/login/login_view.dart';
-import 'package:store_2/modules/register/sliver_register_input.dart';
+import 'package:store_2/modules/register/widgets/sliver_register_input.dart';
 import 'package:store_2/shared/components/custom_curve_color_ui.dart';
 import 'package:store_2/shared/components/custom_sliver_row_text.dart';
 
