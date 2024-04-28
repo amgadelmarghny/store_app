@@ -46,7 +46,8 @@ class DrawerMenu extends StatelessWidget {
                           leading: const Icon(Icons.location_on_outlined),
                           title: const Text('My Addresses'),
                           onTap: () {
-                            Navigator.pushNamed(context, AddressesView.id);
+                            Navigator.pushNamed(context, AddressesView.id,
+                                arguments: true);
                           },
                         ),
                         const Spacer(),

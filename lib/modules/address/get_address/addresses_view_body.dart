@@ -12,8 +12,9 @@ import 'package:store_2/shared/style/colors.dart';
 class AddressesViewBody extends StatelessWidget {
   const AddressesViewBody({
     super.key,
+    this.isformDrowerNotOrderSheet = false,
   });
-
+  final bool? isformDrowerNotOrderSheet;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddressCubit, AddressState>(
@@ -75,19 +76,21 @@ class AddressesViewBody extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (contex, index) {
-                        return AddressItem(
-                            addressModel: addressCubit.getAddressesModel!.data!
-                                .addressModelsList[index]);
-                      },
-                      separatorBuilder: (context, index) => const Divider(
-                            endIndent: 20,
-                            indent: 20,
-                          ),
-                      itemCount: addressCubit
-                          .getAddressesModel!.data!.addressModelsList.length)
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (contex, index) {
+                      return AddressItem(
+                          isformDrowerNotOrderSheet: isformDrowerNotOrderSheet,
+                          addressModel: addressCubit.getAddressesModel!.data!
+                              .addressModelsList[index]);
+                    },
+                    separatorBuilder: (context, index) => const Divider(
+                      endIndent: 20,
+                      indent: 20,
+                    ),
+                    itemCount: addressCubit
+                        .getAddressesModel!.data!.addressModelsList.length,
+                  )
                 ],
               ),
             ),

@@ -10,9 +10,11 @@ class AddressItem extends StatefulWidget {
   const AddressItem({
     super.key,
     required this.addressModel,
+    this.isformDrowerNotOrderSheet = false,
   });
 
   final AddressModel addressModel;
+  final bool? isformDrowerNotOrderSheet;
 
   @override
   State<AddressItem> createState() => _AddressItemState();
@@ -35,18 +37,19 @@ class _AddressItemState extends State<AddressItem> {
           leading: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (addressCubit.getAddressesModel!.data!.total! > 1)
-                Checkbox(
-                  value: isChecked,
-                  onChanged: (value) {
-                    setState(() {
-                      isChecked = value;
-                      addressCubit.isChecked = isChecked;
-                      addressCubit.addressModel = widget.addressModel;
-                      addressCubit.checkSetState();
-                    });
-                  },
-                ),
+              if (!widget.isformDrowerNotOrderSheet!)
+                if (addressCubit.getAddressesModel!.data!.total! > 1)
+                  Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      setState(() {
+                        isChecked = value;
+                        addressCubit.isChecked = isChecked;
+                        addressCubit.addressModel = widget.addressModel;
+                        addressCubit.checkSetState();
+                      });
+                    },
+                  ),
               CircleAvatar(
                 backgroundColor: defaultColor.shade200,
                 child: const Icon(Icons.location_on_outlined),
