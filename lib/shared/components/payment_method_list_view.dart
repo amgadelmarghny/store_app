@@ -9,6 +9,7 @@ class PaymentMethodItemListView extends StatelessWidget {
   final List<String> paymentMethodImageList = const [
     'lib/assets/images/cash-pickup.svg',
     'lib/assets/images/visa_credit.svg',
+    'lib/assets/images/paypal.svg',
   ];
 
   @override
@@ -17,14 +18,14 @@ class PaymentMethodItemListView extends StatelessWidget {
       builder: (context, state) {
         return SizedBox(
           height: 62,
-          width: 500,
+          width: MediaQuery.sizeOf(context).width,
           child: ListView.builder(
-            clipBehavior: Clip.none,
+            clipBehavior: Clip.antiAlias,
             itemCount: paymentMethodImageList.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: GestureDetector(
                   onTap: () {
                     BlocProvider.of<AddressCubit>(context)

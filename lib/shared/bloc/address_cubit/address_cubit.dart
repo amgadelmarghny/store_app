@@ -127,7 +127,7 @@ class AddressCubit extends Cubit<AddressState> {
   void setSelectedValue(value) {
     // for making selected payment method item
     // still selected even close payment sheet
-    // as $selectedType 
+    // as $selectedType
     isChoose = value;
     value++;
     if (value == 1) {
@@ -137,6 +137,10 @@ class AddressCubit extends Cubit<AddressState> {
     if (value == 2) {
       selectedValue = value;
       selectedType = 'Credit/Debit Card';
+    }
+    if (value == 3) {
+      selectedValue = value - 1;
+      selectedType = 'PayPal';
     }
     emit(CheckSetState());
   }
