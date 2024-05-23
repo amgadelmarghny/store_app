@@ -7,7 +7,7 @@ import 'package:store_2/models/user_model.dart';
 import 'package:store_2/shared/feature/checkout/data/models/customer_payment_input_model.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
-import 'package:store_2/shared/network/remot/dio_helper.dart';
+import 'package:store_2/shared/network/remot/dio_helper_for_shop.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
 import 'package:store_2/shared/network/remot/stripe_service.dart';
 

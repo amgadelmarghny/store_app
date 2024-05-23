@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:store_2/models/category_details_model.dart';
-import 'package:store_2/shared/network/remot/dio_helper.dart';
+import 'package:store_2/shared/network/remot/dio_helper_for_shop.dart';
 
 part 'category_state.dart';
 
@@ -25,7 +25,8 @@ class CategoryCubit extends Cubit<CategoryState> {
         emit(CategoryDetailsFaliur(errMessage: err.toString()));
       });
     } else {
-      // when sameCategoryId = value
+      // when sameCategoryId = value (the value is one of categories
+      // that entered before).
       // check if the requested category id is the same u presses on it
       // if wasn't the same then make a request for new category data
       if (sameCategoryId != categoryId) {

@@ -74,7 +74,6 @@ class OrderSheet extends StatelessWidget {
               create: (context) => PaymentCubit(CheckoutRepoImpl()),
               child: PlaceOrderButton(
                 amount: total,
-                addressCubit: addressCubit,
                 addressState: state,
               ),
             ),

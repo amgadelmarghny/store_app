@@ -37,7 +37,7 @@ class SearchViewBody extends StatelessWidget {
                 hintText: 'Search',
                 onChange: (value) {
                   BlocProvider.of<SearchCubit>(context)
-                      .searchForProducts(searchSubject: value);
+                      .searchForProducts(productName: value);
                 },
               ),
               if (state is SearchInitial)

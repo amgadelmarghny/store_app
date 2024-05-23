@@ -10,7 +10,7 @@ import 'package:store_2/models/order_models/get_orders_model.dart';
 import 'package:store_2/models/order_models/order_details_model.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
-import 'package:store_2/shared/network/remot/dio_helper.dart';
+import 'package:store_2/shared/network/remot/dio_helper_for_shop.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
 
 part 'address_state.dart';
@@ -129,6 +129,8 @@ class AddressCubit extends Cubit<AddressState> {
     // still selected even close payment sheet
     // as $selectedType
     isChoose = value;
+    // increse the value to store it in selectedValue
+    // to use the selectedValue in 
     value++;
     if (value == 1) {
       selectedValue = value;
@@ -139,7 +141,7 @@ class AddressCubit extends Cubit<AddressState> {
       selectedType = 'Credit/Debit Card';
     }
     if (value == 3) {
-      selectedValue = value - 1;
+      selectedValue = value;
       selectedType = 'PayPal';
     }
     emit(CheckSetState());

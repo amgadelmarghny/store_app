@@ -10,6 +10,7 @@ const verifyCode = 'verify-code';
 const resertPassword = 'reset-password';
 const changePassword = 'change-password';
 const categories = 'categories';
+const favCONST = 'favorites';
 const searchForProduct = 'products/search';
 const carts = 'carts';
 const addresses = 'addresses';

@@ -15,7 +15,7 @@ import 'package:store_2/models/shope_models/home_model.dart';
 import 'package:store_2/shared/components/navigation.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
-import 'package:store_2/shared/network/remot/dio_helper.dart';
+import 'package:store_2/shared/network/remot/dio_helper_for_shop.dart';
 import 'package:store_2/shared/network/remot/end_points_url.dart';
 import '../../../models/favorite_model.dart';
 part 'shop_state.dart';
@@ -23,7 +23,7 @@ part 'shop_state.dart';
 class ShopCubit extends Cubit<ShopStates> {
   ShopCubit() : super(ShopInitial());
 
-  List<Widget>? draverItems;
+  List<Widget>? drawerItems;
 
   int currentIndex = 0;
 
@@ -51,7 +51,7 @@ class ShopCubit extends Cubit<ShopStates> {
                   : const Icon(Icons.favorite_outline),
               // if user on fav view ,fav notifi. will not show
               if (currentIndex != 2)
-                // when the app oppened and getFavorite requist finish
+                // when the app opened and getFavorite request finish
                 if (favoritesModel != null)
                   // and user add product to fav then show count of favorites
                   // then the notification will appear
@@ -147,7 +147,7 @@ class ShopCubit extends Cubit<ShopStates> {
 
   void addAndRemoveFavorite({required int id}) {
     // when we  want to add a product to favorites ,
-    // the notification will be red notofication on fav button vav bar
+    // the notification will be red notification on fav button vav bar
     // so I cash bool value to allow the notifi. to appear
     CashHelper.setData(key: favNotofication, value: true);
     favoriteProductsMap[id] = !favoriteProductsMap[id]!;

@@ -26,7 +26,7 @@ import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:store_2/shared/network/local/api_keys.dart';
 import 'package:store_2/shared/network/local/key_const.dart';
 import 'package:store_2/shared/network/local/shared_helper.dart';
-import 'package:store_2/shared/network/remot/dio_helper.dart';
+import 'package:store_2/shared/network/remot/dio_helper_for_shop.dart';
 import 'package:store_2/shared/style/themes.dart';
 
 void main() async {
