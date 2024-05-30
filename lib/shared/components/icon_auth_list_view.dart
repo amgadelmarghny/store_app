@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/shared/components/icon_item.dart';
+import 'package:Sourban/shared/components/icon_item.dart';
 
 class IconAuthlistView extends StatelessWidget {
   const IconAuthlistView({super.key});

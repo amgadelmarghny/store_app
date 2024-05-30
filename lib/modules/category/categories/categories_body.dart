@@ -1,10 +1,10 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/category/categories/category_item_large.dart';
-import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/components/custom_show_messeges.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/modules/category/categories/category_item_large.dart';
+import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class CategoryBody extends StatelessWidget {
   const CategoryBody({super.key});

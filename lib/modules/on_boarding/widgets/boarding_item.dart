@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/models/boarding_model.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/models/boarding_model.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class BoardingBuilder extends StatelessWidget {
   const BoardingBuilder({super.key, required this.boardModel});

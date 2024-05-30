@@ -1,4 +1,4 @@
-import 'package:store_2/models/user_model.dart';
+import 'package:Sourban/models/user_model.dart';
 
 class Registermodel {
   final bool status;

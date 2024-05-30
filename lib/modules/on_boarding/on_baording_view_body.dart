@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/login/login_view.dart';
-import 'package:store_2/modules/on_boarding/widgets/boarding_item.dart';
-import 'package:store_2/modules/on_boarding/widgets/custom_smooth_page_indecator.dart';
-import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
-import 'package:store_2/shared/components/navigation.dart';
-import 'package:store_2/shared/network/local/key_const.dart';
-import 'package:store_2/shared/network/local/shared_helper.dart';
+import 'package:Sourban/modules/login/login_view.dart';
+import 'package:Sourban/modules/on_boarding/widgets/boarding_item.dart';
+import 'package:Sourban/modules/on_boarding/widgets/custom_smooth_page_indecator.dart';
+import 'package:Sourban/shared/bloc/app_cubit/app_cubit.dart';
+import 'package:Sourban/shared/components/navigation.dart';
+import 'package:Sourban/shared/network/local/key_const.dart';
+import 'package:Sourban/shared/network/local/shared_helper.dart';
 
 class OnBoardingViewBody extends StatelessWidget {
   const OnBoardingViewBody({

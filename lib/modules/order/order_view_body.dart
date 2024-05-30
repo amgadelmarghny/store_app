@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/modules/order/cancelled_order_body.dart';
-import 'package:store_2/modules/order/new_orders_body.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/modules/order/cancelled_order_body.dart';
+import 'package:Sourban/modules/order/new_orders_body.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class OrderViewBody extends StatelessWidget {
   const OrderViewBody({super.key});

@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:store_2/shared/components/address_feild.dart';
+import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:Sourban/shared/components/address_feild.dart';
 
 class AddAddressBuilder extends StatelessWidget {
   const AddAddressBuilder({
     super.key,
-    required this.nameContoller,
-    required this.cityContoller,
-    required this.regionContoller,
-    required this.detailsContoller,
-    required this.notesContoller,
+    required this.nameController,
+    required this.cityController,
+    required this.regionController,
+    required this.detailsController,
+    required this.notesController,
     required this.formKey,
   });
-  final TextEditingController nameContoller;
-  final TextEditingController cityContoller;
-  final TextEditingController regionContoller;
-  final TextEditingController detailsContoller;
-  final TextEditingController notesContoller;
+  final TextEditingController nameController;
+  final TextEditingController cityController;
+  final TextEditingController regionController;
+  final TextEditingController detailsController;
+  final TextEditingController notesController;
   final GlobalKey<FormState> formKey;
   @override
   Widget build(BuildContext context) {
@@ -35,14 +35,14 @@ class AddAddressBuilder extends StatelessWidget {
                 width: 110,
                 hintText: 'address name',
                 messageValidationName: 'Address name',
-                textEditingController: nameContoller,
+                textEditingController: nameController,
               ),
               const Spacer(),
               AddressField(
                 width: 120,
                 hintText: 'city',
                 messageValidationName: 'City',
-                textEditingController: cityContoller,
+                textEditingController: cityController,
               ),
             ],
           ),
@@ -50,13 +50,13 @@ class AddAddressBuilder extends StatelessWidget {
           AddressField(
             hintText: 'region',
             messageValidationName: 'Region',
-            textEditingController: regionContoller,
+            textEditingController: regionController,
           ),
           const SizedBox(height: 20),
           AddressField(
             hintText: 'details',
             messageValidationName: 'Details',
-            textEditingController: detailsContoller,
+            textEditingController: detailsController,
           ),
           const SizedBox(height: 20),
           AddressField(
@@ -64,7 +64,7 @@ class AddAddressBuilder extends StatelessWidget {
             hintText: 'notes',
             maxLine: 5,
             messageValidationName: 'Notes',
-            textEditingController: notesContoller,
+            textEditingController: notesController,
           ),
         ],
       ),

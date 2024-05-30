@@ -2,32 +2,32 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:store_2/layout/shop/shop_view.dart';
-import 'package:store_2/modules/address/add_new_address/add_address_view.dart';
-import 'package:store_2/modules/address/get_address/addresses_view.dart';
-import 'package:store_2/modules/address/modify_address/update_address_view.dart';
-import 'package:store_2/modules/order/components/order_item/order_item_view.dart';
-import 'package:store_2/modules/order/order_view.dart';
-import 'package:store_2/modules/cart/my_cart_view.dart';
-import 'package:store_2/modules/category/category_details/category_details_view.dart';
-import 'package:store_2/modules/login/login_view.dart';
-import 'package:store_2/modules/on_boarding/on_boarding_view.dart';
-import 'package:store_2/modules/product/product_view.dart';
-import 'package:store_2/modules/profile/change_password_view.dart';
-import 'package:store_2/modules/profile/profile_view.dart';
-import 'package:store_2/modules/profile/update_profile_view.dart';
-import 'package:store_2/modules/register/register_view.dart';
-import 'package:store_2/modules/search/search_view.dart';
-import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
-import 'package:store_2/shared/bloc/bloc_observer.dart';
-import 'package:store_2/shared/bloc/category_cubit/category_cubit.dart';
-import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/network/local/api_keys.dart';
-import 'package:store_2/shared/network/local/key_const.dart';
-import 'package:store_2/shared/network/local/shared_helper.dart';
-import 'package:store_2/shared/network/remot/dio_helper_for_shop.dart';
-import 'package:store_2/shared/style/themes.dart';
+import 'package:Sourban/layout/shop/shop_view.dart';
+import 'package:Sourban/modules/address/add_new_address/add_address_view.dart';
+import 'package:Sourban/modules/address/get_address/addresses_view.dart';
+import 'package:Sourban/modules/address/modify_address/update_address_view.dart';
+import 'package:Sourban/modules/order/components/order_item/order_item_view.dart';
+import 'package:Sourban/modules/order/order_view.dart';
+import 'package:Sourban/modules/cart/my_cart_view.dart';
+import 'package:Sourban/modules/category/category_details/category_details_view.dart';
+import 'package:Sourban/modules/login/login_view.dart';
+import 'package:Sourban/modules/on_boarding/on_boarding_view.dart';
+import 'package:Sourban/modules/product/product_view.dart';
+import 'package:Sourban/modules/profile/change_password_view.dart';
+import 'package:Sourban/modules/profile/profile_view.dart';
+import 'package:Sourban/modules/profile/update_profile_view.dart';
+import 'package:Sourban/modules/register/register_view.dart';
+import 'package:Sourban/modules/search/search_view.dart';
+import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:Sourban/shared/bloc/app_cubit/app_cubit.dart';
+import 'package:Sourban/shared/bloc/bloc_observer.dart';
+import 'package:Sourban/shared/bloc/category_cubit/category_cubit.dart';
+import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:Sourban/shared/network/local/api_keys.dart';
+import 'package:Sourban/shared/network/local/key_const.dart';
+import 'package:Sourban/shared/network/local/shared_helper.dart';
+import 'package:Sourban/shared/network/remot/dio_helper_for_shop.dart';
+import 'package:Sourban/shared/style/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,11 +35,11 @@ void main() async {
   await CashHelper.init();
   Stripe.publishableKey = ApiKeys.publishableKey;
   Bloc.observer = MyBlocObserver();
-  runApp(const StoreAp());
+  runApp(const Sourban());
 }
 
-class StoreAp extends StatelessWidget {
-  const StoreAp({super.key});
+class Sourban extends StatelessWidget {
+  const Sourban({super.key});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

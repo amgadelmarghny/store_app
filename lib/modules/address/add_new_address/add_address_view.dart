@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/modules/address/add_new_address/add_address_view_body.dart';
+import 'package:Sourban/modules/address/add_new_address/add_address_view_body.dart';
 
 class AddAddressView extends StatelessWidget {
   const AddAddressView({super.key});

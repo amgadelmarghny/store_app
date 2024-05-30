@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/address/get_address/addresses_view.dart';
-import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:Sourban/modules/address/get_address/addresses_view.dart';
+import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
 
 class AdressOptions extends StatelessWidget {
   const AdressOptions({

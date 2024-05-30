@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/address/add_new_address/add_address_view.dart';
-import 'package:store_2/modules/cart/order_sheet.dart';
-import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:store_2/shared/components/custom_buttomt.dart';
+import 'package:Sourban/modules/address/add_new_address/add_address_view.dart';
+import 'package:Sourban/modules/cart/order_sheet.dart';
+import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:Sourban/shared/components/custom_buttomt.dart';
 
 class MakeOrderButton extends StatelessWidget {
   const MakeOrderButton({

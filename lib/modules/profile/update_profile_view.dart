@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/modules/profile/update_profile_body.dart';
-import 'package:store_2/models/user_model.dart';
+import 'package:Sourban/modules/profile/update_profile_body.dart';
+import 'package:Sourban/models/user_model.dart';
 
 class UpdateProfileView extends StatelessWidget {
   const UpdateProfileView({super.key});

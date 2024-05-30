@@ -1,4 +1,4 @@
-import 'package:store_2/models/shope_models/product_model.dart';
+import 'package:Sourban/models/shope_models/product_model.dart';
 
 class CategoryDetailsModel {
   bool? status;

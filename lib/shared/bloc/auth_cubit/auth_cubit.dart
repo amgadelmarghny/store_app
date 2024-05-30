@@ -1,15 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:store_2/models/login_model.dart';
-import 'package:store_2/models/profile_model.dart';
-import 'package:store_2/models/register_model.dart';
-import 'package:store_2/models/user_model.dart';
-import 'package:store_2/shared/feature/checkout/data/models/customer_payment_input_model.dart';
-import 'package:store_2/shared/network/local/key_const.dart';
-import 'package:store_2/shared/network/local/shared_helper.dart';
-import 'package:store_2/shared/network/remot/dio_helper_for_shop.dart';
-import 'package:store_2/shared/network/remot/end_points_url.dart';
-import 'package:store_2/shared/network/remot/stripe_service.dart';
+import 'package:Sourban/models/login_model.dart';
+import 'package:Sourban/models/profile_model.dart';
+import 'package:Sourban/models/register_model.dart';
+import 'package:Sourban/models/user_model.dart';
+import 'package:Sourban/shared/feature/checkout/data/models/customer_payment_input_model.dart';
+import 'package:Sourban/shared/network/local/key_const.dart';
+import 'package:Sourban/shared/network/local/shared_helper.dart';
+import 'package:Sourban/shared/network/remot/dio_helper_for_shop.dart';
+import 'package:Sourban/shared/network/remot/end_points_url.dart';
+import 'package:Sourban/shared/network/remot/stripe_service.dart';
 
 part 'auth_state.dart';
 

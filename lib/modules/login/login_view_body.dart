@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/modules/register/register_view.dart';
-import 'package:store_2/modules/login/widgets/sliver_login_input.dart';
-import 'package:store_2/shared/components/custom_curve_color_ui.dart';
-import 'package:store_2/shared/components/custom_sliver_row_text.dart';
+import 'package:Sourban/modules/register/register_view.dart';
+import 'package:Sourban/modules/login/widgets/sliver_login_input.dart';
+import 'package:Sourban/shared/components/custom_curve_color_ui.dart';
+import 'package:Sourban/shared/components/custom_sliver_row_text.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({

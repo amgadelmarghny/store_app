@@ -1,4 +1,4 @@
-import 'package:store_2/models/address_models/address_model.dart';
+import 'package:Sourban/models/address_models/address_model.dart';
 
 class GetAddressesModel {
   final bool status;

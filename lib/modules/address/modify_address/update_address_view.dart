@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/models/address_models/address_model.dart';
-import 'package:store_2/modules/address/modify_address/update_address_view_body.dart';
+import 'package:Sourban/models/address_models/address_model.dart';
+import 'package:Sourban/modules/address/modify_address/update_address_view_body.dart';
 
 class UpdateAddressView extends StatelessWidget {
   const UpdateAddressView({super.key});

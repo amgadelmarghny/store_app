@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/modules/profile/change_password_view_body.dart';
+import 'package:Sourban/modules/profile/change_password_view_body.dart';
 
 class ChangePasswordView extends StatelessWidget {
   const ChangePasswordView({super.key});

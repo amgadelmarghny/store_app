@@ -1,9 +1,9 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/home/widgets/products_and_banners_view.dart';
-import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/modules/home/widgets/products_and_banners_view.dart';
+import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});

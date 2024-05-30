@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:store_2/models/shope_models/product_model.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/models/shope_models/product_model.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class ProductImage extends StatelessWidget {
   const ProductImage({

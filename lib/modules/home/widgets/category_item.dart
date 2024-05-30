@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/models/catergory_model.dart';
-import 'package:store_2/modules/category/category_details/category_details_view.dart';
-import 'package:store_2/shared/bloc/category_cubit/category_cubit.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/models/catergory_model.dart';
+import 'package:Sourban/modules/category/category_details/category_details_view.dart';
+import 'package:Sourban/shared/bloc/category_cubit/category_cubit.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class CategotryItem extends StatelessWidget {
   const CategotryItem({super.key, required this.dataModel});

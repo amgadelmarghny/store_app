@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/login/login_view.dart';
-import 'package:store_2/modules/profile/change_password_view.dart';
-import 'package:store_2/modules/profile/update_profile_view.dart';
-import 'package:store_2/models/user_model.dart';
-import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/components/avatar_pic.dart';
-import 'package:store_2/shared/components/textformfield.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/modules/login/login_view.dart';
+import 'package:Sourban/modules/profile/change_password_view.dart';
+import 'package:Sourban/modules/profile/update_profile_view.dart';
+import 'package:Sourban/models/user_model.dart';
+import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:Sourban/shared/components/avatar_pic.dart';
+import 'package:Sourban/shared/components/textformfield.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({

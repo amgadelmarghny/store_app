@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:store_2/shared/feature/checkout/data/models/payment_intent_input_model.dart';
-import 'package:store_2/shared/feature/checkout/data/redos/checkout_repo.dart';
+import 'package:Sourban/shared/feature/checkout/data/models/payment_intent_input_model.dart';
+import 'package:Sourban/shared/feature/checkout/data/redos/checkout_repo.dart';
 part 'payment_state.dart';
 
 class PaymentCubit extends Cubit<PaymentState> {

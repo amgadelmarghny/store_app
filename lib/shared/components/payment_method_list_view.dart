@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
 import 'payment_method_item.dart';
 
 class PaymentMethodItemListView extends StatelessWidget {

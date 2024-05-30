@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:store_2/models/boarding_model.dart';
-import 'package:store_2/models/complaint_model.dart';
-import 'package:store_2/shared/network/local/key_const.dart';
-import 'package:store_2/shared/network/local/shared_helper.dart';
+import 'package:Sourban/models/boarding_model.dart';
+import 'package:Sourban/models/complaint_model.dart';
+import 'package:Sourban/shared/network/local/key_const.dart';
+import 'package:Sourban/shared/network/local/shared_helper.dart';
 import '../../network/remot/dio_helper_for_shop.dart';
 
 part 'app_state.dart';

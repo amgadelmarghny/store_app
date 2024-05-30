@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/login/login_view_body.dart';
-import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/modules/login/login_view_body.dart';
+import 'package:Sourban/shared/bloc/auth_cubit/auth_cubit.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

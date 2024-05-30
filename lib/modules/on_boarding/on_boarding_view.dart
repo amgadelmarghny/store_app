@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:store_2/modules/login/login_view.dart';
-import 'package:store_2/modules/on_boarding/on_baording_view_body.dart';
-import 'package:store_2/shared/components/navigation.dart';
-import 'package:store_2/shared/network/local/key_const.dart';
-import 'package:store_2/shared/network/local/shared_helper.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/modules/login/login_view.dart';
+import 'package:Sourban/modules/on_boarding/on_baording_view_body.dart';
+import 'package:Sourban/shared/components/navigation.dart';
+import 'package:Sourban/shared/network/local/key_const.dart';
+import 'package:Sourban/shared/network/local/shared_helper.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});

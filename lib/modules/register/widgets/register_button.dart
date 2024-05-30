@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/layout/shop/shop_view.dart';
-import 'package:store_2/models/user_model.dart';
-import 'package:store_2/shared/bloc/auth_cubit/auth_cubit.dart';
-import 'package:store_2/shared/components/custom_buttomt.dart';
-import 'package:store_2/shared/components/custom_show_messeges.dart';
-import 'package:store_2/shared/components/navigation.dart';
-import 'package:store_2/shared/feature/checkout/data/models/customer_payment_input_model.dart';
-import 'package:store_2/shared/network/local/key_const.dart';
-import 'package:store_2/shared/network/local/shared_helper.dart';
+import 'package:Sourban/layout/shop/shop_view.dart';
+import 'package:Sourban/models/user_model.dart';
+import 'package:Sourban/shared/bloc/auth_cubit/auth_cubit.dart';
+import 'package:Sourban/shared/components/custom_buttomt.dart';
+import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/navigation.dart';
+import 'package:Sourban/shared/feature/checkout/data/models/customer_payment_input_model.dart';
+import 'package:Sourban/shared/network/local/key_const.dart';
+import 'package:Sourban/shared/network/local/shared_helper.dart';
 
 class RegisterButttonConsumer extends StatelessWidget {
   const RegisterButttonConsumer({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/modules/order/order_view_body.dart';
+import 'package:Sourban/modules/order/order_view_body.dart';
 
 class OrderView extends StatelessWidget {
   const OrderView({super.key});

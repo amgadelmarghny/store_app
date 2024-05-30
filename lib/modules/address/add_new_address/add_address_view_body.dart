@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_2/modules/address/add_new_address/add_addres_button.dart';
-import 'package:store_2/modules/address/add_new_address/add_address_builder.dart';
-import 'package:store_2/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:store_2/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/modules/address/add_new_address/add_address_button.dart';
+import 'package:Sourban/modules/address/add_new_address/add_address_builder.dart';
+import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:Sourban/shared/components/custom_show_messeges.dart';
 
 class AddAddressViewBody extends StatelessWidget {
   const AddAddressViewBody({
@@ -12,11 +12,11 @@ class AddAddressViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameContoller = TextEditingController();
-    TextEditingController cityContoller = TextEditingController();
-    TextEditingController regionContoller = TextEditingController();
-    TextEditingController detailsContoller = TextEditingController();
-    TextEditingController notesContoller = TextEditingController();
+    TextEditingController nameController = TextEditingController();
+    TextEditingController cityController = TextEditingController();
+    TextEditingController regionController = TextEditingController();
+    TextEditingController detailsController = TextEditingController();
+    TextEditingController notesController = TextEditingController();
     GlobalKey<FormState> formKey = GlobalKey();
 
     return Padding(
@@ -45,22 +45,22 @@ class AddAddressViewBody extends StatelessWidget {
             slivers: [
               SliverToBoxAdapter(
                 child: AddAddressBuilder(
-                  nameContoller: nameContoller,
-                  cityContoller: cityContoller,
-                  regionContoller: regionContoller,
-                  detailsContoller: detailsContoller,
-                  notesContoller: notesContoller,
+                  nameController: nameController,
+                  cityController: cityController,
+                  regionController: regionController,
+                  detailsController: detailsController,
+                  notesController: notesController,
                   formKey: formKey,
                 ),
               ),
               SliverFillRemaining(
                 hasScrollBody: false,
                 child: AddAddressButton(
-                  nameContoller: nameContoller,
-                  cityContoller: cityContoller,
-                  regionContoller: regionContoller,
-                  detailsContoller: detailsContoller,
-                  notesContoller: notesContoller,
+                  nameContoller: nameController,
+                  cityContoller: cityController,
+                  regionContoller: regionController,
+                  detailsContoller: detailsController,
+                  notesContoller: notesController,
                   formKey: formKey,
                   state: state,
                 ),

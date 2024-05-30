@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class IconItem extends StatelessWidget {
   const IconItem({super.key, this.onTap, required this.image});

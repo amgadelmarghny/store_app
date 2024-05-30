@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:store_2/layout/shop/drower.dart';
-import 'package:store_2/modules/login/login_view.dart';
-import 'package:store_2/modules/search/search_view.dart';
-import 'package:store_2/shared/bloc/app_cubit/app_cubit.dart';
-import 'package:store_2/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:store_2/shared/components/custom_show_messeges.dart';
-import 'package:store_2/shared/components/navigation.dart';
-import 'package:store_2/shared/network/local/key_const.dart';
-import 'package:store_2/shared/network/local/shared_helper.dart';
-import 'package:store_2/shared/style/colors.dart';
+import 'package:Sourban/layout/shop/drower.dart';
+import 'package:Sourban/modules/login/login_view.dart';
+import 'package:Sourban/modules/search/search_view.dart';
+import 'package:Sourban/shared/bloc/app_cubit/app_cubit.dart';
+import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/navigation.dart';
+import 'package:Sourban/shared/network/local/key_const.dart';
+import 'package:Sourban/shared/network/local/shared_helper.dart';
+import 'package:Sourban/shared/style/colors.dart';
 
 class ShopView extends StatelessWidget {
   const ShopView({super.key});
@@ -61,7 +61,7 @@ class ShopView extends StatelessWidget {
               child: Scaffold(
                 drawer: const DrawerMenu(),
                 appBar: AppBar(
-                  title: const Text('soanbur'),
+                  title: const Text('sourban'),
                   actions: [
                     IconButton(
                       onPressed: () {
