@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sourban/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:Sourban/modules/login/widgets/login_button.dart';
-import 'package:Sourban/shared/components/icon_auth_list_view.dart';
 import 'package:Sourban/shared/components/textformfield.dart';
 
 class SliverLoginInfo extends StatelessWidget {
@@ -79,22 +78,6 @@ class SliverLoginInfo extends StatelessWidget {
                 passwordController: passwordController,
                 formKey: formKey,
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Login With',
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const IconAuthlistView(),
             ],
           ),
         ),
