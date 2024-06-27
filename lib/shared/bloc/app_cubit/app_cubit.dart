@@ -49,7 +49,7 @@ class AppCubit extends Cubit<AppStates> {
       required String phone,
       required String message}) async {
     emit(AddComplainLoading());
-    DioHelper.postData(
+    await DioHelper.postData(
         url: 'complaints',
         token: CashHelper.getData(key: tOKENCONST),
         data: {

@@ -59,7 +59,7 @@ class ShopView extends StatelessWidget {
             return ModalProgressHUD(
               inAsyncCall: state is LogoutLoadingState,
               child: Scaffold(
-                drawer: const DrawerMenu(),
+                drawer: const DrawerMenu(),               
                 appBar: AppBar(
                   title: const Text('sourban'),
                   actions: [

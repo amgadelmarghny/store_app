@@ -111,9 +111,9 @@ class ShopCubit extends Cubit<ShopStates> {
   Map<int, bool> favoriteProductsMap = {};
   Map<int, bool> inCartProductsMap = {};
 
-  void getHomeData() {
+  void getHomeData() async {
     emit(GetHomeDataLoadingState());
-    DioHelper.getData(
+    await DioHelper.getData(
       url: 'home',
       token: CashHelper.getData(key: tOKENCONST),
     ).then((value) {
@@ -173,9 +173,9 @@ class ShopCubit extends Cubit<ShopStates> {
 //////////////////////////////////////? GET  FAVORITES //////////////////////////
   GetFavoritesModel? favoritesModel;
 
-  void getFavoriteProducts() {
+  void getFavoriteProducts() async {
     emit(GetFavoritesLoadingState());
-    DioHelper.getData(
+    await DioHelper.getData(
       url: favCONST,
       token: CashHelper.getData(key: tOKENCONST),
     ).then((value) {
@@ -207,9 +207,9 @@ class ShopCubit extends Cubit<ShopStates> {
   void changeAccPassword({
     required String currentPassword,
     required String newPassword,
-  }) {
+  }) async {
     emit(ChangePasswordLoadingState());
-    DioHelper.postData(
+    await DioHelper.postData(
       url: changePassword,
       token: CashHelper.getData(key: tOKENCONST),
       data: {
@@ -229,7 +229,7 @@ class ShopCubit extends Cubit<ShopStates> {
 //////////////////////////////////////? LOGOUT //////////////////////////////////
   void userLogout(BuildContext context, {required String routName}) async {
     emit(LogoutLoadingState());
-    return await DioHelper.postData(
+    await DioHelper.postData(
             url: logout, token: CashHelper.getData(key: tOKENCONST))
         .then((value) {
       navigatorPushAndRemove(context, routName);
@@ -245,10 +245,10 @@ class ShopCubit extends Cubit<ShopStates> {
 
   ChangedFavoriteModel? changedCartModel;
 
-  void addAndRemoveCart({required int productId}) {
+  void addAndRemoveCart({required int productId}) async {
     inCartProductsMap[productId] = !inCartProductsMap[productId]!;
     emit(CartLoadingState());
-    DioHelper.postData(
+    await DioHelper.postData(
       url: carts,
       token: CashHelper.getData(key: tOKENCONST),
       data: {"product_id": productId},
@@ -265,9 +265,9 @@ class ShopCubit extends Cubit<ShopStates> {
   GetCartModel? cartModel;
   Map<int, int> quantityNumberMap = {};
   ProductModel? productCheck;
-  void getCartItems() {
+  void getCartItems() async {
     emit(GetCartLoadingState());
-    DioHelper.getData(
+    await DioHelper.getData(
       url: carts,
       token: CashHelper.getData(key: tOKENCONST),
     ).then((value) {
@@ -286,9 +286,9 @@ class ShopCubit extends Cubit<ShopStates> {
   void updateNumberOfItemInTheCart({
     required int cartID,
     required int numberOfItemsInTheCart,
-  }) {
+  }) async {
     emit(UpdateCartLoadingState());
-    DioHelper.putData(
+    await DioHelper.putData(
         url: '$carts/$cartID',
         token: CashHelper.getData(key: tOKENCONST),
         data: {
