@@ -5,13 +5,13 @@ import 'package:Sourban/models/address_models/get_address_model.dart';
 import 'package:Sourban/models/address_models/new_address_model.dart';
 import 'package:Sourban/models/address_models/update_address_model.dart';
 import 'package:Sourban/models/order_models/add_order_model.dart';
-import 'package:Sourban/models/order_models/cancle_order.dart';
+import 'package:Sourban/models/order_models/cancel_order.dart';
 import 'package:Sourban/models/order_models/get_orders_model.dart';
 import 'package:Sourban/models/order_models/order_details_model.dart';
 import 'package:Sourban/shared/network/local/key_const.dart';
 import 'package:Sourban/shared/network/local/shared_helper.dart';
-import 'package:Sourban/shared/network/remot/dio_helper_for_shop.dart';
-import 'package:Sourban/shared/network/remot/end_points_url.dart';
+import 'package:Sourban/shared/network/remote/dio_helper_for_shop.dart';
+import 'package:Sourban/shared/network/remote/end_points_url.dart';
 
 part 'address_state.dart';
 
@@ -129,8 +129,8 @@ class AddressCubit extends Cubit<AddressState> {
     // still selected even close payment sheet
     // as $selectedType
     isChoose = value;
-    // increse the value to store it in selectedValue
-    // to use the selectedValue in 
+    // increase the value to store it in selectedValue
+    // to use the selectedValue in
     value++;
     if (value == 1) {
       selectedValue = value;
@@ -208,8 +208,8 @@ class AddressCubit extends Cubit<AddressState> {
     });
   }
 
-  ////////////////////! Cancle  the Order /////////////////////
-  late CancelOrderModel cancleOrderModel;
+  ////////////////////! Cancel  the Order /////////////////////
+  late CancelOrderModel cancelOrderModel;
   Future<void> cancelTheOrder({required int orderId}) async {
     emit(CancleOrderLoading());
     DioHelper.getData(
@@ -217,9 +217,9 @@ class AddressCubit extends Cubit<AddressState> {
         token: CashHelper.getData(
           key: tOKENCONST,
         )).then((value) {
-      cancleOrderModel = CancelOrderModel.fromJson(value.data);
+      cancelOrderModel = CancelOrderModel.fromJson(value.data);
       getAllOrders();
-      emit(CancleOrderSuccess(cancleOrderModel: cancleOrderModel));
+      emit(CancleOrderSuccess(cancleOrderModel: cancelOrderModel));
     }).catchError((error) {
       emit(CancleOrderFaluir(error: error));
     });

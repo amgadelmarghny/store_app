@@ -41,7 +41,7 @@ class CustomerPatymentFailure extends AuthState {
 class RegisterLodingState extends AuthState {}
 
 class RegisterSuccessState extends AuthState {
-  final Registermodel registermodel;
+  final RegisterModel registermodel;
   RegisterSuccessState({required this.registermodel});
 }
 

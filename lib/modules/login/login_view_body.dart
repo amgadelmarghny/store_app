@@ -20,7 +20,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       slivers: [
         const SliverToBoxAdapter(
           child: CurveColorUI(
-            headLine: 'Welcom back !',
+            headLine: 'Welcome back !',
             subHeadline: 'Please login with your personal information.',
           ),
         ),

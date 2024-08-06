@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:Sourban/models/category_details_model.dart';
-import 'package:Sourban/shared/network/remot/dio_helper_for_shop.dart';
+import 'package:Sourban/shared/network/remote/dio_helper_for_shop.dart';
 
 part 'category_state.dart';
 

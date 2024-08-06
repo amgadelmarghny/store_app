@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void snacKBar(BuildContext context, String messege) {
+void snacKBar(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(
-        messege,
+        message,
       ),
     ),
   );
 }
 
 void toastShown(
-    {required String messege,
+    {required String message,
     required ToastState state,
     required BuildContext context}) {
   Fluttertoast.showToast(
-      msg: messege,
+      msg: message,
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.TOP,
       timeInSecForIosWeb: 5,
-      backgroundColor: getColorTost(state),
+      backgroundColor: getColorToast(state),
       textColor: Theme.of(context).textTheme.bodyLarge!.color,
       fontSize: 16.0);
 }
 
 enum ToastState { success, warning, error }
 
-Color getColorTost(ToastState state) {
+Color getColorToast(ToastState state) {
   Color color;
   switch (state) {
     case ToastState.success:

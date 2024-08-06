@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sourban/modules/product/product_view.dart';
-import 'package:Sourban/models/shope_models/product_model.dart';
+import 'package:Sourban/models/shop_models/product_model.dart';
 import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
 
 class ProductItem extends StatelessWidget {
@@ -128,19 +128,22 @@ class ProductItem extends StatelessWidget {
                               ),
                             ),
                           //////////////!//////////////!//////////!
-                          IconButton(
-                            onPressed: () {
-                              shopCubit.addAndRemoveFavorite(
-                                  id: productModel.id);
-                            },
-                            icon: Icon(
-                              shopCubit.favoriteProductsMap[productModel.id]!
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: shopCubit
-                                      .favoriteProductsMap[productModel.id]!
-                                  ? Colors.red
-                                  : Colors.grey,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10,left: 5,bottom: 6),
+                            child: InkWell(
+                              onTap: () {
+                                shopCubit.addAndRemoveFavorite(
+                                    id: productModel.id);
+                              },
+                              child: Icon(
+                                shopCubit.favoriteProductsMap[productModel.id]!
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: shopCubit
+                                        .favoriteProductsMap[productModel.id]!
+                                    ? Colors.red
+                                    : Colors.grey,
+                              ),
                             ),
                           ),
                         ],

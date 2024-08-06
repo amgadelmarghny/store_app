@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sourban/modules/address/add_new_address/add_address_button.dart';
 import 'package:Sourban/modules/address/add_new_address/add_address_builder.dart';
 import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
 
 class AddAddressViewBody extends StatelessWidget {
   const AddAddressViewBody({
@@ -26,12 +26,12 @@ class AddAddressViewBody extends StatelessWidget {
           if (state is AddressSuccess) {
             if (state.newAddressModel.status) {
               toastShown(
-                  messege: state.newAddressModel.message!,
+                  message: state.newAddressModel.message!,
                   state: ToastState.success,
                   context: context);
             } else {
               toastShown(
-                  messege: state.newAddressModel.message!,
+                  message: state.newAddressModel.message!,
                   state: ToastState.error,
                   context: context);
             }

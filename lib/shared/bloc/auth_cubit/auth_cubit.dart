@@ -7,9 +7,9 @@ import 'package:Sourban/models/user_model.dart';
 import 'package:Sourban/shared/feature/checkout/data/models/customer_payment_input_model.dart';
 import 'package:Sourban/shared/network/local/key_const.dart';
 import 'package:Sourban/shared/network/local/shared_helper.dart';
-import 'package:Sourban/shared/network/remot/dio_helper_for_shop.dart';
-import 'package:Sourban/shared/network/remot/end_points_url.dart';
-import 'package:Sourban/shared/network/remot/stripe_service.dart';
+import 'package:Sourban/shared/network/remote/dio_helper_for_shop.dart';
+import 'package:Sourban/shared/network/remote/end_points_url.dart';
+import 'package:Sourban/shared/network/remote/stripe_service.dart';
 
 part 'auth_state.dart';
 
@@ -80,7 +80,7 @@ class AuthCubit extends Cubit<AuthState> {
       },
     ).then((value) {
       emit(RegisterSuccessState(
-          registermodel: Registermodel.fromJson(value.data)));
+          registermodel: RegisterModel.fromJson(value.data)));
     }).catchError((err) {
       emit(RegisterFailureState(err: err.toString()));
     });

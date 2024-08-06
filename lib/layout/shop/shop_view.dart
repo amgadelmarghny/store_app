@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:Sourban/layout/shop/drower.dart';
+import 'package:Sourban/layout/shop/drawer.dart';
 import 'package:Sourban/modules/login/login_view.dart';
 import 'package:Sourban/modules/search/search_view.dart';
 import 'package:Sourban/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
 import 'package:Sourban/shared/components/navigation.dart';
 import 'package:Sourban/shared/network/local/key_const.dart';
 import 'package:Sourban/shared/network/local/shared_helper.dart';
@@ -27,14 +27,14 @@ class ShopView extends StatelessWidget {
                 await CashHelper.deleteCash(key: tOKENCONST).then((value) {
                   navigatorPushAndRemove(context, LoginView.id);
                   toastShown(
-                    messege: state.logoutModel.message,
+                    message: state.logoutModel.message,
                     context: context,
                     state: ToastState.warning,
                   );
                 });
               } else {
                 toastShown(
-                  messege: state.logoutModel.message,
+                  message: state.logoutModel.message,
                   state: ToastState.error,
                   context: context,
                 );
@@ -48,7 +48,7 @@ class ShopView extends StatelessWidget {
               if (!state.changedFavoriteModel.status) {
                 if (!context.mounted) return;
                 toastShown(
-                    messege: state.changedFavoriteModel.message,
+                    message: state.changedFavoriteModel.message,
                     state: ToastState.error,
                     context: context);
               }

@@ -4,7 +4,7 @@ import 'package:Sourban/models/address_models/address_model.dart';
 import 'package:Sourban/modules/address/modify_address/update_addres_button.dart';
 import 'package:Sourban/modules/address/modify_address/update_address_builder.dart';
 import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
 
 class UpdateAddressBody extends StatelessWidget {
   const UpdateAddressBody({super.key, required this.addressModel});
@@ -28,12 +28,12 @@ class UpdateAddressBody extends StatelessWidget {
               Navigator.pop(context);
               Navigator.pop(context);
               toastShown(
-                  messege: state.updateAddressModel.message!,
+                  message: state.updateAddressModel.message!,
                   state: ToastState.success,
                   context: context);
             } else {
               toastShown(
-                  messege: state.updateAddressModel.message!,
+                  message: state.updateAddressModel.message!,
                   state: ToastState.error,
                   context: context);
             }

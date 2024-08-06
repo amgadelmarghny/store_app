@@ -6,7 +6,7 @@ import 'package:Sourban/modules/address/add_new_address/add_address_view.dart';
 import 'package:Sourban/modules/address/get_address/address_item.dart';
 import 'package:Sourban/modules/address/get_address/empty_address_view_body.dart';
 import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
 import 'package:Sourban/shared/style/colors.dart';
 
 class AddressesViewBody extends StatelessWidget {
@@ -24,7 +24,7 @@ class AddressesViewBody extends StatelessWidget {
               .deleteAddressModel
               .status!) {
             toastShown(
-                messege: BlocProvider.of<AddressCubit>(context)
+                message: BlocProvider.of<AddressCubit>(context)
                     .deleteAddressModel
                     .message!,
                 state: ToastState.success,
@@ -80,7 +80,7 @@ class AddressesViewBody extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (contex, index) {
                       return AddressItem(
-                          isformDrowerNotOrderSheet: isformDrowerNotOrderSheet,
+                          isFromDrawerNotOrderSheet: isformDrowerNotOrderSheet,
                           addressModel: addressCubit.getAddressesModel!.data!
                               .addressModelsList[index]);
                     },

@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sourban/models/user_model.dart';
 import 'package:Sourban/shared/bloc/auth_cubit/auth_cubit.dart';
 import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:Sourban/shared/components/custom_buttomt.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
-import 'package:Sourban/shared/components/textformfield.dart';
+import 'package:Sourban/shared/components/custom_button.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
+import 'package:Sourban/shared/components/text_form_field.dart';
 import 'package:Sourban/shared/network/local/key_const.dart';
 import 'package:Sourban/shared/network/local/shared_helper.dart';
 import 'package:Sourban/shared/style/colors.dart';
@@ -28,14 +28,14 @@ class UpdateProfileViewBody extends StatelessWidget {
           if (state is UpdateProfileSuccessState) {
             if (state.profileModel.status) {
               toastShown(
-                messege: state.profileModel.message!,
+                message: state.profileModel.message!,
                 state: ToastState.success,
                 context: context,
               );
               Navigator.pop(context);
             } else {
               toastShown(
-                messege: state.profileModel.message!,
+                message: state.profileModel.message!,
                 state: ToastState.error,
                 context: context,
               );
@@ -43,7 +43,7 @@ class UpdateProfileViewBody extends StatelessWidget {
           }
           if (state is UpdateProfileFailureState) {
             toastShown(
-              messege: state.errMessage,
+              message: state.errMessage,
               state: ToastState.error,
               context: context,
             );

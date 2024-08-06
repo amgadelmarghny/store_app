@@ -1,11 +1,11 @@
 class BoardModel {
   final String image;
-  final String shopeTitle;
-  final String shopeSubTitle;
+  final String shopTitle;
+  final String shopSubTitle;
 
   BoardModel({
     required this.image,
-    required this.shopeTitle,
-    required this.shopeSubTitle,
+    required this.shopTitle,
+    required this.shopSubTitle,
   });
 }

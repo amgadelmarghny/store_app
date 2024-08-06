@@ -10,11 +10,11 @@ class AddressItem extends StatefulWidget {
   const AddressItem({
     super.key,
     required this.addressModel,
-    this.isformDrowerNotOrderSheet = false,
+    this.isFromDrawerNotOrderSheet = false,
   });
 
   final AddressModel addressModel;
-  final bool? isformDrowerNotOrderSheet;
+  final bool? isFromDrawerNotOrderSheet;
 
   @override
   State<AddressItem> createState() => _AddressItemState();
@@ -37,7 +37,7 @@ class _AddressItemState extends State<AddressItem> {
           leading: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (!widget.isformDrowerNotOrderSheet!)
+              if (!widget.isFromDrawerNotOrderSheet!)
                 if (addressCubit.getAddressesModel!.data!.total! > 1)
                   Checkbox(
                     value: isChecked,

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sourban/models/search_model.dart';
 import 'package:Sourban/modules/favorite/widgets/favorite_item.dart';
 import 'package:Sourban/shared/bloc/search_cubit/search_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
-import 'package:Sourban/shared/components/textformfield.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
+import 'package:Sourban/shared/components/text_form_field.dart';
 import 'package:Sourban/shared/style/colors.dart';
 
 class SearchViewBody extends StatelessWidget {
@@ -20,7 +20,7 @@ class SearchViewBody extends StatelessWidget {
             BlocProvider.of<SearchCubit>(context).searchModel;
         if (state is SearchFailureState) {
           toastShown(
-              messege: searchModel!.message!,
+              message: searchModel!.message!,
               state: ToastState.error,
               context: context);
         }

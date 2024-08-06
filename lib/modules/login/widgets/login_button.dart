@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sourban/layout/shop/shop_view.dart';
 import 'package:Sourban/shared/bloc/auth_cubit/auth_cubit.dart';
-import 'package:Sourban/shared/components/custom_buttomt.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/custom_button.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
 import 'package:Sourban/shared/components/navigation.dart';
 import 'package:Sourban/shared/feature/checkout/data/models/customer_payment_input_model.dart';
 import 'package:Sourban/shared/network/local/key_const.dart';
@@ -30,7 +30,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
         }
         if (state is CustomerPatymentFailure) {
           toastShown(
-            messege: 'Some thing went wrong',
+            message: 'Some thing went wrong',
             state: ToastState.error,
             context: context,
           );
@@ -42,7 +42,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
                 .then(
               (value) {
                 toastShown(
-                  messege: state.loginModel.message,
+                  message: state.loginModel.message,
                   state: ToastState.success,
                   context: context,
                 );
@@ -54,7 +54,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
             );
           } else {
             toastShown(
-              messege: state.loginModel.message,
+              message: state.loginModel.message,
               state: ToastState.error,
               context: context,
             );

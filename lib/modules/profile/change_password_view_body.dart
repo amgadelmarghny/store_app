@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sourban/modules/profile/components/change_password_text_field.dart';
 import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:Sourban/shared/components/custom_buttomt.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/custom_button.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
 
 class ChangePasswordViewBody extends StatefulWidget {
   const ChangePasswordViewBody({
@@ -48,13 +48,13 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
                 if (state is ChangePasswordSuccessState) {
                   if (state.changePasswordModel.status) {
                     toastShown(
-                      messege: state.changePasswordModel.message,
+                      message: state.changePasswordModel.message,
                       state: ToastState.success,
                       context: context,
                     );
                   } else {
                     toastShown(
-                      messege: state.changePasswordModel.message,
+                      message: state.changePasswordModel.message,
                       state: ToastState.error,
                       context: context,
                     );

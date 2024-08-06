@@ -4,7 +4,7 @@ sealed class AppStates {}
 
 final class AppInitial extends AppStates {}
 
-final class AppBritnessChange extends AppStates {}
+final class AppBrightnessChange extends AppStates {}
 
 //////////////////////
 final class AddComplainLoading extends AppStates {}

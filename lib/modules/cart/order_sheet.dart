@@ -9,10 +9,10 @@ import 'package:Sourban/modules/cart/order_sheet_components/place_order_button.d
 import 'package:Sourban/modules/cart/order_sheet_components/total_coast_list_tile.dart';
 import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
 import 'package:Sourban/shared/components/navigation.dart';
 import 'package:Sourban/shared/feature/checkout/data/presentation/manager/cubit/payment_cubit.dart';
-import 'package:Sourban/shared/feature/checkout/data/redos/checkout_repo_empl.dart';
+import 'package:Sourban/shared/feature/checkout/data/repos/checkout_repo_impl.dart';
 
 class OrderSheet extends StatelessWidget {
   const OrderSheet({
@@ -28,7 +28,7 @@ class OrderSheet extends StatelessWidget {
         if (state is AddOrderSuccess) {
           if (state.addOrderModel.status) {
             toastShown(
-              messege: state.addOrderModel.message,
+              message: state.addOrderModel.message,
               state: ToastState.success,
               context: context,
             );
@@ -37,7 +37,7 @@ class OrderSheet extends StatelessWidget {
             BlocProvider.of<ShopCubit>(context).getHomeData();
           } else {
             toastShown(
-              messege: state.addOrderModel.message,
+              message: state.addOrderModel.message,
               state: ToastState.error,
               context: context,
             );
@@ -62,9 +62,9 @@ class OrderSheet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CustomSmallDivider(),
-            const PaymantMethodOptions(),
+            const PaymentMethodOptions(),
             const Divider(),
-            const AdressOptions(),
+            const AddressOptions(),
             const Divider(),
             TotalCoastListTile(total: total),
             const Divider(),

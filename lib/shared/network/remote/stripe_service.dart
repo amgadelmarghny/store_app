@@ -7,7 +7,7 @@ import 'package:Sourban/shared/feature/checkout/data/models/init_payment_sheet_i
 import 'package:Sourban/shared/feature/checkout/data/models/payment_intent_input_model.dart';
 import 'package:Sourban/shared/feature/checkout/data/models/payment_intent_model/payment_intent_model.dart';
 import 'package:Sourban/shared/network/local/api_keys.dart';
-import 'package:Sourban/shared/network/remot/api_service_for_sripe.dart';
+import 'package:Sourban/shared/network/remote/api_service_for_sripe.dart';
 
 abstract class StripeService {
   // for payment intent

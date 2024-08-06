@@ -16,7 +16,7 @@ class SettingsMenu extends StatelessWidget {
     return PopupMenuButton(
       onSelected: (value) {
         if (value == 1) {
-          BlocProvider.of<AppCubit>(context).britnessChanged();
+          BlocProvider.of<AppCubit>(context).brightnessChanged();
         } else if (value == 2) {
         } else if (value == 3) {
           BlocProvider.of<ShopCubit>(context).userLogout(

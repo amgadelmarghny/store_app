@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/models/shope_models/product_model.dart';
+import 'package:Sourban/models/shop_models/product_model.dart';
 import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:Sourban/shared/components/custom_buttomt.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/custom_button.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
 
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({
@@ -19,14 +19,14 @@ class AddToCartButton extends StatelessWidget {
       listener: (context, state) {
         if (state is CartSussiccState) {
           toastShown(
-            messege: state.changedCartModel.message,
+            message: state.changedCartModel.message,
             state: ToastState.success,
             context: context,
           );
         }
         if (state is CartFailureState) {
           toastShown(
-            messege: state.errMessage,
+            message: state.errMessage,
             state: ToastState.error,
             context: context,
           );

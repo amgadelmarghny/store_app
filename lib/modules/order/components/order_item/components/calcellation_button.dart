@@ -2,7 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
 
 class CancllationButton extends StatefulWidget {
   const CancllationButton({
@@ -24,7 +24,7 @@ class _CancllationButtonState extends State<CancllationButton> {
         if (state is CancleOrderSuccess) {
           if (state.cancleOrderModel.status) {
             toastShown(
-                messege: 'the order has been successfully cancelled',
+                message: 'the order has been successfully cancelled',
                 state: ToastState.warning,
                 context: context);
           }

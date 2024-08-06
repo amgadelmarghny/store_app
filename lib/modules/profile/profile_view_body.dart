@@ -6,7 +6,7 @@ import 'package:Sourban/modules/profile/update_profile_view.dart';
 import 'package:Sourban/models/user_model.dart';
 import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:Sourban/shared/components/avatar_pic.dart';
-import 'package:Sourban/shared/components/textformfield.dart';
+import 'package:Sourban/shared/components/text_form_field.dart';
 import 'package:Sourban/shared/style/colors.dart';
 
 class ProfileViewBody extends StatelessWidget {
@@ -105,6 +105,7 @@ class ProfileViewBody extends StatelessWidget {
 
   TextStyle underLineDecoration(BuildContext context) {
     return Theme.of(context).textTheme.bodyMedium!.copyWith(
+          fontSize: 17.2,
           decoration: TextDecoration.underline,
           decorationColor: defaultColor,
         );

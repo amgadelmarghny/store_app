@@ -8,12 +8,13 @@ abstract class ThemeStyle {
     return ThemeData(
       primarySwatch: defaultColor,
       brightness: Brightness.light,
+      scaffoldBackgroundColor: Colors.white,
       appBarTheme: const AppBarTheme(
         elevation: 0,
         centerTitle: true,
         titleSpacing: 20,
         iconTheme: IconThemeData(size: 30),
-        //backgroundColor: defaultColor,
+        backgroundColor: Colors.white,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
           statusBarColor: Colors.transparent,

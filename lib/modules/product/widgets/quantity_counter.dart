@@ -1,7 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/models/shope_models/product_model.dart';
+import 'package:Sourban/models/shop_models/product_model.dart';
 import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
 import '../../../shared/style/colors.dart';
 
@@ -18,7 +18,7 @@ class QuantityCounter extends StatelessWidget {
         ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
         int quantityNumber = shopCubit.quantityNumberMap[productModel.id]!;
         return ConditionalBuilder(
-          // condition to build indecator when quantaty changed
+          // condition to build indicator when quantity changed
           condition: shopCubit.productCheck != null
               // this to check if the product that u want to change
               // is the same one in the My cart liat or not

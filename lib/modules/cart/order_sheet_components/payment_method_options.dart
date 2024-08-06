@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
 import '../../../shared/components/payment_method_list_view.dart';
 
-class PaymantMethodOptions extends StatelessWidget {
-  const PaymantMethodOptions({
+class PaymentMethodOptions extends StatelessWidget {
+  const PaymentMethodOptions({
     super.key,
   });
 

@@ -1,17 +1,17 @@
 import 'package:Sourban/models/user_model.dart';
 
-class Registermodel {
+class RegisterModel {
   final bool status;
   final String message;
   final UserModel? data;
 
-  Registermodel({
+  RegisterModel({
     required this.status,
     required this.message,
     required this.data,
   });
-  factory Registermodel.fromJson(Map<String, dynamic> json) {
-    return Registermodel(
+  factory RegisterModel.fromJson(Map<String, dynamic> json) {
+    return RegisterModel(
       status: json['status'],
       message: json['message'],
       data: json['data'] != null ? UserModel.fromJson(json['data']) : null,

@@ -93,7 +93,7 @@ class ProductAndBannerView extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 1 / 1.472,
+                childAspectRatio: 1 / 1.54,
                 mainAxisSpacing: 20,
                 crossAxisSpacing: 10,
               ),

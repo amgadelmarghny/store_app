@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Sourban/layout/shop/drower_components/complaint_components/complaint_dialog_builder.dart';
+import 'package:Sourban/layout/shop/drawer_components/complaint_components/complaint_dialog_builder.dart';
 
 class ComplaintContainer extends StatelessWidget {
   const ComplaintContainer({
@@ -39,7 +39,7 @@ class ComplaintContainer extends StatelessWidget {
               size: 38,
             ),
             Text(
-              'What\'s the problem you are facting',
+              'What\'s the problem you are facing',
               style: Theme.of(context).textTheme.titleMedium,
             )
           ],

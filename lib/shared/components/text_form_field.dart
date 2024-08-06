@@ -17,7 +17,7 @@ class CustomTextField extends StatelessWidget {
     this.onFieldSubmitted,
     this.radius = 30,
   });
-  // first design that switch detween to design
+  // first design that switch between to design
   // the first design  is for sign in & sign up page
   // and second one is for profile view
   final bool isFirstDesign;

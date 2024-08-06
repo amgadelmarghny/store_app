@@ -33,7 +33,7 @@ class OrderViewBody extends StatelessWidget {
                   Tab(text: 'New'),
                   Tab(text: 'Cancelled'),
                 ],
-                overlayColor: MaterialStatePropertyAll(defaultColor.shade100),
+                overlayColor: WidgetStatePropertyAll(defaultColor.shade100),
                 labelColor: defaultColor,
               ),
             )

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sourban/models/category_details_model.dart';
 import 'package:Sourban/modules/home/widgets/product_item.dart';
 import 'package:Sourban/shared/bloc/category_cubit/category_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messeges.dart';
+import 'package:Sourban/shared/components/custom_show_messages.dart';
 import 'package:Sourban/shared/style/colors.dart';
 
 class CategoryDetailsViewBody extends StatelessWidget {
@@ -18,7 +18,7 @@ class CategoryDetailsViewBody extends StatelessWidget {
       listener: (context, state) {
         if (state is CategoryDetailsFaliur) {
           toastShown(
-            messege: state.errMessage,
+            message: state.errMessage,
             state: ToastState.error,
             context: context,
           );

@@ -26,7 +26,7 @@ import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:Sourban/shared/network/local/api_keys.dart';
 import 'package:Sourban/shared/network/local/key_const.dart';
 import 'package:Sourban/shared/network/local/shared_helper.dart';
-import 'package:Sourban/shared/network/remot/dio_helper_for_shop.dart';
+import 'package:Sourban/shared/network/remote/dio_helper_for_shop.dart';
 import 'package:Sourban/shared/style/themes.dart';
 
 void main() async {
@@ -62,7 +62,7 @@ class Sourban extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              AppCubit()..britnessChanged(fromCash: isSharedDark),
+              AppCubit()..brightnessChanged(fromCash: isSharedDark),
         ),
         BlocProvider(
             create: (context) => ShopCubit()

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:Sourban/models/shope_models/product_model.dart';
+import 'package:Sourban/models/shop_models/product_model.dart';
 import 'package:Sourban/shared/style/colors.dart';
 
-class SmoothIndecator extends StatelessWidget {
-  const SmoothIndecator({
+class SmoothIndicator extends StatelessWidget {
+  const SmoothIndicator({
     super.key,
     required this.pageController,
     required this.productModel,

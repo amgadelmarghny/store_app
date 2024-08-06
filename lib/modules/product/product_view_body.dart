@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-import 'package:Sourban/models/shope_models/product_model.dart';
+import 'package:Sourban/models/shop_models/product_model.dart';
 import 'package:Sourban/modules/product/widgets/add_to_cart_button.dart';
 import 'package:Sourban/modules/product/widgets/price_row.dart';
 import 'package:Sourban/modules/product/widgets/product_image.dart';
@@ -33,7 +33,7 @@ class ProductViewBody extends StatelessWidget {
                 productModel: productModel,
               ),
               const SizedBox(height: 8),
-              SmoothIndecator(
+              SmoothIndicator(
                 pageController: pageController,
                 productModel: productModel,
               ),

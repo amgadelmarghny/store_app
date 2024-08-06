@@ -3,7 +3,7 @@ import 'package:Sourban/models/boarding_model.dart';
 import 'package:Sourban/models/complaint_model.dart';
 import 'package:Sourban/shared/network/local/key_const.dart';
 import 'package:Sourban/shared/network/local/shared_helper.dart';
-import '../../network/remot/dio_helper_for_shop.dart';
+import '../../network/remote/dio_helper_for_shop.dart';
 
 part 'app_state.dart';
 
@@ -14,30 +14,30 @@ class AppCubit extends Cubit<AppStates> {
   List<BoardModel> boardList = [
     BoardModel(
       image: 'lib/assets/images/Sale3.jpg',
-      shopeTitle: 'Explore many products',
-      shopeSubTitle: ' Sub. title',
+      shopTitle: 'Explore many products',
+      shopSubTitle: 'All you need in one app',
     ),
     BoardModel(
       image: 'lib/assets/images/Sale2.jpg',
-      shopeTitle: 'Choose and Checkout',
-      shopeSubTitle: 'Sub. title',
+      shopTitle: 'Choose and Checkout',
+      shopSubTitle: 'Buy and order what you want from home',
     ),
     BoardModel(
       image: 'lib/assets/images/Sale1.jpg',
-      shopeTitle: 'Title',
-      shopeSubTitle: 'Sub. title',
+      shopTitle: 'Offers and discounts',
+      shopSubTitle: 'Enjoy special discounts',
     ),
   ];
   bool isDark = true;
 
-  void britnessChanged({bool? fromCash}) async {
+  Future<void> brightnessChanged({bool? fromCash}) async {
     if (fromCash != null) {
       isDark = fromCash;
-      emit(AppBritnessChange());
+      emit(AppBrightnessChange());
     } else {
       isDark = !isDark;
       await CashHelper.setData(key: isDarkCONST, value: isDark);
-      emit(AppBritnessChange());
+      emit(AppBrightnessChange());
     }
   }
 

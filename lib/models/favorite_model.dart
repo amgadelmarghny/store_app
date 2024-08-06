@@ -1,4 +1,4 @@
-import 'package:Sourban/models/shope_models/product_model.dart';
+import 'package:Sourban/models/shop_models/product_model.dart';
 
 class ChangedFavoriteModel {
   final bool status;
