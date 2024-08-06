@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-import 'package:Sourban/models/shop_models/product_model.dart';
-import 'package:Sourban/modules/product/widgets/add_to_cart_button.dart';
-import 'package:Sourban/modules/product/widgets/price_row.dart';
-import 'package:Sourban/modules/product/widgets/product_image.dart';
-import 'package:Sourban/modules/product/widgets/smoth_page_idecator.dart';
+import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/modules/product/widgets/add_to_cart_button.dart';
+import 'package:soagmb/modules/product/widgets/price_row.dart';
+import 'package:soagmb/modules/product/widgets/product_image.dart';
+import 'package:soagmb/modules/product/widgets/smoth_page_idecator.dart';
 
 class ProductViewBody extends StatelessWidget {
   const ProductViewBody({

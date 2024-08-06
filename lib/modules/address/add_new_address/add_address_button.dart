@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/components/custom_button.dart';
-import 'package:Sourban/shared/style/colors.dart';
+import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/components/custom_button.dart';
+import 'package:soagmb/shared/style/colors.dart';
 
 class AddAddressButton extends StatelessWidget {
   const AddAddressButton({

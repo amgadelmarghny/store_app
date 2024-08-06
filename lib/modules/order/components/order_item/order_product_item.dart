@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/models/order_models/order_details_model.dart';
-import 'package:Sourban/shared/bloc/app_cubit/app_cubit.dart';
+import 'package:soagmb/models/order_models/order_details_model.dart';
+import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 
 class OrderProductItem extends StatelessWidget {
   const OrderProductItem({super.key, required this.productModel});

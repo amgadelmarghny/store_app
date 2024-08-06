@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:Sourban/layout/shop/drawer_components/complaint_components/complain_dialog_builder_content.dart';
-import 'package:Sourban/layout/shop/drawer_components/complaint_components/complaint_response.dart';
-import 'package:Sourban/shared/bloc/app_cubit/app_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messages.dart';
+import 'package:soagmb/layout/shop/drawer_components/complaint_components/complain_dialog_builder_content.dart';
+import 'package:soagmb/layout/shop/drawer_components/complaint_components/complaint_response.dart';
+import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
+import 'package:soagmb/shared/components/custom_show_messages.dart';
 
 class ComplaintDialogBuilder extends StatefulWidget {
   const ComplaintDialogBuilder({

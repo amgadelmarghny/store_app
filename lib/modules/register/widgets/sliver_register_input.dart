@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:Sourban/modules/register/widgets/register_button.dart';
+import 'package:soagmb/modules/register/widgets/register_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/shared/bloc/auth_cubit/auth_cubit.dart';
-import 'package:Sourban/shared/components/text_form_field.dart';
+import 'package:soagmb/shared/bloc/auth_cubit/auth_cubit.dart';
+import 'package:soagmb/shared/components/text_form_field.dart';
 
 class SliverRegisterInfo extends StatelessWidget {
   const SliverRegisterInfo({

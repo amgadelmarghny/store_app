@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Sourban/shared/style/colors.dart';
+import 'package:soagmb/shared/style/colors.dart';
 
 class CurveColorUI extends StatelessWidget {
   const CurveColorUI({

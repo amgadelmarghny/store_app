@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Sourban/layout/shop/drawer_components/complaint_components/complaint_dialog_builder.dart';
+import 'package:soagmb/layout/shop/drawer_components/complaint_components/complaint_dialog_builder.dart';
 
 class ComplaintContainer extends StatelessWidget {
   const ComplaintContainer({
@@ -28,7 +28,7 @@ class ComplaintContainer extends StatelessWidget {
               color: Colors.black87.withOpacity(0.45),
             )
           ],
-          color: Colors.yellow[800]!.withOpacity(0.7),
+          color: Colors.yellow[500]!.withOpacity(0.7),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(

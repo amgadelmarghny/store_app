@@ -7,13 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:Sourban/main.dart';
+import 'package:soagmb/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const Sourban());
+    await tester.pumpWidget(const Soagmb());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

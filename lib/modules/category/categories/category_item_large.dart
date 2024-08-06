@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/models/category_model.dart';
-import 'package:Sourban/modules/category/category_details/category_details_view.dart';
-import 'package:Sourban/shared/bloc/category_cubit/category_cubit.dart';
+import 'package:soagmb/models/category_model.dart';
+import 'package:soagmb/modules/category/category_details/category_details_view.dart';
+import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({

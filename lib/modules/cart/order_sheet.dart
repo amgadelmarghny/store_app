@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/layout/shop/shop_view.dart';
-import 'package:Sourban/modules/cart/order_sheet_components/address_options.dart';
-import 'package:Sourban/modules/cart/order_sheet_components/custom_small_divider.dart';
-import 'package:Sourban/modules/cart/order_sheet_components/hint_text.dart';
-import 'package:Sourban/modules/cart/order_sheet_components/payment_method_options.dart';
-import 'package:Sourban/modules/cart/order_sheet_components/place_order_button.dart';
-import 'package:Sourban/modules/cart/order_sheet_components/total_coast_list_tile.dart';
-import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messages.dart';
-import 'package:Sourban/shared/components/navigation.dart';
-import 'package:Sourban/shared/feature/checkout/data/presentation/manager/cubit/payment_cubit.dart';
-import 'package:Sourban/shared/feature/checkout/data/repos/checkout_repo_impl.dart';
+import 'package:soagmb/layout/shop/shop_view.dart';
+import 'package:soagmb/modules/cart/order_sheet_components/address_options.dart';
+import 'package:soagmb/modules/cart/order_sheet_components/custom_small_divider.dart';
+import 'package:soagmb/modules/cart/order_sheet_components/hint_text.dart';
+import 'package:soagmb/modules/cart/order_sheet_components/payment_method_options.dart';
+import 'package:soagmb/modules/cart/order_sheet_components/place_order_button.dart';
+import 'package:soagmb/modules/cart/order_sheet_components/total_coast_list_tile.dart';
+import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/shared/components/custom_show_messages.dart';
+import 'package:soagmb/shared/components/navigation.dart';
+import 'package:soagmb/shared/feature/checkout/data/presentation/manager/cubit/payment_cubit.dart';
+import 'package:soagmb/shared/feature/checkout/data/repos/checkout_repo_impl.dart';
 
 class OrderSheet extends StatelessWidget {
   const OrderSheet({

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/modules/address/add_new_address/add_address_button.dart';
-import 'package:Sourban/modules/address/add_new_address/add_address_builder.dart';
-import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messages.dart';
+import 'package:soagmb/modules/address/add_new_address/add_address_button.dart';
+import 'package:soagmb/modules/address/add_new_address/add_address_builder.dart';
+import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/components/custom_show_messages.dart';
 
 class AddAddressViewBody extends StatelessWidget {
   const AddAddressViewBody({

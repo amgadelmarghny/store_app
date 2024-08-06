@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/models/address_models/address_model.dart';
-import 'package:Sourban/modules/address/modify_address/update_addres_button.dart';
-import 'package:Sourban/modules/address/modify_address/update_address_builder.dart';
-import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messages.dart';
+import 'package:soagmb/models/address_models/address_model.dart';
+import 'package:soagmb/modules/address/modify_address/update_addres_button.dart';
+import 'package:soagmb/modules/address/modify_address/update_address_builder.dart';
+import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/components/custom_show_messages.dart';
 
 class UpdateAddressBody extends StatelessWidget {
   const UpdateAddressBody({super.key, required this.addressModel});

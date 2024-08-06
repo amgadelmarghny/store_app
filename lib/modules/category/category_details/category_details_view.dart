@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Sourban/modules/category/category_details/category_details_body.dart';
+import 'package:soagmb/modules/category/category_details/category_details_body.dart';
 
 class CategoryDetailsView extends StatelessWidget {
   const CategoryDetailsView({super.key});

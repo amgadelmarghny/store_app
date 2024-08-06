@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Sourban/modules/cart/my_cart_view_body.dart';
+import 'package:soagmb/modules/cart/my_cart_view_body.dart';
 
 class MyCartView extends StatelessWidget {
   const MyCartView({super.key});

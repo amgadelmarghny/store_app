@@ -1,4 +1,4 @@
-import 'package:Sourban/models/cart_models/get_cart_model.dart';
+import 'package:soagmb/models/cart_models/get_cart_model.dart';
 
 class UpdateCartModel {
   final bool status;

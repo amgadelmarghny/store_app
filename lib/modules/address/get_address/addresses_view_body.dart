@@ -2,12 +2,12 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:Sourban/modules/address/add_new_address/add_address_view.dart';
-import 'package:Sourban/modules/address/get_address/address_item.dart';
-import 'package:Sourban/modules/address/get_address/empty_address_view_body.dart';
-import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messages.dart';
-import 'package:Sourban/shared/style/colors.dart';
+import 'package:soagmb/modules/address/add_new_address/add_address_view.dart';
+import 'package:soagmb/modules/address/get_address/address_item.dart';
+import 'package:soagmb/modules/address/get_address/empty_address_view_body.dart';
+import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/components/custom_show_messages.dart';
+import 'package:soagmb/shared/style/colors.dart';
 
 class AddressesViewBody extends StatelessWidget {
   const AddressesViewBody({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:Sourban/shared/network/local/key_const.dart';
-import 'package:Sourban/shared/network/local/shared_helper.dart';
+import 'package:soagmb/shared/network/local/key_const.dart';
+import 'package:soagmb/shared/network/local/shared_helper.dart';
 
 class PaymentMethodItem extends StatelessWidget {
   const PaymentMethodItem({

@@ -1,4 +1,4 @@
-import 'package:Sourban/models/shop_models/product_model.dart';
+import 'package:soagmb/models/shop_models/product_model.dart';
 
 class GetFavoritesModel {
   final bool status;

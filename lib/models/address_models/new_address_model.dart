@@ -1,4 +1,4 @@
-import 'package:Sourban/models/address_models/address_model.dart';
+import 'package:soagmb/models/address_models/address_model.dart';
 
 class NewAddressModel {
   final bool status;

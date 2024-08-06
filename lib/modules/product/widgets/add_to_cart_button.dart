@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/models/shop_models/product_model.dart';
-import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:Sourban/shared/components/custom_button.dart';
-import 'package:Sourban/shared/components/custom_show_messages.dart';
+import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/shared/components/custom_button.dart';
+import 'package:soagmb/shared/components/custom_show_messages.dart';
 
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({

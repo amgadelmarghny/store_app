@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Sourban/modules/product/product_view_body.dart';
+import 'package:soagmb/modules/product/product_view_body.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key});

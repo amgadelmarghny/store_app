@@ -2,32 +2,32 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:Sourban/layout/shop/shop_view.dart';
-import 'package:Sourban/modules/address/add_new_address/add_address_view.dart';
-import 'package:Sourban/modules/address/get_address/addresses_view.dart';
-import 'package:Sourban/modules/address/modify_address/update_address_view.dart';
-import 'package:Sourban/modules/order/components/order_item/order_item_view.dart';
-import 'package:Sourban/modules/order/order_view.dart';
-import 'package:Sourban/modules/cart/my_cart_view.dart';
-import 'package:Sourban/modules/category/category_details/category_details_view.dart';
-import 'package:Sourban/modules/login/login_view.dart';
-import 'package:Sourban/modules/on_boarding/on_boarding_view.dart';
-import 'package:Sourban/modules/product/product_view.dart';
-import 'package:Sourban/modules/profile/change_password_view.dart';
-import 'package:Sourban/modules/profile/profile_view.dart';
-import 'package:Sourban/modules/profile/update_profile_view.dart';
-import 'package:Sourban/modules/register/register_view.dart';
-import 'package:Sourban/modules/search/search_view.dart';
-import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/bloc/app_cubit/app_cubit.dart';
-import 'package:Sourban/shared/bloc/bloc_observer.dart';
-import 'package:Sourban/shared/bloc/category_cubit/category_cubit.dart';
-import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:Sourban/shared/network/local/api_keys.dart';
-import 'package:Sourban/shared/network/local/key_const.dart';
-import 'package:Sourban/shared/network/local/shared_helper.dart';
-import 'package:Sourban/shared/network/remote/dio_helper_for_shop.dart';
-import 'package:Sourban/shared/style/themes.dart';
+import 'package:soagmb/layout/shop/shop_view.dart';
+import 'package:soagmb/modules/address/add_new_address/add_address_view.dart';
+import 'package:soagmb/modules/address/get_address/addresses_view.dart';
+import 'package:soagmb/modules/address/modify_address/update_address_view.dart';
+import 'package:soagmb/modules/order/components/order_item/order_item_view.dart';
+import 'package:soagmb/modules/order/order_view.dart';
+import 'package:soagmb/modules/cart/my_cart_view.dart';
+import 'package:soagmb/modules/category/category_details/category_details_view.dart';
+import 'package:soagmb/modules/login/login_view.dart';
+import 'package:soagmb/modules/on_boarding/on_boarding_view.dart';
+import 'package:soagmb/modules/product/product_view.dart';
+import 'package:soagmb/modules/profile/change_password_view.dart';
+import 'package:soagmb/modules/profile/profile_view.dart';
+import 'package:soagmb/modules/profile/update_profile_view.dart';
+import 'package:soagmb/modules/register/register_view.dart';
+import 'package:soagmb/modules/search/search_view.dart';
+import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
+import 'package:soagmb/shared/bloc/bloc_observer.dart';
+import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
+import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/shared/network/local/api_keys.dart';
+import 'package:soagmb/shared/network/local/key_const.dart';
+import 'package:soagmb/shared/network/local/shared_helper.dart';
+import 'package:soagmb/shared/network/remote/dio_helper_for_shop.dart';
+import 'package:soagmb/shared/style/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,20 +35,21 @@ void main() async {
   await CashHelper.init();
   Stripe.publishableKey = ApiKeys.publishableKey;
   Bloc.observer = MyBlocObserver();
-  runApp(const Sourban());
+  runApp(const Soagmb());
 }
 
-class Sourban extends StatelessWidget {
-  const Sourban({super.key});
+class Soagmb extends StatelessWidget {
+  const Soagmb({super.key});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
-    bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
-
+    
     log('token : ${CashHelper.getData(key: tOKENCONST)}');
 
+    bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
+    bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
     late String routeApp;
+
     if (isBoarding != null) {
       if (CashHelper.getData(key: tOKENCONST) != null) {
         routeApp = ShopView.id;

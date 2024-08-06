@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/models/order_models/get_orders_model.dart';
-import 'package:Sourban/modules/order/components/order_item/order_item_view.dart';
-import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/style/colors.dart';
+import 'package:soagmb/models/order_models/get_orders_model.dart';
+import 'package:soagmb/modules/order/components/order_item/order_item_view.dart';
+import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/style/colors.dart';
 
 class OrderItem extends StatelessWidget {
   const OrderItem({

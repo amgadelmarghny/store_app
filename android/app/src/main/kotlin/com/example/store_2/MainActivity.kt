@@ -1,4 +1,4 @@
-package com.marghny.sourban
+package com.marghny.soagmb
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
-import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/components/custom_button.dart';
-import 'package:Sourban/shared/components/custom_show_messages.dart';
-import 'package:Sourban/shared/feature/checkout/data/models/payment_intent_input_model.dart';
-import 'package:Sourban/shared/feature/checkout/data/presentation/manager/cubit/payment_cubit.dart';
-import 'package:Sourban/shared/network/local/api_keys.dart';
-import 'package:Sourban/shared/network/local/shared_helper.dart';
+// import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/components/custom_button.dart';
+import 'package:soagmb/shared/components/custom_show_messages.dart';
+import 'package:soagmb/shared/feature/checkout/data/models/payment_intent_input_model.dart';
+import 'package:soagmb/shared/feature/checkout/data/presentation/manager/cubit/payment_cubit.dart';
+import 'package:soagmb/shared/network/local/api_keys.dart';
+import 'package:soagmb/shared/network/local/shared_helper.dart';
 import '../../../shared/network/local/key_const.dart';
 
 class PlaceOrderButton extends StatelessWidget {
@@ -75,57 +75,58 @@ class PlaceOrderButton extends StatelessWidget {
               // that's mean the payment method is paypal
               // so user should be redirected to paypal site to make the payment
             } else {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => PaypalCheckoutView(
-                  sandboxMode: true,
-                  clientId: ApiKeys.payPalClientId,
-                  secretKey: ApiKeys.payPalSecret,
-                  transactions: const [
-                    {
-                      "amount": {
-                        "total": "10",
-                        "currency": "USD",
-                        "details": {
-                          "subtotal": "100",
-                          "shipping": "0",
-                          "shipping_discount": 0
-                        }
-                      },
-                      "description": "The payment transaction description.",
-                      // "item_list": {
-                      //   "items": [
-                      //     {
-                      //       "name": "Apple",
-                      //       "quantity": 4,
-                      //       "price": "10",
-                      //       "currency": "USD"
-                      //     },
-                      //     {
-                      //       "name": "Pineapple",
-                      //       "quantity": 5,
-                      //       "price": "12",
-                      //       "currency": "USD"
-                      //     }
-                      //   ],
-                      // }
-                    }
-                  ],
-                  note: "Contact us for any questions on your order.",
-                  onSuccess: (Map params) async {
-                    print("onSuccess: $params");
-                    Navigator.pop(context);
-                  },
-                  onError: (error) {
-                    print("onError: $error");
-                    Navigator.pop(context);
-                  },
-                  onCancel: () {
-                    print('cancelled:');
-                    Navigator.pop(context);
-                  },
-                ),
-              ),);
-            
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(
+              //     builder: (BuildContext context) => PaypalCheckoutView(
+              //       sandboxMode: true,
+              //       clientId: ApiKeys.payPalClientId,
+              //       secretKey: ApiKeys.payPalSecret,
+              //       transactions: const [
+              //         {
+              //           "amount": {
+              //             "total": "10",
+              //             "currency": "USD",
+              //             "details": {
+              //               "subtotal": "100",
+              //               "shipping": "0",
+              //               "shipping_discount": 0
+              //             }
+              //           },
+              //           "description": "The payment transaction description.",
+              //           // "item_list": {
+              //           //   "items": [
+              //           //     {
+              //           //       "name": "Apple",
+              //           //       "quantity": 4,
+              //           //       "price": "10",
+              //           //       "currency": "USD"
+              //           //     },
+              //           //     {
+              //           //       "name": "Pineapple",
+              //           //       "quantity": 5,
+              //           //       "price": "12",
+              //           //       "currency": "USD"
+              //           //     }
+              //           //   ],
+              //           // }
+              //         }
+              //       ],
+              //       note: "Contact us for any questions on your order.",
+              //       onSuccess: (Map params) async {
+              //         print("onSuccess: $params");
+              //         Navigator.pop(context);
+              //       },
+              //       onError: (error) {
+              //         print("onError: $error");
+              //         Navigator.pop(context);
+              //       },
+              //       onCancel: () {
+              //         print('cancelled');
+              //         Navigator.pop(context);
+              //       },
+              //     ),
+              //   ),
+              // );
             }
           },
         );

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:popover/popover.dart';
-import 'package:Sourban/models/address_models/address_model.dart';
-import 'package:Sourban/modules/address/get_address/menu_items.dart';
-import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/style/colors.dart';
+import 'package:soagmb/models/address_models/address_model.dart';
+import 'package:soagmb/modules/address/get_address/menu_items.dart';
+import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/style/colors.dart';
 
 class AddressItem extends StatefulWidget {
   const AddressItem({

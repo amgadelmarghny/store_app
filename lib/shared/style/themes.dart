@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:Sourban/shared/style/colors.dart';
+import 'package:soagmb/shared/style/colors.dart';
 
 abstract class ThemeStyle {
   static ThemeData lightTheme() {

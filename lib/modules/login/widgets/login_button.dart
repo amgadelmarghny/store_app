@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/layout/shop/shop_view.dart';
-import 'package:Sourban/shared/bloc/auth_cubit/auth_cubit.dart';
-import 'package:Sourban/shared/components/custom_button.dart';
-import 'package:Sourban/shared/components/custom_show_messages.dart';
-import 'package:Sourban/shared/components/navigation.dart';
-import 'package:Sourban/shared/feature/checkout/data/models/customer_payment_input_model.dart';
-import 'package:Sourban/shared/network/local/key_const.dart';
-import 'package:Sourban/shared/network/local/shared_helper.dart';
+import 'package:soagmb/layout/shop/shop_view.dart';
+import 'package:soagmb/shared/bloc/auth_cubit/auth_cubit.dart';
+import 'package:soagmb/shared/components/custom_button.dart';
+import 'package:soagmb/shared/components/custom_show_messages.dart';
+import 'package:soagmb/shared/components/navigation.dart';
+import 'package:soagmb/shared/feature/checkout/data/models/customer_payment_input_model.dart';
+import 'package:soagmb/shared/network/local/key_const.dart';
+import 'package:soagmb/shared/network/local/shared_helper.dart';
 
 class LoginButtonBlocConsumer extends StatelessWidget {
   const LoginButtonBlocConsumer({

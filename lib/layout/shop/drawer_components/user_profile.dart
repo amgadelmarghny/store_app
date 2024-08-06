@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/modules/profile/profile_view.dart';
-import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:Sourban/shared/components/avatar_pic.dart';
+import 'package:soagmb/modules/profile/profile_view.dart';
+import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/shared/components/avatar_pic.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({

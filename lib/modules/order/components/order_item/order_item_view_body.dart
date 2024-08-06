@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:Sourban/models/order_models/order_details_model.dart';
-import 'package:Sourban/modules/order/components/order_item/components/address_view.dart';
-import 'package:Sourban/modules/order/components/order_item/components/calcellation_button.dart';
-import 'package:Sourban/modules/order/components/order_item/components/product_coast.dart';
-import 'package:Sourban/modules/order/components/order_item/components/total_coast.dart';
-import 'package:Sourban/modules/order/components/order_item/order_product_item.dart';
-import 'package:Sourban/shared/components/container_decoration.dart';
+import 'package:soagmb/models/order_models/order_details_model.dart';
+import 'package:soagmb/modules/order/components/order_item/components/address_view.dart';
+import 'package:soagmb/modules/order/components/order_item/components/calcellation_button.dart';
+import 'package:soagmb/modules/order/components/order_item/components/product_coast.dart';
+import 'package:soagmb/modules/order/components/order_item/components/total_coast.dart';
+import 'package:soagmb/modules/order/components/order_item/order_product_item.dart';
+import 'package:soagmb/shared/components/container_decoration.dart';
 
 class OrderItemViewBody extends StatelessWidget {
   const OrderItemViewBody({

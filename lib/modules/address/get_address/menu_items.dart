@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/models/address_models/address_model.dart';
-import 'package:Sourban/modules/address/modify_address/update_address_view.dart';
-import 'package:Sourban/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:Sourban/shared/style/colors.dart';
+import 'package:soagmb/models/address_models/address_model.dart';
+import 'package:soagmb/modules/address/modify_address/update_address_view.dart';
+import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/style/colors.dart';
 
 class MenuItems extends StatelessWidget {
   const MenuItems({super.key, required this.addressModel});

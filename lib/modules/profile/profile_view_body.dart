@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/modules/login/login_view.dart';
-import 'package:Sourban/modules/profile/change_password_view.dart';
-import 'package:Sourban/modules/profile/update_profile_view.dart';
-import 'package:Sourban/models/user_model.dart';
-import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:Sourban/shared/components/avatar_pic.dart';
-import 'package:Sourban/shared/components/text_form_field.dart';
-import 'package:Sourban/shared/style/colors.dart';
+import 'package:soagmb/modules/login/login_view.dart';
+import 'package:soagmb/modules/profile/change_password_view.dart';
+import 'package:soagmb/modules/profile/update_profile_view.dart';
+import 'package:soagmb/models/user_model.dart';
+import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/shared/components/avatar_pic.dart';
+import 'package:soagmb/shared/components/text_form_field.dart';
+import 'package:soagmb/shared/style/colors.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({
@@ -32,7 +32,7 @@ class ProfileViewBody extends StatelessWidget {
         children: [
           const Spacer(),
           AvatarPic(
-            hight: 120,
+            height: 120,
             image: userData.image!,
           ),
           const SizedBox(height: 30),

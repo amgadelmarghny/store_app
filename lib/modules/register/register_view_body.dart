@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:Sourban/modules/login/login_view.dart';
-import 'package:Sourban/modules/register/widgets/sliver_register_input.dart';
-import 'package:Sourban/shared/components/custom_curve_color_ui.dart';
-import 'package:Sourban/shared/components/custom_sliver_row_text.dart';
+import 'package:soagmb/modules/login/login_view.dart';
+import 'package:soagmb/modules/register/widgets/sliver_register_input.dart';
+import 'package:soagmb/shared/components/custom_curve_color_ui.dart';
+import 'package:soagmb/shared/components/custom_sliver_row_text.dart';
 
 class RegisterViewBody extends StatelessWidget {
   const RegisterViewBody({super.key});

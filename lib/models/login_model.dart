@@ -1,4 +1,4 @@
-import 'package:Sourban/models/user_model.dart';
+import 'package:soagmb/models/user_model.dart';
 
 class LoginModel {
   final bool status;

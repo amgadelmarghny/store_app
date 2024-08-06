@@ -1,17 +1,17 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:Sourban/models/address_models/address_model.dart';
-import 'package:Sourban/models/address_models/get_address_model.dart';
-import 'package:Sourban/models/address_models/new_address_model.dart';
-import 'package:Sourban/models/address_models/update_address_model.dart';
-import 'package:Sourban/models/order_models/add_order_model.dart';
-import 'package:Sourban/models/order_models/cancel_order.dart';
-import 'package:Sourban/models/order_models/get_orders_model.dart';
-import 'package:Sourban/models/order_models/order_details_model.dart';
-import 'package:Sourban/shared/network/local/key_const.dart';
-import 'package:Sourban/shared/network/local/shared_helper.dart';
-import 'package:Sourban/shared/network/remote/dio_helper_for_shop.dart';
-import 'package:Sourban/shared/network/remote/end_points_url.dart';
+import 'package:soagmb/models/address_models/address_model.dart';
+import 'package:soagmb/models/address_models/get_address_model.dart';
+import 'package:soagmb/models/address_models/new_address_model.dart';
+import 'package:soagmb/models/address_models/update_address_model.dart';
+import 'package:soagmb/models/order_models/add_order_model.dart';
+import 'package:soagmb/models/order_models/cancel_order.dart';
+import 'package:soagmb/models/order_models/get_orders_model.dart';
+import 'package:soagmb/models/order_models/order_details_model.dart';
+import 'package:soagmb/shared/network/local/key_const.dart';
+import 'package:soagmb/shared/network/local/shared_helper.dart';
+import 'package:soagmb/shared/network/remote/dio_helper_for_shop.dart';
+import 'package:soagmb/shared/network/remote/end_points_url.dart';
 
 part 'address_state.dart';
 

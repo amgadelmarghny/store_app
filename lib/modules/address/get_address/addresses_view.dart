@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Sourban/modules/address/get_address/addresses_view_body.dart';
+import 'package:soagmb/modules/address/get_address/addresses_view_body.dart';
 
 class AddressesView extends StatelessWidget {
   const AddressesView({super.key});

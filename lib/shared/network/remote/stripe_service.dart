@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:Sourban/shared/feature/checkout/data/models/customer_payment_input_model.dart';
-import 'package:Sourban/shared/feature/checkout/data/models/customer_payment_model.dart';
-import 'package:Sourban/shared/feature/checkout/data/models/ephemeral_key_model/ephemeral_key_model.dart';
-import 'package:Sourban/shared/feature/checkout/data/models/init_payment_sheet_input.dart';
-import 'package:Sourban/shared/feature/checkout/data/models/payment_intent_input_model.dart';
-import 'package:Sourban/shared/feature/checkout/data/models/payment_intent_model/payment_intent_model.dart';
-import 'package:Sourban/shared/network/local/api_keys.dart';
-import 'package:Sourban/shared/network/remote/api_service_for_sripe.dart';
+import 'package:soagmb/shared/feature/checkout/data/models/customer_payment_input_model.dart';
+import 'package:soagmb/shared/feature/checkout/data/models/customer_payment_model.dart';
+import 'package:soagmb/shared/feature/checkout/data/models/ephemeral_key_model/ephemeral_key_model.dart';
+import 'package:soagmb/shared/feature/checkout/data/models/init_payment_sheet_input.dart';
+import 'package:soagmb/shared/feature/checkout/data/models/payment_intent_input_model.dart';
+import 'package:soagmb/shared/feature/checkout/data/models/payment_intent_model/payment_intent_model.dart';
+import 'package:soagmb/shared/network/local/api_keys.dart';
+import 'package:soagmb/shared/network/remote/api_service_for_sripe.dart';
 
 abstract class StripeService {
   // for payment intent

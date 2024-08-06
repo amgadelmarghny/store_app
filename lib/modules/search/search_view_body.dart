@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/models/search_model.dart';
-import 'package:Sourban/modules/favorite/widgets/favorite_item.dart';
-import 'package:Sourban/shared/bloc/search_cubit/search_cubit.dart';
-import 'package:Sourban/shared/components/custom_show_messages.dart';
-import 'package:Sourban/shared/components/text_form_field.dart';
-import 'package:Sourban/shared/style/colors.dart';
+import 'package:soagmb/models/search_model.dart';
+import 'package:soagmb/modules/favorite/widgets/favorite_item.dart';
+import 'package:soagmb/shared/bloc/search_cubit/search_cubit.dart';
+import 'package:soagmb/shared/components/custom_show_messages.dart';
+import 'package:soagmb/shared/components/text_form_field.dart';
+import 'package:soagmb/shared/style/colors.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({

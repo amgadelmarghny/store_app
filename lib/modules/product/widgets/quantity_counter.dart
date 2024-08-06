@@ -1,8 +1,8 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sourban/models/shop_models/product_model.dart';
-import 'package:Sourban/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import '../../../shared/style/colors.dart';
 
 class QuantityCounter extends StatelessWidget {
