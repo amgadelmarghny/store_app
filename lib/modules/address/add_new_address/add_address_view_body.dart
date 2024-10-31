@@ -23,20 +23,23 @@ class AddAddressViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: BlocConsumer<AddressCubit, AddressState>(
         listener: (context, state) {
-          if (state is AddressSuccess) {
+          if (state is AddAddressSuccess) {
             if (state.newAddressModel.status) {
               toastShown(
-                  message: state.newAddressModel.message!,
-                  state: ToastState.success,
-                  context: context);
+                message: state.newAddressModel.message!,
+                state: ToastState.success,
+                context: context,
+              );
+              Navigator.pop(context);
             } else {
               toastShown(
-                  message: state.newAddressModel.message!,
-                  state: ToastState.error,
-                  context: context);
+                message: state.newAddressModel.message!,
+                state: ToastState.error,
+                context: context,
+              );
             }
           }
-          if (state is AddressFaluir) {
+          if (state is AddAddressFailure) {
             snacKBar(context, state.error);
           }
         },
@@ -56,11 +59,11 @@ class AddAddressViewBody extends StatelessWidget {
               SliverFillRemaining(
                 hasScrollBody: false,
                 child: AddAddressButton(
-                  nameContoller: nameController,
-                  cityContoller: cityController,
-                  regionContoller: regionController,
-                  detailsContoller: detailsController,
-                  notesContoller: notesController,
+                  nameController: nameController,
+                  cityController: cityController,
+                  regionController: regionController,
+                  detailsController: detailsController,
+                  notesController: notesController,
                   formKey: formKey,
                   state: state,
                 ),

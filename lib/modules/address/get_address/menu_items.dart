@@ -38,7 +38,9 @@ class MenuItems extends StatelessWidget {
           onPressed: () {
             BlocProvider.of<AddressCubit>(context)
                 .deleteAddress(addressId: addressModel.id)
-                .then((value) => Navigator.pop(context));
+                .then((value) {
+              if (context.mounted) Navigator.pop(context);
+            });
           },
           height: 50,
           minWidth: 250,

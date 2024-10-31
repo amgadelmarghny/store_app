@@ -113,8 +113,7 @@ class UpdateProfileViewBody extends StatelessWidget {
                             authToken: CashHelper.getData(key: tOKENCONST)!,
                           )
                               .then((value) {
-                            BlocProvider.of<ShopCubit>(context)
-                                .getProfileInfo();
+                          if(context.mounted) BlocProvider.of<ShopCubit>(context).getProfileInfo();
                           });
                         } else {
                           BlocProvider.of<AuthCubit>(context)

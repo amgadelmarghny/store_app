@@ -21,7 +21,7 @@ class AddressCubit extends Cubit<AddressState> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   void validateObserver() {
     autovalidateMode = AutovalidateMode.always;
-    emit(VAlidateState());
+    emit(ValidateState());
   }
 
   ////////////////////////////////! ADD NEW ADDRESS //////////////////////
@@ -33,7 +33,7 @@ class AddressCubit extends Cubit<AddressState> {
     required String details,
     required String? notes,
   }) async {
-    emit(AddressLoading());
+    emit(AddAddressLoading());
     return await DioHelper.postData(
         token: CashHelper.getData(key: tOKENCONST),
         url: addresses,
@@ -48,9 +48,9 @@ class AddressCubit extends Cubit<AddressState> {
         }).then((value) {
       newAddressModel = NewAddressModel.fromJson(value.data);
       getAddresses();
-      emit(AddressSuccess(newAddressModel: newAddressModel));
+      emit(AddAddressSuccess(newAddressModel: newAddressModel));
     }).catchError((err) {
-      emit(AddressFaluir(error: err.toString()));
+      emit(AddAddressFailure(error: err.toString()));
     });
   }
 
@@ -70,7 +70,7 @@ class AddressCubit extends Cubit<AddressState> {
       getAddressesModel = GetAddressesModel.fromJson(value.data);
       emit(GetAddressSuccess(getAddressesModel: getAddressesModel!));
     }).catchError((err) {
-      emit(GetAddressFaluir(error: err));
+      emit(GetAddressFailure(error: err));
     });
   }
 
@@ -116,7 +116,7 @@ class AddressCubit extends Cubit<AddressState> {
       await getAddresses();
       emit(DeleteAddressSuccess());
     }).catchError((err) {
-      emit(DeleteAddressFaluir(error: err.toString()));
+      emit(DeleteAddressFailure(error: err.toString()));
     });
   }
 
@@ -166,7 +166,7 @@ class AddressCubit extends Cubit<AddressState> {
       getAllOrders();
       emit(AddOrderSuccess(addOrderModel: addOrderModel));
     }).catchError((error) {
-      emit(AddOrderFaluir(error: error.toString()));
+      emit(AddOrderFailure(error: error.toString()));
     });
   }
 
@@ -192,7 +192,7 @@ class AddressCubit extends Cubit<AddressState> {
       }
       emit(GetOrderSuccess(getOrdersModel: getOrdersModel!));
     }).catchError((error) {
-      emit(GetOrderFaluir(error: error.toString()));
+      emit(GetOrderFailure(error: error.toString()));
     });
   }
 
@@ -204,14 +204,14 @@ class AddressCubit extends Cubit<AddressState> {
       orderDetailsModel = OrderDetailsModel.fromJson(value.data);
       emit(OrderDetailsSuccess(orderDetailsModel: orderDetailsModel!));
     }).catchError((error) {
-      emit(OrderDetailsFaluir(error: error));
+      emit(OrderDetailsFailure(error: error));
     });
   }
 
   ////////////////////! Cancel  the Order /////////////////////
   late CancelOrderModel cancelOrderModel;
   Future<void> cancelTheOrder({required int orderId}) async {
-    emit(CancleOrderLoading());
+    emit(CancelOrderLoading());
     DioHelper.getData(
         url: '$order/$orderId/cancel',
         token: CashHelper.getData(
@@ -219,9 +219,9 @@ class AddressCubit extends Cubit<AddressState> {
         )).then((value) {
       cancelOrderModel = CancelOrderModel.fromJson(value.data);
       getAllOrders();
-      emit(CancleOrderSuccess(cancleOrderModel: cancelOrderModel));
+      emit(CancelOrderSuccess(cancelOrderModel: cancelOrderModel));
     }).catchError((error) {
-      emit(CancleOrderFaluir(error: error));
+      emit(CancelOrderFailure(error: error));
     });
   }
 }

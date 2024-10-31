@@ -18,7 +18,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   IconData suffixIcon = Icons.visibility_off_outlined;
   bool obscureText = true;
-//////////////////?  obsecure password //////////////////
+//////////////////?  obscure password //////////////////
 
   void onEyesPressed() {
     obscureText = !obscureText;
@@ -51,8 +51,8 @@ class AuthCubit extends Cubit<AuthState> {
     });
   }
 
-//////////////? create acustomer payment ///////////
-  Future creatACustomForPayment(
+//////////////? create a customer payment ///////////
+  Future createACustomForPayment(
       CustomerPaymentInputModel customerPaymentInputModel) async {
     emit(CustomerPatymentLoding());
     try {
@@ -66,7 +66,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-//////////////////////? registeration  /////////////
+//////////////////////? registration  /////////////
   void userRegister({required UserModel userModel}) async {
     emit(RegisterLodingState());
 

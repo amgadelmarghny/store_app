@@ -10,8 +10,8 @@ import 'package:soagmb/shared/feature/checkout/data/models/customer_payment_inpu
 import 'package:soagmb/shared/network/local/key_const.dart';
 import 'package:soagmb/shared/network/local/shared_helper.dart';
 
-class RegisterButttonConsumer extends StatelessWidget {
-  const RegisterButttonConsumer({
+class RegisterButtonConsumer extends StatelessWidget {
+  const RegisterButtonConsumer({
     super.key,
     required this.nameController,
     required this.emailController,
@@ -46,15 +46,17 @@ class RegisterButttonConsumer extends StatelessWidget {
                     key: tOKENCONST, value: state.registermodel.data!.token)
                 .then(
               (value) {
-                toastShown(
-                  message: state.registermodel.message,
-                  state: ToastState.success,
-                  context: context,
-                );
-                navigatorPushAndRemove(
-                  context,
-                  ShopView.id,
-                );
+                if (context.mounted) {
+                  toastShown(
+                    message: state.registermodel.message,
+                    state: ToastState.success,
+                    context: context,
+                  );
+                  navigatorPushAndRemove(
+                    context,
+                    ShopView.id,
+                  );
+                }
               },
             );
           } else {
@@ -88,7 +90,7 @@ class RegisterButttonConsumer extends StatelessWidget {
                       phone: phoneController.text);
               context
                   .read<AuthCubit>()
-                  .creatACustomForPayment(customerPaymentInputModel);
+                  .createACustomForPayment(customerPaymentInputModel);
               BlocProvider.of<AuthCubit>(context)
                   .userRegister(userModel: userModel);
             } else {

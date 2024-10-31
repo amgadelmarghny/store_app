@@ -41,15 +41,17 @@ class LoginButtonBlocConsumer extends StatelessWidget {
                     key: tOKENCONST, value: state.loginModel.data!.token)
                 .then(
               (value) {
-                toastShown(
-                  message: state.loginModel.message,
-                  state: ToastState.success,
-                  context: context,
-                );
-                navigatorPushAndRemove(
-                  context,
-                  ShopView.id,
-                );
+                if (context.mounted) {
+                  toastShown(
+                    message: state.loginModel.message,
+                    state: ToastState.success,
+                    context: context,
+                  );
+                  navigatorPushAndRemove(
+                    context,
+                    ShopView.id,
+                  );
+                }
               },
             );
           } else {
@@ -85,7 +87,7 @@ void loginTap(
     // for create customer payment id
     CustomerPaymentInputModel customerPaymentInputModel =
         CustomerPaymentInputModel(email: emailController.text);
-    context.read<AuthCubit>().creatACustomForPayment(customerPaymentInputModel);
+    context.read<AuthCubit>().createACustomForPayment(customerPaymentInputModel);
     formKey.currentState!.save();
   } else {
     BlocProvider.of<AuthCubit>(context).validateObserver();

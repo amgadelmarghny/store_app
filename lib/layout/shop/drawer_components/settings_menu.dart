@@ -37,7 +37,7 @@ class SettingsMenu extends StatelessWidget {
           value: 1,
           child: ListTile(
             title: Text(
-              'Britness (Light , Dark)',
+              'Brightness (Light , Dark)',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             leading: const Icon(Icons.brightness_6_outlined),

@@ -73,7 +73,7 @@ class SliverRegisterInfo extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                RegisterButttonConsumer(
+                RegisterButtonConsumer(
                   nameController: nameController,
                   emailController: emailController,
                   passwordController: passwordController,

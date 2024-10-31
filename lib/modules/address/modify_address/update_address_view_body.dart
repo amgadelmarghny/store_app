@@ -38,7 +38,7 @@ class UpdateAddressBody extends StatelessWidget {
                   context: context);
             }
           }
-          if (state is AddressFaluir) {
+          if (state is AddAddressFailure) {
             snacKBar(context, state.error);
           }
         },

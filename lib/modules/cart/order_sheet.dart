@@ -43,7 +43,7 @@ class OrderSheet extends StatelessWidget {
             );
           }
         }
-        if (state is AddOrderFaluir) {
+        if (state is AddOrderFailure) {
           snacKBar(context, state.error);
         }
       },

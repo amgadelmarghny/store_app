@@ -7,19 +7,19 @@ import 'package:soagmb/shared/style/colors.dart';
 class AddAddressButton extends StatelessWidget {
   const AddAddressButton({
     super.key,
-    required this.nameContoller,
-    required this.cityContoller,
-    required this.regionContoller,
-    required this.detailsContoller,
-    required this.notesContoller,
+    required this.nameController,
+    required this.cityController,
+    required this.regionController,
+    required this.detailsController,
+    required this.notesController,
     required this.formKey,
     required this.state,
   });
-  final TextEditingController nameContoller;
-  final TextEditingController cityContoller;
-  final TextEditingController regionContoller;
-  final TextEditingController detailsContoller;
-  final TextEditingController notesContoller;
+  final TextEditingController nameController;
+  final TextEditingController cityController;
+  final TextEditingController regionController;
+  final TextEditingController detailsController;
+  final TextEditingController notesController;
   final GlobalKey<FormState> formKey;
   final AddressState state;
 
@@ -28,20 +28,18 @@ class AddAddressButton extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: CustomButton(
-        isLoading: state is AddressLoading,
+        isLoading: state is AddAddressLoading,
         color: defaultColor,
         text: 'Add new address',
         onTap: () {
           if (formKey.currentState!.validate()) {
-            BlocProvider.of<AddressCubit>(context)
-                .addNewAddress(
-                  name: nameContoller.text,
-                  city: cityContoller.text,
-                  region: regionContoller.text,
-                  details: detailsContoller.text,
-                  notes: notesContoller.text,
-                )
-                .then((value) => Navigator.pop(context));
+            BlocProvider.of<AddressCubit>(context).addNewAddress(
+              name: nameController.text,
+              city: cityController.text,
+              region: regionController.text,
+              details: detailsController.text,
+              notes: notesController.text,
+            );
           } else {
             BlocProvider.of<AddressCubit>(context).validateObserver();
           }

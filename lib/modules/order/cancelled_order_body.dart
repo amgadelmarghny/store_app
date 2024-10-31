@@ -15,7 +15,7 @@ class CancelledOrdersBody extends StatelessWidget {
       padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
       child: BlocConsumer<AddressCubit, AddressState>(
         listener: (context, state) {
-          if (state is GetOrderFaluir) {
+          if (state is GetOrderFailure) {
             snacKBar(context, state.error);
           }
           if (state is GetOrderSuccess) {
@@ -29,7 +29,7 @@ class CancelledOrdersBody extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          if (state is GetOrderFaluir) {
+          if (state is GetOrderFailure) {
             return const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

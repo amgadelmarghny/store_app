@@ -2,21 +2,21 @@ part of 'address_cubit.dart';
 
 sealed class AddressState {}
 
-final class VAlidateState extends AddressState {}
+final class ValidateState extends AddressState {}
 
 final class AddressInitial extends AddressState {}
 
-final class AddressLoading extends AddressState {}
+final class AddAddressLoading extends AddressState {}
 
-final class AddressSuccess extends AddressState {
+final class AddAddressSuccess extends AddressState {
   final NewAddressModel newAddressModel;
 
-  AddressSuccess({required this.newAddressModel});
+  AddAddressSuccess({required this.newAddressModel});
 }
 
-final class AddressFaluir extends AddressState {
+final class AddAddressFailure extends AddressState {
   final String error;
-  AddressFaluir({required this.error});
+  AddAddressFailure({required this.error});
 }
 
 ////////////////////////
@@ -31,9 +31,9 @@ final class GetAddressSuccess extends AddressState {
   GetAddressSuccess({required this.getAddressesModel});
 }
 
-final class GetAddressFaluir extends AddressState {
+final class GetAddressFailure extends AddressState {
   final String error;
-  GetAddressFaluir({required this.error});
+  GetAddressFailure({required this.error});
 }
 
 //////////////////////
@@ -45,9 +45,9 @@ final class UpdateAddressSuccess extends AddressState {
   UpdateAddressSuccess({required this.updateAddressModel});
 }
 
-final class UpdateAddressFaluir extends AddressState {
+final class UpdateAddressFailure extends AddressState {
   final String error;
-  UpdateAddressFaluir({required this.error});
+  UpdateAddressFailure({required this.error});
 }
 
 ///////////////
@@ -55,9 +55,9 @@ final class DeleteAddressLoading extends AddressState {}
 
 final class DeleteAddressSuccess extends AddressState {}
 
-final class DeleteAddressFaluir extends AddressState {
+final class DeleteAddressFailure extends AddressState {
   final String error;
-  DeleteAddressFaluir({required this.error});
+  DeleteAddressFailure({required this.error});
 }
 
 /////////////////
@@ -69,9 +69,9 @@ final class AddOrderSuccess extends AddressState {
   AddOrderSuccess({required this.addOrderModel});
 }
 
-final class AddOrderFaluir extends AddressState {
+final class AddOrderFailure extends AddressState {
   final String error;
-  AddOrderFaluir({required this.error});
+  AddOrderFailure({required this.error});
 }
 
 //////////////
@@ -83,9 +83,9 @@ final class GetOrderSuccess extends AddressState {
   GetOrderSuccess({required this.getOrdersModel});
 }
 
-final class GetOrderFaluir extends AddressState {
+final class GetOrderFailure extends AddressState {
   final String error;
-  GetOrderFaluir({required this.error});
+  GetOrderFailure({required this.error});
 }
 
 ///////////////////
@@ -97,21 +97,21 @@ final class OrderDetailsSuccess extends AddressState {
   OrderDetailsSuccess({required this.orderDetailsModel});
 }
 
-final class OrderDetailsFaluir extends AddressState {
+final class OrderDetailsFailure extends AddressState {
   final String error;
-  OrderDetailsFaluir({required this.error});
+  OrderDetailsFailure({required this.error});
 }
 
 ///////////////////////
-final class CancleOrderLoading extends AddressState {}
+final class CancelOrderLoading extends AddressState {}
 
-final class CancleOrderSuccess extends AddressState {
-  final CancelOrderModel cancleOrderModel;
+final class CancelOrderSuccess extends AddressState {
+  final CancelOrderModel cancelOrderModel;
 
-  CancleOrderSuccess({required this.cancleOrderModel});
+  CancelOrderSuccess({required this.cancelOrderModel});
 }
 
-final class CancleOrderFaluir extends AddressState {
+final class CancelOrderFailure extends AddressState {
   final String error;
-  CancleOrderFaluir({required this.error});
+  CancelOrderFailure({required this.error});
 }

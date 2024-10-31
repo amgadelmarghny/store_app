@@ -21,15 +21,15 @@ class _CancllationButtonState extends State<CancllationButton> {
   Widget build(BuildContext context) {
     return BlocConsumer<AddressCubit, AddressState>(
       listener: (context, state) {
-        if (state is CancleOrderSuccess) {
-          if (state.cancleOrderModel.status) {
+        if (state is CancelOrderSuccess) {
+          if (state.cancelOrderModel.status) {
             toastShown(
                 message: 'the order has been successfully cancelled',
                 state: ToastState.warning,
                 context: context);
           }
         }
-        if (state is CancleOrderFaluir) {
+        if (state is CancelOrderFailure) {
           snacKBar(context, state.error);
         }
         if (state is GetOrderSuccess) {

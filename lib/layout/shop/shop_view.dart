@@ -25,12 +25,14 @@ class ShopView extends StatelessWidget {
             if (state is LogoutSuccussState) {
               if (state.logoutModel.status) {
                 await CashHelper.deleteCash(key: tOKENCONST).then((value) {
-                  navigatorPushAndRemove(context, LoginView.id);
-                  toastShown(
-                    message: state.logoutModel.message,
-                    context: context,
-                    state: ToastState.warning,
-                  );
+                  if (context.mounted) {
+                    navigatorPushAndRemove(context, LoginView.id);
+                    toastShown(
+                      message: state.logoutModel.message,
+                      context: context,
+                      state: ToastState.warning,
+                    );
+                  }
                 });
               } else {
                 toastShown(
@@ -59,7 +61,7 @@ class ShopView extends StatelessWidget {
             return ModalProgressHUD(
               inAsyncCall: state is LogoutLoadingState,
               child: Scaffold(
-                drawer: const DrawerMenu(),               
+                drawer: const DrawerMenu(),
                 appBar: AppBar(
                   title: const Text('soagmb'),
                   actions: [

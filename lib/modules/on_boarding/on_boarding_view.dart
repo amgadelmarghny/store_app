@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:soagmb/modules/login/login_view.dart';
-import 'package:soagmb/modules/on_boarding/on_baording_view_body.dart';
 import 'package:soagmb/shared/components/navigation.dart';
 import 'package:soagmb/shared/network/local/key_const.dart';
 import 'package:soagmb/shared/network/local/shared_helper.dart';
 import 'package:soagmb/shared/style/colors.dart';
+
+import 'on_boarding_view_body.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -31,7 +32,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               await CashHelper.setData(key: onBoardingCONST, value: true).then(
                 (value) {
                   if (value) {
-                    navigatorPushAndRemove(context, LoginView.id);
+                   if(context.mounted) navigatorPushAndRemove(context, LoginView.id);
                   }
                 },
               );

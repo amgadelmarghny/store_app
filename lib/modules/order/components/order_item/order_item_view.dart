@@ -17,7 +17,7 @@ class OrderItemView extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<AddressCubit, AddressState>(
         listener: (context, state) {
-          if (state is OrderDetailsFaluir) {
+          if (state is OrderDetailsFailure) {
             snacKBar(context, state.error);
           }
         },

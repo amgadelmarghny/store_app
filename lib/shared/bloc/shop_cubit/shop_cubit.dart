@@ -232,7 +232,7 @@ class ShopCubit extends Cubit<ShopStates> {
     await DioHelper.postData(
             url: logout, token: CashHelper.getData(key: tOKENCONST))
         .then((value) {
-      navigatorPushAndRemove(context, routName);
+      if (context.mounted) navigatorPushAndRemove(context, routName);
       CashHelper.deleteCash(key: tOKENCONST);
       CashHelper.deleteCash(key: customerID);
       emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));
