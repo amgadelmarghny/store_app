@@ -1,27 +1,36 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class MyBlocObserver extends BlocObserver {
+  var logger = Logger();
+
   @override
-  void onEvent(Bloc bloc, Object? event) {
-    super.onEvent(bloc, event);
-    debugPrint('$event');
+  void onCreate(BlocBase bloc) {
+    super.onCreate(bloc);
+    logger.d('onCreate -- ${bloc.runtimeType}');
   }
 
   @override
-  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    debugPrint('on Error : $error');
-    super.onError(bloc, error, stackTrace);
+  void onEvent(Bloc bloc, Object? event) {
+    super.onEvent(bloc, event);
+    logger.d('onEvent -- ${bloc.runtimeType}, $event');
   }
 
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    debugPrint('on Change : $change');
+    logger.i('onChange -- ${bloc.runtimeType}, $change');
   }
 
   @override
-  void onTransition(Bloc bloc, Transition transition) {
-    super.onTransition(bloc, transition);
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+    logger.e('onError -- ${bloc.runtimeType}, $error');
+    super.onError(bloc, error, stackTrace);
+  }
+
+  @override
+  void onClose(BlocBase bloc) {
+    super.onClose(bloc);
+    logger.w('onClose -- ${bloc.runtimeType}');
   }
 }

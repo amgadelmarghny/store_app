@@ -16,6 +16,7 @@ class CustomTextField extends StatelessWidget {
     this.isFirstDesign = true,
     this.onFieldSubmitted,
     this.radius = 30,
+    this.focusNode,
   });
   // first design that switch between to design
   // the first design  is for sign in & sign up page
@@ -32,7 +33,7 @@ class CustomTextField extends StatelessWidget {
   final Function()? suffixOnPressed;
   final String? labelText;
   final double radius;
-
+  final FocusNode? focusNode;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,6 +51,7 @@ class CustomTextField extends StatelessWidget {
             )
           : null,
       child: TextFormField(
+        focusNode: focusNode,
         readOnly: isFirstDesign ? false : true,
         maxLines: 1,
         keyboardType: textInputType,
