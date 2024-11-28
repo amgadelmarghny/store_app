@@ -5,9 +5,10 @@ import 'package:soagmb/models/category_model.dart';
 import 'package:soagmb/modules/category/category_details/category_details_view.dart';
 import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
 import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/shared/style/themes.dart';
 
-class CategotryItem extends StatelessWidget {
-  const CategotryItem({super.key, required this.dataModel});
+class CategoryItem extends StatelessWidget {
+  const CategoryItem({super.key, required this.dataModel});
   final DataModel dataModel;
   @override
   Widget build(BuildContext context) {
@@ -23,18 +24,7 @@ class CategotryItem extends StatelessWidget {
       },
       child: Container(
         clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.grey,
-              spreadRadius: 0.0,
-              offset: Offset(2, 2),
-              blurRadius: 3,
-            )
-          ],
-        ),
+        decoration: customBoxDecoration(context),
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [

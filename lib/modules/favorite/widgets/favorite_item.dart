@@ -6,6 +6,8 @@ import 'package:soagmb/models/shop_models/product_model.dart';
 import 'package:soagmb/modules/product/widgets/quantity_counter.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 
+import '../../../shared/style/themes.dart';
+
 class FavoriteItem extends StatelessWidget {
   const FavoriteItem({
     super.key,
@@ -35,12 +37,9 @@ class FavoriteItem extends StatelessWidget {
         );
       },
       child: Container(
-        height: 150,
+        height: 154,
         width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(15),
-        ),
+        decoration: customBoxDecoration(context),
         child: Row(
           children: [
             ProductImageFavItem(productModel: productModel, isSearch: isSearch),

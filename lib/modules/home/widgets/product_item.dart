@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/modules/product/product_view.dart';
 import 'package:soagmb/models/shop_models/product_model.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import '../../../shared/style/themes.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
@@ -28,18 +29,7 @@ class ProductItem extends StatelessWidget {
           ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
           return Container(
             clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  spreadRadius: 0.3,
-                  blurRadius: 5,
-                  color: Colors.grey.withOpacity(0.6),
-                  offset: const Offset(1, 5),
-                )
-              ],
-            ),
+            decoration: customBoxDecoration(context),
             child: Column(
               children: [
                 Container(
@@ -59,8 +49,9 @@ class ProductItem extends StatelessWidget {
                               : null,
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           decoration: BoxDecoration(
-                              color: Colors.red[300],
-                              borderRadius: BorderRadius.circular(5)),
+                            color: Colors.red[300],
+                            borderRadius: BorderRadius.circular(5),
+                          ),
                           child: Text(
                             'DISCOUNT',
                             style: Theme.of(context).textTheme.titleSmall,
@@ -129,7 +120,8 @@ class ProductItem extends StatelessWidget {
                             ),
                           //////////////!//////////////!//////////!
                           Padding(
-                            padding: const EdgeInsets.only(top: 10,left: 5,bottom: 6),
+                            padding: const EdgeInsets.only(
+                                top: 10, left: 5, bottom: 6),
                             child: InkWell(
                               onTap: () {
                                 shopCubit.addAndRemoveFavorite(

@@ -47,7 +47,7 @@ class OnBoardingViewBody extends StatelessWidget {
                         .then(
                       (value) {
                         if (value) {
-                          navigatorPushAndRemove(context, LoginView.id);
+                          if (context.mounted) navigatorPushAndRemove(context, LoginView.id);
                         }
                       },
                     );

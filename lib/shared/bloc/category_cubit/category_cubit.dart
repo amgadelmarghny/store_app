@@ -11,7 +11,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   int? sameCategoryId;
 
   Future getCategoryDetails({required int categoryId}) async {
-    // check operator  for if the categoy is already loaded befor
+    // check operator  for if the category is already loaded before
     // so the function will not  load it again
     // and return the details of this category
     if (sameCategoryId == null) {

@@ -38,7 +38,7 @@ class HomeDataModel {
 class BannersHomeModel {
   final int id;
   final String image;
-  String? category;
+  Map<String, dynamic>? category;
   ProductModel? product;
 
   BannersHomeModel(

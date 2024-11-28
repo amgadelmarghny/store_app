@@ -82,3 +82,18 @@ abstract class ThemeStyle {
     );
   }
 }
+
+BoxDecoration customBoxDecoration(BuildContext context) {
+  return BoxDecoration(
+    color: Theme.of(context).scaffoldBackgroundColor,
+    borderRadius: BorderRadius.circular(8),
+    boxShadow: [
+      BoxShadow(
+        spreadRadius: 0.3,
+        blurRadius: 2,
+        color: Colors.grey.withOpacity(0.4),
+        offset: const Offset(1, 5),
+      )
+    ],
+  );
+}

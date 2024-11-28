@@ -47,6 +47,7 @@ class FavoriteBody extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ListView.separated(
+                clipBehavior: Clip.none,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   return FavoriteItem(

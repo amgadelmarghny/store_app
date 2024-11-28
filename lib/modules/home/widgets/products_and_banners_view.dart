@@ -64,14 +64,14 @@ class ProductAndBannerView extends StatelessWidget {
                     if (shopCubit
                             .categoryHomeModel!.dataCatHome!.dataList[index] !=
                         null) {
-                      return CategotryItem(
+                      return CategoryItem(
                         dataModel: shopCubit
                             .categoryHomeModel?.dataCatHome?.dataList[index],
                       );
                     }
                     return null;
                   },
-                  separatorBuilder: (contex, index) {
+                  separatorBuilder: (context, index) {
                     return const SizedBox(
                       width: 20,
                     );

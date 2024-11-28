@@ -20,7 +20,7 @@ class ProductImageFavItem extends StatelessWidget {
       children: [
         Container(
           width: 150,
-          height: 150,
+          height: 154,
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
@@ -46,7 +46,7 @@ class ProductImageFavItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Text(
-                'DISCOUND',
+                'DISCOUNT',
                 style: Theme.of(context).textTheme.titleSmall,
               ),
             )
