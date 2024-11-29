@@ -12,9 +12,9 @@ import 'package:soagmb/shared/style/colors.dart';
 class AddressesViewBody extends StatelessWidget {
   const AddressesViewBody({
     super.key,
-    this.isformDrowerNotOrderSheet = false,
+    this.isFromDrawerNotOrderSheet = false,
   });
-  final bool? isformDrowerNotOrderSheet;
+  final bool? isFromDrawerNotOrderSheet;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddressCubit, AddressState>(
@@ -78,9 +78,9 @@ class AddressesViewBody extends StatelessWidget {
                   ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (contex, index) {
+                    itemBuilder: (context, index) {
                       return AddressItem(
-                          isFromDrawerNotOrderSheet: isformDrowerNotOrderSheet,
+                          isFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet,
                           addressModel: addressCubit.getAddressesModel!.data!
                               .addressModelsList[index]);
                     },
