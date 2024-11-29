@@ -6,7 +6,7 @@ class AddressesView extends StatelessWidget {
   static const id = 'AddressesView';
   @override
   Widget build(BuildContext context) {
-    bool isformDrowerNotOrderSheet =
+    bool isFromDrawerNotOrderSheet =
         ModalRoute.of(context)?.settings.arguments as bool? ?? false;
     return Scaffold(
       appBar: AppBar(
@@ -15,7 +15,7 @@ class AddressesView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 20),
         child: AddressesViewBody(
-          isformDrowerNotOrderSheet: isformDrowerNotOrderSheet,
+          isFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet,
         ),
       ),
     );
