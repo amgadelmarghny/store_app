@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/models/boarding_model.dart';
 import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/shared/style/themes.dart';
 
-class BoardingBuilder extends StatelessWidget {
-  const BoardingBuilder({super.key, required this.boardModel});
+class BoardingItem extends StatelessWidget {
+  const BoardingItem({super.key, required this.boardModel});
   final BoardModel boardModel;
 
   @override
@@ -12,28 +13,32 @@ class BoardingBuilder extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: Image.asset(boardModel.image),
+          child: Center(
+            child: Image.asset(boardModel.image),
+          ),
         ),
-        const SizedBox(
-          height: 50,
-        ),
-        Text(
-          boardModel.shopTitle,
-          style: const TextStyle(
-            fontSize: 40,
-            fontWeight: FontWeight.w500,
-            color: defaultColor,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            boardModel.shopTitle,
+            style: TextStyle(
+              fontSize: getResponsiveFontSize(fontSize: 30),
+              fontWeight: FontWeight.w500,
+              color: defaultColor,
+            ),
           ),
         ),
         const SizedBox(
-          height: 30,
+          height: 20,
         ),
-        Text(
-          boardModel.shopSubTitle,
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 24),
-        ),
-        const SizedBox(
-          height: 10,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            boardModel.shopSubTitle,
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  fontSize: getResponsiveFontSize(fontSize: 20),
+                ),
+          ),
         ),
       ],
     );

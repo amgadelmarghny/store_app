@@ -5,20 +5,14 @@ import 'package:soagmb/shared/components/navigation.dart';
 import 'package:soagmb/shared/network/local/key_const.dart';
 import 'package:soagmb/shared/network/local/shared_helper.dart';
 import 'package:soagmb/shared/style/colors.dart';
-
+import 'package:soagmb/shared/style/themes.dart';
 import 'on_boarding_view_body.dart';
 
-class OnBoardingView extends StatefulWidget {
+class OnBoardingView extends StatelessWidget {
   const OnBoardingView({super.key});
   static String id = 'OnBoardingView';
   @override
-  State<OnBoardingView> createState() => _OnBoardingViewState();
-}
-
-class _OnBoardingViewState extends State<OnBoardingView> {
-  @override
   Widget build(BuildContext context) {
-    PageController pageController = PageController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -29,22 +23,19 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         actions: [
           TextButton(
             onPressed: () async {
-              await CashHelper.setData(key: onBoardingCONST, value: true).then(
-                (value) {
-                  if (value) {
-                   if(context.mounted) navigatorPushAndRemove(context, LoginView.id);
-                  }
-                },
-              );
+              await CashHelper.setData(key: onBoardingCONST, value: true);
+              if (context.mounted) navigatorPushAndRemove(context, LoginView.id);
             },
-            child: const Text(
+            child: Text(
               'Skip',
-              style: TextStyle(color: defaultColor, fontSize: 25),
+              style: TextStyle(
+                  color: defaultColor,
+                  fontSize: getResponsiveFontSize(fontSize: 25)),
             ),
           ),
         ],
       ),
-      body: OnBoardingViewBody(pageController: pageController),
+      body: OnBoardingViewBody(),
     );
   }
 }
