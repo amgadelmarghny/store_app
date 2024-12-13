@@ -47,7 +47,8 @@ class OnBoardingViewBody extends StatelessWidget {
     );
   }
 
-  Future<void> onPressed(PageController pageController, BuildContext context) async {
+  Future<void> onPressed(
+      PageController pageController, BuildContext context) async {
     AppCubit appCubit = BlocProvider.of<AppCubit>(context);
 
     if (appCubit.pageNum == appCubit.boardList.length - 1) {
