@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/shared/style/size_configs.dart';
 
 abstract class ThemeStyle {
   static ThemeData lightTheme() {
@@ -23,18 +25,18 @@ abstract class ThemeStyle {
       popupMenuTheme: const PopupMenuThemeData(
         position: PopupMenuPosition.over,
       ),
-      textTheme: const TextTheme(
+      textTheme:  TextTheme(
         bodyLarge: TextStyle(
-          fontSize: 19,
+          fontSize: getResponsiveFontSize(fontSize: 19),
           color: Colors.black,
         ),
         bodyMedium: TextStyle(
-          fontSize: 18,
+          fontSize: getResponsiveFontSize(fontSize: 18),
           color: defaultColor,
           fontWeight: FontWeight.w600,
         ),
-        bodySmall: TextStyle(fontSize: 15),
-        titleMedium: TextStyle(fontSize: 20),
+        bodySmall: TextStyle(fontSize:getResponsiveFontSize(fontSize: 15)),
+        titleMedium: TextStyle(fontSize: getResponsiveFontSize(fontSize: 20)),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.teal,
@@ -61,18 +63,18 @@ abstract class ThemeStyle {
           statusBarColor: Colors.transparent,
         ),
       ),
-      textTheme: const TextTheme(
+      textTheme:  TextTheme(
         bodyLarge: TextStyle(
-          fontSize: 19,
+          fontSize:getResponsiveFontSize(fontSize: 19),
           color: Colors.white,
         ),
         bodyMedium: TextStyle(
-          fontSize: 18,
+          fontSize:getResponsiveFontSize(fontSize: 18) ,
           color: defaultColor,
           fontWeight: FontWeight.w600,
         ),
-        bodySmall: TextStyle(fontSize: 15),
-        titleMedium: TextStyle(fontSize: 20),
+        bodySmall: TextStyle(fontSize: getResponsiveFontSize(fontSize: 15)),
+        titleMedium: TextStyle(fontSize:getResponsiveFontSize(fontSize: 20)),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
@@ -91,9 +93,34 @@ BoxDecoration customBoxDecoration(BuildContext context) {
       BoxShadow(
         spreadRadius: 0.3,
         blurRadius: 2,
-        color: Colors.grey.withOpacity(0.4),
+        color: Colors.grey.withValues(alpha: 0.4),
         offset: const Offset(1, 5),
       )
     ],
   );
+}
+
+double getResponsiveFontSize({required double fontSize}) {
+  double scaleFactor = getScaleFactor();
+  double responsiveFontSize = fontSize * scaleFactor;
+
+  double minFontSize = fontSize * 0.8;
+  double maxFontSize = fontSize * 1.2;
+  return responsiveFontSize.clamp(minFontSize, maxFontSize);
+}
+
+double getScaleFactor() {
+  var platFormDispatcher = PlatformDispatcher.instance;
+  var physicalWidth = platFormDispatcher.views.first.physicalSize.width;
+  var pixelRatio = platFormDispatcher.views.first.devicePixelRatio;
+
+  double width = physicalWidth / pixelRatio;
+
+  if (width < SizeConfigs.tabletSizeWidth) {
+    // font size for mobile
+    return width / 400;
+  } else {
+    // font size for tablet
+    return width / 800;
+  }
 }

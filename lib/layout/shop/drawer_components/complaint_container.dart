@@ -25,10 +25,10 @@ class ComplaintContainer extends StatelessWidget {
             BoxShadow(
               spreadRadius: 1,
               blurRadius: 4,
-              color: Colors.black87.withOpacity(0.45),
+              color: Colors.black87.withValues(alpha: 0.45),
             )
           ],
-          color: Colors.yellow[500]!.withOpacity(0.7),
+          color: Colors.yellow[500]!.withValues(alpha: 0.7),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(

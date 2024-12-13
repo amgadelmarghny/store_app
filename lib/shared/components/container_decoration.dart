@@ -8,7 +8,7 @@ BoxDecoration decorationBuilder(BuildContext context) {
       BoxShadow(
         blurRadius: 20,
         spreadRadius: 4,
-        color: Colors.grey.withOpacity(0.3),
+        color: Colors.grey.withValues(alpha: 0.3),
       )
     ],
   );

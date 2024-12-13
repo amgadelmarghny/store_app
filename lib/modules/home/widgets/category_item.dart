@@ -42,7 +42,7 @@ class CategoryItem extends StatelessWidget {
             ),
             Container(
               width: 130,
-              color: defaultColor[300]!.withOpacity(0.84),
+              color: defaultColor[300]!.withValues(alpha: 0.84),
               child: Text(
                 dataModel.name,
                 textAlign: TextAlign.center,

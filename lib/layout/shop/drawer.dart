@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:soagmb/layout/shop/drawer_components/complaint_container.dart';
 import 'package:soagmb/layout/shop/drawer_components/settings_menu.dart';
 import 'package:soagmb/layout/shop/drawer_components/user_profile.dart';

@@ -43,7 +43,7 @@ class CustomTextField extends StatelessWidget {
               color: Theme.of(context).scaffoldBackgroundColor,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
+                  color: Colors.grey.withValues(alpha: 0.2),
                   blurRadius: 10,
                   spreadRadius: 7,
                 ),
@@ -66,7 +66,7 @@ class CustomTextField extends StatelessWidget {
         onChanged: onChange,
         onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
-          fillColor: defaultColor.withOpacity(0.1),
+          fillColor: defaultColor.withValues(alpha: 0.1),
           filled: isFirstDesign,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
