@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/shared/style/themes.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -66,8 +67,6 @@ class CustomTextField extends StatelessWidget {
         onChanged: onChange,
         onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
-          fillColor: defaultColor.withValues(alpha: 0.1),
-          filled: isFirstDesign,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
           suffixIcon: suffixIcon != null
@@ -85,31 +84,31 @@ class CustomTextField extends StatelessWidget {
               : null,
           hintText: hintText,
           labelText: labelText,
-          labelStyle: const TextStyle(
-            fontSize: 18,
+          labelStyle: TextStyle(
+            fontSize: getResponsiveFontSize(fontSize: 18),
             fontWeight: FontWeight.w500,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(radius),
             borderSide: BorderSide(
-              color: isFirstDesign
-                  ? Theme.of(context).textTheme.bodyLarge!.color!
-                  : Theme.of(context).scaffoldBackgroundColor,
-            ),
+                color: isFirstDesign
+                    ? Theme.of(context).textTheme.bodyLarge!.color!
+                    : Theme.of(context).scaffoldBackgroundColor,
+                width: 0.7),
           ),
           focusedBorder: isFirstDesign
               ? OutlineInputBorder(
-                  borderSide: const BorderSide(color: defaultColor, width: 1.1),
+                  borderSide: const BorderSide(color: defaultColor, width: 0.7),
                   borderRadius: BorderRadius.circular(radius),
                 )
               : null,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(radius),
             borderSide: BorderSide(
-              color: isFirstDesign
-                  ? Theme.of(context).textTheme.bodyLarge!.color!
-                  : Theme.of(context).scaffoldBackgroundColor,
-            ),
+                color: isFirstDesign
+                    ? Theme.of(context).textTheme.bodyLarge!.color!
+                    : Theme.of(context).scaffoldBackgroundColor,
+                width: 0.7),
           ),
         ),
       ),

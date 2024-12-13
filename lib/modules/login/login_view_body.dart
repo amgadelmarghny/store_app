@@ -4,16 +4,11 @@ import 'package:soagmb/modules/login/widgets/sliver_login_input.dart';
 import 'package:soagmb/shared/components/custom_curve_color_ui.dart';
 import 'package:soagmb/shared/components/custom_sliver_row_text.dart';
 
-class LoginViewBody extends StatefulWidget {
+class LoginViewBody extends StatelessWidget {
   const LoginViewBody({
     super.key,
   });
 
-  @override
-  State<LoginViewBody> createState() => _LoginViewBodyState();
-}
-
-class _LoginViewBodyState extends State<LoginViewBody> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(

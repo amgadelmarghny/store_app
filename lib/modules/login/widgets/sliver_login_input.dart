@@ -64,18 +64,6 @@ class SliverLoginInfo extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                Row(
-                  children: [
-                    const Spacer(),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Forget you password?',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ),
-                  ],
-                ),
                 const SizedBox(
                   height: 50,
                 ),
