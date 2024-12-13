@@ -25,7 +25,7 @@ abstract class ThemeStyle {
       popupMenuTheme: const PopupMenuThemeData(
         position: PopupMenuPosition.over,
       ),
-      textTheme:  TextTheme(
+      textTheme: TextTheme(
         bodyLarge: TextStyle(
           fontSize: getResponsiveFontSize(fontSize: 19),
           color: Colors.black,
@@ -35,7 +35,7 @@ abstract class ThemeStyle {
           color: defaultColor,
           fontWeight: FontWeight.w600,
         ),
-        bodySmall: TextStyle(fontSize:getResponsiveFontSize(fontSize: 15)),
+        bodySmall: TextStyle(fontSize: getResponsiveFontSize(fontSize: 15)),
         titleMedium: TextStyle(fontSize: getResponsiveFontSize(fontSize: 20)),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -54,6 +54,7 @@ abstract class ThemeStyle {
         position: PopupMenuPosition.under,
       ),
       appBarTheme: const AppBarTheme(
+        elevation: 0,
         centerTitle: true,
         // backgroundColor: defaultColor,
         titleSpacing: 20,
@@ -63,18 +64,18 @@ abstract class ThemeStyle {
           statusBarColor: Colors.transparent,
         ),
       ),
-      textTheme:  TextTheme(
+      textTheme: TextTheme(
         bodyLarge: TextStyle(
-          fontSize:getResponsiveFontSize(fontSize: 19),
+          fontSize: getResponsiveFontSize(fontSize: 19),
           color: Colors.white,
         ),
         bodyMedium: TextStyle(
-          fontSize:getResponsiveFontSize(fontSize: 18) ,
+          fontSize: getResponsiveFontSize(fontSize: 18),
           color: defaultColor,
           fontWeight: FontWeight.w600,
         ),
         bodySmall: TextStyle(fontSize: getResponsiveFontSize(fontSize: 15)),
-        titleMedium: TextStyle(fontSize:getResponsiveFontSize(fontSize: 20)),
+        titleMedium: TextStyle(fontSize: getResponsiveFontSize(fontSize: 20)),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
