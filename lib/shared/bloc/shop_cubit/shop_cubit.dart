@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:soagmb/models/cart_models/get_cart_model.dart';
@@ -125,10 +123,12 @@ class ShopCubit extends Cubit<ShopStates> {
         inCartProductsMap.addAll({element.id: element.inCart!});
       }
       emit(GetHomeDataSuccessState());
-    }).catchError((err) {
-      emit(GetHomeDataFailureState(errMessage: err.toString()));
-      log('error : $err');
-    });
+    })
+        // .catchError((err) {
+        //   emit(GetHomeDataFailureState(errMessage: err.toString()));
+        //   log('error : $err');
+        // })
+        ;
   }
 
 ////////////////////////////////////? GET  CATEGORY ////////////////////////////

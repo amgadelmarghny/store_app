@@ -14,7 +14,7 @@ class RegisterViewBody extends StatelessWidget {
         const SliverToBoxAdapter(
           child: CurveColorUI(
             headLine: 'Create Your Account',
-            subHeadline: 'Creat an account so you can shop',
+            subHeadline: 'Creat an account so your can shop',
             subHeadline2: 'form you comfortable home.',
           ),
         ),
