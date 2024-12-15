@@ -1,11 +1,10 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/models/category_details_model.dart';
-import 'package:soagmb/modules/home/widgets/product_item.dart';
+import 'package:soagmb/modules/category/category_details/widgets/category_details_data_loading.dart';
+import 'package:soagmb/modules/category/category_details/widgets/category_details_item_list_view.dart';
 import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
-import 'package:soagmb/shared/style/colors.dart';
 
 class CategoryDetailsViewBody extends StatelessWidget {
   const CategoryDetailsViewBody({
@@ -25,49 +24,14 @@ class CategoryDetailsViewBody extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        CategoryDetailsData? categoryDetailsData =
-            BlocProvider.of<CategoryCubit>(context)
-                .categoryDetailsModel
-                ?.categoryDetailsData;
         return Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               ConditionalBuilder(
                 condition: state is! CategoryDetailsLoading,
-                builder: (context) => Expanded(
-                  child: ListView.separated(
-                    clipBehavior: Clip.none,
-                    itemCount: categoryDetailsData!.productModelList!.length,
-                    itemBuilder: (context, index) {
-                      return ProductItem(
-                          isCategory: true,
-                          productModel:
-                              categoryDetailsData.productModelList![index]);
-                    },
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 25),
-                  ),
-                ),
-                fallback: (context) => Expanded(
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'lib/assets/images/category product.png',
-                          height: 160,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const CircularProgressIndicator(
-                          color: defaultColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                builder: (context) => CategoryItemListView(),
+                fallback: (context) => CategoryDetailsDataLoading(),
               ),
             ],
           ),
