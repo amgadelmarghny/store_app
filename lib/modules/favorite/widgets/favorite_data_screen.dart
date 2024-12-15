@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/modules/favorite/widgets/favorite_item.dart';
+import 'package:soagmb/modules/favorite/widgets/horizontal_favorite_item.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 
 class FavoriteDataScreen extends StatelessWidget {
@@ -18,7 +18,7 @@ class FavoriteDataScreen extends StatelessWidget {
         clipBehavior: Clip.none,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
-          return FavoriteItem(
+          return HorizontalProductItem(
             productModel: shopCubit.favoritesModel!.favoritesDataModel!
                 .dataModelList[index].productModel!,
           );

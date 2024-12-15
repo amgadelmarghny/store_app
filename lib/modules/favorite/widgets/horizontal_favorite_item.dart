@@ -8,8 +8,8 @@ import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 
 import '../../../shared/style/themes.dart';
 
-class FavoriteItem extends StatelessWidget {
-  const FavoriteItem({
+class HorizontalProductItem extends StatelessWidget {
+  const HorizontalProductItem({
     super.key,
     required this.productModel,
     this.isSearch = false,

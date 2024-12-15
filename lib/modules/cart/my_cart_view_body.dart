@@ -1,9 +1,9 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/modules/cart/make_order_button.dart';
-import 'package:soagmb/modules/favorite/widgets/favorite_item.dart';
+import 'package:soagmb/modules/cart/widgets/my_cart_data_screen.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/shared/components/expanded_initial_screen.dart';
 import 'package:soagmb/shared/style/colors.dart';
 
 class MyCartViewBody extends StatelessWidget {
@@ -20,19 +20,9 @@ class MyCartViewBody extends StatelessWidget {
             [];
 
         if (cartItemList.isEmpty) {
-          return const Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.shopping_cart_outlined,
-                  color: defaultColor,
-                  size: 80,
-                ),
-                Text('The cart is empty,'),
-                Text('Please add some products'),
-              ],
-            ),
+          return ExpandedInitialScreen(
+            icon: Icons.shopping_cart_outlined,
+            text: 'The cart is empty',
           );
         } else if (state is GetCartFailureState) {
           return const Center(child: Text('There is an error'));
@@ -42,33 +32,8 @@ class MyCartViewBody extends StatelessWidget {
               state is! CartLoadingState &&
               state is! GetCartLoadingState &&
               state is! CartSussiccState,
-          builder: (context) => Column(
-            children: [
-              Expanded(
-                child: ListView.separated(
-                  itemBuilder: (context, index) => FavoriteItem(
-                    isCart: true,
-                    productModel: cartItemList[index].productModel,
-                    cartID: cartItemList[index].id,
-                  ),
-                  separatorBuilder: (context, index) => const SizedBox(
-                    height: 20,
-                  ),
-                  itemCount: cartItemList.length,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: MakeOrderButton(
-                  total: BlocProvider.of<ShopCubit>(context)
-                      .cartModel!
-                      .data!
-                      .total!
-                      .toInt(),
-                  productCoast: cartItemList[0].productModel.price,
-                ),
-              ),
-            ],
+          builder: (context) => MyCartDataScreen(
+            cartItemList: cartItemList,
           ),
           fallback: (context) => const Center(
             child: CircularProgressIndicator(
