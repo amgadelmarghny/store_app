@@ -1,7 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/modules/category/categories/category_item_large.dart';
+import 'package:soagmb/modules/category/categories/widgets/category_item_list_view.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
 import 'package:soagmb/shared/style/colors.dart';
@@ -33,17 +33,7 @@ class CategoryBody extends StatelessWidget {
           return ConditionalBuilder(
             condition: categoriesList.isNotEmpty,
             builder: (context) {
-              return ListView.separated(
-                itemBuilder: (context, index) {
-                  return CategoryItem(categoryModel: categoriesList[index]);
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    height: 20,
-                  );
-                },
-                itemCount: categoriesList.length,
-              );
+              return CategoryItemListView(categoriesList: categoriesList);
             },
             fallback: (contex) => const Center(
               child: CircularProgressIndicator(

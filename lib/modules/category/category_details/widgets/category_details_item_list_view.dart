@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/modules/home/widgets/product_item.dart';
 import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
 
-class CategoryItemListView extends StatelessWidget {
-  const CategoryItemListView({
+class CategoryDetailsItemListView extends StatelessWidget {
+  const CategoryDetailsItemListView({
     super.key,
   });
 

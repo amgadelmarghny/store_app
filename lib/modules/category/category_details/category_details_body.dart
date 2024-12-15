@@ -30,7 +30,7 @@ class CategoryDetailsViewBody extends StatelessWidget {
             children: [
               ConditionalBuilder(
                 condition: state is! CategoryDetailsLoading,
-                builder: (context) => CategoryItemListView(),
+                builder: (context) => CategoryDetailsItemListView(),
                 fallback: (context) => CategoryDetailsDataLoading(),
               ),
             ],
