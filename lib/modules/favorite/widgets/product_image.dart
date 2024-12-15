@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/modules/favorite/widgets/discount_widget.dart';
 import 'package:soagmb/shared/style/colors.dart';
 
 class ProductImageFavItem extends StatelessWidget {
@@ -37,19 +38,7 @@ class ProductImageFavItem extends StatelessWidget {
             },
           ),
         ),
-        if (!isSearch)
-          if (productModel.discount != 0)
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              decoration: BoxDecoration(
-                color: Colors.red[300],
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Text(
-                'DISCOUNT',
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-            )
+        if (!isSearch && productModel.discount != 0) DiscountWidget()
       ],
     );
   }
