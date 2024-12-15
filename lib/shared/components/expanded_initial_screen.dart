@@ -11,25 +11,26 @@ class ExpandedInitialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            color: Colors.amber,
-            height: 400,
-          ),
-          Icon(
-            icon,
-            size: 200,
-            color: Colors.grey,
-          ),
-          Text(
-            text,
-            style: TextStyle(
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              size: 90,
               color: Colors.grey,
             ),
-          ),
-        ],
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              text,
+              style: TextStyle(
+                color: Colors.grey,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
