@@ -5,8 +5,8 @@ import 'package:soagmb/models/category_model.dart';
 import 'package:soagmb/modules/category/category_details/category_details_view.dart';
 import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
 
-class CategoryItemLarge extends StatelessWidget {
-  const CategoryItemLarge({
+class CategoryBodyItem extends StatelessWidget {
+  const CategoryBodyItem({
     super.key,
     required this.categoryModel,
   });

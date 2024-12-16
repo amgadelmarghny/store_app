@@ -8,8 +8,8 @@ import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
 import 'package:soagmb/shared/style/colors.dart';
 import 'package:soagmb/shared/style/themes.dart';
 
-class CategoryItem extends StatelessWidget {
-  const CategoryItem({super.key, required this.dataModel});
+class CategoryHomeItem extends StatelessWidget {
+  const CategoryHomeItem({super.key, required this.dataModel});
   final DataModel dataModel;
   @override
   Widget build(BuildContext context) {

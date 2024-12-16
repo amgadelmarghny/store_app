@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/modules/home/widgets/category_item.dart';
+import 'package:soagmb/modules/home/widgets/category__home_item.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 
 class CategoryItemListView extends StatelessWidget {
@@ -19,7 +19,7 @@ class CategoryItemListView extends StatelessWidget {
       padding: const EdgeInsets.only(left: 1),
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        return CategoryItem(
+        return CategoryHomeItem(
           dataModel: categoryItemList[index],
         );
       },
