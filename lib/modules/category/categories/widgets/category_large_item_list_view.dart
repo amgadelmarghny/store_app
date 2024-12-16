@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/modules/category/categories/category_item_large.dart';
 
-class CategoryItemListView extends StatelessWidget {
-  const CategoryItemListView({
+class CategoryLargeItemListView extends StatelessWidget {
+  const CategoryLargeItemListView({
     super.key,
     required this.categoriesList,
   });
@@ -13,7 +13,7 @@ class CategoryItemListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, index) {
-        return CategoryItem(categoryModel: categoriesList[index]);
+        return CategoryItemLarge(categoryModel: categoriesList[index]);
       },
       separatorBuilder: (context, index) {
         return const SizedBox(

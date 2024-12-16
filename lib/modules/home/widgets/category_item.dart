@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/models/category_model.dart';
 import 'package:soagmb/modules/category/category_details/category_details_view.dart';
+import 'package:soagmb/modules/home/widgets/category_item_name_banner.dart';
 import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
 import 'package:soagmb/shared/style/colors.dart';
 import 'package:soagmb/shared/style/themes.dart';
@@ -28,29 +29,20 @@ class CategoryItem extends StatelessWidget {
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            CachedNetworkImage(
-              imageUrl: dataModel.image,
-              height: 130,
-              width: 130,
-              fit: BoxFit.cover,
-              placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator(
-                  color: defaultColor,
+            AspectRatio(
+              aspectRatio: 1,
+              child: CachedNetworkImage(
+                imageUrl: dataModel.image,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => const Center(
+                  child: CircularProgressIndicator(
+                    color: defaultColor,
+                  ),
                 ),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
-            Container(
-              width: 130,
-              color: defaultColor[300]!.withValues(alpha: 0.84),
-              child: Text(
-                dataModel.name,
-                textAlign: TextAlign.center,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: Theme.of(context).hintColor),
-              ),
-            )
+            CategoryItemNameBanner(dataModel: dataModel)
           ],
         ),
       ),

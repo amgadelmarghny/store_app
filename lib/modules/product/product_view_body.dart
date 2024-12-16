@@ -3,7 +3,7 @@ import 'package:readmore/readmore.dart';
 import 'package:soagmb/models/shop_models/product_model.dart';
 import 'package:soagmb/modules/product/widgets/add_to_cart_button.dart';
 import 'package:soagmb/modules/product/widgets/price_row.dart';
-import 'package:soagmb/modules/product/widgets/product_image.dart';
+import 'package:soagmb/modules/product/widgets/product_images_collection.dart';
 import 'package:soagmb/modules/product/widgets/smoth_page_idecator.dart';
 
 class ProductViewBody extends StatelessWidget {
@@ -28,7 +28,7 @@ class ProductViewBody extends StatelessWidget {
         Expanded(
           child: ListView(
             children: [
-              ProductImage(
+              ProductImagesCollection(
                 pageController: pageController,
                 productModel: productModel,
               ),

@@ -1,11 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/modules/home/widgets/category_item.dart';
-import 'package:soagmb/modules/home/widgets/product_item.dart';
+import 'package:soagmb/modules/home/widgets/banner_item_list_view.dart';
+import 'package:soagmb/modules/home/widgets/categories_section.dart';
+import 'package:soagmb/modules/home/widgets/products_section.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:soagmb/shared/style/colors.dart';
 
 class ProductAndBannerView extends StatelessWidget {
   const ProductAndBannerView({
@@ -23,87 +21,17 @@ class ProductAndBannerView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CarouselSlider(
-              items: shopCubit.homeModel!.data!.bannersList
-                  .map(
-                    (e) => CachedNetworkImage(
-                      imageUrl: e.image,
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) => const Center(
-                        child: CircularProgressIndicator(
-                          color: defaultColor,
-                        ),
-                      ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
-                    ),
-                  )
-                  .toList(),
-              options: CarouselOptions(
-                autoPlay: true,
-                viewportFraction: 1,
-              ),
-            ),
+            BannerItemListView(),
             const SizedBox(
-              height: 20,
-            ),
-            /////////////////////////// CATEGORIES lIST ///////////////////
-            const Text('Categories'),
-            const SizedBox(
-              height: 5,
+              height: 15,
             ),
             if (shopCubit.categoryHomeModel?.dataCatHome?.dataList != null)
-              SizedBox(
-                height: 130,
-                child: ListView.separated(
-                  clipBehavior: Clip.none,
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.only(left: 1),
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    if (shopCubit
-                            .categoryHomeModel!.dataCatHome!.dataList[index] !=
-                        null) {
-                      return CategoryItem(
-                        dataModel: shopCubit
-                            .categoryHomeModel?.dataCatHome?.dataList[index],
-                      );
-                    }
-                    return null;
-                  },
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      width: 20,
-                    );
-                  },
-                  itemCount:
-                      shopCubit.categoryHomeModel!.dataCatHome!.dataList.length,
-                ),
-              ),
+              CategoriesSection(),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
-            //////////////////////////// PRODUCTS LIST /////////////////////////
-            const Text('Products'),
-            const SizedBox(
-              height: 7,
-            ),
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 1 / 1.54,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 10,
-              ),
-              itemBuilder: (context, index) {
-                return ProductItem(
-                  productModel: shopCubit.homeModel!.data!.productsList[index],
-                );
-              },
-              itemCount: shopCubit.homeModel!.data!.productsList.length,
-            )
+            if (shopCubit.homeModel?.data?.productsList != null)
+              Productssection(),
           ],
         ),
       ),

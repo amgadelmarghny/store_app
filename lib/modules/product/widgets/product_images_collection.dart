@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:soagmb/models/shop_models/product_model.dart';
 import 'package:soagmb/shared/style/colors.dart';
 
-class ProductImage extends StatelessWidget {
-  const ProductImage({
+class ProductImagesCollection extends StatelessWidget {
+  const ProductImagesCollection({
     super.key,
     required this.pageController,
     required this.productModel,

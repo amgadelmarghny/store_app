@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/modules/home/widgets/product_item.dart';
+import 'package:soagmb/modules/category/category_details/widgets/category_product_item.dart';
 import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
 
 class CategoryDetailsItemListView extends StatelessWidget {
@@ -19,8 +19,7 @@ class CategoryDetailsItemListView extends StatelessWidget {
         clipBehavior: Clip.none,
         itemCount: productModelList!.length,
         itemBuilder: (context, index) {
-          return ProductItem(
-            isCategory: true,
+          return CategoryProductItem(
             productModel: productModelList[index],
           );
         },

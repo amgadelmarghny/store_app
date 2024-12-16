@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class DiscountWidget extends StatelessWidget {
   const DiscountWidget({
-    super.key,
+    super.key, this.margin,
   });
 
+  final EdgeInsetsGeometry? margin;
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: margin,
       padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
         color: Colors.red[300],

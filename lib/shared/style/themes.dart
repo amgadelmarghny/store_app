@@ -28,11 +28,9 @@ abstract class ThemeStyle {
       textTheme: TextTheme(
         bodyLarge: TextStyle(
           fontSize: getResponsiveFontSize(fontSize: 19),
-          color: Colors.black,
         ),
         bodyMedium: TextStyle(
           fontSize: getResponsiveFontSize(fontSize: 18),
-          color: defaultColor,
           fontWeight: FontWeight.w600,
         ),
         bodySmall: TextStyle(fontSize: getResponsiveFontSize(fontSize: 15)),
@@ -67,11 +65,9 @@ abstract class ThemeStyle {
       textTheme: TextTheme(
         bodyLarge: TextStyle(
           fontSize: getResponsiveFontSize(fontSize: 19),
-          color: Colors.white,
         ),
         bodyMedium: TextStyle(
           fontSize: getResponsiveFontSize(fontSize: 18),
-          color: defaultColor,
           fontWeight: FontWeight.w600,
         ),
         bodySmall: TextStyle(fontSize: getResponsiveFontSize(fontSize: 15)),
