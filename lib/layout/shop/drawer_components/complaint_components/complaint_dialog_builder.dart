@@ -5,6 +5,8 @@ import 'package:soagmb/layout/shop/drawer_components/complaint_components/compla
 import 'package:soagmb/layout/shop/drawer_components/complaint_components/complaint_response.dart';
 import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
+import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/shared/style/themes.dart';
 
 class ComplaintDialogBuilder extends StatefulWidget {
   const ComplaintDialogBuilder({
@@ -78,21 +80,19 @@ class _ComplaintDialogBuilderState extends State<ComplaintDialogBuilder> {
             actions: [
               ElevatedButton(
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    BlocProvider.of<AppCubit>(context).addComplaint(
-                        name: nameController.text,
-                        email: emailController.text,
-                        phone: phoneController.text,
-                        message: messageController.text);
-                  } else {
-                    setState(() {
-                      autovalidateMode = AutovalidateMode.always;
-                    });
-                  }
+                  onPress(
+                    context,
+                    nameController,
+                    emailController,
+                    phoneController,
+                    messageController,
+                  );
                 },
-                child: const Text(
+                child: Text(
                   'Send',
-                  style: TextStyle(fontSize: 18, color: Colors.teal),
+                  style: TextStyle(
+                      fontSize: getResponsiveFontSize(fontSize: 18),
+                      color: defaultColor),
                 ),
               )
             ],
@@ -100,5 +100,24 @@ class _ComplaintDialogBuilderState extends State<ComplaintDialogBuilder> {
         );
       },
     );
+  }
+
+  void onPress(
+      BuildContext context,
+      TextEditingController nameController,
+      TextEditingController emailController,
+      TextEditingController phoneController,
+      TextEditingController messageController) {
+    if (formKey.currentState!.validate()) {
+      BlocProvider.of<AppCubit>(context).addComplaint(
+          name: nameController.text,
+          email: emailController.text,
+          phone: phoneController.text,
+          message: messageController.text);
+    } else {
+      setState(() {
+        autovalidateMode = AutovalidateMode.always;
+      });
+    }
   }
 }

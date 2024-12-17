@@ -39,6 +39,7 @@ class ComplaintDialogContent extends StatelessWidget {
             ),
             AddressField(
               hintText: 'email',
+              keyboardType: TextInputType.emailAddress,
               messageValidationName: 'email',
               textEditingController: emailController,
             ),
