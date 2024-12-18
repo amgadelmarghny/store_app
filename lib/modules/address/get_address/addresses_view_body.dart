@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:soagmb/modules/address/add_new_address/add_address_view.dart';
-import 'package:soagmb/modules/address/get_address/address_item.dart';
+import 'package:soagmb/modules/address/get_address/addresses_item_list_view.dart';
+import 'package:soagmb/modules/address/get_address/adressess_view_header.dart';
 import 'package:soagmb/modules/address/get_address/empty_address_view_body.dart';
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/components/custom_button.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
 import 'package:soagmb/shared/style/colors.dart';
 
@@ -14,7 +16,7 @@ class AddressesViewBody extends StatelessWidget {
     super.key,
     this.isFromDrawerNotOrderSheet = false,
   });
-  final bool? isFromDrawerNotOrderSheet;
+  final bool isFromDrawerNotOrderSheet;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddressCubit, AddressState>(
@@ -44,58 +46,31 @@ class AddressesViewBody extends StatelessWidget {
             condition: addressCubit.getAddressesModel != null &&
                 addressCubit
                     .getAddressesModel!.data!.addressModelsList.isNotEmpty,
-            builder: (context) => SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: Column(
-                children: [
-                  MaterialButton(
-                    color: defaultColor.shade100,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(30),
+            builder: (context) => CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(child: AdressessViewHeader()),
+                SliverToBoxAdapter(child: const SizedBox(height: 20)),
+                AddressessItemListView(
+                    isFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet),
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: CustomButton(
+                        text: 'Add new address',
+                        onTap: () =>
+                            Navigator.pushNamed(context, AddAddressView.id),
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, AddAddressView.id);
-                    },
-                    child: const Text(
-                      'Add New Address',
-                      style: TextStyle(color: Colors.black),
-                    ),
                   ),
-                  const SizedBox(height: 40),
-                  Row(
-                    children: [
-                      const SizedBox(width: 20),
-                      const Text('Total Addresses :'),
-                      const Spacer(),
-                      Text(
-                          '(${BlocProvider.of<AddressCubit>(context).getAddressesModel!.data!.total.toString()})'),
-                      const SizedBox(width: 20),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return AddressItem(
-                          isFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet,
-                          addressModel: addressCubit.getAddressesModel!.data!
-                              .addressModelsList[index]);
-                    },
-                    separatorBuilder: (context, index) => const Divider(
-                      endIndent: 20,
-                      indent: 20,
-                    ),
-                    itemCount: addressCubit
-                        .getAddressesModel!.data!.addressModelsList.length,
-                  )
-                ],
-              ),
+                )
+              ],
             ),
             fallback: (context) => const Center(
-                child: CircularProgressIndicator(color: defaultColor)),
+              child: CircularProgressIndicator(color: defaultColor),
+            ),
           ),
         );
       },

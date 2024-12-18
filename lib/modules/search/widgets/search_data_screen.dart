@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/models/search_model.dart';
-import 'package:soagmb/modules/favorite/widgets/horizontal_favorite_item.dart';
+import 'package:soagmb/modules/favorite/widgets/horizontal_product_item.dart';
 import 'package:soagmb/shared/bloc/search_cubit/search_cubit.dart';
 
 class SearchDataScreen extends StatelessWidget {

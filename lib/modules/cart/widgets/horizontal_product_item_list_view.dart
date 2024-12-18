@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/modules/favorite/widgets/horizontal_favorite_item.dart';
+import 'package:soagmb/modules/favorite/widgets/horizontal_product_item.dart';
 
 class HorizontalProductItemListView extends StatelessWidget {
   const HorizontalProductItemListView({
