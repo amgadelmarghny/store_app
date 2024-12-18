@@ -54,7 +54,6 @@ class AddressCubit extends Cubit<AddressState> {
     });
   }
 
-  bool? isChecked;
   void checkSetState() {
     emit(CheckSetState());
   }

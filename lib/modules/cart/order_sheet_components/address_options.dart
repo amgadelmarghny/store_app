@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/models/address_models/address_model.dart';
 import 'package:soagmb/modules/address/get_address/addresses_view.dart';
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
+import 'package:soagmb/shared/style/themes.dart';
 
 class AddressOptions extends StatelessWidget {
   const AddressOptions({
@@ -11,6 +13,12 @@ class AddressOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddressCubit, AddressState>(builder: (context, state) {
+      AddressModel? addressModel =
+          BlocProvider.of<AddressCubit>(context).addressModel;
+      List addressModelsList = BlocProvider.of<AddressCubit>(context)
+          .getAddressesModel!
+          .data!
+          .addressModelsList;
       return ListTile(
         title: const Text('Address'),
         onTap: () {
@@ -21,23 +29,17 @@ class AddressOptions extends StatelessWidget {
           children: [
             // this condition added to delete the address name
             // if addresses is empty
-            if (BlocProvider.of<AddressCubit>(context)
-                .getAddressesModel!
-                .data!
-                .addressModelsList
-                .isNotEmpty)
+            if (addressModelsList.isNotEmpty)
               Text(
-                BlocProvider.of<AddressCubit>(context).addressModel != null
-                    ? BlocProvider.of<AddressCubit>(context).addressModel!.name
-                    : BlocProvider.of<AddressCubit>(context)
-                        .getAddressesModel!
-                        .data!
-                        .addressModelsList[0]
-                        .name,
+                // when there is selected address it name will shown
+                addressModel != null
+                    ? addressModel.name
+                    // if not, first address in addresses will shown
+                    : addressModelsList[0].name,
                 style: Theme.of(context)
                     .textTheme
                     .titleSmall!
-                    .copyWith(fontSize: 18),
+                    .copyWith(fontSize: getResponsiveFontSize(fontSize: 18)),
               ),
             const SizedBox(
               width: 3,

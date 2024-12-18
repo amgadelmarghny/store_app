@@ -32,7 +32,7 @@ class UpdateAddressButton extends StatelessWidget {
       child: CustomButton(
         isLoading: state is UpdateAddressLoading,
         color: defaultColor,
-        text: 'Add new address',
+        text: 'Update my address',
         onTap: () {
           if (formKey.currentState!.validate()) {
             BlocProvider.of<AddressCubit>(context).updateAddress(

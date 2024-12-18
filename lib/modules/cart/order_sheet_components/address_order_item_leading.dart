@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/models/address_models/address_model.dart';
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:soagmb/shared/style/colors.dart';
 
-class AddressOrderItemLeading extends StatefulWidget {
-  const AddressOrderItemLeading({super.key, required this.addressModel});
-  final AddressModel addressModel;
+class AddressOrderItemLeading extends StatelessWidget {
+  const AddressOrderItemLeading({super.key, required this.isActive});
+  final bool isActive;
 
-  @override
-  State<AddressOrderItemLeading> createState() =>
-      _AddressOrderItemLeadingState();
-}
-
-class _AddressOrderItemLeadingState extends State<AddressOrderItemLeading> {
-  bool? isChecked = false;
   @override
   Widget build(BuildContext context) {
     AddressCubit addressCubit = BlocProvider.of<AddressCubit>(context);
@@ -24,15 +16,9 @@ class _AddressOrderItemLeadingState extends State<AddressOrderItemLeading> {
       children: [
         if (addressCubit.getAddressesModel!.data!.total! > 1)
           Checkbox(
-            value: isChecked,
-            onChanged: (value) {
-              setState(() {
-                isChecked = value;
-                addressCubit.isChecked = isChecked;
-                addressCubit.addressModel = widget.addressModel;
-                addressCubit.checkSetState();
-              });
-            },
+            value: isActive,
+            onChanged: (value) {},
+            activeColor: defaultColor,
           ),
         CircleAvatar(
           backgroundColor: defaultColor.shade200,
