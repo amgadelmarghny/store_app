@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/shared/style/colors.dart';
 
 class CustomSliverRowText extends StatelessWidget {
   const CustomSliverRowText({
@@ -30,7 +31,10 @@ class CustomSliverRowText extends StatelessWidget {
               },
               child: Text(
                 text,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: defaultColor),
               ),
             ),
           ],

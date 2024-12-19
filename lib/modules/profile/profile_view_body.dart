@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/modules/login/login_view.dart';
-import 'package:soagmb/modules/profile/change_password_view.dart';
-import 'package:soagmb/modules/profile/update_profile_view.dart';
+import 'package:soagmb/modules/profile/components/modify_profile_buttons.dart';
 import 'package:soagmb/models/user_model.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/shared/components/avatar_pic.dart';
 import 'package:soagmb/shared/components/text_form_field.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/shared/style/themes.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({
@@ -57,42 +56,18 @@ class ProfileViewBody extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, ChangePasswordView.id,
-                      arguments: userData);
-                },
-                child: Text(
-                  'Change your password',
-                  style: underLineDecoration(context),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, UpdateProfileView.id,
-                      arguments: userData);
-                },
-                child: Text(
-                  'Modify your profile',
-                  style: underLineDecoration(context),
-                ),
-              ),
-            ],
-          ),
+          ModifyProfileButtons(userData: userData),
           const Spacer(),
           TextButton(
             onPressed: () {
               BlocProvider.of<ShopCubit>(context)
                   .userLogout(context, routName: LoginView.id);
             },
-            child: const Text(
+            child:  Text(
               'LOGOUT ?',
               style: TextStyle(
                 color: Colors.red,
-                fontSize: 20,
+                fontSize: getResponsiveFontSize(fontSize: 20),
                 decoration: TextDecoration.underline,
                 decorationColor: Colors.red,
               ),
@@ -101,13 +76,5 @@ class ProfileViewBody extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  TextStyle underLineDecoration(BuildContext context) {
-    return Theme.of(context).textTheme.bodyMedium!.copyWith(
-          fontSize: 17.2,
-          decoration: TextDecoration.underline,
-          decorationColor: defaultColor,
-        );
   }
 }
