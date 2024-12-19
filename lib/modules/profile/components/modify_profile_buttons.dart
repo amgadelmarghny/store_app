@@ -11,30 +11,33 @@ class ModifyProfileButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, ChangePasswordView.id,
-                arguments: userData);
-          },
-          child: Text(
-            'Change your password',
-            style: underLineDecoration(context),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, ChangePasswordView.id,
+                  arguments: userData);
+            },
+            child: Text(
+              'Change your password',
+              style: underLineDecoration(context),
+            ),
           ),
-        ),
-        TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, UpdateProfileView.id,
-                arguments: userData);
-          },
-          child: Text(
-            'Modify your profile',
-            style: underLineDecoration(context),
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, UpdateProfileView.id,
+                  arguments: userData);
+            },
+            child: Text(
+              'Modify your profile',
+              style: underLineDecoration(context),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

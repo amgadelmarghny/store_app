@@ -96,12 +96,12 @@ class CustomTextField extends StatelessWidget {
                     : Theme.of(context).scaffoldBackgroundColor,
                 width: 0.7),
           ),
-          focusedBorder: isFirstDesign
-              ? OutlineInputBorder(
-                  borderSide: const BorderSide(color: defaultColor, width: 0.7),
-                  borderRadius: BorderRadius.circular(radius),
-                )
-              : null,
+          focusedBorder: OutlineInputBorder(
+            borderSide: isFirstDesign
+                ? BorderSide(color: defaultColor, width: 0.7)
+                : BorderSide(color: Theme.of(context).scaffoldBackgroundColor),
+            borderRadius: BorderRadius.circular(radius),
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(radius),
             borderSide: BorderSide(
