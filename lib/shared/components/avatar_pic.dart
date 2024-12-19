@@ -13,31 +13,30 @@ class AvatarPic extends StatelessWidget {
   final double height;
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: height),
-        child: AspectRatio(
-          aspectRatio: 1,
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: height),
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: Container(
+          padding: const EdgeInsets.all(3),
+          height: height,
+          decoration:
+              BoxDecoration(color: defaultColor[100], shape: BoxShape.circle),
           child: Container(
-            padding: const EdgeInsets.all(3),
-            decoration:
-                BoxDecoration(color: defaultColor[100], shape: BoxShape.circle),
-            child: Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: const BoxDecoration(shape: BoxShape.circle),
-              child: CachedNetworkImage(
-                imageUrl: image,
-                placeholder: (context, url) => const Center(
-                  child: CircularProgressIndicator(
-                    color: defaultColor,
-                  ),
+            clipBehavior: Clip.hardEdge,
+            decoration: const BoxDecoration(shape: BoxShape.circle),
+            child: CachedNetworkImage(
+              imageUrl: image,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(
+                  color: defaultColor,
                 ),
-                errorWidget: (context, url, error) => const Center(
-                  child: Icon(
-                    Icons.error_outline,
-                    size: 30,
-                    color: Colors.red,
-                  ),
+              ),
+              errorWidget: (context, url, error) => const Center(
+                child: Icon(
+                  Icons.error_outline,
+                  size: 30,
+                  color: Colors.red,
                 ),
               ),
             ),
