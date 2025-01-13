@@ -20,7 +20,7 @@ class MyCartViewBody extends StatelessWidget {
             [];
 
         if (cartItemList.isEmpty) {
-          return ExpandedInitialScreen(
+          return InitialScreen(
             icon: Icons.shopping_cart_outlined,
             text: 'The cart is empty',
           );
@@ -28,10 +28,7 @@ class MyCartViewBody extends StatelessWidget {
           return const Center(child: Text('There is an error'));
         }
         return ConditionalBuilder(
-          condition: state is! GetCartLoadingState &&
-              state is! CartLoadingState &&
-              state is! GetCartLoadingState &&
-              state is! CartSussiccState,
+          condition: state is GetCartSuccessState,
           builder: (context) => MyCartDataScreen(
             cartItemList: cartItemList,
           ),

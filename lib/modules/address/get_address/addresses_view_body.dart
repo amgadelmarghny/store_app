@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:soagmb/modules/address/add_new_address/add_address_view.dart';
 import 'package:soagmb/modules/address/get_address/addresses_item_list_view.dart';
-import 'package:soagmb/modules/address/get_address/adressess_view_header.dart';
+import 'package:soagmb/modules/address/get_address/addresses_view_header.dart';
 import 'package:soagmb/modules/address/get_address/empty_address_view_body.dart';
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:soagmb/shared/components/custom_button.dart';
@@ -48,9 +48,9 @@ class AddressesViewBody extends StatelessWidget {
                     .getAddressesModel!.data!.addressModelsList.isNotEmpty,
             builder: (context) => CustomScrollView(
               slivers: [
-                SliverToBoxAdapter(child: AdressessViewHeader()),
+                SliverToBoxAdapter(child: AddressesViewHeader()),
                 SliverToBoxAdapter(child: const SizedBox(height: 20)),
-                AddressessItemListView(
+                AddressesItemListView(
                     isFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet),
                 SliverFillRemaining(
                   hasScrollBody: false,

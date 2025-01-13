@@ -39,9 +39,11 @@ class SearchViewBody extends StatelessWidget {
                 },
               ),
               if (state is SearchInitial)
-                ExpandedInitialScreen(
-                  icon: Icons.search,
-                  text: 'Search for what you want',
+                Expanded(
+                  child: InitialScreen(
+                    icon: Icons.search,
+                    text: 'Search for what you want',
+                  ),
                 ),
               const SizedBox(height: 16),
               if (state is SearchLoadingState)

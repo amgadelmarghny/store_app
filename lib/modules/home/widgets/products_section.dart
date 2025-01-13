@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/modules/home/widgets/product_item_grid_view.dart';
 
-class Productssection extends StatelessWidget {
-  const Productssection({
+class ProductsSection extends StatelessWidget {
+  const ProductsSection({
     super.key,
   });
 

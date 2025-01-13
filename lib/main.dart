@@ -71,9 +71,7 @@ class Soagmb extends StatelessWidget {
               ..getCategories()
               ..getFavoriteProducts()
               ..getProfileInfo()
-              ..getCartItems()
-            // ..homeModel
-            //..profileModel,
+              ..getCartItems(),
             ),
         BlocProvider(create: (context) => CategoryCubit()),
         BlocProvider<AddressCubit>(

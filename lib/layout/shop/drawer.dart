@@ -13,7 +13,7 @@ import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
   
-  static const List<DrawerItemModel> drawerList = [
+  static const List<DrawerItemModel> _drawerList = [
     DrawerItemModel(
       iconData: Icons.shopping_cart_outlined,
       title: 'My Cart',
@@ -48,11 +48,11 @@ class DrawerMenu extends StatelessWidget {
                   child: UserProfile(),
                 ),
                 SliverList.builder(
-                  itemCount: DrawerMenu.drawerList.length,
+                  itemCount: DrawerMenu._drawerList.length,
                   itemBuilder: (context, index) => Container(
                     color: Theme.of(context).scaffoldBackgroundColor,
                     child: DrawerItem(
-                      drawerItemModel: DrawerMenu.drawerList[index],
+                      drawerItemModel: DrawerMenu._drawerList[index],
                     ),
                   ),
                 ),

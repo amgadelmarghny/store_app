@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 
 abstract class DioHelper {
-  static Dio? dio;
+  static Dio? _dio;
 
   static void initial() {
-    dio = Dio(
+    _dio = Dio(
       BaseOptions(
         baseUrl: 'https://student.valuxapps.com/api/',
         receiveDataWhenStatusError: true,
@@ -19,13 +19,13 @@ abstract class DioHelper {
     Map<String, dynamic>? queryParameters,
   }) async {
     if (token != null) {
-      dio!.options.headers = {
+      _dio!.options.headers = {
         "Authorization": token,
         "lang": lang,
         "Content-Type": 'application/json',
       };
     }
-    return await dio!.get(
+    return await _dio!.get(
       url,
       queryParameters: queryParameters,
     );
@@ -38,13 +38,13 @@ abstract class DioHelper {
     Object? data,
   }) async {
     if (token != null) {
-      dio!.options.headers = {
+      _dio!.options.headers = {
         "Authorization": token,
         "lang": lang,
         "Content-Type": 'application/json',
       };
     }
-    return await dio!.post(
+    return await _dio!.post(
       url,
       data: data,
     );
@@ -57,13 +57,13 @@ abstract class DioHelper {
     Object? data,
   }) async {
     if (token != null) {
-      dio!.options.headers = {
+      _dio!.options.headers = {
         "Authorization": token,
         "lang": lang,
         "Content-Type": 'application/json',
       };
     }
-    return await dio!.put(
+    return await _dio!.put(
       url,
       data: data,
     );
@@ -76,13 +76,13 @@ abstract class DioHelper {
     Object? data,
   }) async {
     if (token != null) {
-      dio!.options.headers = {
+      _dio!.options.headers = {
         "Authorization": token,
         "lang": lang,
         "Content-Type": 'application/json',
       };
     }
-    return await dio!.delete(
+    return await _dio!.delete(
       url,
       data: data,
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ExpandedInitialScreen extends StatelessWidget {
-  const ExpandedInitialScreen({
+class InitialScreen extends StatelessWidget {
+  const InitialScreen({
     super.key,
     required this.icon,
     required this.text,
@@ -10,27 +10,25 @@ class ExpandedInitialScreen extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              icon,
-              size: 90,
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            icon,
+            size: 90,
+            color: Colors.grey,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            text,
+            style: TextStyle(
               color: Colors.grey,
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              text,
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

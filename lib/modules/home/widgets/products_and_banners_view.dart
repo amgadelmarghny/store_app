@@ -31,7 +31,7 @@ class ProductAndBannerView extends StatelessWidget {
               height: 15,
             ),
             if (shopCubit.homeModel?.data?.productsList != null)
-              Productssection(),
+              ProductsSection(),
           ],
         ),
       ),

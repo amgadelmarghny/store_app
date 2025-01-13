@@ -28,7 +28,7 @@ class FavoriteBody extends StatelessWidget {
             .favoritesDataModel!
             .dataModelList
             .isEmpty) {
-          return ExpandedInitialScreen(
+          return InitialScreen(
             icon: Icons.favorite,
             text: 'There is no favorites yet',
           );

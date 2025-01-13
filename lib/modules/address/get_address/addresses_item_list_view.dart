@@ -4,8 +4,8 @@ import 'package:soagmb/modules/address/get_address/address_item.dart';
 import 'package:soagmb/modules/cart/order_sheet_components/address_order_item.dart';
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
 
-class AddressessItemListView extends StatefulWidget {
-  const AddressessItemListView({
+class AddressesItemListView extends StatefulWidget {
+  const AddressesItemListView({
     super.key,
     required this.isFromDrawerNotOrderSheet,
   });
@@ -13,10 +13,10 @@ class AddressessItemListView extends StatefulWidget {
   final bool isFromDrawerNotOrderSheet;
 
   @override
-  State<AddressessItemListView> createState() => _AddressessItemListViewState();
+  State<AddressesItemListView> createState() => _AddressesItemListViewState();
 }
 
-class _AddressessItemListViewState extends State<AddressessItemListView> {
+class _AddressesItemListViewState extends State<AddressesItemListView> {
   int isSelectedAddress = 0;
   @override
   Widget build(BuildContext context) {
