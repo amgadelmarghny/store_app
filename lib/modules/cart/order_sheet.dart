@@ -12,7 +12,7 @@ import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
 import 'package:soagmb/shared/components/navigation.dart';
-import 'package:soagmb/features/checkout/data/repos/checkout_repo_impl.dart';
+import 'package:soagmb/features/checkout/data/repository/checkout_repo.dart';
 
 class OrderSheet extends StatelessWidget {
   const OrderSheet({

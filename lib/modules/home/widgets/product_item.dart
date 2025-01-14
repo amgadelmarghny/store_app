@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/modules/home/widgets/product_item_info_with_interaction.dart';
 import 'package:soagmb/modules/product/product_view.dart';
 import 'package:soagmb/models/shop_models/product_model.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/shared/components/product_image.dart';
-import '../../../shared/style/themes.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({

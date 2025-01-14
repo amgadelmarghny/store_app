@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/models/category_details_model.dart';
-import 'package:soagmb/shared/network/remote/dio_helper_for_shop.dart';
+import 'package:soagmb/core/network/remote/dio_helper_for_shop.dart';
 
 part 'category_state.dart';
 

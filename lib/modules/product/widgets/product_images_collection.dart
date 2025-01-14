@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:soagmb/models/shop_models/product_model.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class ProductImagesCollection extends StatelessWidget {
   const ProductImagesCollection({

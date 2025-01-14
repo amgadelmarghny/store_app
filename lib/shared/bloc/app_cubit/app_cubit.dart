@@ -1,9 +1,9 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/models/boarding_model.dart';
 import 'package:soagmb/models/complaint_model.dart';
-import 'package:soagmb/shared/network/local/key_const.dart';
-import 'package:soagmb/shared/network/local/shared_helper.dart';
-import '../../network/remote/dio_helper_for_shop.dart';
+import 'package:soagmb/core/network/local/key_const.dart';
+import 'package:soagmb/core/network/local/shared_helper.dart';
+import '../../../core/network/remote/dio_helper_for_shop.dart';
 
 part 'app_state.dart';
 

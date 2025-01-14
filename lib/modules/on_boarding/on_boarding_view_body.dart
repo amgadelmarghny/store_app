@@ -5,8 +5,8 @@ import 'package:soagmb/modules/on_boarding/widgets/custom_smooth_page_indicator.
 import 'package:soagmb/modules/on_boarding/widgets/page_view_bilder.dart';
 import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:soagmb/shared/components/navigation.dart';
-import 'package:soagmb/shared/network/local/key_const.dart';
-import 'package:soagmb/shared/network/local/shared_helper.dart';
+import 'package:soagmb/core/network/local/key_const.dart';
+import 'package:soagmb/core/network/local/shared_helper.dart';
 
 class OnBoardingViewBody extends StatelessWidget {
   const OnBoardingViewBody({

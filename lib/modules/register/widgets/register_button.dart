@@ -7,8 +7,8 @@ import 'package:soagmb/shared/components/custom_button.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
 import 'package:soagmb/shared/components/navigation.dart';
 import 'package:soagmb/features/checkout/data/models/customer_payment_input_model.dart';
-import 'package:soagmb/shared/network/local/key_const.dart';
-import 'package:soagmb/shared/network/local/shared_helper.dart';
+import 'package:soagmb/core/network/local/key_const.dart';
+import 'package:soagmb/core/network/local/shared_helper.dart';
 
 class RegisterButtonConsumer extends StatelessWidget {
   const RegisterButtonConsumer({

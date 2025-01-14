@@ -5,8 +5,8 @@ import 'package:soagmb/layout/shop/drawer_components/complaint_components/compla
 import 'package:soagmb/layout/shop/drawer_components/complaint_components/complaint_response.dart';
 import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
-import 'package:soagmb/shared/style/colors.dart';
-import 'package:soagmb/shared/style/themes.dart';
+import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/core/global/style/themes.dart';
 
 class ComplaintDialogBuilder extends StatefulWidget {
   const ComplaintDialogBuilder({

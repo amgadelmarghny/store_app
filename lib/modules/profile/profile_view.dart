@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/modules/profile/profile_view_body.dart';
 import 'package:soagmb/models/user_model.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});

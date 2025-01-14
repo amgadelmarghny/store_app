@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/models/address_models/address_model.dart';
 import 'package:soagmb/modules/address/get_address/addresses_view.dart';
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:soagmb/shared/style/themes.dart';
 
 class AddressOptions extends StatelessWidget {
   const AddressOptions({

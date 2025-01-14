@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/modules/category/categories/widgets/category_large_item_list_view.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class CategoryBody extends StatelessWidget {
   const CategoryBody({super.key});

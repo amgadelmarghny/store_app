@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:soagmb/models/user_model.dart';
 import 'package:soagmb/modules/profile/change_password_view.dart';
 import 'package:soagmb/modules/profile/update_profile_view.dart';
-import 'package:soagmb/shared/style/colors.dart';
-import 'package:soagmb/shared/style/themes.dart';
+import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/core/global/style/themes.dart';
 
 class ModifyProfileButtons extends StatelessWidget {
   const ModifyProfileButtons({super.key, required this.userData});

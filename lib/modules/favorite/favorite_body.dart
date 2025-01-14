@@ -5,7 +5,7 @@ import 'package:soagmb/modules/favorite/widgets/favorite_data_screen.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
 import 'package:soagmb/shared/components/expanded_initial_screen.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class FavoriteBody extends StatelessWidget {
   const FavoriteBody({super.key});

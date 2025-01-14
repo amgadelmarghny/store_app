@@ -5,8 +5,8 @@ import 'package:soagmb/models/category_model.dart';
 import 'package:soagmb/modules/category/category_details/category_details_view.dart';
 import 'package:soagmb/modules/home/widgets/category_item_name_banner.dart';
 import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
-import 'package:soagmb/shared/style/colors.dart';
-import 'package:soagmb/shared/style/themes.dart';
+import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/core/global/style/themes.dart';
 
 class CategoryHomeItem extends StatelessWidget {
   const CategoryHomeItem({super.key, required this.dataModel});

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class AvatarPic extends StatelessWidget {
   const AvatarPic({

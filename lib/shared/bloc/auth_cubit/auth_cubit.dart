@@ -1,15 +1,15 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/models/login_model.dart';
 import 'package:soagmb/models/profile_model.dart';
 import 'package:soagmb/models/register_model.dart';
 import 'package:soagmb/models/user_model.dart';
 import 'package:soagmb/features/checkout/data/models/customer_payment_input_model.dart';
-import 'package:soagmb/shared/network/local/key_const.dart';
-import 'package:soagmb/shared/network/local/shared_helper.dart';
-import 'package:soagmb/shared/network/remote/dio_helper_for_shop.dart';
-import 'package:soagmb/shared/network/remote/end_points_url.dart';
-import 'package:soagmb/shared/network/remote/stripe_service.dart';
+import 'package:soagmb/core/network/local/key_const.dart';
+import 'package:soagmb/core/network/local/shared_helper.dart';
+import 'package:soagmb/core/network/remote/dio_helper_for_shop.dart';
+import 'package:soagmb/core/network/remote/end_points_url.dart';
+import 'package:soagmb/core/network/remote/stripe_service.dart';
 
 part 'auth_state.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/models/category_model.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class CategoryItemNameBanner extends StatelessWidget {
   const CategoryItemNameBanner({

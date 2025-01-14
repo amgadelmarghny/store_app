@@ -3,7 +3,7 @@ import 'package:popover/popover.dart';
 import 'package:soagmb/models/address_models/address_model.dart';
 import 'package:soagmb/modules/address/get_address/menu_items.dart';
 import 'package:soagmb/modules/address/modify_address/update_address_view.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class AddressItem extends StatelessWidget {
   const AddressItem({

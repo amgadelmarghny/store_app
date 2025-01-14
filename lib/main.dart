@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/layout/shop/shop_view.dart';
 import 'package:soagmb/modules/address/add_new_address/add_address_view.dart';
 import 'package:soagmb/modules/address/get_address/addresses_view.dart';
@@ -23,11 +24,10 @@ import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:soagmb/shared/bloc/bloc_observer.dart';
 import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
-import 'package:soagmb/shared/network/local/api_keys.dart';
-import 'package:soagmb/shared/network/local/key_const.dart';
-import 'package:soagmb/shared/network/local/shared_helper.dart';
-import 'package:soagmb/shared/network/remote/dio_helper_for_shop.dart';
-import 'package:soagmb/shared/style/themes.dart';
+import 'package:soagmb/core/network/local/api_keys.dart';
+import 'package:soagmb/core/network/local/key_const.dart';
+import 'package:soagmb/core/network/local/shared_helper.dart';
+import 'package:soagmb/core/network/remote/dio_helper_for_shop.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -9,7 +9,7 @@ import 'package:soagmb/modules/address/get_address/empty_address_view_body.dart'
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:soagmb/shared/components/custom_button.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class AddressesViewBody extends StatelessWidget {
   const AddressesViewBody({

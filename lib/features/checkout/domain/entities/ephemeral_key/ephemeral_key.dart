@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:soagmb/features/checkout/data/models/ephemeral_key_model/associated_object_model.dart';
 
-import 'associated_object.dart';
-
 class EphemeralKey extends Equatable {
   final String? id;
   final String? object;

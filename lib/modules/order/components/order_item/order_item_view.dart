@@ -6,7 +6,7 @@ import 'package:soagmb/modules/order/components/order_item/order_item_view_body.
 import 'package:soagmb/modules/order/components/order_item/sliver_app_bar.dart';
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:soagmb/shared/components/custom_show_messages.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class OrderItemView extends StatelessWidget {
   const OrderItemView({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/modules/login/login_view.dart';
 import 'package:soagmb/shared/components/navigation.dart';
-import 'package:soagmb/shared/network/local/key_const.dart';
-import 'package:soagmb/shared/network/local/shared_helper.dart';
-import 'package:soagmb/shared/style/colors.dart';
-import 'package:soagmb/shared/style/themes.dart';
+import 'package:soagmb/core/network/local/key_const.dart';
+import 'package:soagmb/core/network/local/shared_helper.dart';
 import 'on_boarding_view_body.dart';
 
 class OnBoardingView extends StatelessWidget {

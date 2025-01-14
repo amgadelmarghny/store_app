@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/models/order_models/get_orders_model.dart';
 import 'package:soagmb/modules/order/components/order_item/order_item_view.dart';
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class OrderItem extends StatelessWidget {
   const OrderItem({

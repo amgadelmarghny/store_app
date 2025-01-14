@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class AddressOrderItemLeading extends StatelessWidget {
   const AddressOrderItemLeading({super.key, required this.isActive});

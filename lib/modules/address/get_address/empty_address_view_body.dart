@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/modules/address/add_new_address/add_address_view.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class EmptyAddressViewBody extends StatelessWidget {
   const EmptyAddressViewBody({

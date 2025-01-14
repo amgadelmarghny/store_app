@@ -6,8 +6,8 @@ import 'package:soagmb/features/checkout/data/models/ephemeral_key_model/ephemer
 import 'package:soagmb/features/checkout/domain/entities/init_payment_sheet_input.dart';
 import 'package:soagmb/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:soagmb/features/checkout/data/models/payment_intent_model/payment_intent_model.dart';
-import 'package:soagmb/shared/network/local/api_keys.dart';
-import 'package:soagmb/shared/network/remote/api_service_for_sripe.dart';
+import 'package:soagmb/core/network/local/api_keys.dart';
+import 'package:soagmb/core/network/remote/api_service_for_sripe.dart';
 
 abstract class StripeService {
   // for payment intent

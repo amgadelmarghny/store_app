@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:soagmb/shared/style/colors.dart';
-import 'package:soagmb/shared/style/size_configs.dart';
+import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/core/global/style/size_configs.dart';
 
 abstract class ThemeStyle {
   static ThemeData lightTheme() {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/modules/order/cancelled_order_body.dart';
 import 'package:soagmb/modules/order/new_orders_body.dart';
-import 'package:soagmb/shared/style/colors.dart';
+import 'package:soagmb/core/global/style/colors.dart';
 
 class OrderViewBody extends StatelessWidget {
   const OrderViewBody({super.key});

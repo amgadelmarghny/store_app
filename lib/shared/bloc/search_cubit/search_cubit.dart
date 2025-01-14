@@ -1,9 +1,9 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/models/search_model.dart';
-import 'package:soagmb/shared/network/local/key_const.dart';
-import 'package:soagmb/shared/network/local/shared_helper.dart';
-import 'package:soagmb/shared/network/remote/dio_helper_for_shop.dart';
-import 'package:soagmb/shared/network/remote/end_points_url.dart';
+import 'package:soagmb/core/network/local/key_const.dart';
+import 'package:soagmb/core/network/local/shared_helper.dart';
+import 'package:soagmb/core/network/remote/dio_helper_for_shop.dart';
+import 'package:soagmb/core/network/remote/end_points_url.dart';
 part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
