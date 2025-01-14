@@ -1,20 +1,19 @@
-import 'card.dart';
-import 'link.dart';
+import 'package:soagmb/features/checkout/data/models/payment_intent_model/card._model.dart';
+import 'package:soagmb/features/checkout/domain/entities/payment_intent/payment_method_options.dart';
 
-class PaymentMethodOptions {
-  Card? card;
-  Link? link;
+import 'link_model.dart';
 
-  PaymentMethodOptions({this.card, this.link});
+class PaymentMethodOptionsModel extends PaymentMethodOptions {
+  const PaymentMethodOptionsModel({super.card, super.link});
 
-  factory PaymentMethodOptions.fromJson(Map<String, dynamic> json) {
-    return PaymentMethodOptions(
+  factory PaymentMethodOptionsModel.fromJson(Map<String, dynamic> json) {
+    return PaymentMethodOptionsModel(
       card: json['card'] == null
           ? null
-          : Card.fromJson(json['card'] as Map<String, dynamic>),
+          : CardModel.fromJson(json['card'] as Map<String, dynamic>),
       link: json['link'] == null
           ? null
-          : Link.fromJson(json['link'] as Map<String, dynamic>),
+          : LinkModel.fromJson(json['link'] as Map<String, dynamic>),
     );
   }
 

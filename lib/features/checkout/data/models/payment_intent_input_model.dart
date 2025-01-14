@@ -1,10 +1,10 @@
-class PaymentIntentInputModel {
-  final String currency;
-  final String amount;
-  final String customerId;
+import 'package:soagmb/features/checkout/domain/entities/paument_intent_input.dart';
 
-  PaymentIntentInputModel(
-      {required this.customerId, required this.currency, required this.amount});
+class PaymentIntentInputModel extends PaymentIntentInput {
+  const PaymentIntentInputModel(
+      {required super.customerId,
+      required super.currency,
+      required super.amount});
 
   Map<String, dynamic> toJson() {
     return {

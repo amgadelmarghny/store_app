@@ -1,46 +1,27 @@
-class CustomerPaymentModel {
-  String? id;
-  String? object;
-  int? balance;
-  int? created;
-  dynamic currency;
-  dynamic defaultSource;
-  bool? delinquent;
-  dynamic description;
-  dynamic discount;
-  String? email;
-  String? invoicePrefix;
-  bool? livemode;
-  String? name;
-  int? nextInvoiceSequence;
-  String? phone;
-  List<dynamic>? preferredLocales;
-  dynamic shipping;
-  String? taxExempt;
-  dynamic testClock;
+import 'package:soagmb/features/checkout/domain/entities/customer_payment.dart';
 
-  CustomerPaymentModel({
-    this.id,
-    this.object,
-    this.balance,
-    this.created,
-    this.currency,
-    this.defaultSource,
-    this.delinquent,
-    this.description,
-    this.discount,
-    this.email,
-    this.invoicePrefix,
-    this.livemode,
-    this.name,
-    this.nextInvoiceSequence,
-    this.phone,
-    this.preferredLocales,
-    this.shipping,
-    this.taxExempt,
-    this.testClock,
+class CustomerPaymentModel extends CustomerPayment {
+  const CustomerPaymentModel({
+    required super.id,
+    required super.object,
+    required super.balance,
+    required super.created,
+    required super.currency,
+    required super.defaultSource,
+    required super.delinquent,
+    required super.description,
+    required super.discount,
+    required super.email,
+    required super.invoicePrefix,
+    required super.liveMode,
+    required super.name,
+    required super.nextInvoiceSequence,
+    required super.phone,
+    required super.preferredLocales,
+    required super.shipping,
+    required super.taxExempt,
+    required super.testClock,
   });
-
   factory CustomerPaymentModel.fromJson(Map<String, dynamic> json) {
     return CustomerPaymentModel(
       id: json['id'] as String?,
@@ -54,7 +35,7 @@ class CustomerPaymentModel {
       discount: json['discount'] as dynamic,
       email: json['email'],
       invoicePrefix: json['invoice_prefix'] as String?,
-      livemode: json['livemode'] as bool?,
+      liveMode: json['livemode'] as bool?,
       name: json['name'] as String?,
       nextInvoiceSequence: json['next_invoice_sequence'] as int?,
       phone: json['phone'],

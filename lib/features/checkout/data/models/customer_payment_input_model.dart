@@ -1,9 +1,11 @@
-class CustomerPaymentInputModel {
-  final String? name;
-  final String? phone;
-  final String? email;
+import 'package:soagmb/features/checkout/domain/entities/customer_payment_input.dart';
 
-  CustomerPaymentInputModel({this.name, this.phone, this.email});
+class CustomerPaymentInputModel extends CustomerPaymentInput {
+  const CustomerPaymentInputModel({
+    super.email,
+    super.name,
+    super.phone,
+  });
 
   Map<String, dynamic> toJson() {
     return {

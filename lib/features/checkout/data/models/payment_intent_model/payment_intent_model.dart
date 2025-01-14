@@ -1,4 +1,4 @@
-import 'automatic_payment_methods.dart';
+import 'automatic_payment_methods_model.dart';
 import 'payment_method_options.dart';
 
 class PaymentIntentModel {
@@ -9,7 +9,7 @@ class PaymentIntentModel {
   int? amountReceived;
   dynamic application;
   dynamic applicationFeeAmount;
-  AutomaticPaymentMethods? automaticPaymentMethods;
+  AutomaticPaymentMethodsModel? automaticPaymentMethods;
   dynamic canceledAt;
   dynamic cancellationReason;
   String? captureMethod;
@@ -26,7 +26,7 @@ class PaymentIntentModel {
   dynamic nextAction;
   dynamic onBehalfOf;
   dynamic paymentMethod;
-  PaymentMethodOptions? paymentMethodOptions;
+  PaymentMethodOptionsModel? paymentMethodOptions;
   List<dynamic>? paymentMethodTypes;
   dynamic processing;
   dynamic receiptEmail;
@@ -91,7 +91,7 @@ class PaymentIntentModel {
       applicationFeeAmount: json['application_fee_amount'] as dynamic,
       automaticPaymentMethods: json['automatic_payment_methods'] == null
           ? null
-          : AutomaticPaymentMethods.fromJson(
+          : AutomaticPaymentMethodsModel.fromJson(
               json['automatic_payment_methods'] as Map<String, dynamic>),
       canceledAt: json['canceled_at'] as dynamic,
       cancellationReason: json['cancellation_reason'] as dynamic,
@@ -111,7 +111,7 @@ class PaymentIntentModel {
       paymentMethod: json['payment_method'] as dynamic,
       paymentMethodOptions: json['payment_method_options'] == null
           ? null
-          : PaymentMethodOptions.fromJson(
+          : PaymentMethodOptionsModel.fromJson(
               json['payment_method_options'] as Map<String, dynamic>),
       paymentMethodTypes: json['payment_method_types'] as List<dynamic>?,
       processing: json['processing'] as dynamic,

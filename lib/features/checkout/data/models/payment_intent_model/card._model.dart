@@ -1,17 +1,14 @@
-class Card {
-  dynamic installments;
-  dynamic mandateOptions;
-  dynamic network;
-  String? requestThreeDSecure;
+import 'package:soagmb/features/checkout/domain/entities/payment_intent/card.dart';
 
-  Card({
-    this.installments,
-    this.mandateOptions,
-    this.network,
-    this.requestThreeDSecure,
+class CardModel extends Card {
+  const CardModel({
+    super.installments,
+    super.mandateOptions,
+    super.network,
+    super.requestThreeDSecure,
   });
 
-  factory Card.fromJson(Map<String, dynamic> json) => Card(
+  factory CardModel.fromJson(Map<String, dynamic> json) => CardModel(
         installments: json['installments'] as dynamic,
         mandateOptions: json['mandate_options'] as dynamic,
         network: json['network'] as dynamic,
