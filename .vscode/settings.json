@@ -1,4 +1,5 @@
 {
     "cmake.sourceDirectory": "C:/Users/AMGAD/StudioProjects/store_2/linux",
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic"
 }

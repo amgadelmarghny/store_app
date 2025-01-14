@@ -37,7 +37,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.0.0
-  flutter_stripe: ^11.2.0
+  flutter_stripe: ^11.3.0
   flutter_svg: ^2.0.17
   fluttertoast: ^8.2.10
   google_fonts: ^6.2.1

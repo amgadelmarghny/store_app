@@ -28,7 +28,7 @@ class MyCartViewBody extends StatelessWidget {
           return const Center(child: Text('There is an error'));
         }
         return ConditionalBuilder(
-          condition: state is GetCartSuccessState,
+          condition: cartItemList.isNotEmpty,
           builder: (context) => MyCartDataScreen(
             cartItemList: cartItemList,
           ),
