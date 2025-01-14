@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
-import 'package:soagmb/shared/feature/checkout/data/models/payment_intent_input_model.dart';
-import 'package:soagmb/shared/feature/checkout/data/repos/checkout_repo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/checkout/data/models/payment_intent_input_model.dart';
+import 'package:soagmb/features/checkout/domain/repository/checkout_repo.dart';
 part 'payment_state.dart';
 
 class PaymentCubit extends Cubit<PaymentState> {

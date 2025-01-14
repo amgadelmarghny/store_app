@@ -4,7 +4,7 @@ import 'package:soagmb/models/login_model.dart';
 import 'package:soagmb/models/profile_model.dart';
 import 'package:soagmb/models/register_model.dart';
 import 'package:soagmb/models/user_model.dart';
-import 'package:soagmb/shared/feature/checkout/data/models/customer_payment_input_model.dart';
+import 'package:soagmb/features/checkout/data/models/customer_payment_input_model.dart';
 import 'package:soagmb/shared/network/local/key_const.dart';
 import 'package:soagmb/shared/network/local/shared_helper.dart';
 import 'package:soagmb/shared/network/remote/dio_helper_for_shop.dart';
