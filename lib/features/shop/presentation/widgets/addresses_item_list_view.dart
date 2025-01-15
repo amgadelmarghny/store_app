@@ -42,7 +42,9 @@ class _AddressesItemListViewState extends State<AddressesItemListView> {
                 },
                 child: AddressOrderItem(
                   addressModel: addressesList[index],
-                  isActive: returnSelectedAddress(),
+                  isActive: returnSelectedAddress(), onChanged: (value) {  
+                      onTap(index, addressesList);
+                  },
                 ),
               );
       },
