@@ -20,7 +20,7 @@ class CustomSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
       children: <Widget>[
         Opacity(
           opacity: 1 - (shrinkOffset / expandedHeight),
-          child: Image.asset('lib/core/global/assets/images/appbar_iamge.png',
+          child: Image.asset('lib/core/global/assets/images/appbar_image.png',
               fit: BoxFit.cover),
         ),
         Opacity(

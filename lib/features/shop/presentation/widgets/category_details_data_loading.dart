@@ -14,7 +14,7 @@ class CategoryDetailsDataLoading extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
-              'lib/assets/images/category product.png',
+              'lib/core/global/assets/images/category product.png',
               height: 160,
             ),
             const SizedBox(

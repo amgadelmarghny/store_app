@@ -6,7 +6,7 @@ class ErrorModel extends Equatable {
 
   const ErrorModel({required this.status, required this.message});
 
-  factory ErrorModel.fromJson(Map<String, dynamic> json) =>
+  factory ErrorModel.fromJson(dynamic json) =>
       ErrorModel(status: json['status'], message: json['message']);
 
   @override

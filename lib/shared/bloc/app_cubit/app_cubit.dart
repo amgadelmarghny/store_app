@@ -13,17 +13,17 @@ class AppCubit extends Cubit<AppStates> {
 
   List<BoardModel> boardList = [
     BoardModel(
-      image: 'lib/assets/images/Sale3.jpg',
+      image: 'lib/core/global/assets/images/Sale3.jpg',
       shopTitle: 'Explore many products',
       shopSubTitle: 'All you need in one app',
     ),
     BoardModel(
-      image: 'lib/assets/images/Sale2.jpg',
+      image: 'lib/core/global/assets/images/Sale2.jpg',
       shopTitle: 'Choose and Checkout',
       shopSubTitle: 'Buy and order what you want from home',
     ),
     BoardModel(
-      image: 'lib/assets/images/Sale1.jpg',
+      image: 'lib/core/global/assets/images/Sale1.jpg',
       shopTitle: 'Offers and discounts',
       shopSubTitle: 'Enjoy special discounts',
     ),

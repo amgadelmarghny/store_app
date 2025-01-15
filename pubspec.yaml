@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animate_do: ^3.3.4
   cached_network_image: ^3.4.0
   carousel_slider: ^5.0.0
   conditional_builder_null_safety: ^0.0.6
@@ -41,6 +42,7 @@ dependencies:
   flutter_stripe: ^11.3.0
   flutter_svg: ^2.0.17
   fluttertoast: ^8.2.10
+  get_it: ^8.0.3
   google_fonts: ^6.2.1
   google_maps_flutter: ^2.10.0
   logger: ^2.4.0
@@ -65,7 +67,7 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/assets/images/
+    - lib/core/global/assets/images/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

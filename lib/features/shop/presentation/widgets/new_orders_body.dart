@@ -48,10 +48,10 @@ class NewOrdersBody extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'lib/assets/images/empty_box.png',
+                  'lib/core/global/assets/images/empty_box.png',
                   height: 200,
                 ),
-                const Text('You havn\'t placed an order yet')
+                const Text('You haven\'t placed an order yet')
               ],
             );
           }

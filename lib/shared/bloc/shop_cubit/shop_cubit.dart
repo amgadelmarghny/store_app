@@ -4,21 +4,21 @@ import 'package:soagmb/models/cart_models/get_cart_model.dart';
 import 'package:soagmb/models/cart_models/update_cart.dart';
 import 'package:soagmb/models/change_password.dart';
 import 'package:soagmb/models/shop_models/product_model.dart';
-import 'package:soagmb/modules/category/categories/categories_body.dart';
-import 'package:soagmb/modules/favorite/favorite_body.dart';
-import 'package:soagmb/modules/home/home_body.dart';
+import 'package:soagmb/features/shop/presentation/widgets/categories_body.dart';
+import 'package:soagmb/features/shop/presentation/widgets/favorite_body.dart';
+import 'package:soagmb/features/shop/presentation/widgets/home_body.dart';
 import 'package:soagmb/models/category_model.dart';
 import 'package:soagmb/models/get_favorites_model.dart';
 import 'package:soagmb/models/logout_model.dart';
 import 'package:soagmb/models/profile_model.dart';
 import 'package:soagmb/models/shop_models/home_model.dart';
-import 'package:soagmb/shared/components/navigation.dart';
+import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
 import 'package:soagmb/core/network/remote/dio_helper_for_shop.dart';
 import 'package:soagmb/core/network/remote/end_points_url.dart';
 import '../../../models/favorite_model.dart';
-import '../../components/favorite_notification_circle.dart';
+import '../../../features/shop/presentation/widgets/favorite_notification_circle.dart';
 part 'shop_state.dart';
 
 class ShopCubit extends Cubit<ShopStates> {

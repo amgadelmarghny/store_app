@@ -50,10 +50,10 @@ class CancelledOrdersBody extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'lib/assets/images/empty_box.png',
+                  'lib/core/global/assets/images/empty_box.png',
                   height: 200,
                 ),
-                const Text('There is no cannceld order')
+                const Text('There is no canceled order')
               ],
             );
           }
