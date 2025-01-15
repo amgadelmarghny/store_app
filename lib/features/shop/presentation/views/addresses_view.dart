@@ -13,7 +13,7 @@ class AddressesView extends StatelessWidget {
         title: const Text('My Addresses'),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 20, bottom: 20),
+        padding: const EdgeInsets.all(20),
         child: AddressesViewBody(
           isFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet,
         ),

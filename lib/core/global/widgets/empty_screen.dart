@@ -6,6 +6,7 @@ class EmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
           'lib/core/global/assets/images/empty_box.png',

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/core/global/widgets/empty_screen.dart';
 import 'package:soagmb/features/shop/presentation/views/add_address_view.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 
 class EmptyAddressViewBody extends StatelessWidget {
   const EmptyAddressViewBody({
@@ -13,26 +15,16 @@ class EmptyAddressViewBody extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(
-            'lib/core/global/assets/images/empty_box.png',
-            height: 200,
+          Expanded(
+            child: EmptyScreen(
+              itemName: 'address',
+            ),
           ),
-          const Text('No addresses found !'),
-          MaterialButton(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            color: defaultColor.shade100,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(30))),
-            onPressed: () {
+          CustomButton(
+            text: 'Add New Address',
+            onTap: () {
               Navigator.pushNamed(context, AddAddressView.id);
             },
-            child: const Text(
-              'Add New Address',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-              ),
-            ),
           ),
         ],
       ),

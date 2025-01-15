@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
@@ -21,57 +22,60 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        height: 55,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: color,
-          gradient: isGradientColor
-              ? LinearGradient(
-                  colors: [
-                    defaultColor[600]!,
-                    defaultColor[200]!,
-                  ],
-                  begin: Alignment.centerRight,
-                  end: Alignment.centerLeft,
-                )
-              : null,
-          // color: defaultColor,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Center(
-          child: isLoading
-              ? const SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
+    return FadeInUp(
+      duration: Duration(milliseconds: 500),
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          height: 55,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: color,
+            gradient: isGradientColor
+                ? LinearGradient(
+                    colors: [
+                      defaultColor[600]!,
+                      defaultColor[200]!,
+                    ],
+                    begin: Alignment.centerRight,
+                    end: Alignment.centerLeft,
+                  )
+                : null,
+            // color: defaultColor,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Center(
+            child: isLoading
+                ? const SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  )
+                : Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (prefixIcon)
+                        const Icon(
+                          Icons.do_not_disturb,
+                          color: Colors.red,
+                        ),
+                      if (prefixIcon)
+                        const SizedBox(
+                          width: 5,
+                        ),
+                      Text(
+                        text,
+                        style: TextStyle(
+                          color: textColor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
+                    ],
                   ),
-                )
-              : Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (prefixIcon)
-                      const Icon(
-                        Icons.do_not_disturb,
-                        color: Colors.red,
-                      ),
-                    if (prefixIcon)
-                      const SizedBox(
-                        width: 5,
-                      ),
-                    Text(
-                      text,
-                      style: TextStyle(
-                        color: textColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    )
-                  ],
-                ),
+          ),
         ),
       ),
     );

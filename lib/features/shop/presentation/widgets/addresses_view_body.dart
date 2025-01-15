@@ -48,21 +48,17 @@ class AddressesViewBody extends StatelessWidget {
                     .getAddressesModel!.data!.addressModelsList.isNotEmpty,
             builder: (context) => CustomScrollView(
               slivers: [
-                SliverToBoxAdapter(child: AddressesViewHeader()),
-                SliverToBoxAdapter(child: const SizedBox(height: 20)),
+                AddressesViewHeader(),
                 AddressesItemListView(
                     isFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet),
                 SliverFillRemaining(
                   hasScrollBody: false,
                   child: Align(
                     alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: CustomButton(
-                        text: 'Add new address',
-                        onTap: () =>
-                            Navigator.pushNamed(context, AddAddressView.id),
-                      ),
+                    child: CustomButton(
+                      text: 'Add new address',
+                      onTap: () =>
+                          Navigator.pushNamed(context, AddAddressView.id),
                     ),
                   ),
                 )
