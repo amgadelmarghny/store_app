@@ -16,6 +16,9 @@ import 'package:soagmb/core/network/remote/end_points_url.dart';
 part 'address_state.dart';
 
 class AddressCubit extends Cubit<AddressState> {
+
+  static AddressCubit get(context) => BlocProvider.of(context);
+
   AddressCubit() : super(AddressInitial());
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/shared/bloc/auth_cubit/auth_cubit.dart';
-import 'package:soagmb/features/shop/presentation/widgets/login_button.dart';
+import 'package:soagmb/features/Auth/presentation/cubit/auth_cubit.dart';
+import 'package:soagmb/features/Auth/presentation/widgets/login_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/text_form_field.dart';
 
 class SliverLoginInfo extends StatelessWidget {

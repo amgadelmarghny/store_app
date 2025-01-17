@@ -29,6 +29,7 @@ class NewOrdersBody extends StatelessWidget {
           }
         },
         builder: (context, state) {
+          AddressCubit bloc = AddressCubit.get(context);
           if (state is GetOrderFailure) {
             return const Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -42,8 +43,7 @@ class NewOrdersBody extends StatelessWidget {
               ],
             );
           }
-          if (BlocProvider.of<AddressCubit>(context).getOrdersModel != null &&
-              BlocProvider.of<AddressCubit>(context).newOrdersList.isEmpty) {
+          if (bloc.getOrdersModel != null && bloc.newOrdersList.isEmpty) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -56,17 +56,15 @@ class NewOrdersBody extends StatelessWidget {
             );
           }
           return ConditionalBuilder(
-            condition: BlocProvider.of<AddressCubit>(context).getOrdersModel !=
-                    null &&
-                BlocProvider.of<AddressCubit>(context).newOrdersList.isNotEmpty,
+            condition:
+                bloc.getOrdersModel != null && bloc.newOrdersList.isNotEmpty,
             builder: (BuildContext context) {
               return ListView.separated(
                 clipBehavior: Clip.none,
                 itemBuilder: (context, index) {
                   return OrderItem(
                     color: const Color.fromARGB(255, 255, 157, 0),
-                    orderModel: BlocProvider.of<AddressCubit>(context)
-                        .newOrdersList[index],
+                    orderModel: bloc.newOrdersList[index],
                     isNewOrderBody: true,
                   );
                 },
@@ -75,8 +73,7 @@ class NewOrdersBody extends StatelessWidget {
                     height: 20,
                   );
                 },
-                itemCount:
-                    BlocProvider.of<AddressCubit>(context).newOrdersList.length,
+                itemCount: bloc.newOrdersList.length,
               );
             },
             fallback: (BuildContext context) {

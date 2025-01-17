@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/views/shop_view.dart';
-import 'package:soagmb/models/user_model.dart';
-import 'package:soagmb/shared/bloc/auth_cubit/auth_cubit.dart';
+import 'package:soagmb/features/Auth/presentation/cubit/auth_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
@@ -10,27 +9,23 @@ import 'package:soagmb/features/checkout/data/models/customer_payment_input_mode
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
 
-class RegisterButtonConsumer extends StatelessWidget {
-  const RegisterButtonConsumer({
+class LoginButtonBlocConsumer extends StatelessWidget {
+  const LoginButtonBlocConsumer({
     super.key,
-    required this.nameController,
     required this.emailController,
     required this.passwordController,
-    required this.phoneController,
     required this.formKey,
   });
 
-  final TextEditingController nameController;
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final TextEditingController phoneController;
   final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) async {
-        if (state is RegisterFailureState) {
+        if (state is LoginFailureState) {
           snacKBar(context, state.err);
         }
         if (state is CustomerPatymentFailure) {
@@ -40,15 +35,15 @@ class RegisterButtonConsumer extends StatelessWidget {
             context: context,
           );
         }
-        if (state is RegisterSuccessState) {
-          if (state.registermodel.status) {
-            await CashHelper.setData(
-                    key: tOKENCONST, value: state.registermodel.data!.token)
+        if (state is LoginSuccessState) {
+          if (state.loginModel.status) {
+            CashHelper.setData(
+                    key: tOKENCONST, value: state.loginModel.data!.token)
                 .then(
               (value) {
                 if (context.mounted) {
                   toastShown(
-                    message: state.registermodel.message,
+                    message: state.loginModel.message,
                     state: ToastState.success,
                     context: context,
                   );
@@ -61,7 +56,7 @@ class RegisterButtonConsumer extends StatelessWidget {
             );
           } else {
             toastShown(
-              message: state.registermodel.message,
+              message: state.loginModel.message,
               state: ToastState.error,
               context: context,
             );
@@ -70,37 +65,31 @@ class RegisterButtonConsumer extends StatelessWidget {
       },
       builder: (context, state) {
         return CustomButton(
-          text: 'SIGN UP',
           isLoading:
-              state is RegisterLodingState || state is CustomerPatymentLoding,
+              state is LoginLodingState || state is CustomerPatymentLoding,
+          text: 'Login',
           onTap: () {
-            if (formKey.currentState!.validate()) {
-              formKey.currentState!.save();
-              UserModel userModel = UserModel(
-                name: nameController.text,
-                email: emailController.text,
-                password: passwordController.text,
-                phone: phoneController.text,
-              );
-              // for create customer payment id
-              CustomerPaymentInputModel customerPaymentInputModel =
-                  CustomerPaymentInputModel(
-                      email: emailController.text,
-                      name: nameController.text,
-                      phone: phoneController.text);
-              context
-                  .read<AuthCubit>()
-                  .createACustomForPayment(customerPaymentInputModel);
-              BlocProvider.of<AuthCubit>(context)
-                  .userRegister(userModel: userModel);
-            } else {
-              BlocProvider.of<AuthCubit>(context).validateObserver();
-            }
+            loginTap(context, formKey, emailController, passwordController);
           },
           // to make button color gradient
           isGradientColor: true,
         );
       },
     );
+  }
+}
+
+void loginTap(
+    BuildContext context, formKey, emailController, passwordController) {
+  if (formKey.currentState!.validate()) {
+    context.read<AuthCubit>().userLogin(
+        email: emailController.text, password: passwordController.text);
+    // for create customer payment id
+    CustomerPaymentInputModel customerPaymentInputModel =
+        CustomerPaymentInputModel(email: emailController.text);
+    context.read<AuthCubit>().createACustomForPayment(customerPaymentInputModel);
+    formKey.currentState!.save();
+  } else {
+    BlocProvider.of<AuthCubit>(context).validateObserver();
   }
 }
