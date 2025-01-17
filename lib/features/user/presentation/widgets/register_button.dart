@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/views/shop_view.dart';
-import 'package:soagmb/features/user/data/models/user_model.dart';
+import 'package:soagmb/features/user/data/models/register_user_parameter.dart';
 import 'package:soagmb/features/user/presentation/cubit/auth_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
@@ -69,6 +69,7 @@ class RegisterButtonConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
+        AuthCubit bloc = AuthCubit.get(context);
         return CustomButton(
           text: 'SIGN UP',
           isLoading:
@@ -76,7 +77,7 @@ class RegisterButtonConsumer extends StatelessWidget {
           onTap: () {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
-              UserModel userModel = UserModel(
+              RegisterUserParameter parameter = RegisterUserParameter(
                 name: nameController.text,
                 email: emailController.text,
                 password: passwordController.text,
@@ -88,13 +89,10 @@ class RegisterButtonConsumer extends StatelessWidget {
                       email: emailController.text,
                       name: nameController.text,
                       phone: phoneController.text);
-              context
-                  .read<AuthCubit>()
-                  .createACustomForPayment(customerPaymentInputModel);
-              BlocProvider.of<AuthCubit>(context)
-                  .userRegister(userModel: userModel);
+              bloc.createACustomForPayment(customerPaymentInputModel);
+              bloc.userRegister(parameter: parameter);
             } else {
-              BlocProvider.of<AuthCubit>(context).validateObserver();
+              bloc.validateObserver();
             }
           },
           // to make button color gradient

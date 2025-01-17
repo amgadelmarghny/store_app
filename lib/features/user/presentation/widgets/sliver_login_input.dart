@@ -16,6 +16,7 @@ class SliverLoginInfo extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
     FocusNode passwordFocus = FocusNode();
     return BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
+      AuthCubit bloc = AuthCubit.get(context);
       return SliverToBoxAdapter(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -25,8 +26,7 @@ class SliverLoginInfo extends StatelessWidget {
           ),
           child: Form(
             key: formKey,
-            autovalidateMode:
-                BlocProvider.of<AuthCubit>(context).autovalidateMode,
+            autovalidateMode: bloc.autovalidateMode,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -45,7 +45,7 @@ class SliverLoginInfo extends StatelessWidget {
                 ),
                 CustomTextField(
                   focusNode: passwordFocus,
-                  obscureText: BlocProvider.of<AuthCubit>(context).obscureText,
+                  obscureText: bloc.obscureText,
                   prefixIcon: Icons.lock_outline,
                   controller: passwordController,
                   // add on submitted to do the same as on pressed of custom button
@@ -55,9 +55,9 @@ class SliverLoginInfo extends StatelessWidget {
                   },
                   hintText: 'Enter Password',
                   textInputType: TextInputType.visiblePassword,
-                  suffixIcon: BlocProvider.of<AuthCubit>(context).suffixIcon,
+                  suffixIcon: bloc.suffixIcon,
                   suffixOnPressed: () {
-                    BlocProvider.of<AuthCubit>(context).onEyesPressed();
+                    bloc.onEyesPressed();
                   },
                   labelText: "Password",
                 ),

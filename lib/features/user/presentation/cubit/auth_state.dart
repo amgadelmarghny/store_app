@@ -15,7 +15,7 @@ final class VAlidateState extends AuthState {}
 class LoginLodingState extends AuthState {}
 
 class LoginSuccessState extends AuthState {
-  final LoginModel loginModel;
+  final Login loginModel;
 
   LoginSuccessState({required this.loginModel});
 }
@@ -41,7 +41,7 @@ class CustomerPatymentFailure extends AuthState {
 class RegisterLodingState extends AuthState {}
 
 class RegisterSuccessState extends AuthState {
-  final RegisterModel registermodel;
+  final Register registermodel;
   RegisterSuccessState({required this.registermodel});
 }
 

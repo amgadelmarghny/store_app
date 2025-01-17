@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/features/user/data/models/login_model.dart';
+import 'package:soagmb/features/user/data/models/login_user_parameter.dart';
 import 'package:soagmb/features/user/data/models/profile_model.dart';
-import 'package:soagmb/features/user/data/models/register_model.dart';
-import 'package:soagmb/features/user/data/models/user_model.dart';
+import 'package:soagmb/features/user/data/models/register_user_parameter.dart';
 import 'package:soagmb/features/checkout/data/models/customer_payment_input_model.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
 import 'package:soagmb/core/network/remote/dio_helper_for_shop.dart';
 import 'package:soagmb/core/network/remote/end_points_url.dart';
 import 'package:soagmb/core/network/remote/stripe_service.dart';
+import 'package:soagmb/features/user/domain/entities/login.dart';
+import 'package:soagmb/features/user/domain/entities/register.dart';
+import 'package:soagmb/features/user/domain/usecases/login_usecase.dart';
+import 'package:soagmb/features/user/domain/usecases/register_usecase.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthInitial());
+  AuthCubit(this.loginUsecase, this.registerUsecase) : super(AuthInitial());
 
+  static AuthCubit get(context) => BlocProvider.of(context);
+  
+  final LoginUsecase loginUsecase;
+  final RegisterUsecase registerUsecase;
   IconData suffixIcon = Icons.visibility_off_outlined;
   bool obscureText = true;
-//////////////////?  obscure password //////////////////
 
+//////////////////?  obscure password //////////////////
   void onEyesPressed() {
     obscureText = !obscureText;
     obscureText
@@ -27,8 +34,8 @@ class AuthCubit extends Cubit<AuthState> {
         : suffixIcon = Icons.visibility_outlined;
     emit(ObsecureState());
   }
-//////////////////?  form validation //////////////////
 
+//////////////////?  form validation //////////////////
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   void validateObserver() {
     autovalidateMode = AutovalidateMode.onUserInteraction;
@@ -36,19 +43,13 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
 //////////////////?  Login //////////////////
-  void userLogin({required String email, required String password}) async {
+  void userLogin({required LoginUserParameter loginParameter}) async {
     emit(LoginLodingState());
-    await DioHelper.postData(
-      url: login,
-      data: {
-        "email": email,
-        "password": password,
-      },
-    ).then((value) {
-      emit(LoginSuccessState(loginModel: LoginModel.fromJson(value.data)));
-    }).catchError((err) {
-      emit(LoginFailureState(err: err.toString()));
-    });
+    final result = await loginUsecase(loginParameter);
+    result.fold(
+      (l) => emit(LoginFailureState(err: l.errMessage)),
+      (r) => emit(LoginSuccessState(loginModel: r)),
+    );
   }
 
 //////////////? create a customer payment ///////////
@@ -67,23 +68,13 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
 //////////////////////? registration  /////////////
-  void userRegister({required UserModel userModel}) async {
+  void userRegister({required RegisterUserParameter parameter}) async {
     emit(RegisterLodingState());
-
-    await DioHelper.postData(
-      url: register,
-      data: {
-        "name": userModel.name,
-        "email": userModel.email,
-        "password": userModel.password,
-        "phone": userModel.phone,
-      },
-    ).then((value) {
-      emit(RegisterSuccessState(
-          registermodel: RegisterModel.fromJson(value.data)));
-    }).catchError((err) {
-      emit(RegisterFailureState(err: err.toString()));
-    });
+    final result = await registerUsecase(parameter);
+    result.fold(
+      (l) => emit(RegisterFailureState(err: l.errMessage)),
+      (r) => emit(RegisterSuccessState(registermodel: r)),
+    );
   }
 
   ////////////////////////////? UPDATE  USER  INFORMATION ////////////////////////

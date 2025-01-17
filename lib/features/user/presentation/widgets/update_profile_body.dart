@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/core/global/services/service_locator.dart';
 import 'package:soagmb/features/user/data/models/user_model.dart';
 import 'package:soagmb/features/user/presentation/cubit/auth_cubit.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
@@ -19,7 +20,7 @@ class UpdateProfileViewBody extends StatelessWidget {
     GlobalKey<FormState> formKey = GlobalKey();
 
     return BlocProvider(
-      create: (context) => AuthCubit(),
+      create: (context) => AuthCubit(sl(), sl()),
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is UpdateProfileLoadingState) {
@@ -50,6 +51,7 @@ class UpdateProfileViewBody extends StatelessWidget {
           }
         },
         builder: (context, state) {
+          AuthCubit bloc = AuthCubit.get(context);
           final TextEditingController nameController = TextEditingController();
           final TextEditingController emailController = TextEditingController();
           final TextEditingController phoneController = TextEditingController();
@@ -61,8 +63,7 @@ class UpdateProfileViewBody extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Form(
                 key: formKey,
-                autovalidateMode:
-                    BlocProvider.of<AuthCubit>(context).autovalidateMode,
+                autovalidateMode: bloc.autovalidateMode,
                 child: Column(
                   children: [
                     SizedBox(height: MediaQuery.sizeOf(context).height * .15),
@@ -105,19 +106,21 @@ class UpdateProfileViewBody extends StatelessWidget {
                       onTap: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          BlocProvider.of<AuthCubit>(context)
+                          bloc
                               .updateUserInfo(
                             name: nameController.text,
                             email: emailController.text,
                             phoneNumber: phoneController.text,
-                            authToken: CashHelper.getData(key: tOKENCONST)!,
+                            authToken: CashHelper.getData(key: tOKENCONST)
                           )
                               .then((value) {
-                          if(context.mounted) BlocProvider.of<ShopCubit>(context).getProfileInfo();
+                            if (context.mounted) {
+                              BlocProvider.of<ShopCubit>(context)
+                                  .getProfileInfo();
+                            }
                           });
                         } else {
-                          BlocProvider.of<AuthCubit>(context)
-                              .validateObserver();
+                          bloc.validateObserver();
                         }
                       },
                     ),

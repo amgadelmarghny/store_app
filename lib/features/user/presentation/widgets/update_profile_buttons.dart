@@ -43,7 +43,6 @@ class UpdateProfileButtons extends StatelessWidget {
 
   TextStyle underLineDecoration(BuildContext context) {
     return Theme.of(context).textTheme.bodyMedium!.copyWith(
-          color: defaultColor,
           fontSize: getResponsiveFontSize(fontSize: 17.2),
           decoration: TextDecoration.underline,
           decorationColor: defaultColor,

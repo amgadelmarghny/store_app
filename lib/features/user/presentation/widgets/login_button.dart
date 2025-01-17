@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/views/shop_view.dart';
+import 'package:soagmb/features/user/data/models/login_user_parameter.dart';
 import 'package:soagmb/features/user/presentation/cubit/auth_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
@@ -37,23 +38,19 @@ class LoginButtonBlocConsumer extends StatelessWidget {
         }
         if (state is LoginSuccessState) {
           if (state.loginModel.status) {
-            CashHelper.setData(
-                    key: tOKENCONST, value: state.loginModel.user!.token)
-                .then(
-              (value) {
-                if (context.mounted) {
-                  toastShown(
-                    message: state.loginModel.message,
-                    state: ToastState.success,
-                    context: context,
-                  );
-                  navigatorPushAndRemove(
-                    context,
-                    ShopView.id,
-                  );
-                }
-              },
-            );
+            await CashHelper.setData(
+                key: tOKENCONST, value: state.loginModel.user!.token);
+            if (context.mounted) {
+              toastShown(
+                message: state.loginModel.message,
+                state: ToastState.success,
+                context: context,
+              );
+              navigatorPushAndRemove(
+                context,
+                ShopView.id,
+              );
+            }
           } else {
             toastShown(
               message: state.loginModel.message,
@@ -81,15 +78,15 @@ class LoginButtonBlocConsumer extends StatelessWidget {
 
 void loginTap(
     BuildContext context, formKey, emailController, passwordController) {
+  AuthCubit bloc = AuthCubit.get(context);
   if (formKey.currentState!.validate()) {
-    context.read<AuthCubit>().userLogin(
+    LoginUserParameter parameter = LoginUserParameter(
         email: emailController.text, password: passwordController.text);
+    bloc.userLogin(loginParameter: parameter);
     // for create customer payment id
     CustomerPaymentInputModel customerPaymentInputModel =
         CustomerPaymentInputModel(email: emailController.text);
-    context
-        .read<AuthCubit>()
-        .createACustomForPayment(customerPaymentInputModel);
+    bloc.createACustomForPayment(customerPaymentInputModel);
     formKey.currentState!.save();
   } else {
     BlocProvider.of<AuthCubit>(context).validateObserver();
