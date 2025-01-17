@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/features/Auth/presentation/widgets/register_button.dart';
+import 'package:soagmb/features/user/presentation/widgets/register_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/features/Auth/presentation/cubit/auth_cubit.dart';
+import 'package:soagmb/features/user/presentation/cubit/auth_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/text_form_field.dart';
 
 class SliverRegisterInfo extends StatelessWidget {

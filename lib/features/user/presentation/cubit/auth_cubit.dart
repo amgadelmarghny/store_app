@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/models/login_model.dart';
-import 'package:soagmb/models/profile_model.dart';
-import 'package:soagmb/models/register_model.dart';
-import 'package:soagmb/models/user_model.dart';
+import 'package:soagmb/features/user/data/models/login_model.dart';
+import 'package:soagmb/features/user/data/models/profile_model.dart';
+import 'package:soagmb/features/user/data/models/register_model.dart';
+import 'package:soagmb/features/user/data/models/user_model.dart';
 import 'package:soagmb/features/checkout/data/models/customer_payment_input_model.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';

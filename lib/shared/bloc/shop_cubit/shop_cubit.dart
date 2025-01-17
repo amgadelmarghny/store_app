@@ -10,7 +10,7 @@ import 'package:soagmb/features/shop/presentation/widgets/home_body.dart';
 import 'package:soagmb/models/category_model.dart';
 import 'package:soagmb/models/get_favorites_model.dart';
 import 'package:soagmb/models/logout_model.dart';
-import 'package:soagmb/models/profile_model.dart';
+import 'package:soagmb/features/user/data/models/profile_model.dart';
 import 'package:soagmb/models/shop_models/home_model.dart';
 import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/core/network/local/key_const.dart';

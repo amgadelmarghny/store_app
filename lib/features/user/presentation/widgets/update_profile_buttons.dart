@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/user_model.dart';
+import 'package:soagmb/features/user/data/models/user_model.dart';
 import 'package:soagmb/features/shop/presentation/views/change_password_view.dart';
-import 'package:soagmb/features/shop/presentation/widgets/update_profile_view.dart';
+import 'package:soagmb/features/user/presentation/widgets/update_profile_view.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 
-class ModifyProfileButtons extends StatelessWidget {
-  const ModifyProfileButtons({super.key, required this.userData});
-  final UserModel userData;
+class UpdateProfileButtons extends StatelessWidget {
+  const UpdateProfileButtons({super.key, required this.userModel});
+  final UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class ModifyProfileButtons extends StatelessWidget {
           TextButton(
             onPressed: () {
               Navigator.pushNamed(context, ChangePasswordView.id,
-                  arguments: userData);
+                  arguments: userModel);
             },
             child: Text(
               'Change your password',
@@ -29,7 +29,7 @@ class ModifyProfileButtons extends StatelessWidget {
           TextButton(
             onPressed: () {
               Navigator.pushNamed(context, UpdateProfileView.id,
-                  arguments: userData);
+                  arguments: userModel);
             },
             child: Text(
               'Modify your profile',

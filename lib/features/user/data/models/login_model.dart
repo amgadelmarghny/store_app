@@ -1,17 +1,17 @@
-import 'package:soagmb/models/user_model.dart';
+import 'package:soagmb/features/user/data/models/user_model.dart';
 
-class RegisterModel {
+class LoginModel {
   final bool status;
   final String message;
   final UserModel? data;
 
-  RegisterModel({
+  LoginModel({
     required this.status,
     required this.message,
     required this.data,
   });
-  factory RegisterModel.fromJson(Map<String, dynamic> json) {
-    return RegisterModel(
+  factory LoginModel.fromJson(Map<String, dynamic> json) {
+    return LoginModel(
       status: json['status'],
       message: json['message'],
       data: json['data'] != null ? UserModel.fromJson(json['data']) : null,

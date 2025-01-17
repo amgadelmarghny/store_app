@@ -1,4 +1,4 @@
-import 'package:soagmb/models/user_model.dart';
+import 'package:soagmb/features/user/data/models/user_model.dart';
 
 class LogoutModel {
   final bool status;

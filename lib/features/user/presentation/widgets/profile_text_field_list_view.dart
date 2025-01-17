@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/user_model.dart';
+import 'package:soagmb/features/user/data/models/user_model.dart';
 import 'package:soagmb/features/shop/presentation/widgets/text_form_field.dart';
 
 class ProfileTextFieldListView extends StatelessWidget {

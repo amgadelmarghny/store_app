@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/shop/presentation/widgets/logout_button.dart';
-import 'package:soagmb/features/shop/presentation/widgets/modify_profile_buttons.dart';
-import 'package:soagmb/models/user_model.dart';
-import 'package:soagmb/features/shop/presentation/widgets/profile_text_field_list_view.dart';
+import 'package:soagmb/features/user/presentation/widgets/update_profile_buttons.dart';
+import 'package:soagmb/features/user/data/models/user_model.dart';
+import 'package:soagmb/features/user/presentation/widgets/profile_text_field_list_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/avatar_pic.dart';
 
 class ProfileViewBody extends StatelessWidget {
@@ -32,7 +32,7 @@ class ProfileViewBody extends StatelessWidget {
             userData: userData,
           ),
           SliverToBoxAdapter(
-            child: ModifyProfileButtons(userData: userData),
+            child: UpdateProfileButtons(userModel: userData),
           ),
           SliverFillRemaining(
             hasScrollBody: false,

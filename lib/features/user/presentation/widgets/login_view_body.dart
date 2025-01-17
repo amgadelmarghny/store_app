@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/features/Auth/presentation/views/register_view.dart';
-import 'package:soagmb/features/Auth/presentation/widgets/sliver_login_input.dart';
+import 'package:soagmb/features/user/presentation/views/register_view.dart';
+import 'package:soagmb/features/user/presentation/widgets/sliver_login_input.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_curve_color_ui.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_sliver_row_text.dart';
 

@@ -1,8 +1,8 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/features/shop/presentation/widgets/profile_view_body.dart';
-import 'package:soagmb/models/user_model.dart';
+import 'package:soagmb/features/user/presentation/widgets/profile_view_body.dart';
+import 'package:soagmb/features/user/data/models/user_model.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
