@@ -1,25 +1,18 @@
-class UserModel {
-  final dynamic id;
-  final String? image;
-  final dynamic point;
-  final dynamic credit;
-  final String? token;
-  final String? name;
-  final String? email;
-  final String? password;
-  final String? phone;
+import 'package:soagmb/features/user/domain/entities/user.dart';
 
+class UserModel extends User {
   const UserModel({
-    this.id,
-    this.image,
-    this.point,
-    this.credit,
-    this.token,
-    this.name,
-    this.email,
-    this.password,
-    this.phone,
+    super.id,
+    super.image,
+    super.point,
+    super.credit,
+    super.token,
+    super.name,
+    super.email,
+    super.password,
+    super.phone,
   });
+
   factory UserModel.fromJson(dynamic json) {
     return UserModel(
       name: json['name'],

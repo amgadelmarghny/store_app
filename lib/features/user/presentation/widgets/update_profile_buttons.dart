@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/features/user/data/models/user_model.dart';
 import 'package:soagmb/features/shop/presentation/views/change_password_view.dart';
+import 'package:soagmb/features/user/domain/entities/user.dart';
 import 'package:soagmb/features/user/presentation/widgets/update_profile_view.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 
 class UpdateProfileButtons extends StatelessWidget {
   const UpdateProfileButtons({super.key, required this.userModel});
-  final UserModel userModel;
+  final User userModel;
 
   @override
   Widget build(BuildContext context) {

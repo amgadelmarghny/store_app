@@ -38,7 +38,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
         if (state is LoginSuccessState) {
           if (state.loginModel.status) {
             CashHelper.setData(
-                    key: tOKENCONST, value: state.loginModel.data!.token)
+                    key: tOKENCONST, value: state.loginModel.user!.token)
                 .then(
               (value) {
                 if (context.mounted) {
@@ -87,7 +87,9 @@ void loginTap(
     // for create customer payment id
     CustomerPaymentInputModel customerPaymentInputModel =
         CustomerPaymentInputModel(email: emailController.text);
-    context.read<AuthCubit>().createACustomForPayment(customerPaymentInputModel);
+    context
+        .read<AuthCubit>()
+        .createACustomForPayment(customerPaymentInputModel);
     formKey.currentState!.save();
   } else {
     BlocProvider.of<AuthCubit>(context).validateObserver();

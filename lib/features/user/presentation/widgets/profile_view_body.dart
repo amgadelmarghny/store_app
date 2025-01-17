@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/shop/presentation/widgets/logout_button.dart';
+import 'package:soagmb/features/user/domain/entities/user.dart';
 import 'package:soagmb/features/user/presentation/widgets/update_profile_buttons.dart';
-import 'package:soagmb/features/user/data/models/user_model.dart';
 import 'package:soagmb/features/user/presentation/widgets/profile_text_field_list_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/avatar_pic.dart';
 
@@ -11,7 +11,7 @@ class ProfileViewBody extends StatelessWidget {
     required this.userModel,
   });
 
-  final UserModel userModel;
+  final User userModel;
 
   @override
   Widget build(BuildContext context) {

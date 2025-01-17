@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/features/user/data/models/user_model.dart';
 import 'package:soagmb/features/shop/presentation/widgets/text_form_field.dart';
+import 'package:soagmb/features/user/domain/entities/user.dart';
 
 class ProfileTextFieldListView extends StatelessWidget {
   const ProfileTextFieldListView({super.key, required this.userData});
-  final UserModel userData;
+  final User userData;
 
   @override
   Widget build(BuildContext context) {

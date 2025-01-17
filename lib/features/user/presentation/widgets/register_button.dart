@@ -43,7 +43,7 @@ class RegisterButtonConsumer extends StatelessWidget {
         if (state is RegisterSuccessState) {
           if (state.registermodel.status) {
             await CashHelper.setData(
-                    key: tOKENCONST, value: state.registermodel.data!.token)
+                    key: tOKENCONST, value: state.registermodel.user!.token)
                 .then(
               (value) {
                 if (context.mounted) {

@@ -1,15 +1,13 @@
 import 'package:soagmb/features/user/data/models/user_model.dart';
+import 'package:soagmb/features/user/domain/entities/profile.dart';
 
-class ProfileModel {
-  final bool status;
-  final String? message;
-  final UserModel? user;
-
-  ProfileModel({
-    required this.status,
-    required this.message,
-    required this.user,
+class ProfileModel extends Profile {
+  const ProfileModel({
+    required super.status,
+    required super.message,
+    required super.user,
   });
+
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     return ProfileModel(
       status: json['status'],
