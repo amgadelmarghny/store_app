@@ -15,9 +15,9 @@ import 'package:soagmb/features/shop/presentation/views/category_details_view.da
 import 'package:soagmb/features/user/presentation/views/login_view.dart';
 import 'package:soagmb/features/shop/presentation/views/on_boarding_view.dart';
 import 'package:soagmb/features/shop/presentation/views/product_view.dart';
-import 'package:soagmb/features/shop/presentation/views/change_password_view.dart';
+import 'package:soagmb/features/user/presentation/views/change_password_view.dart';
 import 'package:soagmb/features/user/presentation/views/profile_view.dart';
-import 'package:soagmb/features/user/presentation/widgets/update_profile_view.dart';
+import 'package:soagmb/features/user/presentation/views/update_profile_view.dart';
 import 'package:soagmb/features/user/presentation/views/register_view.dart';
 import 'package:soagmb/features/search/presentation/views/search_view.dart';
 import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';

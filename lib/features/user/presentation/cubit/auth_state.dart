@@ -64,3 +64,18 @@ class UpdateProfileFailureState extends AuthState {
   final String errMessage;
   UpdateProfileFailureState({required this.errMessage});
 }
+
+////////////////////////////////////////////////////////////////////
+class ChangePasswordLoadingState extends AuthState {}
+
+class ChangePasswordSuccessState extends AuthState {
+  final ChangePasswordModel changePasswordModel;
+
+  ChangePasswordSuccessState({required this.changePasswordModel});
+}
+
+class ChangePasswordFailureState extends AuthState {
+  final String errMessage;
+  ChangePasswordFailureState({required this.errMessage});
+}
+

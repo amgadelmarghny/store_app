@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/user/data/models/change_password.dart';
 import 'package:soagmb/features/user/data/models/login_user_parameter.dart';
 import 'package:soagmb/features/user/data/models/profile_model.dart';
 import 'package:soagmb/features/user/data/models/register_user_parameter.dart';
@@ -98,6 +99,28 @@ class AuthCubit extends Cubit<AuthState> {
       emit(UpdateProfileSuccessState(profileModel: profileModel!));
     }).catchError((err) {
       emit(UpdateProfileFailureState(errMessage: err.toString()));
+    });
+  }
+
+   ////////////////////////? Change Password /////////////////////////////
+  void changeAccPassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    emit(ChangePasswordLoadingState());
+    await DioHelper.postData(
+      url: changePassword,
+      token: CashHelper.getData(key: tOKENCONST),
+      data: {
+        'current_password': currentPassword,
+        'new_password': newPassword,
+      },
+    ).then((value) {
+     
+      emit(ChangePasswordSuccessState(
+          changePasswordModel: ChangePasswordModel.fromJson(value.data)));
+    }).catchError((error) {
+      emit(ChangePasswordFailureState(errMessage: error.toString()));
     });
   }
 }

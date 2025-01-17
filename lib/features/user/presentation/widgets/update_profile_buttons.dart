@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/features/shop/presentation/views/change_password_view.dart';
+import 'package:soagmb/features/user/presentation/views/change_password_view.dart';
 import 'package:soagmb/features/user/domain/entities/user.dart';
-import 'package:soagmb/features/user/presentation/widgets/update_profile_view.dart';
+import 'package:soagmb/features/user/presentation/views/update_profile_view.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 

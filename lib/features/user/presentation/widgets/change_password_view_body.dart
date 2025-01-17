@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/widgets/change_password_text_field.dart';
+import 'package:soagmb/features/user/presentation/cubit/auth_cubit.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 
 class ChangePasswordViewBody extends StatefulWidget {
-  const ChangePasswordViewBody({
-    super.key,
-  });
+  const ChangePasswordViewBody({super.key});
 
   @override
   State<ChangePasswordViewBody> createState() => _ChangePasswordViewBodyState();
@@ -43,8 +42,8 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
               textInputControl: newPasswordController,
             ),
             const SizedBox(height: 20),
-            BlocConsumer<ShopCubit, ShopStates>(
-              listener: (BuildContext context, ShopStates state) {
+            BlocConsumer<AuthCubit, AuthState>(
+              listener: (BuildContext context, AuthState state) {
                 if (state is ChangePasswordSuccessState) {
                   if (state.changePasswordModel.status) {
                     toastShown(
@@ -65,19 +64,13 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
                 }
               },
               builder: (context, state) {
+                AuthCubit cubit = AuthCubit.get(context);
                 return CustomButton(
                   text: 'Update Password',
                   isLoading: state is ChangePasswordLoadingState,
                   onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      BlocProvider.of<ShopCubit>(context).changeAccPassword(
-                        currentPassword: currentPasswordController.text,
-                        newPassword: newPasswordController.text,
-                      );
-                    } else {
-                      autovalidationMode = AutovalidateMode.always;
-                      setState(() {});
-                    }
+                    updatePasswordOnTap(cubit, currentPasswordController,
+                        newPasswordController, context);
                   },
                 );
               },
@@ -93,5 +86,22 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
         ),
       ),
     );
+  }
+
+  void updatePasswordOnTap(
+      AuthCubit cubit,
+      TextEditingController currentPasswordController,
+      TextEditingController newPasswordController,
+      BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      cubit.changeAccPassword(
+        currentPassword: currentPasswordController.text,
+        newPassword: newPasswordController.text,
+      );
+      BlocProvider.of<ShopCubit>(context).getProfileInfo();
+    } else {
+      autovalidationMode = AutovalidateMode.always;
+      setState(() {});
+    }
   }
 }

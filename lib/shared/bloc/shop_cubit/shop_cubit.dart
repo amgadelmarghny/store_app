@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/models/cart_models/get_cart_model.dart';
 import 'package:soagmb/models/cart_models/update_cart.dart';
-import 'package:soagmb/models/change_password.dart';
 import 'package:soagmb/models/shop_models/product_model.dart';
 import 'package:soagmb/features/shop/presentation/widgets/categories_body.dart';
 import 'package:soagmb/features/shop/presentation/widgets/favorite_body.dart';
@@ -179,30 +178,6 @@ class ShopCubit extends Cubit<ShopStates> {
       emit(ProfileSuccessState());
     }).catchError((err) {
       emit(ProfileFailureState(errMessage: err.toString()));
-    });
-  }
-
-  ////////////////////////? Change Password /////////////////////////////
-  ChangePasswordModel? changePasswordModel;
-  void changeAccPassword({
-    required String currentPassword,
-    required String newPassword,
-  }) async {
-    emit(ChangePasswordLoadingState());
-    await DioHelper.postData(
-      url: changePassword,
-      token: CashHelper.getData(key: tOKENCONST),
-      data: {
-        'current_password': currentPassword,
-        'new_password': newPassword,
-      },
-    ).then((value) {
-      changePasswordModel = ChangePasswordModel.fromJson(value.data);
-      emit(ChangePasswordSuccessState(
-          changePasswordModel: changePasswordModel!));
-      getProfileInfo();
-    }).catchError((error) {
-      emit(ChangePasswordFailureState(errMessage: error.toString()));
     });
   }
 
