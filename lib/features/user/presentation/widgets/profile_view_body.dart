@@ -8,10 +8,10 @@ import 'package:soagmb/features/shop/presentation/widgets/avatar_pic.dart';
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({
     super.key,
-    required this.userData,
+    required this.userModel,
   });
 
-  final UserModel userData;
+  final UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +22,17 @@ class ProfileViewBody extends StatelessWidget {
           SliverToBoxAdapter(
             child: AvatarPic(
               height: 120,
-              image: userData.image!,
+              image: userModel.image!,
             ),
           ),
           const SliverToBoxAdapter(
             child: SizedBox(height: 30),
           ),
           ProfileTextFieldListView(
-            userData: userData,
+            userData: userModel,
           ),
           SliverToBoxAdapter(
-            child: UpdateProfileButtons(userModel: userData),
+            child: UpdateProfileButtons(userModel: userModel),
           ),
           SliverFillRemaining(
             hasScrollBody: false,

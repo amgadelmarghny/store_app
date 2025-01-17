@@ -22,7 +22,7 @@ class ProfileView extends StatelessWidget {
               condition: userData != null,
               builder: (context) {
                 return ProfileViewBody(
-                  userData: userData!,
+                  userModel: userData!,
                 );
               },
               fallback: (context) {
