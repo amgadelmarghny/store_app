@@ -27,7 +27,7 @@ class SearchViewBody extends StatelessWidget {
             onChange: (value) async {
               SearchForProductParameter parameter = SearchForProductParameter(
                 productName: value,
-                token: CashHelper.getData(key: tOKENCONST),
+                token: CashHelper.getData(key: tokenConst),
               );
 
               await BlocProvider.of<SearchCubit>(context)

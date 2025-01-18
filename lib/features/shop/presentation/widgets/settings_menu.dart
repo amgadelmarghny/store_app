@@ -23,7 +23,7 @@ class SettingsMenu extends StatelessWidget {
             context,
             routName: LoginView.id,
           );
-          CashHelper.deleteCash(key: tOKENCONST);
+          CashHelper.deleteCash(key: tokenConst);
         }
       },
       child: const ListTile(

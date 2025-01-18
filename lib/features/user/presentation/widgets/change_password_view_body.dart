@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/widgets/change_password_text_field.dart';
+import 'package:soagmb/features/user/data/models/change_user_password_parameter.dart';
 import 'package:soagmb/features/user/presentation/cubit/auth_cubit.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
@@ -69,8 +70,11 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
                   text: 'Update Password',
                   isLoading: state is ChangePasswordLoadingState,
                   onTap: () {
-                    updatePasswordOnTap(cubit, currentPasswordController,
-                        newPasswordController, context);
+                    ChangeUserPasswordParameter parameter =
+                        ChangeUserPasswordParameter(
+                            currentPassword: currentPasswordController.text,
+                            newPassword: newPasswordController.text);
+                    updatePasswordOnTap(cubit, parameter, context);
                   },
                 );
               },
@@ -88,16 +92,10 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
     );
   }
 
-  void updatePasswordOnTap(
-      AuthCubit cubit,
-      TextEditingController currentPasswordController,
-      TextEditingController newPasswordController,
-      BuildContext context) {
+  void updatePasswordOnTap(AuthCubit cubit,
+      ChangeUserPasswordParameter parameter, BuildContext context) {
     if (formKey.currentState!.validate()) {
-      cubit.changeAccPassword(
-        currentPassword: currentPasswordController.text,
-        newPassword: newPasswordController.text,
-      );
+      cubit.changeAccPassword(parameter: parameter);
       BlocProvider.of<ShopCubit>(context).getProfileInfo();
     } else {
       autovalidationMode = AutovalidateMode.always;

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/user/data/models/update_profile_parameter.dart';
 import 'package:soagmb/features/user/data/models/user_model.dart';
 import 'package:soagmb/features/user/presentation/cubit/auth_cubit.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/shop/presentation/widgets/text_form_field.dart';
-import 'package:soagmb/core/network/local/key_const.dart';
-import 'package:soagmb/core/network/local/shared_helper.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
 class UpdateProfileViewBody extends StatelessWidget {
@@ -103,14 +102,12 @@ class UpdateProfileViewBody extends StatelessWidget {
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
-                        bloc
-                            .updateUserInfo(
-                          name: nameController.text,
-                          email: emailController.text,
-                          phoneNumber: phoneController.text,
-                          authToken: CashHelper.getData(key: tOKENCONST)
-                        )
-                            .then((value) {
+                        UpdateProfileParameter parameter =
+                            UpdateProfileParameter(
+                                name: nameController.text,
+                                email: emailController.text,
+                                phone: phoneController.text);
+                        bloc.updateUserInfo(parameter: parameter).then((value) {
                           if (context.mounted) {
                             BlocProvider.of<ShopCubit>(context)
                                 .getProfileInfo();

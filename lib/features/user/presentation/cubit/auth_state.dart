@@ -55,7 +55,7 @@ class RegisterFailureState extends AuthState {
 class UpdateProfileLoadingState extends AuthState {}
 
 class UpdateProfileSuccessState extends AuthState {
-  final ProfileModel profileModel;
+  final Profile profileModel;
 
   UpdateProfileSuccessState({required this.profileModel});
 }
@@ -69,7 +69,7 @@ class UpdateProfileFailureState extends AuthState {
 class ChangePasswordLoadingState extends AuthState {}
 
 class ChangePasswordSuccessState extends AuthState {
-  final ChangePasswordModel changePasswordModel;
+  final ChangePassword changePasswordModel;
 
   ChangePasswordSuccessState({required this.changePasswordModel});
 }

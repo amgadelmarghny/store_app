@@ -24,7 +24,7 @@ class ShopView extends StatelessWidget {
           listener: (context, state) async {
             if (state is LogoutSuccussState) {
               if (state.logoutModel.status) {
-                await CashHelper.deleteCash(key: tOKENCONST).then((value) {
+                await CashHelper.deleteCash(key: tokenConst).then((value) {
                   if (context.mounted) {
                     navigatorPushAndRemove(context, LoginView.id);
                     toastShown(

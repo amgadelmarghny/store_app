@@ -45,14 +45,14 @@ class Soagmb extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    log('token : ${CashHelper.getData(key: tOKENCONST)}');
+    log('token : ${CashHelper.getData(key: tokenConst)}');
 
     bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
     bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
     late String routeApp;
 
     if (isBoarding != null) {
-      if (CashHelper.getData(key: tOKENCONST) != null) {
+      if (CashHelper.getData(key: tokenConst) != null) {
         routeApp = ShopView.id;
       } else {
         routeApp = LoginView.id;

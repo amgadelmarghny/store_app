@@ -51,7 +51,7 @@ class AppCubit extends Cubit<AppStates> {
     emit(AddComplainLoading());
     await DioHelper.postData(
         url: 'complaints',
-        token: CashHelper.getData(key: tOKENCONST),
+        token: CashHelper.getData(key: tokenConst),
         data: {
           'name': name,
           'phone': phone,

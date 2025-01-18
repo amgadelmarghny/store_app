@@ -13,7 +13,7 @@ class UpdateProfileView extends StatelessWidget {
     UserModel userModel =
         ModalRoute.of(context)!.settings.arguments as UserModel;
     return BlocProvider(
-      create: (context) => AuthCubit(sl(), sl()),
+      create: (context) => AuthCubit(sl(), sl(), sl(), sl()),
       child: Scaffold(
         appBar: AppBar(),
         body: UpdateProfileViewBody(userModel: userModel),

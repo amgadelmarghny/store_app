@@ -94,7 +94,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(GetHomeDataLoadingState());
     await DioHelper.getData(
       url: 'home',
-      token: CashHelper.getData(key: tOKENCONST),
+      token: CashHelper.getData(key: tokenConst),
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
       for (var element in homeModel!.data!.productsList) {
@@ -133,7 +133,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(FavoriteLoadingState());
     DioHelper.postData(
       url: favCONST,
-      token: CashHelper.getData(key: tOKENCONST),
+      token: CashHelper.getData(key: tokenConst),
       data: {"product_id": id},
     ).then((value) {
       changedFavoriteModel = ChangedFavoriteModel.fromJson(value.data);
@@ -156,7 +156,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(GetFavoritesLoadingState());
     await DioHelper.getData(
       url: favCONST,
-      token: CashHelper.getData(key: tOKENCONST),
+      token: CashHelper.getData(key: tokenConst),
     ).then((value) {
       favoritesModel = GetFavoritesModel.fromJson(value.data);
       emit(GetFavoritesSuccess());
@@ -172,7 +172,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(ProfileLoadingState());
     await DioHelper.getData(
       url: profile,
-      token: CashHelper.getData(key: tOKENCONST),
+      token: CashHelper.getData(key: tokenConst),
     ).then((value) {
       profileModel = ProfileModel.fromJson(value.data);
       emit(ProfileSuccessState());
@@ -185,10 +185,10 @@ class ShopCubit extends Cubit<ShopStates> {
   void userLogout(BuildContext context, {required String routName}) async {
     emit(LogoutLoadingState());
     await DioHelper.postData(
-            url: logout, token: CashHelper.getData(key: tOKENCONST))
+            url: logout, token: CashHelper.getData(key: tokenConst))
         .then((value) {
       if (context.mounted) navigatorPushAndRemove(context, routName);
-      CashHelper.deleteCash(key: tOKENCONST);
+      CashHelper.deleteCash(key: tokenConst);
       CashHelper.deleteCash(key: customerID);
       emit(LogoutSuccussState(logoutModel: LogoutModel.fromJson(value.data)));
     }).catchError((err) {
@@ -205,7 +205,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(CartLoadingState());
     await DioHelper.postData(
       url: carts,
-      token: CashHelper.getData(key: tOKENCONST),
+      token: CashHelper.getData(key: tokenConst),
       data: {"product_id": productId},
     ).then((value) {
       changedCartModel = ChangedFavoriteModel.fromJson(value.data);
@@ -224,7 +224,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(GetCartLoadingState());
     await DioHelper.getData(
       url: carts,
-      token: CashHelper.getData(key: tOKENCONST),
+      token: CashHelper.getData(key: tokenConst),
     ).then((value) {
       cartModel = GetCartModel.fromJson(value.data);
       for (var element in cartModel!.data!.cartItemsList) {
@@ -245,7 +245,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(UpdateCartLoadingState());
     await DioHelper.putData(
         url: '$carts/$cartID',
-        token: CashHelper.getData(key: tOKENCONST),
+        token: CashHelper.getData(key: tokenConst),
         data: {
           'quantity': numberOfItemsInTheCart,
         }).then((value) {

@@ -16,7 +16,6 @@ import 'package:soagmb/core/network/remote/end_points_url.dart';
 part 'address_state.dart';
 
 class AddressCubit extends Cubit<AddressState> {
-
   static AddressCubit get(context) => BlocProvider.of(context);
 
   AddressCubit() : super(AddressInitial());
@@ -38,7 +37,7 @@ class AddressCubit extends Cubit<AddressState> {
   }) async {
     emit(AddAddressLoading());
     return await DioHelper.postData(
-        token: CashHelper.getData(key: tOKENCONST),
+        token: CashHelper.getData(key: tokenConst),
         url: addresses,
         data: {
           'name': name,
@@ -67,7 +66,7 @@ class AddressCubit extends Cubit<AddressState> {
   Future getAddresses() async {
     emit(GetAddressLoading());
     DioHelper.getData(
-            url: addresses, token: CashHelper.getData(key: tOKENCONST))
+            url: addresses, token: CashHelper.getData(key: tokenConst))
         .then((value) {
       getAddressesModel = GetAddressesModel.fromJson(value.data);
       emit(GetAddressSuccess(getAddressesModel: getAddressesModel!));
@@ -90,7 +89,7 @@ class AddressCubit extends Cubit<AddressState> {
     emit(UpdateAddressLoading());
     return await DioHelper.putData(
         url: '$addresses/$addressId',
-        token: CashHelper.getData(key: tOKENCONST),
+        token: CashHelper.getData(key: tokenConst),
         data: {
           'name': name,
           'city': city,
@@ -112,7 +111,7 @@ class AddressCubit extends Cubit<AddressState> {
     emit(DeleteAddressLoading());
     return await DioHelper.deleteData(
             url: "$addresses/$addressId",
-            token: CashHelper.getData(key: tOKENCONST))
+            token: CashHelper.getData(key: tokenConst))
         .then((value) async {
       deleteAddressModel = UpdateAddressModel.fromJson(value.data);
       await getAddresses();
@@ -158,7 +157,7 @@ class AddressCubit extends Cubit<AddressState> {
     emit(AddOrderLoading());
     await DioHelper.postData(
         url: order,
-        token: CashHelper.getData(key: tOKENCONST),
+        token: CashHelper.getData(key: tokenConst),
         data: {
           "address_id": addressId,
           "payment_method": paymentMethod,
@@ -182,7 +181,7 @@ class AddressCubit extends Cubit<AddressState> {
     emit(GetOrderLoading());
     await DioHelper.getData(
       url: order,
-      token: CashHelper.getData(key: tOKENCONST),
+      token: CashHelper.getData(key: tokenConst),
     ).then((value) {
       getOrdersModel = GetOrdersModel.fromJson(value.data);
       for (var element in getOrdersModel!.data!.listOfOrders) {
@@ -217,7 +216,7 @@ class AddressCubit extends Cubit<AddressState> {
     DioHelper.getData(
         url: '$order/$orderId/cancel',
         token: CashHelper.getData(
-          key: tOKENCONST,
+          key: tokenConst,
         )).then((value) {
       cancelOrderModel = CancelOrderModel.fromJson(value.data);
       getAllOrders();
