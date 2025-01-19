@@ -3,6 +3,7 @@ import 'package:soagmb/features/search/data/datasources/search_for_product_data_
 import 'package:soagmb/features/search/data/repositories/search_for_product_repo.dart';
 import 'package:soagmb/features/search/domain/repositories/base_get_search_for_product_repo.dart';
 import 'package:soagmb/features/search/domain/usecases/search_for_product_usecase.dart';
+import 'package:soagmb/features/search/presentation/cubit/search_cubit.dart';
 import 'package:soagmb/features/user/data/datasources/auth_datasource.dart';
 import 'package:soagmb/features/user/data/datasources/update_profile_datasorce.dart';
 import 'package:soagmb/features/user/data/repositories/auth_repo_implement.dart';
@@ -13,6 +14,7 @@ import 'package:soagmb/features/user/domain/usecases/change_user_password_usecas
 import 'package:soagmb/features/user/domain/usecases/login_usecase.dart';
 import 'package:soagmb/features/user/domain/usecases/register_usecase.dart';
 import 'package:soagmb/features/user/domain/usecases/update_profile_usecase.dart';
+import 'package:soagmb/features/user/presentation/cubit/auth_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -24,6 +26,8 @@ class ServiceLocator {
         () => AuthRepoImplement(baseAuthDatasource: sl()));
     sl.registerLazySingleton(() => RegisterUsecase(repository: sl()));
     sl.registerLazySingleton(() => LoginUsecase(repository: sl()));
+    sl.registerLazySingleton<AuthCubit>(
+        () => AuthCubit(sl(), sl(), sl(), sl()));
 
     // Modify profile
     sl.registerLazySingleton<BaseUpdateProfileDatasorce>(
@@ -40,5 +44,6 @@ class ServiceLocator {
         () => SearchForProductRepo(baseSearchForProductDataSource: sl()));
     sl.registerLazySingleton(
         () => SearchForProductUsecase(baseSearchForProductRepo: sl()));
+    sl.registerLazySingleton<SearchCubit>(() => SearchCubit(sl()));
   }
 }

@@ -9,8 +9,8 @@ class ChangePasswordView extends StatelessWidget {
   static const id = '/change-password';
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthCubit(sl(), sl(), sl(), sl()),
+    return BlocProvider<AuthCubit>(
+      create: (context) => sl(),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Change Password'),

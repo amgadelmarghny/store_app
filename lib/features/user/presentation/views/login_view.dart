@@ -10,8 +10,8 @@ class LoginView extends StatelessWidget {
   static String id = 'LoginView';
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthCubit(sl(), sl(), sl(), sl()),
+    return BlocProvider<AuthCubit>(
+      create: (context) => sl(),
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
