@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/checkout/presentation/manager/cubit/payment_cubit.dart';
 // import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
-import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/checkout/data/models/payment_intent_input_model.dart';

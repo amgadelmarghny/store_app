@@ -5,9 +5,9 @@ import 'package:soagmb/features/shop/presentation/widgets/drawer_item.dart';
 import 'package:soagmb/features/shop/presentation/widgets/settings_menu.dart';
 import 'package:soagmb/features/shop/presentation/widgets/user_profile.dart';
 import 'package:soagmb/models/drawer_item_model.dart';
-import 'package:soagmb/features/shop/presentation/views/addresses_view.dart';
+import 'package:soagmb/features/address/presentation/views/addresses_view.dart';
 import 'package:soagmb/features/shop/presentation/views/my_cart_view.dart';
-import 'package:soagmb/features/shop/presentation/views/order_view.dart';
+import 'package:soagmb/features/order/presentation/views/order_view.dart';
 import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 
 class DrawerMenu extends StatelessWidget {

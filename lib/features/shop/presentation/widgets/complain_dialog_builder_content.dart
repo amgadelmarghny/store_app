@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/features/shop/presentation/widgets/address_field.dart';
+import 'package:soagmb/features/address/presentation/widgets/address_field.dart';
 
 class ComplaintDialogContent extends StatelessWidget {
   const ComplaintDialogContent({

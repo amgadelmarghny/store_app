@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/features/shop/presentation/views/add_address_view.dart';
+import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
+import 'package:soagmb/features/address/presentation/views/add_address_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/order_sheet.dart';
-import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 
 class MakeOrderButton extends StatelessWidget {
@@ -53,12 +53,9 @@ class MakeOrderButton extends StatelessWidget {
   }
 
   void orderButtonTap(BuildContext context) {
-    if (BlocProvider.of<AddressCubit>(context).getAddressesModel != null &&
-        BlocProvider.of<AddressCubit>(context)
-            .getAddressesModel!
-            .data!
-            .addressModelsList
-            .isEmpty) {
+    AddressCubit cubit = AddressCubit.get(context);
+    if (cubit.getAddressesModel != null &&
+        cubit.getAddressesModel!.data!.addressModelsList.isEmpty) {
       Navigator.pushNamed(context, AddAddressView.id);
     } else {
       showModalBottomSheet(
@@ -72,9 +69,7 @@ class MakeOrderButton extends StatelessWidget {
         ),
         builder: (context) => Padding(
           padding: const EdgeInsets.all(20),
-          child: OrderSheet(
-            total: total,
-          ),
+          child: OrderSheet(total: total),
         ),
       );
     }

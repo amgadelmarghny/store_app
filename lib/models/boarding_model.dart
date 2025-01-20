@@ -1,9 +1,9 @@
-class BoardModel {
+class OnBoardModel {
   final String image;
   final String shopTitle;
   final String shopSubTitle;
 
-  BoardModel({
+  OnBoardModel({
     required this.image,
     required this.shopTitle,
     required this.shopSubTitle,

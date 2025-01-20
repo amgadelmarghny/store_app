@@ -71,7 +71,7 @@ class RegisterButtonConsumer extends StatelessWidget {
       builder: (context, state) {
         AuthCubit bloc = AuthCubit.get(context);
         return CustomButton(
-          text: 'SIGN UP',
+          text: 'Sign up',
           isLoading:
               state is RegisterLodingState || state is CustomerPatymentLoding,
           onTap: () {

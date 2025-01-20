@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/user/presentation/views/login_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_smooth_page_indicator.dart';
-import 'package:soagmb/features/shop/presentation/widgets/page_view_bilder.dart';
+import 'package:soagmb/features/shop/presentation/widgets/0n_boarding_page_view_bilder.dart';
 import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/core/network/local/key_const.dart';

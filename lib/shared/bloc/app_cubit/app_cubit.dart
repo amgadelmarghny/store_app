@@ -11,18 +11,18 @@ class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitial());
   int pageNum = 0;
 
-  List<BoardModel> boardList = [
-    BoardModel(
+  List<OnBoardModel> boardList = [
+    OnBoardModel(
       image: 'lib/core/global/assets/images/Sale3.jpg',
       shopTitle: 'Explore many products',
       shopSubTitle: 'All you need in one app',
     ),
-    BoardModel(
+    OnBoardModel(
       image: 'lib/core/global/assets/images/Sale2.jpg',
       shopTitle: 'Choose and Checkout',
       shopSubTitle: 'Buy and order what you want from home',
     ),
-    BoardModel(
+    OnBoardModel(
       image: 'lib/core/global/assets/images/Sale1.jpg',
       shopTitle: 'Offers and discounts',
       shopSubTitle: 'Enjoy special discounts',

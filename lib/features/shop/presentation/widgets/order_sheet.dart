@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/checkout/presentation/manager/cubit/payment_cubit.dart';
 import 'package:soagmb/features/shop/presentation/views/shop_view.dart';
-import 'package:soagmb/features/shop/presentation/widgets/address_options.dart';
+import 'package:soagmb/features/address/presentation/widgets/address_options.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_small_divider.dart';
 import 'package:soagmb/features/shop/presentation/widgets/hint_text.dart';
 import 'package:soagmb/features/shop/presentation/widgets/payment_method_options.dart';
 import 'package:soagmb/features/shop/presentation/widgets/place_order_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/total_coast_list_tile.dart';
-import 'package:soagmb/shared/bloc/address_cubit/address_cubit.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
