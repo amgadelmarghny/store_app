@@ -1,14 +1,16 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/models/address_models/address_model.dart';
-import 'package:soagmb/models/address_models/get_address_model.dart';
-import 'package:soagmb/models/address_models/new_address_model.dart';
-import 'package:soagmb/models/address_models/update_address_model.dart';
+import 'package:soagmb/features/address/data/models/get_address_model.dart';
+import 'package:soagmb/features/address/data/models/new_address_model.dart';
+import 'package:soagmb/features/address/data/models/update_address_model.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
 import 'package:soagmb/core/network/remote/dio_helper_for_shop.dart';
 import 'package:soagmb/core/network/remote/end_points_url.dart';
+import 'package:soagmb/features/address/domain/entities/address.dart';
+import 'package:soagmb/features/address/domain/entities/get_addresses.dart';
+import 'package:soagmb/features/address/domain/entities/new_address.dart';
+import 'package:soagmb/features/address/domain/entities/update_address.dart';
 
 part 'address_state.dart';
 
@@ -24,7 +26,6 @@ class AddressCubit extends Cubit<AddressState> {
   }
 
   ////////////////////////////////! ADD NEW ADDRESS //////////////////////
-  late NewAddressModel newAddressModel;
   Future addNewAddress({
     required String name,
     required String city,
@@ -32,6 +33,8 @@ class AddressCubit extends Cubit<AddressState> {
     required String details,
     required String? notes,
   }) async {
+    late NewAddress newAddressModel;
+
     emit(AddAddressLoading());
     return await DioHelper.postData(
         token: CashHelper.getData(key: tokenConst),
@@ -58,22 +61,21 @@ class AddressCubit extends Cubit<AddressState> {
   }
 
   //////////////////////////////! GET ADDRESSES //////////////////////////
-  AddressModel? addressModel;
-  GetAddressesModel? getAddressesModel;
+  Address? addressModel;
+  GetAddresses? getAddressesModel;
   Future getAddresses() async {
     emit(GetAddressLoading());
     DioHelper.getData(
             url: addresses, token: CashHelper.getData(key: tokenConst))
         .then((value) {
       getAddressesModel = GetAddressesModel.fromJson(value.data);
-      emit(GetAddressSuccess(getAddressesModel: getAddressesModel!));
+      emit(GetAddressSuccess());
     }).catchError((err) {
       emit(GetAddressFailure(error: err));
     });
   }
 
   //////////////////////////! UPDATE ADDRESS /////////////////////////////
-  late UpdateAddressModel updateAddressModel;
 
   Future updateAddress({
     required int addressId,
@@ -83,6 +85,7 @@ class AddressCubit extends Cubit<AddressState> {
     required String details,
     required String? notes,
   }) async {
+     UpdateAddress updateAddressModel;
     emit(UpdateAddressLoading());
     return await DioHelper.putData(
         url: '$addresses/$addressId',

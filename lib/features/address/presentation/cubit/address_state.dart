@@ -11,7 +11,7 @@ final class ValidateState extends AddressState {}
 final class AddAddressLoading extends AddressState {}
 
 final class AddAddressSuccess extends AddressState {
-  final NewAddressModel newAddressModel;
+  final NewAddress newAddressModel;
 
   const AddAddressSuccess({required this.newAddressModel});
 }
@@ -27,11 +27,7 @@ final class CheckSetState extends AddressState {}
 ///////////////////////////////////
 final class GetAddressLoading extends AddressState {}
 
-final class GetAddressSuccess extends AddressState {
-  final GetAddressesModel getAddressesModel;
-
-  const GetAddressSuccess({required this.getAddressesModel});
-}
+final class GetAddressSuccess extends AddressState {}
 
 final class GetAddressFailure extends AddressState {
   final String error;
@@ -42,7 +38,7 @@ final class GetAddressFailure extends AddressState {
 final class UpdateAddressLoading extends AddressState {}
 
 final class UpdateAddressSuccess extends AddressState {
-  final UpdateAddressModel updateAddressModel;
+  final UpdateAddress updateAddressModel;
 
   const UpdateAddressSuccess({required this.updateAddressModel});
 }

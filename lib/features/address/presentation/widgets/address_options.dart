@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/style/themes.dart';
+import 'package:soagmb/features/address/domain/entities/address.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
-import 'package:soagmb/models/address_models/address_model.dart';
 import 'package:soagmb/features/address/presentation/views/my_addresses_view.dart';
 
 class AddressOptions extends StatelessWidget {
@@ -13,7 +13,7 @@ class AddressOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddressCubit, AddressState>(builder: (context, state) {
-      AddressModel? addressModel =
+      Address? addressModel =
           BlocProvider.of<AddressCubit>(context).addressModel;
       List addressModelsList = BlocProvider.of<AddressCubit>(context)
           .getAddressesModel!

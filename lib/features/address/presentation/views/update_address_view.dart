@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/address_models/address_model.dart';
+import 'package:soagmb/features/address/data/models/address_model.dart';
 import 'package:soagmb/features/address/presentation/widgets/update_address_view_body.dart';
 
 class UpdateAddressView extends StatelessWidget {

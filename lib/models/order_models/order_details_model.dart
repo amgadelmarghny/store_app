@@ -1,4 +1,5 @@
-import 'package:soagmb/models/address_models/address_model.dart';
+import 'package:soagmb/features/address/data/models/address_model.dart';
+import 'package:soagmb/features/address/domain/entities/address.dart';
 
 class OrderDetailsModel {
   bool? status;
@@ -26,7 +27,7 @@ class OrderDetailsDataModel {
   String? paymentMethod;
   String? date;
   String? status;
-  AddressModel? addressModel;
+  Address? addressModel;
   List<Products>? products;
 
   OrderDetailsDataModel.fromJson(Map<String, dynamic> json) {

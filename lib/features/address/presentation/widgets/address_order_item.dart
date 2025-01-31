@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/address_models/address_model.dart';
+import 'package:soagmb/features/address/domain/entities/address.dart';
 import 'package:soagmb/features/address/presentation/widgets/address_order_item_leading.dart';
 
 
@@ -12,7 +12,7 @@ class AddressOrderItem extends StatelessWidget {
     required this.onChanged,
   });
 
-  final AddressModel addressModel;
+  final Address addressModel;
   final bool isActive;
   final void Function(bool?) onChanged;
   @override

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/address/domain/entities/address.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
-import 'package:soagmb/models/address_models/address_model.dart';
 import 'package:soagmb/features/address/presentation/widgets/update_addres_button.dart';
 import 'package:soagmb/features/address/presentation/widgets/update_address_builder.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 
 class UpdateAddressBody extends StatelessWidget {
   const UpdateAddressBody({super.key, required this.addressModel});
-  final AddressModel addressModel;
+  final Address addressModel;
   @override
   Widget build(BuildContext context) {
     TextEditingController nameContoller = TextEditingController();

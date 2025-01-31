@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:popover/popover.dart';
-import 'package:soagmb/models/address_models/address_model.dart';
+import 'package:soagmb/features/address/domain/entities/address.dart';
 import 'package:soagmb/features/address/presentation/widgets/delete_address_button.dart';
 import 'package:soagmb/features/address/presentation/views/update_address_view.dart';
 import 'package:soagmb/core/global/style/colors.dart';
@@ -12,7 +12,7 @@ class AddressItem extends StatelessWidget {
     required this.addressModel,
   });
 
-  final AddressModel addressModel;
+  final Address addressModel;
 
   @override
   Widget build(BuildContext context) {
