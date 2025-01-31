@@ -16,6 +16,7 @@ class PaymentMethodItemListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AddressCubit, AddressState>(
       builder: (context, state) {
+        AddressCubit cubit = AddressCubit.get(context);
         return SizedBox(
           height: 62,
           width: MediaQuery.sizeOf(context).width,
@@ -28,12 +29,10 @@ class PaymentMethodItemListView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: GestureDetector(
                   onTap: () {
-                    BlocProvider.of<AddressCubit>(context)
-                        .setSelectedValue(index);
+                    cubit.setSelectedValue(index);
                   },
                   child: PaymentMethodItem(
-                    isActive: BlocProvider.of<AddressCubit>(context).isChoose ==
-                        index,
+                    isActive: cubit.isChoose == index,
                     image: paymentMethodImageList[index],
                   ),
                 ),

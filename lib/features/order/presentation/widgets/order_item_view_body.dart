@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_product_items_list_view.dart';
 import 'package:soagmb/models/order_models/order_details_model.dart';
-import 'package:soagmb/features/address/presentation/views/address_view.dart';
+import 'package:soagmb/features/order/presentation/widgets/order_item_address_section.dart';
 import 'package:soagmb/features/order/presentation/widgets/cancelation__order_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/product_coast.dart';
 import 'package:soagmb/features/shop/presentation/widgets/total_coast.dart';
@@ -72,9 +72,8 @@ class OrderItemViewBody extends StatelessWidget {
             const Text('Products'),
             const SizedBox(height: 15),
             OrderProductItemsListView(productModelList: productModelList),
-            const Divider(
-              thickness: 1.5,
-              height: 50,
+            SizedBox(
+              height: 20,
             ),
             if (discount > 0)
               ProductCoast(
@@ -90,15 +89,14 @@ class OrderItemViewBody extends StatelessWidget {
               number: vat.round(),
             ),
             const Divider(
-              thickness: 1.5,
+              thickness: 1,
               endIndent: 60,
               indent: 60,
             ),
             TotalCoast(
               number: total.round(),
             ),
-            const Divider(
-              thickness: 1.5,
+            SizedBox(
               height: 20,
             ),
             const SizedBox(
@@ -111,7 +109,7 @@ class OrderItemViewBody extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: decorationBuilder(context),
-              child: AddressView(
+              child: OrderItemAddressSection(
                 nameController: nameController,
                 cityController: cityController,
                 regionController: regionController,

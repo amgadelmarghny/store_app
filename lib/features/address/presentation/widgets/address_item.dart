@@ -17,7 +17,7 @@ class AddressItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FadeInUp(
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 300),
       child: ListTile(
         contentPadding: EdgeInsets.zero,
         onTap: () => Navigator.pushNamed(

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/models/address_models/address_model.dart';
-import 'package:soagmb/features/address/presentation/views/addresses_view.dart';
+import 'package:soagmb/features/address/presentation/views/my_addresses_view.dart';
 
 class AddressOptions extends StatelessWidget {
   const AddressOptions({
@@ -22,7 +22,7 @@ class AddressOptions extends StatelessWidget {
       return ListTile(
         title: const Text('Address'),
         onTap: () {
-          Navigator.of(context).pushNamed(AddressesView.id);
+          Navigator.of(context).pushNamed(MyAddressesView.id);
         },
         trailing: Row(
           mainAxisSize: MainAxisSize.min,

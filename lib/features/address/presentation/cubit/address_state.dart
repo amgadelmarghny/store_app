@@ -1,10 +1,7 @@
 part of 'address_cubit.dart';
 
-abstract class AddressState extends Equatable {
+abstract class AddressState {
   const AddressState();
-
-  @override
-  List<Object> get props => [];
 }
 
 final class AddressInitial extends AddressState {}
@@ -63,60 +60,4 @@ final class DeleteAddressSuccess extends AddressState {}
 final class DeleteAddressFailure extends AddressState {
   final String error;
   const DeleteAddressFailure({required this.error});
-}
-
-/////////////////
-final class AddOrderLoading extends AddressState {}
-
-final class AddOrderSuccess extends AddressState {
-  final AddOrderModel addOrderModel;
-
-  const AddOrderSuccess({required this.addOrderModel});
-}
-
-final class AddOrderFailure extends AddressState {
-  final String error;
-  const AddOrderFailure({required this.error});
-}
-
-//////////////
-final class GetOrderLoading extends AddressState {}
-
-final class GetOrderSuccess extends AddressState {
-  final GetOrdersModel getOrdersModel;
-
-  const GetOrderSuccess({required this.getOrdersModel});
-}
-
-final class GetOrderFailure extends AddressState {
-  final String error;
-  const GetOrderFailure({required this.error});
-}
-
-///////////////////
-final class OrderDetailsLoading extends AddressState {}
-
-final class OrderDetailsSuccess extends AddressState {
-  final OrderDetailsModel orderDetailsModel;
-
-  const OrderDetailsSuccess({required this.orderDetailsModel});
-}
-
-final class OrderDetailsFailure extends AddressState {
-  final String error;
-  const OrderDetailsFailure({required this.error});
-}
-
-///////////////////////
-final class CancelOrderLoading extends AddressState {}
-
-final class CancelOrderSuccess extends AddressState {
-  final CancelOrderModel cancelOrderModel;
-
-  const CancelOrderSuccess({required this.cancelOrderModel});
-}
-
-final class CancelOrderFailure extends AddressState {
-  final String error;
-  const CancelOrderFailure({required this.error});
 }

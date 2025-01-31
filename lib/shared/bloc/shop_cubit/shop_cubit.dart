@@ -23,6 +23,7 @@ part 'shop_state.dart';
 class ShopCubit extends Cubit<ShopStates> {
   ShopCubit() : super(ShopInitial());
 
+  static ShopCubit get(context) => BlocProvider.of(context);
   List<Widget>? drawerItems;
 
   int currentIndex = 0;
@@ -90,7 +91,7 @@ class ShopCubit extends Cubit<ShopStates> {
   Map<int, bool> favoriteProductsMap = {};
   Map<int, bool> inCartProductsMap = {};
 
-  void getHomeData() async {
+  Future<void> getHomeData() async {
     emit(GetHomeDataLoadingState());
     await DioHelper.getData(
       url: 'home',
@@ -200,9 +201,9 @@ class ShopCubit extends Cubit<ShopStates> {
 
   ChangedFavoriteModel? changedCartModel;
 
-  void addAndRemoveCart({required int productId}) async {
+  Future<void> addAndRemoveCart({required int productId}) async {
     inCartProductsMap[productId] = !inCartProductsMap[productId]!;
-    emit(CartLoadingState());
+    emit(AddToCartLoadingState());
     await DioHelper.postData(
       url: carts,
       token: CashHelper.getData(key: tokenConst),
@@ -210,9 +211,9 @@ class ShopCubit extends Cubit<ShopStates> {
     ).then((value) {
       changedCartModel = ChangedFavoriteModel.fromJson(value.data);
       getCartItems();
-      emit(CartSussiccState(changedCartModel: changedCartModel!));
+      emit(AddToCartSussiccState(changedCartModel: changedCartModel!));
     }).catchError((errMessage) {
-      emit(CartFailureState(errMessage: errMessage));
+      emit(AddToCartFailureState(errMessage: errMessage));
     });
   }
 
@@ -220,7 +221,7 @@ class ShopCubit extends Cubit<ShopStates> {
   GetCartModel? cartModel;
   Map<int, int> quantityNumberMap = {};
   ProductModel? productCheck;
-  void getCartItems() async {
+  Future<void> getCartItems() async {
     emit(GetCartLoadingState());
     await DioHelper.getData(
       url: carts,

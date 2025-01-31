@@ -1,7 +1,8 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
+import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
+import 'package:soagmb/features/order/presentation/views/my_orders_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 
 class CancelationOrderButton extends StatefulWidget {
@@ -19,7 +20,7 @@ class _CancelationOrderButtonState extends State<CancelationOrderButton> {
   bool isOrderCancelable = false;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddressCubit, AddressState>(
+    return BlocConsumer<OrderCubit, OrderState>(
       listener: (context, state) {
         if (state is CancelOrderSuccess) {
           if (state.cancelOrderModel.status) {
@@ -34,6 +35,7 @@ class _CancelationOrderButtonState extends State<CancelationOrderButton> {
         }
         if (state is GetOrderSuccess) {
           Navigator.pop(context);
+          Navigator.popAndPushNamed(context, MyOrdersView.id);
         }
       },
       builder: (context, state) {
@@ -45,11 +47,11 @@ class _CancelationOrderButtonState extends State<CancelationOrderButton> {
               Radius.circular(30),
             ),
           ),
-          onPressed: () {
+          onPressed: () async {
             setState(() {
               isOrderCancelable = true;
             });
-            BlocProvider.of<AddressCubit>(context)
+            await OrderCubit.get(context)
                 .cancelTheOrder(orderId: widget.orderId);
           },
           child: ConditionalBuilder(

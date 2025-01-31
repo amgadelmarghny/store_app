@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CustomSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  const CustomSliverAppBarDelegate({
+class CustomOrderItemSuccessScreenAppBarDelegate
+    extends SliverPersistentHeaderDelegate {
+  const CustomOrderItemSuccessScreenAppBarDelegate({
     required this.id,
     required this.status,
     required this.date,

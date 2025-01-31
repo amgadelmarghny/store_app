@@ -62,6 +62,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
       },
       builder: (context, state) {
         return CustomButton(
+          dutrationTime: 0,
           isLoading:
               state is LoginLodingState || state is CustomerPatymentLoding,
           text: 'Login',

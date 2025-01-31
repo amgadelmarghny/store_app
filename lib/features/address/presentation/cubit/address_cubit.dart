@@ -5,10 +5,6 @@ import 'package:soagmb/models/address_models/address_model.dart';
 import 'package:soagmb/models/address_models/get_address_model.dart';
 import 'package:soagmb/models/address_models/new_address_model.dart';
 import 'package:soagmb/models/address_models/update_address_model.dart';
-import 'package:soagmb/models/order_models/add_order_model.dart';
-import 'package:soagmb/models/order_models/cancel_order.dart';
-import 'package:soagmb/models/order_models/get_orders_model.dart';
-import 'package:soagmb/models/order_models/order_details_model.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
 import 'package:soagmb/core/network/remote/dio_helper_for_shop.dart';
@@ -124,9 +120,9 @@ class AddressCubit extends Cubit<AddressState> {
 
   ////////////// payment method option  for order sheet ////////////
   int selectedValue = 1;
-  String selectedType = 'Cash';
+  String selectedTypeName = 'Cash';
   int isChoose = 0;
-  void setSelectedValue(value) {
+  void setSelectedValue(int value) {
     // for making selected payment method item
     // still selected even close payment sheet
     // as $selectedType
@@ -136,94 +132,19 @@ class AddressCubit extends Cubit<AddressState> {
     value++;
     if (value == 1) {
       selectedValue = value;
-      selectedType = 'Cash';
+      selectedTypeName = 'Cash';
+      print('hgggggggggg :$value');
     }
     if (value == 2) {
       selectedValue = value;
-      selectedType = 'Credit/Debit Card';
+      selectedTypeName = 'Credit/Debit Card';
+      print('hgggggggggg :$value');
     }
     if (value == 3) {
       selectedValue = value;
-      selectedType = 'PayPal';
+      selectedTypeName = 'PayPal';
+      print('hgggggggggg :$value');
     }
     emit(CheckSetState());
-  }
-
-  ////////////////////// ! add order  ///////////////////////////
-  late AddOrderModel addOrderModel;
-  Future addNewOrder(
-      {required int addressId,
-      required int paymentMethod,
-      required bool usePoints}) async {
-    emit(AddOrderLoading());
-    await DioHelper.postData(
-        url: order,
-        token: CashHelper.getData(key: tokenConst),
-        data: {
-          "address_id": addressId,
-          "payment_method": paymentMethod,
-          "use_points": usePoints,
-        }).then((value) {
-      addOrderModel = AddOrderModel.fromJson(value.data);
-      getAllOrders();
-      emit(AddOrderSuccess(addOrderModel: addOrderModel));
-    }).catchError((error) {
-      emit(AddOrderFailure(error: error.toString()));
-    });
-  }
-
-  ////////////////////// ! get orders  ///////////////////////////
-  List<OrderModel> newOrdersList = [];
-  List<OrderModel> cancelledOrdersList = [];
-  GetOrdersModel? getOrdersModel;
-  void getAllOrders() async {
-    newOrdersList.clear();
-    cancelledOrdersList.clear();
-    emit(GetOrderLoading());
-    await DioHelper.getData(
-      url: order,
-      token: CashHelper.getData(key: tokenConst),
-    ).then((value) {
-      getOrdersModel = GetOrdersModel.fromJson(value.data);
-      for (var element in getOrdersModel!.data!.listOfOrders) {
-        if (element.status == 'New' || element.status == 'جديد') {
-          newOrdersList.add(element);
-        } else if (element.status == 'Cancelled' || element.status == 'ملغي') {
-          cancelledOrdersList.add(element);
-        }
-      }
-      emit(GetOrderSuccess(getOrdersModel: getOrdersModel!));
-    }).catchError((error) {
-      emit(GetOrderFailure(error: error.toString()));
-    });
-  }
-
-  ////////////////////! Get Order details /////////////////////
-  OrderDetailsModel? orderDetailsModel;
-  void getOrderDetails({required int id}) {
-    emit(OrderDetailsLoading());
-    DioHelper.getData(url: "$order/$id").then((value) {
-      orderDetailsModel = OrderDetailsModel.fromJson(value.data);
-      emit(OrderDetailsSuccess(orderDetailsModel: orderDetailsModel!));
-    }).catchError((error) {
-      emit(OrderDetailsFailure(error: error));
-    });
-  }
-
-  ////////////////////! Cancel  the Order /////////////////////
-  late CancelOrderModel cancelOrderModel;
-  Future<void> cancelTheOrder({required int orderId}) async {
-    emit(CancelOrderLoading());
-    DioHelper.getData(
-        url: '$order/$orderId/cancel',
-        token: CashHelper.getData(
-          key: tokenConst,
-        )).then((value) {
-      cancelOrderModel = CancelOrderModel.fromJson(value.data);
-      getAllOrders();
-      emit(CancelOrderSuccess(cancelOrderModel: cancelOrderModel));
-    }).catchError((error) {
-      emit(CancelOrderFailure(error: error));
-    });
   }
 }

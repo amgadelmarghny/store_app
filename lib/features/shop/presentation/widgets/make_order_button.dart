@@ -15,8 +15,7 @@ class MakeOrderButton extends StatelessWidget {
   final dynamic productCost;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddressCubit, AddressState>(
-      listener: (context, state) {},
+    return BlocBuilder<AddressCubit, AddressState>(
       builder: (context, state) {
         return Stack(
           alignment: Alignment.centerRight,

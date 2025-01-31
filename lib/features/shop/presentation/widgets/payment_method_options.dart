@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'payment_method_list_view.dart';
 
@@ -20,11 +21,11 @@ class PaymentMethodOptions extends StatelessWidget {
             actions: [
               ElevatedButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text(
+                child: Text(
                   'Ok',
                   style: TextStyle(
                     color: Colors.teal,
-                    fontSize: 17,
+                    fontSize: getResponsiveFontSize(fontSize: 17),
                   ),
                 ),
               ),
@@ -36,18 +37,19 @@ class PaymentMethodOptions extends StatelessWidget {
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          BlocBuilder<AddressCubit, AddressState>(
+          BlocConsumer<AddressCubit, AddressState>(
             builder: (context, state) {
               return FittedBox(
                 child: Text(
-                  BlocProvider.of<AddressCubit>(context).selectedType,
+                  BlocProvider.of<AddressCubit>(context).selectedTypeName,
                   style: Theme.of(context)
                       .textTheme
                       .titleSmall!
-                      .copyWith(fontSize: 18),
+                      .copyWith(fontSize: getResponsiveFontSize(fontSize: 18)),
                 ),
               );
             },
+            listener: (BuildContext context, state) {},
           ),
           const SizedBox(
             width: 3,

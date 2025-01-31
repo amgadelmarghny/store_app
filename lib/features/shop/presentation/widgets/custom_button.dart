@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
     this.color = defaultColor,
     this.prefixIcon = false,
     this.textColor = Colors.white,
+    this.dutrationTime = 300,
   });
   final void Function()? onTap;
   final bool isLoading;
@@ -20,10 +21,11 @@ class CustomButton extends StatelessWidget {
   final Color? color;
   final bool prefixIcon;
   final Color textColor;
+  final int dutrationTime;
   @override
   Widget build(BuildContext context) {
     return FadeInUp(
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: dutrationTime),
       child: InkWell(
         onTap: onTap,
         child: Container(

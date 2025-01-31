@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/widgets/empty_screen.dart';
 import 'package:soagmb/core/global/widgets/failure_screen.dart';
-import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
+import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_item_list_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/core/global/style/colors.dart';
@@ -15,7 +15,7 @@ class NewOrdersBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
-      child: BlocConsumer<AddressCubit, AddressState>(
+      child: BlocConsumer<OrderCubit, OrderState>(
         listener: (context, state) {
           if (state is GetOrderFailure) {
             snacKBar(context, state.error);
@@ -31,7 +31,7 @@ class NewOrdersBody extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          AddressCubit bloc = AddressCubit.get(context);
+          OrderCubit bloc = OrderCubit.get(context);
           if (state is GetOrderFailure) {
             return FailureScreen();
           }

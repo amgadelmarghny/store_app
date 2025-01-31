@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
@@ -21,52 +22,56 @@ class UpdateAddressBuilder extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      autovalidateMode: BlocProvider.of<AddressCubit>(context).autovalidateMode,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('Add your address'),
-          const SizedBox(height: 30),
-          Row(
-            children: [
-              AddressField(
-                width: 110,
-                hintText: 'address name',
-                messageValidationName: 'Address name',
-                textEditingController: nameContoller,
-              ),
-              const Spacer(),
-              AddressField(
-                width: 120,
-                hintText: 'city',
-                messageValidationName: 'City',
-                textEditingController: cityContoller,
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          AddressField(
-            hintText: 'region',
-            messageValidationName: 'Region',
-            textEditingController: regionContoller,
-          ),
-          const SizedBox(height: 20),
-          AddressField(
-            hintText: 'details',
-            messageValidationName: 'Details',
-            textEditingController: detailsContoller,
-          ),
-          const SizedBox(height: 20),
-          AddressField(
-            isRequired: false,
-            hintText: 'notes',
-            maxLine: 5,
-            messageValidationName: 'Notes',
-            textEditingController: notesContoller,
-          ),
-        ],
+    return FadeInUp(
+      duration: Duration(milliseconds: 300),
+      child: Form(
+        key: formKey,
+        autovalidateMode:
+            BlocProvider.of<AddressCubit>(context).autovalidateMode,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Add your address'),
+            const SizedBox(height: 30),
+            Row(
+              children: [
+                AddressField(
+                  width: 110,
+                  hintText: 'address name',
+                  messageValidationName: 'Address name',
+                  textEditingController: nameContoller,
+                ),
+                const Spacer(),
+                AddressField(
+                  width: 120,
+                  hintText: 'city',
+                  messageValidationName: 'City',
+                  textEditingController: cityContoller,
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            AddressField(
+              hintText: 'region',
+              messageValidationName: 'Region',
+              textEditingController: regionContoller,
+            ),
+            const SizedBox(height: 20),
+            AddressField(
+              hintText: 'details',
+              messageValidationName: 'Details',
+              textEditingController: detailsContoller,
+            ),
+            const SizedBox(height: 20),
+            AddressField(
+              isRequired: false,
+              hintText: 'notes',
+              maxLine: 5,
+              messageValidationName: 'Notes',
+              textEditingController: notesContoller,
+            ),
+          ],
+        ),
       ),
     );
   }

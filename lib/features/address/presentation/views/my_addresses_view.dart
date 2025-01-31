@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/address/presentation/widgets/addresses_view_body.dart';
 
-class AddressesView extends StatelessWidget {
-  const AddressesView({super.key});
+class MyAddressesView extends StatelessWidget {
+  const MyAddressesView({super.key});
   static const id = 'AddressesView';
   @override
   Widget build(BuildContext context) {

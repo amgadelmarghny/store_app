@@ -56,17 +56,17 @@ final class GetFavoritesFailureState extends ShopStates {
 class ShowMoreState extends ShopStates {}
 
 /////////////////
-class CartLoadingState extends ShopStates {}
+class AddToCartLoadingState extends ShopStates {}
 
-class CartSussiccState extends ShopStates {
+class AddToCartSussiccState extends ShopStates {
   final ChangedFavoriteModel changedCartModel;
-  CartSussiccState({required this.changedCartModel});
+  AddToCartSussiccState({required this.changedCartModel});
 }
 
-class CartFailureState extends ShopStates {
+class AddToCartFailureState extends ShopStates {
   final String errMessage;
 
-  CartFailureState({required this.errMessage});
+  AddToCartFailureState({required this.errMessage});
 }
 
 ///////////////////////////////////////////////////////////

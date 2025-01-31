@@ -7,10 +7,10 @@ import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/shop/presentation/views/shop_view.dart';
 import 'package:soagmb/features/address/presentation/views/add_address_view.dart';
-import 'package:soagmb/features/address/presentation/views/addresses_view.dart';
+import 'package:soagmb/features/address/presentation/views/my_addresses_view.dart';
 import 'package:soagmb/features/address/presentation/views/update_address_view.dart';
 import 'package:soagmb/features/order/presentation/views/order_item_view.dart';
-import 'package:soagmb/features/order/presentation/views/order_view.dart';
+import 'package:soagmb/features/order/presentation/views/my_orders_view.dart';
 import 'package:soagmb/features/shop/presentation/views/my_cart_view.dart';
 import 'package:soagmb/features/shop/presentation/views/category_details_view.dart';
 import 'package:soagmb/features/user/presentation/views/login_view.dart';
@@ -76,9 +76,7 @@ class Soagmb extends StatelessWidget {
         ),
         BlocProvider(create: (context) => CategoryCubit()),
         BlocProvider<AddressCubit>(
-            create: (context) => AddressCubit()
-              ..getAddresses()
-              ..getAllOrders()),
+            create: (context) => AddressCubit()..getAddresses()),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
@@ -97,8 +95,9 @@ class Soagmb extends StatelessWidget {
               CategoryDetailsView.id: (context) => const CategoryDetailsView(),
               AddAddressView.id: (BuildContext context) =>
                   const AddAddressView(),
-              AddressesView.id: (BuildContext context) => const AddressesView(),
-              OrderView.id: (context) => const OrderView(),
+              MyAddressesView.id: (BuildContext context) =>
+                  const MyAddressesView(),
+              MyOrdersView.id: (context) => const MyOrdersView(),
               UpdateAddressView.id: (context) => const UpdateAddressView(),
               OrderItemView.id: (context) => const OrderItemView(),
               ChangePasswordView.id: (context) => const ChangePasswordView()

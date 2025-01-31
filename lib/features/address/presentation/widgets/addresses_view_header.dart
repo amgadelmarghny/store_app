@@ -10,7 +10,7 @@ class AddressesViewHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: FadeInUp(
-        duration: Duration(milliseconds: 500),
+        duration: Duration(milliseconds: 300),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -17,14 +17,14 @@ class AddToCartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {
-        if (state is CartSussiccState) {
+        if (state is AddToCartSussiccState) {
           toastShown(
             message: state.changedCartModel.message,
             state: ToastState.success,
             context: context,
           );
         }
-        if (state is CartFailureState) {
+        if (state is AddToCartFailureState) {
           toastShown(
             message: state.errMessage,
             state: ToastState.error,
@@ -35,19 +35,22 @@ class AddToCartButton extends StatelessWidget {
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.only(top: 10),
-          child: CustomButton(
-            prefixIcon: BlocProvider.of<ShopCubit>(context)
-                .inCartProductsMap[productModel.id]!,
-            isLoading: state is CartLoadingState,
-            text: BlocProvider.of<ShopCubit>(context)
-                    .inCartProductsMap[productModel.id]!
-                ? 'Remove from Cart'
-                : 'Add to Cart',
-            onTap: () {
-              BlocProvider.of<ShopCubit>(context).addAndRemoveCart(
-                productId: productModel.id,
-              );
-            },
+          child: AbsorbPointer(
+            absorbing: state is AddToCartLoadingState,
+            child: CustomButton(
+              prefixIcon: BlocProvider.of<ShopCubit>(context)
+                  .inCartProductsMap[productModel.id]!,
+              isLoading: state is AddToCartLoadingState,
+              text: BlocProvider.of<ShopCubit>(context)
+                      .inCartProductsMap[productModel.id]!
+                  ? 'Remove from Cart'
+                  : 'Add to Cart',
+              onTap: () async {
+                await BlocProvider.of<ShopCubit>(context).addAndRemoveCart(
+                  productId: productModel.id,
+                );
+              },
+            ),
           ),
         );
       },

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/address/presentation/widgets/address_field.dart';
 
-class AddressView extends StatelessWidget {
-  const AddressView({
+class OrderItemAddressSection extends StatelessWidget {
+  const OrderItemAddressSection({
     super.key,
     required this.nameController,
     required this.cityController,

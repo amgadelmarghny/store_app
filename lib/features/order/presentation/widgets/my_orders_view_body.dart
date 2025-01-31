@@ -3,8 +3,8 @@ import 'package:soagmb/features/order/presentation/widgets/cancelled_order_body.
 import 'package:soagmb/features/order/presentation/widgets/new_orders_body.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
-class OrderViewBody extends StatelessWidget {
-  const OrderViewBody({super.key});
+class MyOrdersViewBody extends StatelessWidget {
+  const MyOrdersViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {

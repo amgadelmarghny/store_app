@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
+
 import 'package:soagmb/models/order_models/get_orders_model.dart';
 import 'package:soagmb/features/order/presentation/views/order_item_view.dart';
 import 'package:soagmb/core/global/style/colors.dart';
@@ -10,7 +9,7 @@ class OrderItem extends StatelessWidget {
     super.key,
     required this.color,
     required this.orderModel,
-    required this.isNewOrderBody ,
+    required this.isNewOrderBody,
   });
   final Color color;
   final OrderModel orderModel;
@@ -20,9 +19,8 @@ class OrderItem extends StatelessWidget {
     return InkWell(
       onTap: isNewOrderBody
           ? () {
-              BlocProvider.of<AddressCubit>(context)
-                  .getOrderDetails(id: orderModel.id);
-              Navigator.pushNamed(context, OrderItemView.id);
+              Navigator.pushNamed(context, OrderItemView.id,
+                  arguments: orderModel.id);
             }
           : null,
       child: Container(

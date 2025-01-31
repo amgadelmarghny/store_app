@@ -3,18 +3,18 @@ import 'package:soagmb/models/address_models/address_model.dart';
 class OrderDetailsModel {
   bool? status;
   String? message;
-  Data? data;
+  OrderDetailsDataModel? data;
 
   OrderDetailsModel({this.status, this.message, this.data});
 
   OrderDetailsModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? OrderDetailsDataModel.fromJson(json['data']) : null;
   }
 }
 
-class Data {
+class OrderDetailsDataModel {
   int? id;
   dynamic cost;
   dynamic discount;
@@ -29,7 +29,7 @@ class Data {
   AddressModel? addressModel;
   List<Products>? products;
 
-  Data.fromJson(Map<String, dynamic> json) {
+  OrderDetailsDataModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     cost = json['cost'];
     discount = json['discount'];
