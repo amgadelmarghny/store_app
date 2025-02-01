@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:soagmb/models/order_models/get_orders_model.dart';
+import 'package:soagmb/features/order/domain/entities/order.dart';
 import 'package:soagmb/features/order/presentation/views/order_item_view.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
@@ -12,7 +11,7 @@ class OrderItem extends StatelessWidget {
     required this.isNewOrderBody,
   });
   final Color color;
-  final OrderModel orderModel;
+  final Order orderModel;
   final bool isNewOrderBody;
   @override
   Widget build(BuildContext context) {

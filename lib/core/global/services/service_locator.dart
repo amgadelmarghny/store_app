@@ -7,6 +7,14 @@ import 'package:soagmb/features/address/domain/usecases/delete_address_usecase.d
 import 'package:soagmb/features/address/domain/usecases/get_addresses_usecase.dart';
 import 'package:soagmb/features/address/domain/usecases/update_address_usecase.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
+import 'package:soagmb/features/order/data/datasources/order_datasource.dart';
+import 'package:soagmb/features/order/data/repositories/orders_repo.dart';
+import 'package:soagmb/features/order/domain/repositories/base_orders_repo.dart';
+import 'package:soagmb/features/order/domain/usecases/add_new_order_usecase.dart';
+import 'package:soagmb/features/order/domain/usecases/cancel_order_usecase.dart';
+import 'package:soagmb/features/order/domain/usecases/get_order_details_usecase.dart';
+import 'package:soagmb/features/order/domain/usecases/get_orders_usecase.dart';
+import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
 import 'package:soagmb/features/search/data/datasources/search_for_product_data_source.dart';
 import 'package:soagmb/features/search/data/repositories/search_for_product_repo.dart';
 import 'package:soagmb/features/search/domain/repositories/base_get_search_for_product_repo.dart';
@@ -64,5 +72,16 @@ class ServiceLocator {
     sl.registerLazySingleton(() => DeleteAddressUsecase(repo: sl()));
     sl.registerLazySingleton<AddressCubit>(
         () => AddressCubit(sl(), sl(), sl(), sl()));
+
+    // orders
+    sl.registerLazySingleton<BaseOrderDatasource>(() => OrderDatasource());
+    sl.registerLazySingleton<BaseOrdersRepo>(
+        () => OrdersRepo(baseOrderDatasource: sl()));
+    sl.registerLazySingleton(() => AddNewOrderUsecase(repo: sl()));
+    sl.registerLazySingleton(() => GetOrdersUsecase(repo: sl()));
+    sl.registerLazySingleton(() => GetOrderDetailsUsecase(repo: sl()));
+    sl.registerLazySingleton(() => CancelOrderUsecase(repo: sl()));
+    sl.registerLazySingleton<OrderCubit>(
+        () => OrderCubit(sl(), sl(), sl(), sl()));
   }
 }

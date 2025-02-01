@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/core/global/services/service_locator.dart';
 import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_item_success_screen.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
@@ -13,8 +14,8 @@ class OrderItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var id = ModalRoute.settingsOf(context)!.arguments as int;
-    return BlocProvider(
-      create: (context) => OrderCubit()..getOrderDetails(id: id),
+    return BlocProvider<OrderCubit>(
+      create: (context) => sl()..getOrderDetails(id: id),
       child: Scaffold(
         body: BlocConsumer<OrderCubit, OrderState>(
           listener: (context, state) {

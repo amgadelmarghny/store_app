@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/features/order/domain/entities/products_order.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_product_item.dart';
-import 'package:soagmb/models/order_models/order_details_model.dart';
 
 class OrderProductItemsListView extends StatelessWidget {
   const OrderProductItemsListView({
@@ -8,7 +8,7 @@ class OrderProductItemsListView extends StatelessWidget {
     required this.productModelList,
   });
 
-  final List<Products> productModelList;
+  final List<ProductsOrder> productModelList;
 
   @override
   Widget build(BuildContext context) {

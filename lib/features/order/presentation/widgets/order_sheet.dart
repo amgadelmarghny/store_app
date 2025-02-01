@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/core/global/services/service_locator.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/checkout/presentation/manager/cubit/payment_cubit.dart';
 import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
@@ -9,7 +10,7 @@ import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.d
 import 'package:soagmb/features/shop/presentation/widgets/custom_small_divider.dart';
 import 'package:soagmb/features/shop/presentation/widgets/hint_text.dart';
 import 'package:soagmb/features/shop/presentation/widgets/payment_method_options.dart';
-import 'package:soagmb/features/shop/presentation/widgets/place_order_button.dart';
+import 'package:soagmb/features/order/presentation/widgets/place_order_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/total_coast_list_tile.dart';
 import 'package:soagmb/features/checkout/data/repository/checkout_repo.dart';
 
@@ -54,8 +55,8 @@ class OrderSheet extends StatelessWidget {
                 BlocProvider(
                   create: (context) => PaymentCubit(CheckoutRepoImpl()),
                 ),
-                BlocProvider(
-                  create: (context) => OrderCubit(),
+                BlocProvider<OrderCubit>(
+                  create: (context) => sl(),
                 )
               ],
               child: BlocListener<OrderCubit, OrderState>(
@@ -63,9 +64,9 @@ class OrderSheet extends StatelessWidget {
                   ShopCubit shopCubit = ShopCubit.get(context);
 
                   if (state is AddOrderSuccess) {
-                    if (state.addOrderModel.status) {
+                    if (state.addNewOrderModel.status) {
                       toastShown(
-                        message: state.addOrderModel.message,
+                        message: state.addNewOrderModel.message,
                         state: ToastState.success,
                         context: context,
                       );
@@ -81,7 +82,7 @@ class OrderSheet extends StatelessWidget {
                       }
                     } else {
                       toastShown(
-                        message: state.addOrderModel.message,
+                        message: state.addNewOrderModel.message,
                         state: ToastState.error,
                         context: context,
                       );

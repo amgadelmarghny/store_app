@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/models/order_models/order_details_model.dart';
+import 'package:soagmb/features/order/domain/entities/products_order.dart';
 import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 
 class OrderProductItem extends StatelessWidget {
   const OrderProductItem({super.key, required this.productModel});
-  final Products productModel;
+  final ProductsOrder productModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +27,7 @@ class OrderProductItem extends StatelessWidget {
       child: Row(
         children: [
           CachedNetworkImage(
-            imageUrl: productModel.image!,
+            imageUrl: productModel.image,
             fit: BoxFit.cover,
             height: 90,
             placeholder: (context, url) => const Center(
@@ -44,7 +44,7 @@ class OrderProductItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    productModel.name!,
+                    productModel.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(

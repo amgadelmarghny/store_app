@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:soagmb/features/order/domain/entities/order.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_item.dart';
-import 'package:soagmb/models/order_models/get_orders_model.dart';
 
 class OrderItemListView extends StatelessWidget {
   const OrderItemListView({
@@ -11,7 +11,7 @@ class OrderItemListView extends StatelessWidget {
     this.isNewOrderBody = false,
   });
 
-  final List<OrderModel> orderModelList;
+  final List<Order> orderModelList;
   final Color color;
   final bool isNewOrderBody;
 

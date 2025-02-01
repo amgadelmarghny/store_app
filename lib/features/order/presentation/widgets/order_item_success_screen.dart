@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:soagmb/features/order/domain/entities/order_details.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_item_view_body.dart';
 import 'package:soagmb/features/order/presentation/widgets/custom_order_item_success_screen_app_bar.dart';
-import 'package:soagmb/models/order_models/order_details_model.dart';
 
 class OrderItemSuceesScreen extends StatelessWidget {
   const OrderItemSuceesScreen({
@@ -10,7 +10,7 @@ class OrderItemSuceesScreen extends StatelessWidget {
     required this.orderDetailsDataModel,
   });
 
-  final OrderDetailsDataModel orderDetailsDataModel;
+  final OrderDetailsData orderDetailsDataModel;
 
   @override
   Widget build(BuildContext context) {

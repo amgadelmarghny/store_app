@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/checkout/presentation/manager/cubit/payment_cubit.dart';
+import 'package:soagmb/features/order/data/models/add_new_order__parameter.dart';
 import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
 // import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
@@ -34,13 +35,7 @@ class PlaceOrderButton extends StatelessWidget {
         }
         if (state is PaymentSuccess) {
           // TODO : write what UI action will u make after payment success
-          await orderCubit.addNewOrder(
-            addressId: addressCubit.addressModel != null
-                ? addressCubit.addressModel!.id
-                : addressCubit.getAddressesModel!.data!.addressModelsList[0].id,
-            paymentMethod: addressCubit.selectedValue,
-            usePoints: false,
-          );
+          await addNewOrderMethod(addressCubit, orderCubit);
         }
       },
       child: BlocBuilder<OrderCubit, OrderState>(
@@ -53,14 +48,7 @@ class PlaceOrderButton extends StatelessWidget {
               // if the payment method is cash  on delivery
               //then the  user can place order directly
               if (addressCubit.selectedValue == 1) {
-                await orderCubit.addNewOrder(
-                  addressId: addressCubit.addressModel != null
-                      ? addressCubit.addressModel!.id
-                      : addressCubit
-                          .getAddressesModel!.data!.addressModelsList[0].id,
-                  paymentMethod: addressCubit.selectedValue,
-                  usePoints: false,
-                );
+                await addNewOrderMethod(addressCubit, orderCubit);
               } //if not and the  payment method is credit card
               // then show a dialog to enter the pin code of the card
               else if (addressCubit.selectedValue == 2) {
@@ -136,5 +124,16 @@ class PlaceOrderButton extends StatelessWidget {
         },
       ),
     );
+  }
+
+  Future<void> addNewOrderMethod(
+      AddressCubit addressCubit, OrderCubit orderCubit) async {
+    AddNewOrderParameter parameter = AddNewOrderParameter(
+        addressId: addressCubit.addressModel != null
+            ? addressCubit.addressModel!.id
+            : addressCubit.getAddressesModel!.data!.addressModelsList[0].id,
+        paymentMethod: addressCubit.selectedValue,
+        usePoints: false);
+    await orderCubit.addNewOrder(parameter: parameter);
   }
 }

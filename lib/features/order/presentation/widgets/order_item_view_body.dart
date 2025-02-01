@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/features/order/domain/entities/products_order.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_product_items_list_view.dart';
-import 'package:soagmb/models/order_models/order_details_model.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_item_address_section.dart';
 import 'package:soagmb/features/order/presentation/widgets/cancelation__order_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/product_coast.dart';
@@ -22,7 +22,7 @@ class OrderItemViewBody extends StatelessWidget {
     required this.total,
     required this.orderId,
   });
-  final List<Products> productModelList;
+  final List<ProductsOrder> productModelList;
   final int orderId;
   final String name;
   final String city;
