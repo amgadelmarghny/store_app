@@ -87,7 +87,8 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   ////////////////////////////? UPDATE  USER  INFORMATION ////////////////////////
-  Future<void> updateUserInfo({required UpdateProfileParameter parameter}) async {
+  Future<void> updateUserInfo(
+      {required UpdateProfileParameter parameter}) async {
     emit(UpdateProfileLoadingState());
     final result = await updateProfileUsecase(parameter);
     result.fold(

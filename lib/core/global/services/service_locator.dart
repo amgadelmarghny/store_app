@@ -1,4 +1,12 @@
 import 'package:get_it/get_it.dart';
+import 'package:soagmb/features/address/data/datasources/address_datasource.dart';
+import 'package:soagmb/features/address/data/repositories/address_repo.dart';
+import 'package:soagmb/features/address/domain/repositories/base_address_repo.dart';
+import 'package:soagmb/features/address/domain/usecases/add_new_address_usecase.dart';
+import 'package:soagmb/features/address/domain/usecases/delete_address_usecase.dart';
+import 'package:soagmb/features/address/domain/usecases/get_addresses_usecase.dart';
+import 'package:soagmb/features/address/domain/usecases/update_address_usecase.dart';
+import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/search/data/datasources/search_for_product_data_source.dart';
 import 'package:soagmb/features/search/data/repositories/search_for_product_repo.dart';
 import 'package:soagmb/features/search/domain/repositories/base_get_search_for_product_repo.dart';
@@ -45,5 +53,16 @@ class ServiceLocator {
     sl.registerLazySingleton(
         () => SearchForProductUsecase(baseSearchForProductRepo: sl()));
     sl.registerLazySingleton<SearchCubit>(() => SearchCubit(sl()));
+
+    // address
+    sl.registerLazySingleton<BaseAddressDatasource>(() => AddressDatasource());
+    sl.registerLazySingleton<BaseAddressRepo>(
+        () => AddressRepo(baseAddressDatasource: sl()));
+    sl.registerLazySingleton(() => AddNewAddressUsecase(repo: sl()));
+    sl.registerLazySingleton(() => UpdateAddressUsecase(repo: sl()));
+    sl.registerLazySingleton(() => GetAddressesUsecase(repo: sl()));
+    sl.registerLazySingleton(() => DeleteAddressUsecase(repo: sl()));
+    sl.registerLazySingleton<AddressCubit>(
+        () => AddressCubit(sl(), sl(), sl(), sl()));
   }
 }

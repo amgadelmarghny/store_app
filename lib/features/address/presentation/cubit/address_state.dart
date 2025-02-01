@@ -51,8 +51,6 @@ final class UpdateAddressFailure extends AddressState {
 ///////////////
 final class DeleteAddressLoading extends AddressState {}
 
-final class DeleteAddressSuccess extends AddressState {}
-
 final class DeleteAddressFailure extends AddressState {
   final String error;
   const DeleteAddressFailure({required this.error});

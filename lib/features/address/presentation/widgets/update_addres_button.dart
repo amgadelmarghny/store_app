@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/address/data/models/update_address_parameter.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/core/global/style/colors.dart';
@@ -35,14 +36,17 @@ class UpdateAddressButton extends StatelessWidget {
         text: 'Update my address',
         onTap: () {
           if (formKey.currentState!.validate()) {
-            BlocProvider.of<AddressCubit>(context).updateAddress(
-              name: nameContoller.text,
-              city: cityContoller.text,
-              region: regionContoller.text,
-              details: detailsContoller.text,
-              notes: notesContoller.text,
-              addressId: addressId,
-            );
+            UpdateAddressParameter parameter = UpdateAddressParameter(
+                name: nameContoller.text,
+                city: cityContoller.text,
+                region: regionContoller.text,
+                details: detailsContoller.text,
+                notes: notesContoller.text,
+                addressId: addressId,
+                latitude: '30.0616863',
+                longitude: '31.3260088');
+            BlocProvider.of<AddressCubit>(context)
+                .updateAddress(parameter: parameter);
           } else {
             BlocProvider.of<AddressCubit>(context).validateObserver();
           }

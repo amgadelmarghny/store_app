@@ -15,25 +15,28 @@ class UpdateAddressBody extends StatelessWidget {
     TextEditingController cityContoller = TextEditingController();
     TextEditingController regionContoller = TextEditingController();
     TextEditingController detailsContoller = TextEditingController();
-    TextEditingController? notesContoller = TextEditingController();
+    TextEditingController notesContoller = TextEditingController();
     GlobalKey<FormState> formKey = GlobalKey();
     nameContoller.text = addressModel.name;
+    cityContoller.text = addressModel.city;
+    regionContoller.text = addressModel.region;
+    notesContoller.text = addressModel.notes ?? notesContoller.text;
+    detailsContoller.text = addressModel.details;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: BlocConsumer<AddressCubit, AddressState>(
         listener: (context, state) {
           if (state is UpdateAddressSuccess) {
-            if (state.updateAddressModel.status!) {
-              Navigator.pop(context);
+            if (state.updateAddressModel.status) {
               Navigator.pop(context);
               toastShown(
-                  message: state.updateAddressModel.message!,
+                  message: state.updateAddressModel.message,
                   state: ToastState.success,
                   context: context);
             } else {
               toastShown(
-                  message: state.updateAddressModel.message!,
+                  message: state.updateAddressModel.message,
                   state: ToastState.error,
                   context: context);
             }

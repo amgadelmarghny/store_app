@@ -75,8 +75,7 @@ class Soagmb extends StatelessWidget {
             ..getCartItems(),
         ),
         BlocProvider(create: (context) => CategoryCubit()),
-        BlocProvider<AddressCubit>(
-            create: (context) => AddressCubit()..getAddresses()),
+        BlocProvider<AddressCubit>(create: (context) => sl()..getAddresses()),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {

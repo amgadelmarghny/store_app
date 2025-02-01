@@ -8,7 +8,6 @@ import 'package:soagmb/features/address/presentation/widgets/addresses_item_list
 import 'package:soagmb/features/address/presentation/widgets/addresses_view_header.dart';
 import 'package:soagmb/features/address/presentation/widgets/empty_address_view_body.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
-import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
 class AddressesViewBody extends StatelessWidget {
@@ -19,21 +18,7 @@ class AddressesViewBody extends StatelessWidget {
   final bool isFromDrawerNotOrderSheet;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddressCubit, AddressState>(
-      listener: (context, state) {
-        if (state is DeleteAddressSuccess) {
-          if (BlocProvider.of<AddressCubit>(context)
-              .deleteAddressModel
-              .status!) {
-            toastShown(
-                message: BlocProvider.of<AddressCubit>(context)
-                    .deleteAddressModel
-                    .message!,
-                state: ToastState.success,
-                context: context);
-          }
-        }
-      },
+    return BlocBuilder<AddressCubit, AddressState>(
       builder: (context, state) {
         AddressCubit addressCubit = AddressCubit.get(context);
         if (addressCubit.getAddressesModel != null &&

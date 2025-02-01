@@ -10,6 +10,7 @@ class UpdateProfileUsecase
   final BaseUpdateProfileRepo baseRepo;
 
   UpdateProfileUsecase({required this.baseRepo});
+
   @override
   Future<Either<Failure, Profile>> call(
       UpdateProfileParameter parameter) async {
