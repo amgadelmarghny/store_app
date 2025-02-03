@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/domain/entities/product.dart';
 
 class ProductPrice extends StatelessWidget {
   const ProductPrice({super.key, required this.productModel});
-  final ProductModel productModel;
+  final Product productModel;
 
   @override
   Widget build(BuildContext context) {

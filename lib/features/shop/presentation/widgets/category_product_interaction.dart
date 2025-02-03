@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/domain/entities/product.dart';
 import 'package:soagmb/features/shop/presentation/widgets/category_product_cart_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/add_to_favorite_button.dart';
 
@@ -9,7 +9,7 @@ class CategoryProductInteraction extends StatelessWidget {
     required this.productModel,
   });
 
-  final ProductModel productModel;
+  final Product productModel;
 
   @override
   Widget build(BuildContext context) {

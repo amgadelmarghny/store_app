@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/style/themes.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
-import 'package:soagmb/features/shop/presentation/widgets/category_product_item_info_with_interaction.dart';
+import 'package:soagmb/features/shop/domain/entities/product.dart';
+import 'package:soagmb/features/category/presentation/widgets/category_product_item_info_with_interaction.dart';
 import 'package:soagmb/features/shop/presentation/views/product_view.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/product_image.dart';
@@ -12,7 +12,7 @@ class CategoryProductItem extends StatelessWidget {
     super.key,
     required this.productModel,
   });
-  final ProductModel productModel;
+  final Product productModel;
   @override
   Widget build(BuildContext context) {
     return InkWell(

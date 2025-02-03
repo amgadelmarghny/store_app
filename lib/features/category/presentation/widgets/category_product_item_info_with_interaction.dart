@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
-import 'package:soagmb/features/shop/presentation/widgets/category_product_item_price_with_interaction.dart';
+import 'package:soagmb/features/shop/domain/entities/product.dart';
+import 'package:soagmb/features/category/presentation/widgets/category_product_item_price_with_interaction.dart';
 
 class CategoryProductItemInfoWithInteraction extends StatelessWidget {
   const CategoryProductItemInfoWithInteraction(
       {super.key, required this.productModel});
-  final ProductModel productModel;
+  final Product productModel;
 
   @override
   Widget build(BuildContext context) {

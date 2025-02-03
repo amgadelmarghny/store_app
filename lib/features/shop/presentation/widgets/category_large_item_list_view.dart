@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/features/shop/presentation/widgets/category__body_item.dart';
+import 'package:soagmb/features/shop/presentation/widgets/category_body_item.dart';
 
 class CategoryLargeItemListView extends StatelessWidget {
   const CategoryLargeItemListView({

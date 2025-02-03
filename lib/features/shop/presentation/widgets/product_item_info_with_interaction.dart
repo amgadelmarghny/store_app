@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/models/shop_models/product_model.dart';
 import 'package:soagmb/features/shop/presentation/widgets/add_to_favorite_button.dart';
-import 'package:soagmb/features/shop/presentation/widgets/product_price.dart';
+import 'package:soagmb/features/category/presentation/widgets/product_price.dart';
 
 class ProductItemInfoWithInteraction extends StatelessWidget {
   const ProductItemInfoWithInteraction({

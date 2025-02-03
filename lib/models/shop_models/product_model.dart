@@ -1,25 +1,19 @@
-class ProductModel {
-  final int id;
-  final dynamic price, oldPrice;
-  final String image;
-  final String? name, description;
-  final dynamic discount;
-  final List? images;
-  final bool? inFavorites;
-  final bool? inCart;
+import 'package:soagmb/features/shop/domain/entities/product.dart';
 
-  ProductModel({
-    required this.id,
-    this.name,
-    required this.price,
-    required this.oldPrice,
-    required this.image,
-    this.description,
-    required this.discount,
-    this.images,
-    this.inFavorites,
-    this.inCart,
+class ProductModel extends Product {
+  const ProductModel({
+    required super.id,
+    super.name,
+    required super.price,
+    required super.oldPrice,
+    required super.image,
+    super.description,
+    required super.discount,
+    super.images,
+    super.inFavorites,
+    super.inCart,
   });
+  
   factory ProductModel.fromJson(dynamic json) {
     return ProductModel(
       id: json['id'],

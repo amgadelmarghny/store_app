@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/features/shop/presentation/widgets/category__home_item.dart';
+import 'package:soagmb/features/shop/presentation/widgets/category_in_home_item.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 
-class CategoryItemListView extends StatelessWidget {
-  const CategoryItemListView({
+class CategoryHomeItemListView extends StatelessWidget {
+  const CategoryHomeItemListView({
     super.key,
   });
 

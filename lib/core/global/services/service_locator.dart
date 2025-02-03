@@ -7,6 +7,11 @@ import 'package:soagmb/features/address/domain/usecases/delete_address_usecase.d
 import 'package:soagmb/features/address/domain/usecases/get_addresses_usecase.dart';
 import 'package:soagmb/features/address/domain/usecases/update_address_usecase.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
+import 'package:soagmb/features/category/data/datasources/category_datasource.dart';
+import 'package:soagmb/features/category/data/repositories/category_repo.dart';
+import 'package:soagmb/features/category/domain/repositories/base_category_repo.dart';
+import 'package:soagmb/features/category/domain/usecases/get_category_details_usecase.dart';
+import 'package:soagmb/features/category/presentation/category_cubit/category_cubit.dart';
 import 'package:soagmb/features/order/data/datasources/order_datasource.dart';
 import 'package:soagmb/features/order/data/repositories/orders_repo.dart';
 import 'package:soagmb/features/order/domain/repositories/base_orders_repo.dart';
@@ -83,5 +88,13 @@ class ServiceLocator {
     sl.registerLazySingleton(() => CancelOrderUsecase(repo: sl()));
     sl.registerLazySingleton<OrderCubit>(
         () => OrderCubit(sl(), sl(), sl(), sl()));
+
+    // category
+    sl.registerLazySingleton<BaseCategoryDatasource>(
+        () => CategoryDatasource());
+    sl.registerLazySingleton<BaseCategoryRepo>(
+        () => CategoryRepo(baseCategoryDatasource: sl()));
+    sl.registerLazySingleton(() => GetCategoryDetailsUsecase(repo: sl()));
+    sl.registerLazySingleton<CategoryCubit>(() => CategoryCubit(sl()));
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/domain/entities/product.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 
 class AddToFavoriteButton extends StatelessWidget {
@@ -9,7 +9,7 @@ class AddToFavoriteButton extends StatelessWidget {
     required this.productModel,
   });
 
-  final ProductModel productModel;
+  final Product productModel;
 
   @override
   Widget build(BuildContext context) {

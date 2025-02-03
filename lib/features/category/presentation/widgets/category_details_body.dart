@@ -1,9 +1,9 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/features/shop/presentation/widgets/category_details_data_loading.dart';
-import 'package:soagmb/features/shop/presentation/widgets/category_details_item_list_view.dart';
-import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
+import 'package:soagmb/features/category/presentation/widgets/category_details_data_loading.dart';
+import 'package:soagmb/features/category/presentation/widgets/category_details_item_list_view.dart';
+import 'package:soagmb/features/category/presentation/category_cubit/category_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 
 class CategoryDetailsViewBody extends StatelessWidget {

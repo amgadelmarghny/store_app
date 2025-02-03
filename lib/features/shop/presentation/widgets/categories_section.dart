@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/features/shop/presentation/widgets/category_item_list_view.dart';
+import 'package:soagmb/features/shop/presentation/widgets/category_in_home_item_list_view.dart';
 
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({
@@ -19,7 +19,7 @@ class CategoriesSection extends StatelessWidget {
         ),
         SizedBox(
           height: MediaQuery.sizeOf(context).height * 0.163,
-          child: CategoryItemListView(),
+          child: CategoryHomeItemListView(),
         ),
       ],
     );

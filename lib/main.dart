@@ -12,7 +12,7 @@ import 'package:soagmb/features/address/presentation/views/update_address_view.d
 import 'package:soagmb/features/order/presentation/views/order_item_view.dart';
 import 'package:soagmb/features/order/presentation/views/my_orders_view.dart';
 import 'package:soagmb/features/shop/presentation/views/my_cart_view.dart';
-import 'package:soagmb/features/shop/presentation/views/category_details_view.dart';
+import 'package:soagmb/features/category/presentation/views/category_details_view.dart';
 import 'package:soagmb/features/user/presentation/views/login_view.dart';
 import 'package:soagmb/features/shop/presentation/views/on_boarding_view.dart';
 import 'package:soagmb/features/shop/presentation/views/product_view.dart';
@@ -23,7 +23,7 @@ import 'package:soagmb/features/user/presentation/views/register_view.dart';
 import 'package:soagmb/features/search/presentation/views/search_view.dart';
 import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:soagmb/core/network/remote/bloc_observer.dart';
-import 'package:soagmb/shared/bloc/category_cubit/category_cubit.dart';
+import 'package:soagmb/features/category/presentation/category_cubit/category_cubit.dart';
 import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/core/network/local/api_keys.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
@@ -74,7 +74,7 @@ class Soagmb extends StatelessWidget {
             ..getProfileInfo()
             ..getCartItems(),
         ),
-        BlocProvider(create: (context) => CategoryCubit()),
+        BlocProvider<CategoryCubit>(create: (context) => sl()),
         BlocProvider<AddressCubit>(create: (context) => sl()..getAddresses()),
       ],
       child: BlocBuilder<AppCubit, AppStates>(

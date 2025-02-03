@@ -12,7 +12,7 @@ abstract class DioHelper {
     );
   }
 
-  static Future<dynamic> getData({
+  static Future<Response> getData({
     String? token,
     String lang = 'en',
     required String url,

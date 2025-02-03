@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/domain/entities/product.dart';
 import 'package:soagmb/features/shop/presentation/widgets/discount_widget.dart';
 
 class ProductImage extends StatelessWidget {
@@ -10,7 +10,7 @@ class ProductImage extends StatelessWidget {
     this.discountPadding = false,
   });
 
-  final ProductModel productModel;
+  final Product productModel;
   final bool discountPadding;
 
   @override
