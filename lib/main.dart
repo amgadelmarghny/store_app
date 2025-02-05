@@ -22,7 +22,7 @@ import 'package:soagmb/features/user/presentation/views/profile_view.dart';
 import 'package:soagmb/features/user/presentation/views/update_profile_view.dart';
 import 'package:soagmb/features/user/presentation/views/register_view.dart';
 import 'package:soagmb/features/search/presentation/views/search_view.dart';
-import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
+import 'package:soagmb/core/global/app_cubit/app_cubit.dart';
 import 'package:soagmb/core/network/remote/bloc_observer.dart';
 import 'package:soagmb/features/category/presentation/category_cubit/category_cubit.dart';
 import 'package:soagmb/core/network/local/api_keys.dart';

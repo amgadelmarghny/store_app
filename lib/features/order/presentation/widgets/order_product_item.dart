@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/order/domain/entities/products_order.dart';
-import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
+import 'package:soagmb/core/global/app_cubit/app_cubit.dart';
 
 class OrderProductItem extends StatelessWidget {
   const OrderProductItem({super.key, required this.productModel});
