@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/user/presentation/views/profile_view.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/avatar_pic.dart';
 
 class UserProfile extends StatelessWidget {

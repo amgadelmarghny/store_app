@@ -2,7 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/widgets/favorite_data_screen.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/shop/presentation/widgets/expanded_initial_screen.dart';
 import 'package:soagmb/core/global/style/colors.dart';
@@ -36,18 +36,16 @@ class FavoriteBody extends StatelessWidget {
           return const Center(child: Text('There is an error'));
         }
         return ConditionalBuilder(
-          condition: state is! GetFavoritesLoadingState &&
-              state is! FavoriteLoadingState &&
-              state is! FavoriteSussiccState,
+          condition: state is FavoriteLoadingState,
           builder: (context) {
-            return FavoriteDataScreen();
-          },
-          fallback: (context) {
             return const Center(
               child: CircularProgressIndicator(
                 color: defaultColor,
               ),
             );
+          },
+          fallback: (context) {
+            return FavoriteDataScreen();
           },
         );
       },

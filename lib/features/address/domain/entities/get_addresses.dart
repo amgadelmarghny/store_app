@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:soagmb/features/address/domain/entities/address.dart';
 
 class GetAddresses extends Equatable {
   final bool status;
@@ -16,7 +17,7 @@ class GetAddresses extends Equatable {
 
 class AddressessListData extends Equatable {
   final int? total;
-  final List addressModelsList;
+  final List<Address> addressModelsList;
   const AddressessListData(
       {required this.total, required this.addressModelsList});
   @override

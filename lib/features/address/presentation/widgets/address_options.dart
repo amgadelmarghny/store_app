@@ -15,10 +15,11 @@ class AddressOptions extends StatelessWidget {
     return BlocBuilder<AddressCubit, AddressState>(builder: (context, state) {
       Address? addressModel =
           BlocProvider.of<AddressCubit>(context).addressModel;
-      List addressModelsList = BlocProvider.of<AddressCubit>(context)
+      List<Address> addressModelsList = BlocProvider.of<AddressCubit>(context)
           .getAddressesModel!
           .data!
           .addressModelsList;
+
       return ListTile(
         title: const Text('Address'),
         onTap: () {

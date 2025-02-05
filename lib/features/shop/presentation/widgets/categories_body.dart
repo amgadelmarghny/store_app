@@ -2,7 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/widgets/category_large_item_list_view.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
@@ -25,7 +25,7 @@ class CategoryBody extends StatelessWidget {
         builder: (context, state) {
           List categoriesList = BlocProvider.of<ShopCubit>(context)
               .categoryHomeModel!
-              .dataCatHome!
+              .catHomeData!
               .dataList;
           if (state is GetCategoriesFailureState) {
             return const Center(child: Text('Somthing went wrong'));

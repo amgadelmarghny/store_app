@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/core/global/widgets/horizontal_product_item.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/data/models/product_model.dart';
 
 class SearchDataScreen extends StatelessWidget {
   const SearchDataScreen({

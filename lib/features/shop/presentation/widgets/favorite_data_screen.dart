@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/widgets/horizontal_product_item.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 
 class FavoriteDataScreen extends StatelessWidget {
   const FavoriteDataScreen({
@@ -20,7 +20,7 @@ class FavoriteDataScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return HorizontalProductItem(
             productModel: shopCubit.favoritesModel!.favoritesDataModel!
-                .dataModelList[index].productModel!,
+                .dataModelList[index].product!,
           );
         },
         separatorBuilder: (context, index) {

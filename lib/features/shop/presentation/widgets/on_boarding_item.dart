@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/boarding_model.dart';
+import 'package:soagmb/features/shop/data/models/boarding_model.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 

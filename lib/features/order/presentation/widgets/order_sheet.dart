@@ -5,6 +5,7 @@ import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/checkout/presentation/manager/cubit/payment_cubit.dart';
 import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
 import 'package:soagmb/features/address/presentation/widgets/address_options.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/add_to_orders_dialog.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_small_divider.dart';
@@ -13,8 +14,6 @@ import 'package:soagmb/features/shop/presentation/widgets/payment_method_options
 import 'package:soagmb/features/order/presentation/widgets/place_order_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/total_coast_list_tile.dart';
 import 'package:soagmb/features/checkout/data/repository/checkout_repo.dart';
-
-import '../../../../shared/bloc/shop_cubit/shop_cubit.dart';
 
 class OrderSheet extends StatelessWidget {
   const OrderSheet({
@@ -55,8 +54,8 @@ class OrderSheet extends StatelessWidget {
                 BlocProvider(
                   create: (context) => PaymentCubit(CheckoutRepoImpl()),
                 ),
-                BlocProvider<OrderCubit>(
-                  create: (context) => sl(),
+                BlocProvider<OrderCubit>.value(
+                  value: sl<OrderCubit>(),
                 )
               ],
               child: BlocListener<OrderCubit, OrderState>(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/data/models/product_model.dart';
 import 'package:soagmb/features/shop/presentation/widgets/add_to_cart_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/price_row.dart';
 import 'package:soagmb/features/shop/presentation/widgets/product_images_collection.dart';

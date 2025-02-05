@@ -5,6 +5,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:soagmb/core/global/services/service_locator.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/views/shop_view.dart';
 import 'package:soagmb/features/address/presentation/views/add_address_view.dart';
 import 'package:soagmb/features/address/presentation/views/my_addresses_view.dart';
@@ -24,7 +25,6 @@ import 'package:soagmb/features/search/presentation/views/search_view.dart';
 import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:soagmb/core/network/remote/bloc_observer.dart';
 import 'package:soagmb/features/category/presentation/category_cubit/category_cubit.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/core/network/local/api_keys.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
@@ -66,8 +66,8 @@ class Soagmb extends StatelessWidget {
           create: (context) =>
               AppCubit()..brightnessChanged(fromCash: isSharedDark),
         ),
-        BlocProvider(
-          create: (context) => ShopCubit()
+        BlocProvider<ShopCubit>(
+          create: (context) => sl()
             ..getHomeData()
             ..getCategories()
             ..getFavoriteProducts()

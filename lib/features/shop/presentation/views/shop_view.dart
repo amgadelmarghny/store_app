@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:soagmb/features/search/presentation/views/search_view.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/drawer.dart';
 import 'package:soagmb/features/user/presentation/views/login_view.dart';
 import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
@@ -24,16 +24,16 @@ class ShopView extends StatelessWidget {
           listener: (context, state) async {
             if (state is LogoutSuccussState) {
               if (state.logoutModel.status) {
-                await CashHelper.deleteCash(key: tokenConst).then((value) {
-                  if (context.mounted) {
-                    navigatorPushAndRemove(context, LoginView.id);
-                    toastShown(
-                      message: state.logoutModel.message,
-                      context: context,
-                      state: ToastState.warning,
-                    );
-                  }
-                });
+                CashHelper.deleteCash(key: tokenConst);
+                CashHelper.deleteCash(key: customerID);
+                if (context.mounted) {
+                  navigatorPushAndRemove(context, LoginView.id);
+                  toastShown(
+                    message: state.logoutModel.message,
+                    context: context,
+                    state: ToastState.warning,
+                  );
+                }
               } else {
                 toastShown(
                   message: state.logoutModel.message,

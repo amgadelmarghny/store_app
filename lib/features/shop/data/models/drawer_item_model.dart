@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class DrawerItemModel {
+class DrawerItemModel extends Equatable {
   final IconData iconData;
   final String title;
   final String routName;
- final bool arguments;
+  final bool arguments;
 
   const DrawerItemModel({
     required this.iconData,
@@ -12,4 +13,7 @@ class DrawerItemModel {
     required this.routName,
     required this.arguments,
   });
+
+  @override
+  List<Object?> get props => [iconData, title, routName, arguments];
 }

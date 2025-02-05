@@ -38,88 +38,91 @@ class PlaceOrderButton extends StatelessWidget {
           await addNewOrderMethod(addressCubit, orderCubit);
         }
       },
-      child: BlocBuilder<OrderCubit, OrderState>(
+      child: BlocBuilder<PaymentCubit, PaymentState>(
         builder: (context, state) {
-          return CustomButton(
-            text: 'Place Order',
-            dutrationTime: 0,
-            isLoading: state is AddOrderLoading || state is PaymentLoading,
-            onTap: () async {
-              // if the payment method is cash  on delivery
-              //then the  user can place order directly
-              if (addressCubit.selectedValue == 1) {
-                await addNewOrderMethod(addressCubit, orderCubit);
-              } //if not and the  payment method is credit card
-              // then show a dialog to enter the pin code of the card
-              else if (addressCubit.selectedValue == 2) {
-                int totalAmount = amount * 100;
-                PaymentIntentInputModel paymentIntentInputModel =
-                    PaymentIntentInputModel(
-                  currency: 'EGP',
-                  amount: '$totalAmount',
-                  customerId: CashHelper.getData(key: customerID),
-                );
-                BlocProvider.of<PaymentCubit>(context).makePayment(
-                  paymentIntentInputModel: paymentIntentInputModel,
-                );
+          return AbsorbPointer(
+            absorbing: state is PaymentLoading ? true : false,
+            child: CustomButton(
+              text: 'Place Order',
+              dutrationTime: 0,
+              isLoading: state is PaymentLoading || state is AddOrderLoading,
+              onTap: () async {
+                // if the payment method is cash  on delivery
+                //then the  user can place order directly
+                if (addressCubit.selectedValue == 1) {
+                  await addNewOrderMethod(addressCubit, orderCubit);
+                } //if not and the  payment method is credit card
+                // then show a dialog to enter the pin code of the card
+                else if (addressCubit.selectedValue == 2) {
+                  int totalAmount = amount * 100;
+                  PaymentIntentInputModel paymentIntentInputModel =
+                      PaymentIntentInputModel(
+                    currency: 'EGP',
+                    amount: '$totalAmount',
+                    customerId: CashHelper.getData(key: customerID),
+                  );
+                  BlocProvider.of<PaymentCubit>(context).makePayment(
+                    paymentIntentInputModel: paymentIntentInputModel,
+                  );
 
-                // that's mean the payment method is paypal
-                // so user should be redirected to paypal site to make the payment
-              } else {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (BuildContext context) => PaypalCheckoutView(
-                //       sandboxMode: true,
-                //       clientId: ApiKeys.payPalClientId,
-                //       secretKey: ApiKeys.payPalSecret,
-                //       transactions: const [
-                //         {
-                //           "amount": {
-                //             "total": "10",
-                //             "currency": "USD",
-                //             "details": {
-                //               "subtotal": "100",
-                //               "shipping": "0",
-                //               "shipping_discount": 0
-                //             }
-                //           },
-                //           "description": "The payment transaction description.",
-                //           // "item_list": {
-                //           //   "items": [
-                //           //     {
-                //           //       "name": "Apple",
-                //           //       "quantity": 4,
-                //           //       "price": "10",
-                //           //       "currency": "USD"
-                //           //     },
-                //           //     {
-                //           //       "name": "Pineapple",
-                //           //       "quantity": 5,
-                //           //       "price": "12",
-                //           //       "currency": "USD"
-                //           //     }
-                //           //   ],
-                //           // }
-                //         }
-                //       ],
-                //       note: "Contact us for any questions on your order.",
-                //       onSuccess: (Map params) async {
-                //         print("onSuccess: $params");
-                //         Navigator.pop(context);
-                //       },
-                //       onError: (error) {
-                //         print("onError: $error");
-                //         Navigator.pop(context);
-                //       },
-                //       onCancel: () {
-                //         print('cancelled');
-                //         Navigator.pop(context);
-                //       },
-                //     ),
-                //   ),
-                // );
-              }
-            },
+                  // that's mean the payment method is paypal
+                  // so user should be redirected to paypal site to make the payment
+                } else {
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(
+                  //     builder: (BuildContext context) => PaypalCheckoutView(
+                  //       sandboxMode: true,
+                  //       clientId: ApiKeys.payPalClientId,
+                  //       secretKey: ApiKeys.payPalSecret,
+                  //       transactions: const [
+                  //         {
+                  //           "amount": {
+                  //             "total": "10",
+                  //             "currency": "USD",
+                  //             "details": {
+                  //               "subtotal": "100",
+                  //               "shipping": "0",
+                  //               "shipping_discount": 0
+                  //             }
+                  //           },
+                  //           "description": "The payment transaction description.",
+                  //           // "item_list": {
+                  //           //   "items": [
+                  //           //     {
+                  //           //       "name": "Apple",
+                  //           //       "quantity": 4,
+                  //           //       "price": "10",
+                  //           //       "currency": "USD"
+                  //           //     },
+                  //           //     {
+                  //           //       "name": "Pineapple",
+                  //           //       "quantity": 5,
+                  //           //       "price": "12",
+                  //           //       "currency": "USD"
+                  //           //     }
+                  //           //   ],
+                  //           // }
+                  //         }
+                  //       ],
+                  //       note: "Contact us for any questions on your order.",
+                  //       onSuccess: (Map params) async {
+                  //         print("onSuccess: $params");
+                  //         Navigator.pop(context);
+                  //       },
+                  //       onError: (error) {
+                  //         print("onError: $error");
+                  //         Navigator.pop(context);
+                  //       },
+                  //       onCancel: () {
+                  //         print('cancelled');
+                  //         Navigator.pop(context);
+                  //       },
+                  //     ),
+                  //   ),
+                  // );
+                }
+              },
+            ),
           );
         },
       ),

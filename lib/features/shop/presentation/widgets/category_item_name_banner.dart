@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/category_model.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/features/shop/domain/entities/category.dart';
 
 class CategoryItemNameBanner extends StatelessWidget {
   const CategoryItemNameBanner({
@@ -8,7 +8,7 @@ class CategoryItemNameBanner extends StatelessWidget {
     required this.dataModel,
   });
 
-  final DataModel dataModel;
+  final Category dataModel;
 
   @override
   Widget build(BuildContext context) {

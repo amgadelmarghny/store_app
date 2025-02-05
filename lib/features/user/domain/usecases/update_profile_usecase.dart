@@ -7,13 +7,13 @@ import 'package:soagmb/features/user/domain/repositories/base_update_profile_rep
 
 class UpdateProfileUsecase
     implements BaseUsecase<Profile, UpdateProfileParameter> {
-  final BaseUpdateProfileRepo baseRepo;
+  final BaseUpdateProfileRepo repo;
 
-  UpdateProfileUsecase({required this.baseRepo});
+  UpdateProfileUsecase({required this.repo});
 
   @override
   Future<Either<Failure, Profile>> call(
       UpdateProfileParameter parameter) async {
-    return await baseRepo.updateProfile(parameter);
+    return await repo.updateProfile(parameter);
   }
 }

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/data/models/product_model.dart';
 
 class SearchData extends Equatable {
   final int? currentPage;

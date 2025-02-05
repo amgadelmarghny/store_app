@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/data/models/product_model.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
 class SmoothIndicator extends StatelessWidget {

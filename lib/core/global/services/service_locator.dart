@@ -25,6 +25,20 @@ import 'package:soagmb/features/search/data/repositories/search_for_product_repo
 import 'package:soagmb/features/search/domain/repositories/base_get_search_for_product_repo.dart';
 import 'package:soagmb/features/search/domain/usecases/search_for_product_usecase.dart';
 import 'package:soagmb/features/search/presentation/cubit/search_cubit.dart';
+import 'package:soagmb/features/shop/data/datasources/base_shop_datasource.dart';
+import 'package:soagmb/features/shop/data/datasources/shop_datasource.dart';
+import 'package:soagmb/features/shop/data/repositories/shop_repo_impl.dart';
+import 'package:soagmb/features/shop/domain/repositories/base_shop_repo.dart';
+import 'package:soagmb/features/shop/domain/usecases/add_and_remove_cart_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/add_and_remove_favorites_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/get_cart_items_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/get_categories_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/get_favorite_products_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/get_home_data_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/get_profile_info_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/update_cart_item_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/user_logout_usecase.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/user/data/datasources/auth_datasource.dart';
 import 'package:soagmb/features/user/data/datasources/update_profile_datasorce.dart';
 import 'package:soagmb/features/user/data/repositories/auth_repo_implement.dart';
@@ -50,13 +64,30 @@ class ServiceLocator {
     sl.registerLazySingleton<AuthCubit>(
         () => AuthCubit(sl(), sl(), sl(), sl()));
 
+    // shop
+    sl.registerLazySingleton<BaseShopDatasource>(() => ShopDatasource());
+    sl.registerLazySingleton<BaseShopRepo>(
+        () => ShopRepoImpl(baseShopDatasource: sl()));
+    sl.registerLazySingleton(() => GetHomeDataUsecase(repo: sl()));
+    sl.registerLazySingleton(() => GetProfileInfoUsecase(repo: sl()));
+    sl.registerLazySingleton(() => GetCartItemsUsecase(repo: sl()));
+    sl.registerLazySingleton(() => GetCategoriesUsecase(repo: sl()));
+    sl.registerLazySingleton(() => GetFavoriteProductsUsecase(repo: sl()));
+    sl.registerLazySingleton(() => UpdateCartItemUsecase(repo: sl()));
+    sl.registerLazySingleton(() => AddAndRemoveCartUsecase(repo: sl()));
+    sl.registerLazySingleton(() => AddAndRemoveFavoritesUsecase(repo: sl()));
+    sl.registerLazySingleton(() => UserLogoutUsecase(repo: sl()));
+    sl.registerLazySingleton<ShopCubit>(
+      () => ShopCubit(sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()),
+    );
+
     // Modify profile
     sl.registerLazySingleton<BaseUpdateProfileDatasorce>(
         () => UpdateProfileDatasorce());
     sl.registerLazySingleton<BaseUpdateProfileRepo>(
         () => UpdateProfileRepoImplement(repo: sl()));
-    sl.registerLazySingleton(() => UpdateProfileUsecase(baseRepo: sl()));
-    sl.registerLazySingleton(() => ChangeUserPasswordUsecase(baseRepo: sl()));
+    sl.registerLazySingleton(() => UpdateProfileUsecase(repo: sl()));
+    sl.registerLazySingleton(() => ChangeUserPasswordUsecase(repo: sl()));
 
     // Search
     sl.registerLazySingleton<BaseSearchForProductDataSource>(

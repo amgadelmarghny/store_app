@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/base_usecases/base_usecase.dart';
 import 'package:soagmb/features/order/data/models/add_new_order__parameter.dart';

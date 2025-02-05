@@ -7,13 +7,13 @@ import 'package:soagmb/features/user/domain/repositories/base_update_profile_rep
 
 class ChangeUserPasswordUsecase
     implements BaseUsecase<ChangePassword, ChangeUserPasswordParameter> {
-  final BaseUpdateProfileRepo baseRepo;
+  final BaseUpdateProfileRepo repo;
 
-  ChangeUserPasswordUsecase({required this.baseRepo});
+  ChangeUserPasswordUsecase({required this.repo});
 
   @override
   Future<Either<Failure, ChangePassword>> call(
       ChangeUserPasswordParameter parameter) async {
-    return await baseRepo.changePassword(parameter);
+    return await repo.changePassword(parameter);
   }
 }

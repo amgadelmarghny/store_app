@@ -1,15 +1,16 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/features/shop/domain/entities/product.dart';
+import 'package:soagmb/features/shop/domain/entities/update_cart_items_impl.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import '../../../../core/global/style/colors.dart';
 
 class QuantityCounter extends StatelessWidget {
   const QuantityCounter(
       {super.key, required this.cartID, required this.productModel});
   final int cartID;
-  final ProductModel productModel;
+  final Product productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +39,12 @@ class QuantityCounter extends StatelessWidget {
                   if (quantityNumber != 1) {
                     shopCubit.productCheck = productModel;
                     quantityNumber = quantityNumber - 1;
-                    BlocProvider.of<ShopCubit>(context)
-                        .updateNumberOfItemInTheCart(
-                      cartID: cartID,
-                      numberOfItemsInTheCart: quantityNumber,
+                    UpdateCartItemsImpl implement = UpdateCartItemsImpl(
+                      id: cartID,
+                      quantity: quantityNumber,
                     );
+                    BlocProvider.of<ShopCubit>(context)
+                        .updateNumberOfItemInTheCart(impl: implement);
                   }
                 },
                 icon: Icon(Icons.remove, color: Colors.grey.shade600),
@@ -74,11 +76,12 @@ class QuantityCounter extends StatelessWidget {
                 onPressed: () {
                   shopCubit.productCheck = productModel;
                   quantityNumber = quantityNumber + 1;
-                  BlocProvider.of<ShopCubit>(context)
-                      .updateNumberOfItemInTheCart(
-                    cartID: cartID,
-                    numberOfItemsInTheCart: quantityNumber,
+                  UpdateCartItemsImpl implement = UpdateCartItemsImpl(
+                    id: cartID,
+                    quantity: quantityNumber,
                   );
+                  BlocProvider.of<ShopCubit>(context)
+                      .updateNumberOfItemInTheCart(impl: implement);
                 },
                 icon: const Icon(Icons.add, color: defaultColor),
               ),

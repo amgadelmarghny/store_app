@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/change_password_text_field.dart';
 import 'package:soagmb/features/user/data/models/change_user_password_parameter.dart';
 import 'package:soagmb/features/user/presentation/cubit/auth_cubit.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 

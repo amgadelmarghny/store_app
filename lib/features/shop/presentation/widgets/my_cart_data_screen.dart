@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/shop/domain/entities/cart/cart_item.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/make_order_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/horizontal_product_item_list_view.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
 
 class MyCartDataScreen extends StatelessWidget {
   const MyCartDataScreen({
@@ -10,7 +11,7 @@ class MyCartDataScreen extends StatelessWidget {
     required this.cartItemList,
   });
 
-  final List cartItemList;
+  final List<CartItem> cartItemList;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class MyCartDataScreen extends StatelessWidget {
                 .data!
                 .total!
                 .toInt(),
-            productCost: cartItemList[0].productModel.price,
+            productCost: cartItemList[0].product.price,
           ),
         ),
       ],

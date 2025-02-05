@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/style/themes.dart';
-import 'package:soagmb/features/user/presentation/views/login_view.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 
 class LogoutButton extends StatelessWidget {
   const LogoutButton({
@@ -14,7 +13,7 @@ class LogoutButton extends StatelessWidget {
     return TextButton(
       onPressed: () {
         BlocProvider.of<ShopCubit>(context)
-            .userLogout(context, routName: LoginView.id);
+            .userLogout();
       },
       child: Text(
         'Log out',

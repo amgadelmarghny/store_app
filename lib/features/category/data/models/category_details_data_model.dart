@@ -1,5 +1,5 @@
 import 'package:soagmb/features/category/domain/entities/category_datails_data.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/data/models/product_model.dart';
 
 class CategoryDetailsDataModel extends CategoryDetailsData {
   const CategoryDetailsDataModel({

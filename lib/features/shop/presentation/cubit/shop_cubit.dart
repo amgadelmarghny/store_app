@@ -1,8 +1,267 @@
-import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:soagmb/core/global/base_usecases/base_usecase.dart';
+import 'package:soagmb/features/shop/domain/entities/cart/get_cart.dart';
+import 'package:soagmb/features/shop/domain/entities/cart/update_cart.dart';
+import 'package:soagmb/features/shop/domain/entities/categories.dart';
+import 'package:soagmb/features/shop/domain/entities/change_favorite.dart';
+import 'package:soagmb/features/shop/domain/entities/favorites.dart';
+import 'package:soagmb/features/shop/domain/entities/home.dart';
+import 'package:soagmb/features/shop/domain/entities/logout.dart';
+import 'package:soagmb/features/shop/domain/entities/product.dart';
+import 'package:soagmb/features/shop/domain/entities/update_cart_items_impl.dart';
+import 'package:soagmb/features/shop/domain/usecases/add_and_remove_cart_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/add_and_remove_favorites_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/get_cart_items_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/get_categories_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/get_favorite_products_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/get_home_data_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/get_profile_info_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/update_cart_item_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/user_logout_usecase.dart';
+import 'package:soagmb/features/shop/presentation/widgets/categories_body.dart';
+import 'package:soagmb/features/shop/presentation/widgets/favorite_body.dart';
+import 'package:soagmb/features/shop/presentation/widgets/home_body.dart';
+import 'package:soagmb/core/network/local/key_const.dart';
+import 'package:soagmb/core/network/local/shared_helper.dart';
+import 'package:soagmb/features/user/domain/entities/profile.dart';
+import '../widgets/favorite_notification_circle.dart';
 part 'shop_state.dart';
 
-class ShopCubit extends Cubit<ShopState> {
-  ShopCubit() : super(ShopInitial());
+class ShopCubit extends Cubit<ShopStates> {
+  ShopCubit(
+      this.getHomeDataUsecase,
+      this.getCartItemsUsecase,
+      this.getProfileInfoUsecase,
+      this.getFavoriteProductsUsecase,
+      this.getCategoriesUsecase,
+      this.updateCartItemUsecase,
+      this.addAndRemoveCartUsecase,
+      this.addAndRemoveFavoritesUsecase,
+      this.logoutUseCase)
+      : super(ShopInitial());
+
+  static ShopCubit get(context) => BlocProvider.of(context);
+
+  final GetHomeDataUsecase getHomeDataUsecase;
+  final GetCartItemsUsecase getCartItemsUsecase;
+  final GetProfileInfoUsecase getProfileInfoUsecase;
+  final GetFavoriteProductsUsecase getFavoriteProductsUsecase;
+  final GetCategoriesUsecase getCategoriesUsecase;
+  final UpdateCartItemUsecase updateCartItemUsecase;
+  final AddAndRemoveCartUsecase addAndRemoveCartUsecase;
+  final AddAndRemoveFavoritesUsecase addAndRemoveFavoritesUsecase;
+  final UserLogoutUsecase logoutUseCase;
+
+  ///////////////////////////////
+  List<Widget>? drawerItems;
+
+  int currentIndex = 0;
+
+  List<BottomNavigationBarItem> bottomNavBarItems({required Color color}) {
+    return [
+      BottomNavigationBarItem(
+          icon: currentIndex == 0
+              ? const Icon(
+                  Icons.store_mall_directory,
+                  size: 27,
+                )
+              : const Icon(Icons.store_mall_directory_outlined),
+          label: 'Home'),
+      const BottomNavigationBarItem(
+          icon: Icon(Icons.apps_outlined), label: 'Categories'),
+      BottomNavigationBarItem(
+          icon: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              currentIndex == 2
+                  ? const Icon(
+                      Icons.favorite,
+                      size: 26,
+                    )
+                  : const Icon(Icons.favorite_outline),
+              // if user in fav. view ,fav. notifi. will not show
+              if (currentIndex != 2)
+                // when the app opened and getFavorite request finish
+                if (favoritesModel != null)
+                  // and user add product to fav then show count of favorites
+                  // then the notification will appear
+                  if (favoritesModel!.favoritesDataModel != null &&
+                      favoritesModel!.favoritesDataModel!.total > 0)
+
+                    // this to make notification disappear when user press on Favorite screen
+                    // then favoriteNotifi. will deleted
+                    // so I check if it was deleted , the  notification will not appear again
+                    if (CashHelper.getData(key: favNotofication) != null)
+                      FavoriteNotificationCircle(),
+            ],
+          ),
+          label: 'Favorite'),
+    ];
+  }
+
+////////////////
+  void selectIconChange(int index) {
+    currentIndex = index;
+    // to delete favNotification  from Cash Helper
+    // after pressing on fav button nav bar
+    if (currentIndex == 2) {
+      CashHelper.deleteCash(key: favNotofication);
+    }
+    emit(NavBarChangeState());
+  }
+
+  List<Widget> currentBody = const [
+    HomeBody(),
+    CategoryBody(),
+    FavoriteBody(),
+  ];
+////////////////////////////////////? GET  HOME  DATA ////////////////////////////
+  Home? homeModel;
+  Map<int, bool> favoriteProductsMap = {};
+  Map<int, bool> inCartProductsMap = {};
+
+  Future<void> getHomeData() async {
+    emit(GetHomeDataLoadingState());
+    final result = await getHomeDataUsecase(NoParameters());
+    return result.fold(
+      (l) => emit(GetHomeDataFailureState(errMessage: l.errMessage)),
+      (r) {
+        homeModel = r;
+        for (var element in homeModel!.data!.productsList) {
+          favoriteProductsMap.addAll({element.id: element.inFavorites!});
+          inCartProductsMap.addAll({element.id: element.inCart!});
+        }
+        emit(GetHomeDataSuccessState());
+      },
+    );
+  }
+
+////////////////////////////////////? GET  CATEGORY ////////////////////////////
+  Categories? categoryHomeModel;
+  void getCategories() async {
+    emit(GetCategoriesLoadingState());
+    final result = await getCategoriesUsecase(NoParameters());
+    return result.fold(
+      (l) => emit(GetCategoriesFailureState(errMessage: l.errMessage)),
+      (r) {
+        categoryHomeModel = r;
+        emit(GetCategoriesSuccess());
+      },
+    );
+  }
+
+  //////////////////////////////? ADD  AND  REMOVE  FROM  FAVORITES ////////////
+
+  void addAndRemoveFavorite({required int id}) async {
+    // when we  want to add a product to favorites ,
+    // the notification will be red notification on fav button vav bar
+    // so I cash bool value to allow the notifi. to appear
+    CashHelper.setData(key: favNotofication, value: true);
+    favoriteProductsMap[id] = !favoriteProductsMap[id]!;
+    emit(FavoriteLoadingState());
+    final result = await addAndRemoveFavoritesUsecase(id);
+    return result.fold(
+      (l) => emit(FavoriteFailureState(errMessage: l.errMessage)),
+      (r) async {
+        if (r.status) {
+          await getFavoriteProducts();
+        } else {
+          favoriteProductsMap[id] = !favoriteProductsMap[id]!;
+        }
+        emit(FavoriteSussiccState(changedFavoriteModel: r));
+      },
+    );
+  }
+
+//////////////////////////////////////? GET  FAVORITES //////////////////////////
+  GetFavorites? favoritesModel;
+
+  Future<void> getFavoriteProducts() async {
+    emit(GetFavoritesLoadingState());
+    final result = await getFavoriteProductsUsecase(NoParameters());
+    return result.fold(
+      (l) => emit(GetFavoritesFailureState(errMessage: l.errMessage)),
+      (r) {
+        favoritesModel = r;
+        emit(GetFavoritesSuccess());
+      },
+    );
+  }
+
+//////////////////////////////////? GET PROFILE INFO ///////////////////////////
+  Profile? profileModel;
+
+  Future getProfileInfo() async {
+    emit(ProfileLoadingState());
+    final result = await getProfileInfoUsecase(NoParameters());
+    return result.fold(
+      (l) => emit(ProfileFailureState(errMessage: l.errMessage)),
+      (r) {
+        profileModel = r;
+        emit(ProfileSuccessState());
+      },
+    );
+  }
+
+//////////////////////////////////////? LOGOUT //////////////////////////////////
+  Future<void> userLogout() async {
+    final result = await logoutUseCase(NoParameters());
+    return result.fold(
+      (l) => emit(LogoutFailureState(errMessage: l.errMessage)),
+      (r) => emit(LogoutSuccussState(logoutModel: r)),
+    );
+  }
+
+///////////////// Add and remove  from Cart /////////////////////////////
+
+  Future<void> addAndRemoveCart({required int productId}) async {
+    inCartProductsMap[productId] = !inCartProductsMap[productId]!;
+    emit(AddToCartLoadingState());
+    final result = await addAndRemoveCartUsecase(productId);
+    return result.fold(
+      (l) => emit(AddToCartFailureState(errMessage: l.errMessage)),
+      (r) {
+        getHomeData();
+        getCartItems();
+        emit(AddToCartSussiccState(changedCartModel: r));
+      },
+    );
+  }
+
+  //////////////////////////////// CET CART  PRODUCTS ////////////////////////////
+  GetCart? cartModel;
+  Map<int, int> quantityNumberMap = {};
+  Product? productCheck;
+  Future<void> getCartItems() async {
+    emit(GetCartLoadingState());
+    final result = await getCartItemsUsecase(NoParameters());
+    return result.fold(
+      (l) => emit(GetCartFailureState(errMessage: l.errMessage)),
+      (r) {
+        cartModel = r;
+        for (var element in cartModel!.data!.cartItemsList) {
+          quantityNumberMap.addAll({element.product.id: element.quantity});
+        }
+        emit(GetCartSuccessState());
+      },
+    );
+  }
+
+  ///////////////////// UPDATE NUM OF ITEMS  IN THE CART ///////////////////////
+  UpdateCart? updateCartModel;
+  void updateNumberOfItemInTheCart({
+    required UpdateCartItemsImpl impl,
+  }) async {
+    emit(UpdateCartLoadingState());
+    final result = await updateCartItemUsecase(impl);
+    return result.fold(
+      (l) => emit(UpdateCartFailureState(errMessage: l.errMessage)),
+      (r) {
+        updateCartModel = r;
+        getCartItems();
+        emit(UpdateCartSuccessState());
+      },
+    );
+  }
 }

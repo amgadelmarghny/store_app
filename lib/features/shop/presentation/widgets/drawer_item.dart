@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/drawer_item_model.dart';
+import 'package:soagmb/features/shop/data/models/drawer_item_model.dart';
 
 class DrawerItem extends StatelessWidget {
   const DrawerItem({super.key, required this.drawerItemModel});

@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/models/category_model.dart';
 import 'package:soagmb/features/category/presentation/views/category_details_view.dart';
+import 'package:soagmb/features/shop/domain/entities/category.dart';
 import 'package:soagmb/features/shop/presentation/widgets/category_item_name_banner.dart';
 import 'package:soagmb/features/category/presentation/category_cubit/category_cubit.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 
 class CategoryHomeItem extends StatelessWidget {
-  const CategoryHomeItem({super.key, required this.dataModel});
-  final DataModel dataModel;
+  const CategoryHomeItem({super.key, required this.categoryModel});
+  final Category categoryModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,10 +18,10 @@ class CategoryHomeItem extends StatelessWidget {
         Navigator.pushNamed(
           context,
           CategoryDetailsView.id,
-          arguments: dataModel.name,
+          arguments: categoryModel.name,
         );
         BlocProvider.of<CategoryCubit>(context)
-            .getCategoryDetails(categoryId: dataModel.id);
+            .getCategoryDetails(categoryId: categoryModel.id);
       },
       child: Container(
         clipBehavior: Clip.antiAlias,
@@ -32,7 +32,7 @@ class CategoryHomeItem extends StatelessWidget {
             AspectRatio(
               aspectRatio: 1,
               child: CachedNetworkImage(
-                imageUrl: dataModel.image,
+                imageUrl: categoryModel.image,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => const Center(
                   child: CircularProgressIndicator(
@@ -42,7 +42,7 @@ class CategoryHomeItem extends StatelessWidget {
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
-            CategoryItemNameBanner(dataModel: dataModel)
+            CategoryItemNameBanner(dataModel: categoryModel)
           ],
         ),
       ),

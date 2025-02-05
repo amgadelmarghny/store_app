@@ -9,9 +9,9 @@ class MyOrdersView extends StatelessWidget {
   static const String id = '/my_orders';
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<OrderCubit>(
-      create: (context) => sl()..getAllOrders(),
-      child: const Scaffold(
+  return  BlocProvider<OrderCubit>.value(
+      value: sl<OrderCubit>()..getAllOrders(),
+      child:  const Scaffold(
         body: MyOrdersViewBody(),
       ),
     );

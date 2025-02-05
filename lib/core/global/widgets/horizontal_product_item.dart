@@ -2,11 +2,11 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/style/themes.dart';
+import 'package:soagmb/features/shop/domain/entities/product.dart';
 import 'package:soagmb/features/shop/presentation/widgets/horizontal_product_item_image.dart';
 import 'package:soagmb/features/shop/presentation/views/product_view.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
 import 'package:soagmb/features/shop/presentation/widgets/quantity_counter.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 
 class HorizontalProductItem extends StatelessWidget {
   const HorizontalProductItem({
@@ -17,7 +17,7 @@ class HorizontalProductItem extends StatelessWidget {
     this.cartID,
   });
   final bool isSearch;
-  final ProductModel productModel;
+  final Product productModel;
   final bool isCart;
   final int? cartID;
 
@@ -75,7 +75,9 @@ class HorizontalProductItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             QuantityCounter(
-                                cartID: cartID!, productModel: productModel),
+                              cartID: cartID!,
+                              productModel: productModel,
+                            ),
                           ],
                         ),
                       const Spacer(),

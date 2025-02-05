@@ -1,5 +1,5 @@
 import 'package:soagmb/features/search/domain/entities/search_data.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/data/models/product_model.dart';
 
 class SearchDataModel extends SearchData {
   const SearchDataModel({

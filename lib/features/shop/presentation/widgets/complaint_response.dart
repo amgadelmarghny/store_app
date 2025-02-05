@@ -22,7 +22,7 @@ class ComplaintResponse extends StatelessWidget {
             children: [
               const Text('Complaint number: '),
               Text(
-                '${BlocProvider.of<AppCubit>(context).complaintModel!.complaintDataModel!.id}',
+                '${BlocProvider.of<AppCubit>(context).complaintModel!.complaintData!.id}',
                 style: const TextStyle(decoration: TextDecoration.underline),
               )
             ],

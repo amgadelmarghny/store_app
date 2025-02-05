@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/widgets/banner_item_list_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/categories_section.dart';
 import 'package:soagmb/features/shop/presentation/widgets/products_section.dart';
-import 'package:soagmb/shared/bloc/shop_cubit/shop_cubit.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 
 class ProductAndBannerView extends StatelessWidget {
   const ProductAndBannerView({
@@ -25,7 +25,7 @@ class ProductAndBannerView extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            if (shopCubit.categoryHomeModel?.dataCatHome?.dataList != null)
+            if (shopCubit.categoryHomeModel?.catHomeData?.dataList != null)
               CategoriesSection(),
             const SizedBox(
               height: 15,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/models/shop_models/product_model.dart';
+import 'package:soagmb/features/shop/data/models/product_model.dart';
 import 'package:soagmb/features/shop/presentation/widgets/quantity_counter.dart';
 
 class ProductPriceDetails extends StatelessWidget {
