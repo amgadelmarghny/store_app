@@ -9,9 +9,11 @@ import 'package:soagmb/features/shop/data/models/cahnge_favorite_model.dart';
 import 'package:soagmb/features/shop/data/models/cart_models/get_cart_model.dart';
 import 'package:soagmb/features/shop/data/models/cart_models/update_cart_model.dart';
 import 'package:soagmb/features/shop/data/models/categories_model.dart';
+import 'package:soagmb/features/shop/data/models/complaint_model.dart';
 import 'package:soagmb/features/shop/data/models/favorites_model.dart';
 import 'package:soagmb/features/shop/data/models/home_model.dart';
 import 'package:soagmb/features/shop/data/models/logout_model.dart';
+import 'package:soagmb/features/shop/domain/entities/add_complaint_impl.dart';
 import 'package:soagmb/features/shop/domain/entities/update_cart_items_impl.dart';
 import 'package:soagmb/features/user/data/models/profile_model.dart';
 
@@ -129,6 +131,24 @@ class ShopDatasource implements BaseShopDatasource {
         url: logout, token: CashHelper.getData(key: tokenConst));
     if (response.statusCode == 200) {
       return LogoutModel.fromJson(response.data);
+    } else {
+      throw ServerException(errorModel: response.data);
+    }
+  }
+
+  @override
+  Future<ComplaintModel> addComplaint(AddComplaintImpl implement) async {
+   final response =  await DioHelper.postData(
+        url: 'complaints',
+        token: CashHelper.getData(key: tokenConst),
+        data: {
+          'name': implement.name,
+          'phone': implement.phone,
+          'email': implement.email,
+          'message': implement.message,
+        });
+         if (response.statusCode == 200) {
+      return ComplaintModel.fromJson(response.data);
     } else {
       throw ServerException(errorModel: response.data);
     }

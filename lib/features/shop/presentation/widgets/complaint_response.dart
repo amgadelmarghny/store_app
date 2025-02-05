@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 
 class ComplaintResponse extends StatelessWidget {
   const ComplaintResponse({
@@ -9,12 +8,13 @@ class ComplaintResponse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ShopCubit cubit = ShopCubit.get(context);
     return AlertDialog(
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            BlocProvider.of<AppCubit>(context).complaintModel!.message,
+            cubit.complaintModel!.message,
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 16),
@@ -22,7 +22,7 @@ class ComplaintResponse extends StatelessWidget {
             children: [
               const Text('Complaint number: '),
               Text(
-                '${BlocProvider.of<AppCubit>(context).complaintModel!.complaintData!.id}',
+                '${cubit.complaintModel!.complaintData!.id}',
                 style: const TextStyle(decoration: TextDecoration.underline),
               )
             ],

@@ -52,7 +52,6 @@ final class GetFavoritesFailureState extends ShopStates {
   GetFavoritesFailureState({required this.errMessage});
 }
 
-
 /////////////////
 class AddToCartLoadingState extends ShopStates {}
 
@@ -110,4 +109,15 @@ final class LogoutFailureState extends ShopStates {
   final String errMessage;
 
   LogoutFailureState({required this.errMessage});
+}
+
+////////////// Complation ////////////////
+
+final class AddComplainLoading extends ShopStates {}
+
+final class AddComplainSuccess extends ShopStates {}
+
+final class AddComplainFaluir extends ShopStates {
+  final String error;
+  AddComplainFaluir({required this.error});
 }

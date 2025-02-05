@@ -1,9 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:soagmb/core/global/errors/failure.dart';
+import 'package:soagmb/features/shop/domain/entities/add_complaint_impl.dart';
 import 'package:soagmb/features/shop/domain/entities/cart/get_cart.dart';
 import 'package:soagmb/features/shop/domain/entities/cart/update_cart.dart';
 import 'package:soagmb/features/shop/domain/entities/categories.dart';
 import 'package:soagmb/features/shop/domain/entities/change_favorite.dart';
+import 'package:soagmb/features/shop/domain/entities/complaint.dart';
 import 'package:soagmb/features/shop/domain/entities/favorites.dart';
 import 'package:soagmb/features/shop/domain/entities/home.dart';
 import 'package:soagmb/features/shop/domain/entities/logout.dart';
@@ -29,4 +31,6 @@ abstract class BaseShopRepo {
       UpdateCartItemsImpl implement);
 
   Future<Either<Failure, Logout>> userLogout();
+  
+  Future<Either<Failure, Complaint>> addComplaint(AddComplaintImpl parameter);
 }

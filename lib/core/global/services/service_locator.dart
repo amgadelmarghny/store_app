@@ -31,6 +31,7 @@ import 'package:soagmb/features/shop/data/repositories/shop_repo_impl.dart';
 import 'package:soagmb/features/shop/domain/repositories/base_shop_repo.dart';
 import 'package:soagmb/features/shop/domain/usecases/add_and_remove_cart_usecase.dart';
 import 'package:soagmb/features/shop/domain/usecases/add_and_remove_favorites_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/add_complaint_usecase.dart';
 import 'package:soagmb/features/shop/domain/usecases/get_cart_items_usecase.dart';
 import 'package:soagmb/features/shop/domain/usecases/get_categories_usecase.dart';
 import 'package:soagmb/features/shop/domain/usecases/get_favorite_products_usecase.dart';
@@ -77,8 +78,10 @@ class ServiceLocator {
     sl.registerLazySingleton(() => AddAndRemoveCartUsecase(repo: sl()));
     sl.registerLazySingleton(() => AddAndRemoveFavoritesUsecase(repo: sl()));
     sl.registerLazySingleton(() => UserLogoutUsecase(repo: sl()));
+    sl.registerLazySingleton(() => AddComplaintUsecase(repo: sl()));
     sl.registerLazySingleton<ShopCubit>(
-      () => ShopCubit(sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()),
+      () =>
+          ShopCubit(sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()),
     );
 
     // Modify profile

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/base_usecases/base_usecase.dart';
+import 'package:soagmb/features/shop/domain/entities/add_complaint_impl.dart';
 import 'package:soagmb/features/shop/domain/entities/cart/get_cart.dart';
 import 'package:soagmb/features/shop/domain/entities/cart/update_cart.dart';
 import 'package:soagmb/features/shop/domain/entities/categories.dart';
 import 'package:soagmb/features/shop/domain/entities/change_favorite.dart';
+import 'package:soagmb/features/shop/domain/entities/complaint.dart';
 import 'package:soagmb/features/shop/domain/entities/favorites.dart';
 import 'package:soagmb/features/shop/domain/entities/home.dart';
 import 'package:soagmb/features/shop/domain/entities/logout.dart';
@@ -12,6 +14,7 @@ import 'package:soagmb/features/shop/domain/entities/product.dart';
 import 'package:soagmb/features/shop/domain/entities/update_cart_items_impl.dart';
 import 'package:soagmb/features/shop/domain/usecases/add_and_remove_cart_usecase.dart';
 import 'package:soagmb/features/shop/domain/usecases/add_and_remove_favorites_usecase.dart';
+import 'package:soagmb/features/shop/domain/usecases/add_complaint_usecase.dart';
 import 'package:soagmb/features/shop/domain/usecases/get_cart_items_usecase.dart';
 import 'package:soagmb/features/shop/domain/usecases/get_categories_usecase.dart';
 import 'package:soagmb/features/shop/domain/usecases/get_favorite_products_usecase.dart';
@@ -38,7 +41,8 @@ class ShopCubit extends Cubit<ShopStates> {
       this.updateCartItemUsecase,
       this.addAndRemoveCartUsecase,
       this.addAndRemoveFavoritesUsecase,
-      this.logoutUseCase)
+      this.logoutUseCase,
+      this.addComplaintUsecase)
       : super(ShopInitial());
 
   static ShopCubit get(context) => BlocProvider.of(context);
@@ -52,6 +56,7 @@ class ShopCubit extends Cubit<ShopStates> {
   final AddAndRemoveCartUsecase addAndRemoveCartUsecase;
   final AddAndRemoveFavoritesUsecase addAndRemoveFavoritesUsecase;
   final UserLogoutUsecase logoutUseCase;
+  final AddComplaintUsecase addComplaintUsecase;
 
   ///////////////////////////////
   List<Widget>? drawerItems;
@@ -116,7 +121,7 @@ class ShopCubit extends Cubit<ShopStates> {
     CategoryBody(),
     FavoriteBody(),
   ];
-////////////////////////////////////? GET  HOME  DATA ////////////////////////////
+////////////////////////////////////? GET  HOME  DATA //////////////////////////
   Home? homeModel;
   Map<int, bool> favoriteProductsMap = {};
   Map<int, bool> inCartProductsMap = {};
@@ -174,7 +179,7 @@ class ShopCubit extends Cubit<ShopStates> {
     );
   }
 
-//////////////////////////////////////? GET  FAVORITES //////////////////////////
+//////////////////////////////////////? GET  FAVORITES /////////////////////////
   GetFavorites? favoritesModel;
 
   Future<void> getFavoriteProducts() async {
@@ -204,7 +209,7 @@ class ShopCubit extends Cubit<ShopStates> {
     );
   }
 
-//////////////////////////////////////? LOGOUT //////////////////////////////////
+//////////////////////////////////////? LOGOUT /////////////////////////////////
   Future<void> userLogout() async {
     final result = await logoutUseCase(NoParameters());
     return result.fold(
@@ -213,7 +218,7 @@ class ShopCubit extends Cubit<ShopStates> {
     );
   }
 
-///////////////// Add and remove  from Cart /////////////////////////////
+////////////////////////? Add and remove  from Cart ////////////////////////////
 
   Future<void> addAndRemoveCart({required int productId}) async {
     inCartProductsMap[productId] = !inCartProductsMap[productId]!;
@@ -229,7 +234,7 @@ class ShopCubit extends Cubit<ShopStates> {
     );
   }
 
-  //////////////////////////////// CET CART  PRODUCTS ////////////////////////////
+  ////////////////////////////////? GET CART  PRODUCTS /////////////////////////
   GetCart? cartModel;
   Map<int, int> quantityNumberMap = {};
   Product? productCheck;
@@ -248,7 +253,7 @@ class ShopCubit extends Cubit<ShopStates> {
     );
   }
 
-  ///////////////////// UPDATE NUM OF ITEMS  IN THE CART ///////////////////////
+  //////////////////////? UPDATE NUM OF ITEMS  IN THE CART /////////////////////
   UpdateCart? updateCartModel;
   void updateNumberOfItemInTheCart({
     required UpdateCartItemsImpl impl,
@@ -261,6 +266,20 @@ class ShopCubit extends Cubit<ShopStates> {
         updateCartModel = r;
         getCartItems();
         emit(UpdateCartSuccessState());
+      },
+    );
+  }
+
+  ////////////////! Add Complaint /////////////////
+  Complaint? complaintModel;
+  void addComplaint({required AddComplaintImpl parameter}) async {
+    emit(AddComplainLoading());
+    final result = await addComplaintUsecase(parameter);
+    return result.fold(
+      (l) => emit(AddComplainFaluir(error: l.errMessage)),
+      (r) {
+        complaintModel = r;
+        emit(AddComplainSuccess());
       },
     );
   }

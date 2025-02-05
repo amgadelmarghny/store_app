@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:soagmb/features/shop/domain/entities/add_complaint_impl.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/complain_dialog_builder_content.dart';
 import 'package:soagmb/features/shop/presentation/widgets/complaint_response.dart';
-import 'package:soagmb/shared/bloc/app_cubit/app_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/core/global/style/themes.dart';
@@ -28,9 +29,11 @@ class _ComplaintDialogBuilderState extends State<ComplaintDialogBuilder> {
     TextEditingController phoneController = TextEditingController();
     TextEditingController messageController = TextEditingController();
 
-    return BlocConsumer<AppCubit, AppStates>(
+    return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {
-        if (BlocProvider.of<AppCubit>(context).complaintModel!.status) {
+        ShopCubit cubit = ShopCubit.get(context);
+
+        if (cubit.complaintModel!.status) {
           Navigator.pop(context);
           showDialog(
               context: context,
@@ -39,8 +42,7 @@ class _ComplaintDialogBuilderState extends State<ComplaintDialogBuilder> {
               });
         } else {
           toastShown(
-              message:
-                  BlocProvider.of<AppCubit>(context).complaintModel!.message,
+              message: cubit.complaintModel!.message,
               state: ToastState.error,
               context: context);
         }
@@ -80,13 +82,12 @@ class _ComplaintDialogBuilderState extends State<ComplaintDialogBuilder> {
             actions: [
               ElevatedButton(
                 onPressed: () {
-                  onPress(
-                    context,
-                    nameController,
-                    emailController,
-                    phoneController,
-                    messageController,
-                  );
+                  AddComplaintImpl parameter = AddComplaintImpl(
+                      name: nameController.text,
+                      email: emailController.text,
+                      phone: phoneController.text,
+                      message: messageController.text);
+                  onPress(context, parameter);
                 },
                 child: Text(
                   'Send',
@@ -102,18 +103,9 @@ class _ComplaintDialogBuilderState extends State<ComplaintDialogBuilder> {
     );
   }
 
-  void onPress(
-      BuildContext context,
-      TextEditingController nameController,
-      TextEditingController emailController,
-      TextEditingController phoneController,
-      TextEditingController messageController) {
+  void onPress(BuildContext context, AddComplaintImpl parameter) {
     if (formKey.currentState!.validate()) {
-      BlocProvider.of<AppCubit>(context).addComplaint(
-          name: nameController.text,
-          email: emailController.text,
-          phone: phoneController.text,
-          message: messageController.text);
+      BlocProvider.of<ShopCubit>(context).addComplaint(parameter: parameter);
     } else {
       setState(() {
         autovalidateMode = AutovalidateMode.always;
