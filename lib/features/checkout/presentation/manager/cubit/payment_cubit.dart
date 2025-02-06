@@ -6,7 +6,7 @@ part 'payment_state.dart';
 class PaymentCubit extends Cubit<PaymentState> {
   PaymentCubit(this.checkoutRedo) : super(PaymentInitial());
 
-  final CheckoutRedo checkoutRedo;
+  final BaseCheckoutRedo checkoutRedo;
   void makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     emit(PaymentLoading());

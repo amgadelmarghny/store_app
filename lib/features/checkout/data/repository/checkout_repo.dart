@@ -4,7 +4,7 @@ import 'package:soagmb/features/checkout/data/models/payment_intent_input_model.
 import 'package:soagmb/features/checkout/domain/repository/base_checkout_repo.dart';
 import 'package:soagmb/core/network/remote/stripe_service.dart';
 
-class CheckoutRepoImpl implements CheckoutRedo {
+class CheckoutRepoImpl implements BaseCheckoutRedo {
   @override
   Future<Either<Failure, void>> makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {

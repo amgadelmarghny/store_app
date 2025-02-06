@@ -11,7 +11,7 @@ import 'package:soagmb/core/network/remote/api_service_for_sripe.dart';
 
 abstract class StripeService {
   // for payment intent
-  static Future<PaymentIntentModel> createPaymentIntent(
+  static Future<PaymentIntentModel> _createPaymentIntent(
       PaymentIntentInputModel paymentIntentInputModel) async {
     Response response = await ApiService.postData(
         url: 'payment_intents',
@@ -70,7 +70,7 @@ abstract class StripeService {
   static Future makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     PaymentIntentModel paymenyIntentModel =
-        await createPaymentIntent(paymentIntentInputModel);
+        await _createPaymentIntent(paymentIntentInputModel);
     EphemeralKeyModel ephemeralKeyModel = await createEphemeralKey(
         customerId: paymentIntentInputModel.customerId);
     InitPaymentInputSheet initPaymentInputSheet = InitPaymentInputSheet(
