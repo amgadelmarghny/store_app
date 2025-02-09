@@ -12,7 +12,6 @@ class OrderProductItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(2),
       clipBehavior: Clip.hardEdge,
-      // decoration: ,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
