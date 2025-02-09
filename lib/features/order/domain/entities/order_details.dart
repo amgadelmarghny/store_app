@@ -26,7 +26,7 @@ class OrderDetailsData extends Equatable {
   final String? paymentMethod;
   final String? date;
   final String? status;
-  final Address? addressModel;
+  final Address addressModel;
   final List<ProductsOrder>? products;
 
   const OrderDetailsData(

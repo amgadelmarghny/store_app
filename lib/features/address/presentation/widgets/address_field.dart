@@ -12,8 +12,10 @@ class AddressField extends StatelessWidget {
     this.textEditingController,
     this.isOrderView = false,
     this.keyboardType,
+    this.label,
   });
   final String? messageValidationName;
+  final String? label;
   final String? hintText;
   final int maxLine;
   final double width;
@@ -52,25 +54,18 @@ class AddressField extends StatelessWidget {
                     : null
                 : null,
             decoration: InputDecoration(
+              label: label != null ? Text(label!) : null,
               hintText: hintText,
-              focusedBorder: isRequired
-                  ? const UnderlineInputBorder(
-                      borderSide: BorderSide(color: defaultColor, width: 1.5),
-                    )
-                  : const OutlineInputBorder(
-                      borderSide: BorderSide(color: defaultColor, width: 1.5),
-                    ),
-              enabledBorder: isRequired
-                  ? UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Theme.of(context).textTheme.bodyLarge!.color!,
-                      ),
-                    )
-                  : OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Theme.of(context).textTheme.bodyLarge!.color!,
-                      ),
-                    ),
+              focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: defaultColor, width: 0),
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                    color: !isOrderView
+                        ? Theme.of(context).textTheme.bodyLarge!.color!
+                        : Theme.of(context).scaffoldBackgroundColor,
+                    width: 0),
+              ),
             ),
           ),
         ],

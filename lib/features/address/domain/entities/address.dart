@@ -4,7 +4,7 @@ class Address extends Equatable {
   final int id;
   final dynamic name, city, region, details;
   final String? notes;
-  final dynamic latitude, longitude;
+  final double latitude, longitude;
 
   const Address(
       {required this.id,

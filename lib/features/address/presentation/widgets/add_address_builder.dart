@@ -33,6 +33,7 @@ class AddAddressBuilder extends StatelessWidget {
             children: [
               AddressField(
                 width: 110,
+                label: 'name',
                 hintText: 'address name',
                 messageValidationName: 'Address name',
                 textEditingController: nameController,
@@ -41,6 +42,7 @@ class AddAddressBuilder extends StatelessWidget {
               AddressField(
                 width: 120,
                 hintText: 'city',
+                label: 'city',
                 messageValidationName: 'City',
                 textEditingController: cityController,
               ),
@@ -48,12 +50,14 @@ class AddAddressBuilder extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           AddressField(
+            label: 'region',
             hintText: 'region',
             messageValidationName: 'Region',
             textEditingController: regionController,
           ),
           const SizedBox(height: 20),
           AddressField(
+            label: 'details',
             hintText: 'details',
             messageValidationName: 'Details',
             textEditingController: detailsController,
@@ -65,6 +69,7 @@ class AddAddressBuilder extends StatelessWidget {
             maxLine: 5,
             messageValidationName: 'Notes',
             textEditingController: notesController,
+            label: 'notes',
           ),
         ],
       ),

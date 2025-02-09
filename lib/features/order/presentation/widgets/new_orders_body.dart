@@ -32,27 +32,25 @@ class NewOrdersBody extends StatelessWidget {
         },
         builder: (context, state) {
           OrderCubit bloc = OrderCubit.get(context);
-          if (state is GetOrderFailure) {
+          if (state is GetOrderLoading) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: defaultColor,
+              ),
+            );
+          } else if (state is GetOrderFailure) {
             return FailureScreen();
           }
-          if (bloc.getOrdersModel != null && bloc.newOrdersList.isEmpty) {
-            return EmptyScreen(itemName: 'order');
-          }
           return ConditionalBuilder(
-            condition:
-                bloc.getOrdersModel != null && bloc.newOrdersList.isNotEmpty,
+            condition: bloc.newOrdersList.isNotEmpty,
             builder: (BuildContext context) {
               return OrderItemListView(
-                isNewOrderBody: true,
+                  isNewOrderBody: true,
                   orderModelList: bloc.newOrdersList,
                   color: const Color.fromARGB(255, 255, 157, 0));
             },
             fallback: (BuildContext context) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: defaultColor,
-                ),
-              );
+              return EmptyScreen(itemName: 'orders');
             },
           );
         },

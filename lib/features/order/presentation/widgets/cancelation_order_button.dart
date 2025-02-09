@@ -26,16 +26,14 @@ class _CancelationOrderButtonState extends State<CancelationOrderButton> {
           if (state.cancelOrderModel.status) {
             toastShown(
                 message: 'the order has been successfully cancelled',
-                state: ToastState.warning,
+                state: ToastState.success,
                 context: context);
+            Navigator.pop(context);
+            Navigator.popAndPushNamed(context, MyOrdersView.id);
           }
         }
         if (state is CancelOrderFailure) {
           snacKBar(context, state.error);
-        }
-        if (state is GetOrderSuccess) {
-          Navigator.pop(context);
-          Navigator.popAndPushNamed(context, MyOrdersView.id);
         }
       },
       builder: (context, state) {
@@ -72,7 +70,7 @@ class _CancelationOrderButtonState extends State<CancelationOrderButton> {
                 ],
               );
             },
-            fallback: (BuildContext context) => const SizedBox(
+            fallback: (context) => const SizedBox(
               height: 17,
               width: 17,
               child: CircularProgressIndicator(

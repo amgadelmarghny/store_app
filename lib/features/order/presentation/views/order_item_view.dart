@@ -14,8 +14,8 @@ class OrderItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var id = ModalRoute.settingsOf(context)!.arguments as int;
-    return BlocProvider<OrderCubit>(
-      create: (context) => sl()..getOrderDetails(id: id),
+    return BlocProvider<OrderCubit>.value(
+      value: sl<OrderCubit>()..getOrderDetails(id: id),
       child: Scaffold(
         body: BlocConsumer<OrderCubit, OrderState>(
           listener: (context, state) {
@@ -26,7 +26,7 @@ class OrderItemView extends StatelessWidget {
           builder: (context, state) {
             OrderCubit cubit = OrderCubit.get(context);
             return ConditionalBuilder(
-              condition: cubit.orderDetailsModel != null,
+              condition: state is! OrderDetailsLoading,
               builder: (context) {
                 return OrderItemSuceesScreen(
                     orderDetailsDataModel: cubit.orderDetailsModel!.data!);

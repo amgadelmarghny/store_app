@@ -40,9 +40,11 @@ class UpdateAddressBuilder extends StatelessWidget {
                   hintText: 'address name',
                   messageValidationName: 'Address name',
                   textEditingController: nameContoller,
+                  label: 'name',
                 ),
                 const Spacer(),
                 AddressField(
+                  label: 'city',
                   width: 120,
                   hintText: 'city',
                   messageValidationName: 'City',
@@ -52,18 +54,21 @@ class UpdateAddressBuilder extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             AddressField(
+              label: 'region',
               hintText: 'region',
               messageValidationName: 'Region',
               textEditingController: regionContoller,
             ),
             const SizedBox(height: 20),
             AddressField(
+              label: 'details',
               hintText: 'details',
               messageValidationName: 'Details',
               textEditingController: detailsContoller,
             ),
             const SizedBox(height: 20),
             AddressField(
+              label: 'notes',
               isRequired: false,
               hintText: 'notes',
               maxLine: 5,

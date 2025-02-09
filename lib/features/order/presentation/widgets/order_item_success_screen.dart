@@ -30,17 +30,7 @@ class OrderItemSuceesScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: OrderItemViewBody(
-              orderId: orderDetailsDataModel.id!,
-              name: orderDetailsDataModel.addressModel!.name,
-              city: orderDetailsDataModel.addressModel!.city,
-              region: orderDetailsDataModel.addressModel!.region,
-              details: orderDetailsDataModel.addressModel!.details,
-              note: orderDetailsDataModel.addressModel!.notes,
-              productModelList: orderDetailsDataModel.products!,
-              discount: orderDetailsDataModel.discount,
-              coast: orderDetailsDataModel.cost,
-              vat: orderDetailsDataModel.vat,
-              total: orderDetailsDataModel.total,
+              orderDetailsData: orderDetailsDataModel,
             ),
           )
         ],

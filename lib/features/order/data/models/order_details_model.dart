@@ -46,9 +46,7 @@ class OrderDetailsDataModel extends OrderDetailsData {
         paymentMethod: json['payment_method'],
         date: json['date'],
         status: json['status'],
-        addressModel: json['address'] != null
-            ? AddressModel.fromJson(json['address'])
-            : null,
+        addressModel: AddressModel.fromJson(json['address']),
         products: json['products'] != null
             ? List.from(
                 json['products'].map((e) => ProductsOrderModel.fromJson(e)),
