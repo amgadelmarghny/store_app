@@ -21,7 +21,7 @@ class UpdateProfileDatasorce implements BaseUpdateProfileDatasorce {
   Future<ProfileModel> updateProfile(UpdateProfileParameter parameter) async {
     final response = await DioHelper.putData(
       url: updateProfilePath,
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
       data: {
         'name': parameter.name,
         'email': parameter.email,
@@ -40,7 +40,7 @@ class UpdateProfileDatasorce implements BaseUpdateProfileDatasorce {
       ChangeUserPasswordParameter parameter) async {
     final response = await DioHelper.postData(
       url: changePassword,
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
       data: {
         'current_password': parameter.currentPassword,
         'new_password': parameter.newPassword,

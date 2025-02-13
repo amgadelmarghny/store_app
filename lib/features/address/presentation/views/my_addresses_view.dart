@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soagmb/features/address/presentation/widgets/addresses_view_body.dart';
+import 'package:soagmb/features/address/presentation/widgets/my_addresses_view_body.dart';
 
 class MyAddressesView extends StatelessWidget {
   const MyAddressesView({super.key});
@@ -14,8 +14,8 @@ class MyAddressesView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: AddressesViewBody(
-          isFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet,
+        child: MyAddressesViewBody(
+          isAddressItemFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet,
         ),
       ),
     );

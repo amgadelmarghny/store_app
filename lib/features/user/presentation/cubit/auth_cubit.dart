@@ -67,7 +67,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       await StripeService.createACustomer(customerPaymentInputModel)
           .then((value) {
-        CashHelper.setData(key: customerID, value: value.id);
+        CashHelper.setData(key: kCustomerID, value: value.id);
         emit(CustomerPatymentSuccess());
       });
     } catch (e) {

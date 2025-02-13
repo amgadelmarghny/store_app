@@ -97,7 +97,7 @@ class ShopCubit extends Cubit<ShopStates> {
                     // this to make notification disappear when user press on Favorite screen
                     // then favoriteNotifi. will deleted
                     // so I check if it was deleted , the  notification will not appear again
-                    if (CashHelper.getData(key: favNotofication) != null)
+                    if (CashHelper.getData(key: kFavNotofication) != null)
                       FavoriteNotificationCircle(),
             ],
           ),
@@ -111,7 +111,7 @@ class ShopCubit extends Cubit<ShopStates> {
     // to delete favNotification  from Cash Helper
     // after pressing on fav button nav bar
     if (currentIndex == 2) {
-      CashHelper.deleteCash(key: favNotofication);
+      CashHelper.deleteCash(key: kFavNotofication);
     }
     emit(NavBarChangeState());
   }
@@ -162,7 +162,7 @@ class ShopCubit extends Cubit<ShopStates> {
     // when we  want to add a product to favorites ,
     // the notification will be red notification on fav button vav bar
     // so I cash bool value to allow the notifi. to appear
-    CashHelper.setData(key: favNotofication, value: true);
+    CashHelper.setData(key: kFavNotofication, value: true);
     favoriteProductsMap[id] = !favoriteProductsMap[id]!;
     emit(FavoriteLoadingState());
     final result = await addAndRemoveFavoritesUsecase(id);

@@ -10,12 +10,12 @@ import 'package:soagmb/features/address/presentation/widgets/empty_address_view_
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
-class AddressesViewBody extends StatelessWidget {
-  const AddressesViewBody({
+class MyAddressesViewBody extends StatelessWidget {
+  const MyAddressesViewBody({
     super.key,
-    this.isFromDrawerNotOrderSheet = false,
+    this.isAddressItemFromDrawerNotOrderSheet = false,
   });
-  final bool isFromDrawerNotOrderSheet;
+  final bool isAddressItemFromDrawerNotOrderSheet;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddressCubit, AddressState>(
@@ -35,7 +35,8 @@ class AddressesViewBody extends StatelessWidget {
               slivers: [
                 AddressesViewHeader(),
                 AddressesItemListView(
-                    isFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet),
+                    isFromDrawerNotOrderSheet:
+                        isAddressItemFromDrawerNotOrderSheet),
                 SliverFillRemaining(
                   hasScrollBody: false,
                   child: Align(

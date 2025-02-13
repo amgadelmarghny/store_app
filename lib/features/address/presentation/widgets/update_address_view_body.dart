@@ -42,7 +42,10 @@ class UpdateAddressBody extends StatelessWidget {
             }
           }
           if (state is AddAddressFailure) {
-            snacKBar(context, state.error);
+            toastShown(
+                message: state.error,
+                state: ToastState.error,
+                context: context);
           }
         },
         builder: (context, state) {

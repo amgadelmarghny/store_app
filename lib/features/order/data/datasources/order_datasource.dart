@@ -24,7 +24,7 @@ class OrderDatasource implements BaseOrderDatasource {
   Future<AddNewOrderModel> addNewOrder(AddNewOrderParameter parameter) async {
     final response = await DioHelper.postData(
         url: order,
-        token: CashHelper.getData(key: tokenConst),
+        token: CashHelper.getData(key: kToken),
         data: {
           "address_id": parameter.addressId,
           "payment_method": parameter.paymentMethod,
@@ -40,8 +40,7 @@ class OrderDatasource implements BaseOrderDatasource {
   @override
   Future<CancelOrderModel> cancelOrder(int orderId) async {
     final response = await DioHelper.getData(
-        url: '$order/$orderId/cancel',
-        token: CashHelper.getData(key: tokenConst));
+        url: '$order/$orderId/cancel', token: CashHelper.getData(key: kToken));
     if (response.statusCode == 200) {
       return CancelOrderModel.fromJson(response.data);
     } else {
@@ -53,7 +52,7 @@ class OrderDatasource implements BaseOrderDatasource {
   Future<OrderDetailsModel> getOrderDetails(int id) async {
     final response = await DioHelper.getData(
       url: "$order/$id",
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
     );
     if (response.statusCode == 200) {
       return OrderDetailsModel.fromJson(response.data);
@@ -66,7 +65,7 @@ class OrderDatasource implements BaseOrderDatasource {
   Future<GetOrdersModel> getOrders() async {
     final response = await DioHelper.getData(
       url: order,
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
     );
     if (response.statusCode == 200) {
       return GetOrdersModel.fromJson(response.data);

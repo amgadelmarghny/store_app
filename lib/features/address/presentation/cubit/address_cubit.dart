@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 import 'package:soagmb/core/global/base_usecases/base_usecase.dart';
+import 'package:soagmb/features/address/data/datasources/local/location_service.dart';
 import 'package:soagmb/features/address/data/models/add_new_address_parameter.dart';
 import 'package:soagmb/features/address/data/models/update_address_parameter.dart';
 import 'package:soagmb/features/address/domain/entities/address.dart';
@@ -15,9 +18,12 @@ import 'package:soagmb/features/address/domain/usecases/update_address_usecase.d
 part 'address_state.dart';
 
 class AddressCubit extends Cubit<AddressState> {
-  AddressCubit(this.getAddressesUsecase, this.addNewAddressUsecase,
-      this.updateAddressUsecase, this.deleteAddressUsecase)
-      : super(AddressInitial());
+  AddressCubit(
+    this.getAddressesUsecase,
+    this.addNewAddressUsecase,
+    this.updateAddressUsecase,
+    this.deleteAddressUsecase,
+  ) : super(AddressInitial());
   static AddressCubit get(context) => BlocProvider.of(context);
   final GetAddressesUsecase getAddressesUsecase;
   final AddNewAddressUsecase addNewAddressUsecase;
@@ -78,7 +84,7 @@ class AddressCubit extends Cubit<AddressState> {
         (right) async => await getAddresses());
   }
 
-  ////////////// payment method option  for order sheet ////////////
+  ////////////////////! payment method option  for order sheet ///////////
   int selectedValue = 1;
   String selectedTypeName = 'Cash';
   int isChoose = 0;
@@ -103,5 +109,26 @@ class AddressCubit extends Cubit<AddressState> {
       selectedTypeName = 'PayPal';
     }
     emit(CheckSetState());
+  }
+
+////////////////////////////! GET LOCATION //////////////////////////////
+  LatLng? locationLatLng;
+  bool _hasPermission = false;
+  Future<bool> checkForLocationAcces() async {
+    bool locationEnable =
+        await LocationService.checkAndRequestLocationService();
+    if (locationEnable) {
+      _hasPermission =
+          await LocationService.checkAndRequestLocationPermission();
+      return _hasPermission;
+    }
+    return false;
+  }
+
+  Future<LocationData?> getCurrentLocation() async {
+    if (_hasPermission) {
+      return await LocationService.getCurrentLocation();
+    }
+    return null;
   }
 }

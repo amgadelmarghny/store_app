@@ -25,7 +25,7 @@ class AddressDatasource implements BaseAddressDatasource {
   Future<NewAddressModel> addNewAddress(
       {required AddNewAddressParameter parameter}) async {
     final response = await DioHelper.postData(
-        token: CashHelper.getData(key: tokenConst),
+        token: CashHelper.getData(key: kToken),
         url: addresses,
         data: dataPathImpl(parameter));
     if (response.statusCode == 200) {
@@ -38,7 +38,7 @@ class AddressDatasource implements BaseAddressDatasource {
   @override
   Future<GetAddressesModel> getAddresses() async {
     final Response response = await DioHelper.getData(
-        url: addresses, token: CashHelper.getData(key: tokenConst));
+        url: addresses, token: CashHelper.getData(key: kToken));
     if (response.statusCode == 200) {
       return GetAddressesModel.fromJson(response.data);
     } else {
@@ -51,7 +51,7 @@ class AddressDatasource implements BaseAddressDatasource {
       {required UpdateAddressParameter parameter}) async {
     final response = await DioHelper.putData(
         url: '$addresses/${parameter.addressId}',
-        token: CashHelper.getData(key: tokenConst),
+        token: CashHelper.getData(key: kToken),
         data: dataPathImpl(parameter));
     if (response.statusCode == 200) {
       return UpdateAddressModel.fromJson(response.data);
@@ -76,7 +76,7 @@ class AddressDatasource implements BaseAddressDatasource {
   Future<void> deleteAddress(int id) async {
     final response = await DioHelper.deleteData(
       url: "$addresses/$id",
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
     );
     if (response.statusCode != 200) {
       throw ServerException(errorModel: response.data);

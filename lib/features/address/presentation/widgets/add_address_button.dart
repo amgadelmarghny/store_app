@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/address/data/models/add_new_address_parameter.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
@@ -33,6 +32,7 @@ class AddAddressButton extends StatelessWidget {
         color: defaultColor,
         text: 'Add new address',
         onTap: () {
+          AddressCubit cubit = AddressCubit.get(context);
           if (formKey.currentState!.validate()) {
             AddNewAddressParameter parameter = AddNewAddressParameter(
                 name: nameController.text,
@@ -40,12 +40,11 @@ class AddAddressButton extends StatelessWidget {
                 region: regionController.text,
                 details: detailsController.text,
                 notes: notesController.text,
-                latitude: '30.0616863',
-                longitude: '31.3260088');
-            BlocProvider.of<AddressCubit>(context)
-                .addNewAddress(parameter: parameter);
+                latitude: cubit.locationLatLng?.latitude.toString(),
+                longitude: cubit.locationLatLng?.longitude.toString());
+            cubit.addNewAddress(parameter: parameter);
           } else {
-            BlocProvider.of<AddressCubit>(context).validateObserver();
+            cubit.validateObserver();
           }
         },
       ),

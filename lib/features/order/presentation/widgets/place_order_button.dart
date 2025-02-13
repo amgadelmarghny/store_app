@@ -59,7 +59,7 @@ class PlaceOrderButton extends StatelessWidget {
                       PaymentIntentInputModel(
                     currency: 'EGP',
                     amount: '$totalAmount',
-                    customerId: CashHelper.getData(key: customerID),
+                    customerId: CashHelper.getData(key: kCustomerID),
                   );
                   BlocProvider.of<PaymentCubit>(context).makePayment(
                     paymentIntentInputModel: paymentIntentInputModel,

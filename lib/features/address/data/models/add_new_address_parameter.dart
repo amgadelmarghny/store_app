@@ -6,8 +6,8 @@ class AddNewAddressParameter extends Equatable {
   final String region;
   final String details;
   final String? notes;
-  final String latitude;
-  final String longitude;
+  final String? latitude;
+  final String? longitude;
 
   const AddNewAddressParameter(
       {required this.name,

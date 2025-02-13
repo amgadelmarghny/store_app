@@ -35,7 +35,7 @@ class AddAddressBuilder extends StatelessWidget {
                 width: 110,
                 label: 'name',
                 hintText: 'address name',
-                messageValidationName: 'Address name',
+                messageValidationName: 'name',
                 textEditingController: nameController,
               ),
               const Spacer(),

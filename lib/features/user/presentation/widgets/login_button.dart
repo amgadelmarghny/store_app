@@ -39,7 +39,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
         if (state is LoginSuccessState) {
           if (state.loginModel.status) {
             await CashHelper.setData(
-                key: tokenConst, value: state.loginModel.user!.token);
+                key: kToken, value: state.loginModel.user!.token);
             if (context.mounted) {
               toastShown(
                 message: state.loginModel.message,

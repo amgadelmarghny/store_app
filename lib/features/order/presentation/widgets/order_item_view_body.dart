@@ -8,15 +8,13 @@ import 'package:soagmb/features/shop/presentation/widgets/total_coast.dart';
 
 class OrderItemViewBody extends StatelessWidget {
   const OrderItemViewBody({
-    super.key, required this.orderDetailsData,
-  
+    super.key,
+    required this.orderDetailsData,
   });
   final OrderDetailsData orderDetailsData;
 
   @override
   Widget build(BuildContext context) {
-
-
     return Padding(
       padding: const EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 16),
       child: Transform.translate(
@@ -30,7 +28,7 @@ class OrderItemViewBody extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 CancelationOrderButton(
-                  orderId:orderDetailsData. id!,
+                  orderId: orderDetailsData.id!,
                 ),
                 const SizedBox(
                   width: 30,
@@ -39,7 +37,8 @@ class OrderItemViewBody extends StatelessWidget {
             ),
             const Text('Products'),
             const SizedBox(height: 15),
-            OrderProductItemsListView(productModelList:orderDetailsData.products!),
+            OrderProductItemsListView(
+                productModelList: orderDetailsData.products!),
             SizedBox(
               height: 20,
             ),
@@ -71,8 +70,8 @@ class OrderItemViewBody extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            OrderItemAddressSection(addressModel: orderDetailsData.addressModel,
-
+            OrderItemAddressSection(
+              addressModel: orderDetailsData.addressModel,
             )
           ],
         ),

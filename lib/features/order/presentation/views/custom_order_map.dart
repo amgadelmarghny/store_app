@@ -17,6 +17,7 @@ class _CustomOrderMapState extends State<CustomOrderMap> {
   void initState() {
     initialCameraPosition = CameraPosition(
       target: widget.placeModel.location,
+      zoom: 15.0,
     );
     initMarkers();
     super.initState();
@@ -25,10 +26,7 @@ class _CustomOrderMapState extends State<CustomOrderMap> {
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
-      initialCameraPosition: CameraPosition(
-        target: widget.placeModel.location,
-        zoom: 14.0,
-      ),
+      initialCameraPosition: initialCameraPosition,
       markers: markers,
     );
   }

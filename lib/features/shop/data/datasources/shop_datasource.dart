@@ -22,7 +22,7 @@ class ShopDatasource implements BaseShopDatasource {
   Future<ChangedFavoriteModel> addAndRemoveCart(int id) async {
     final Response response = await DioHelper.postData(
       url: carts,
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
       data: {"product_id": id},
     );
     if (response.statusCode == 200) {
@@ -36,7 +36,7 @@ class ShopDatasource implements BaseShopDatasource {
   Future<ChangedFavoriteModel> addAndRemoveFavorite(int id) async {
     final response = await DioHelper.postData(
       url: favCONST,
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
       data: {"product_id": id},
     );
     if (response.statusCode == 200) {
@@ -50,7 +50,7 @@ class ShopDatasource implements BaseShopDatasource {
   Future<GetCartModel> getCartItems() async {
     final response = await DioHelper.getData(
       url: carts,
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
     );
     if (response.statusCode == 200) {
       return GetCartModel.fromJson(response.data);
@@ -75,7 +75,7 @@ class ShopDatasource implements BaseShopDatasource {
   Future<GetFavoritesModel> getFavoriteProducts() async {
     final response = await DioHelper.getData(
       url: favCONST,
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
     );
     if (response.statusCode == 200) {
       return GetFavoritesModel.fromJson(response.data);
@@ -88,7 +88,7 @@ class ShopDatasource implements BaseShopDatasource {
   Future<HomeModel> getHomeData() async {
     final response = await DioHelper.getData(
       url: home,
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
     );
     if (response.statusCode == 200) {
       return HomeModel.fromJson(response.data);
@@ -101,7 +101,7 @@ class ShopDatasource implements BaseShopDatasource {
   Future<ProfileModel> getProfileInfo() async {
     final response = await DioHelper.getData(
       url: profile,
-      token: CashHelper.getData(key: tokenConst),
+      token: CashHelper.getData(key: kToken),
     );
     if (response.statusCode == 200) {
       return ProfileModel.fromJson(response.data);
@@ -114,7 +114,7 @@ class ShopDatasource implements BaseShopDatasource {
   Future<UpdateCartModel> updateCartItems(UpdateCartItemsImpl implement) async {
     final response = await DioHelper.putData(
         url: '$carts/${implement.id}',
-        token: CashHelper.getData(key: tokenConst),
+        token: CashHelper.getData(key: kToken),
         data: {
           'quantity': implement.quantity,
         });
@@ -128,7 +128,7 @@ class ShopDatasource implements BaseShopDatasource {
   @override
   Future<LogoutModel> userLogout() async {
     final response = await DioHelper.postData(
-        url: logout, token: CashHelper.getData(key: tokenConst));
+        url: logout, token: CashHelper.getData(key: kToken));
     if (response.statusCode == 200) {
       return LogoutModel.fromJson(response.data);
     } else {
@@ -138,16 +138,16 @@ class ShopDatasource implements BaseShopDatasource {
 
   @override
   Future<ComplaintModel> addComplaint(AddComplaintImpl implement) async {
-   final response =  await DioHelper.postData(
+    final response = await DioHelper.postData(
         url: 'complaints',
-        token: CashHelper.getData(key: tokenConst),
+        token: CashHelper.getData(key: kToken),
         data: {
           'name': implement.name,
           'phone': implement.phone,
           'email': implement.email,
           'message': implement.message,
         });
-         if (response.statusCode == 200) {
+    if (response.statusCode == 200) {
       return ComplaintModel.fromJson(response.data);
     } else {
       throw ServerException(errorModel: response.data);

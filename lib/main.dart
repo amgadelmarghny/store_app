@@ -45,14 +45,14 @@ class Soagmb extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    log('token : ${CashHelper.getData(key: tokenConst)}');
+    log('token : ${CashHelper.getData(key: kToken)}');
 
-    bool? isSharedDark = CashHelper.getData(key: isDarkCONST);
-    bool? isBoarding = CashHelper.getData(key: onBoardingCONST);
+    bool? isSharedDark = CashHelper.getData(key: kIsDark);
+    bool? isBoarding = CashHelper.getData(key: kOnBoarding);
     late String routeApp;
 
     if (isBoarding != null) {
-      if (CashHelper.getData(key: tokenConst) != null) {
+      if (CashHelper.getData(key: kToken) != null) {
         routeApp = ShopView.id;
       } else {
         routeApp = LoginView.id;
@@ -66,6 +66,10 @@ class Soagmb extends StatelessWidget {
           create: (context) =>
               AppCubit()..brightnessChanged(fromCash: isSharedDark),
         ),
+        BlocProvider<AddressCubit>(
+            create: (context) => sl<AddressCubit>()
+              ..getAddresses()
+              ..checkForLocationAcces()),
         BlocProvider<ShopCubit>(
           create: (context) => sl()
             ..getHomeData()
@@ -75,7 +79,6 @@ class Soagmb extends StatelessWidget {
             ..getCartItems(),
         ),
         BlocProvider<CategoryCubit>(create: (context) => sl()),
-        BlocProvider<AddressCubit>(create: (context) => sl()..getAddresses()),
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {

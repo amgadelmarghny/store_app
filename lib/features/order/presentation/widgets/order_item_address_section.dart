@@ -76,8 +76,9 @@ class OrderItemAddressSection extends StatelessWidget {
         SizedBox(
           height: 200,
           child: Card(
+            clipBehavior: Clip.hardEdge,
             shape: BeveledRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(15.0),
             ),
             child: CustomOrderMap(
               placeModel: Place(

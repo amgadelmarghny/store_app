@@ -37,7 +37,7 @@ class PaymentMethodItem extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: CashHelper.getData(key: isDarkCONST)
+          color: CashHelper.getData(key: kIsDark)
               ? const Color(0xFF2E2B38)
               : Colors.white,
           borderRadius: BorderRadius.circular(15),

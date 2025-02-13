@@ -110,7 +110,7 @@ class ServiceLocator {
     sl.registerLazySingleton(() => GetAddressesUsecase(repo: sl()));
     sl.registerLazySingleton(() => DeleteAddressUsecase(repo: sl()));
     sl.registerLazySingleton<AddressCubit>(
-        () => AddressCubit(sl(), sl(), sl(), sl()));
+        () => AddressCubit(sl(), sl(), sl(), sl(),));
 
     // orders
     sl.registerLazySingleton<BaseOrderDatasource>(() => OrderDatasource());

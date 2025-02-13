@@ -52,7 +52,7 @@ class OnBoardingViewBody extends StatelessWidget {
     AppCubit appCubit = BlocProvider.of<AppCubit>(context);
 
     if (appCubit.pageNum == appCubit.boardList.length - 1) {
-      await CashHelper.setData(key: onBoardingCONST, value: true);
+      await CashHelper.setData(key: kOnBoarding, value: true);
       if (context.mounted) navigatorPushAndRemove(context, LoginView.id);
     } else {
       pageController.nextPage(

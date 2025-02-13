@@ -34,7 +34,7 @@ class AppCubit extends Cubit<AppStates> {
       emit(AppBrightnessChange());
     } else {
       isDark = !isDark;
-      await CashHelper.setData(key: isDarkCONST, value: isDark);
+      await CashHelper.setData(key: kIsDark, value: isDark);
       emit(AppBrightnessChange());
     }
   }
