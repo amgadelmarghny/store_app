@@ -7,18 +7,18 @@ import 'package:soagmb/features/address/presentation/widgets/address_field.dart'
 class UpdateAddressBuilder extends StatelessWidget {
   const UpdateAddressBuilder({
     super.key,
-    required this.nameContoller,
-    required this.cityContoller,
-    required this.regionContoller,
-    required this.detailsContoller,
-    required this.notesContoller,
+    required this.nameController,
+    required this.cityController,
+    required this.regionController,
+    required this.detailsController,
+    required this.notesController,
     required this.formKey,
   });
-  final TextEditingController nameContoller;
-  final TextEditingController cityContoller;
-  final TextEditingController regionContoller;
-  final TextEditingController detailsContoller;
-  final TextEditingController notesContoller;
+  final TextEditingController nameController;
+  final TextEditingController cityController;
+  final TextEditingController regionController;
+  final TextEditingController detailsController;
+  final TextEditingController notesController;
   final GlobalKey<FormState> formKey;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class UpdateAddressBuilder extends StatelessWidget {
                   width: 110,
                   hintText: 'address name',
                   messageValidationName: 'Address name',
-                  textEditingController: nameContoller,
+                  textEditingController: nameController,
                   label: 'name',
                 ),
                 const Spacer(),
@@ -48,7 +48,7 @@ class UpdateAddressBuilder extends StatelessWidget {
                   width: 120,
                   hintText: 'city',
                   messageValidationName: 'City',
-                  textEditingController: cityContoller,
+                  textEditingController: cityController,
                 ),
               ],
             ),
@@ -57,14 +57,14 @@ class UpdateAddressBuilder extends StatelessWidget {
               label: 'region',
               hintText: 'region',
               messageValidationName: 'Region',
-              textEditingController: regionContoller,
+              textEditingController: regionController,
             ),
             const SizedBox(height: 20),
             AddressField(
               label: 'details',
               hintText: 'details',
               messageValidationName: 'Details',
-              textEditingController: detailsContoller,
+              textEditingController: detailsController,
             ),
             const SizedBox(height: 20),
             AddressField(
@@ -73,7 +73,7 @@ class UpdateAddressBuilder extends StatelessWidget {
               hintText: 'notes',
               maxLine: 5,
               messageValidationName: 'Notes',
-              textEditingController: notesContoller,
+              textEditingController: notesController,
             ),
           ],
         ),

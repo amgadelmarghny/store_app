@@ -34,6 +34,7 @@ class AddAddressViewBody extends StatelessWidget {
                   state: ToastState.success,
                   context: context,
                 );
+                AddressCubit.get(context).locationLatLng = null;
                 Navigator.pop(context);
               } else {
                 toastShown(

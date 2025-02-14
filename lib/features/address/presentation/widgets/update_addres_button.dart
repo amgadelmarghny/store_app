@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/address/data/models/update_address_parameter.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
@@ -28,6 +27,7 @@ class UpdateAddressButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AddressCubit cubit = AddressCubit.get(context);
     return Align(
       alignment: Alignment.bottomCenter,
       child: CustomButton(
@@ -43,12 +43,11 @@ class UpdateAddressButton extends StatelessWidget {
                 details: detailsContoller.text,
                 notes: notesContoller.text,
                 addressId: addressId,
-                latitude: '30.0616863',
-                longitude: '31.3260088');
-            BlocProvider.of<AddressCubit>(context)
-                .updateAddress(parameter: parameter);
+                latitude: cubit.locationLatLng?.latitude.toString(),
+                longitude: cubit.locationLatLng?.longitude.toString());
+            cubit.updateAddress(parameter: parameter);
           } else {
-            BlocProvider.of<AddressCubit>(context).validateObserver();
+            cubit.validateObserver();
           }
         },
       ),

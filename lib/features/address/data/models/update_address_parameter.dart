@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 
 class UpdateAddressParameter extends Equatable {
   final int addressId;
-  final String name, city, region, details, latitude, longitude;
-  final String? notes;
+  final String name, city, region, details;
+  final String? notes, latitude, longitude;
 
   const UpdateAddressParameter({
     required this.addressId,
