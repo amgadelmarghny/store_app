@@ -11,6 +11,7 @@ class AddressField extends StatelessWidget {
     this.isRequired = true,
     this.textEditingController,
     this.isOrderView = false,
+    this.readOnly = false,
     this.keyboardType,
     this.label,
   });
@@ -21,6 +22,7 @@ class AddressField extends StatelessWidget {
   final double width;
   final bool isRequired;
   final bool isOrderView;
+  final bool readOnly;
   final TextEditingController? textEditingController;
   final TextInputType? keyboardType;
   @override
@@ -37,8 +39,9 @@ class AddressField extends StatelessWidget {
                 size: 10.0,
               ),
           TextFormField(
+          
             keyboardType: keyboardType,
-            readOnly: isOrderView,
+            readOnly: readOnly,
             style: const TextStyle(fontSize: 18),
             cursorColor: defaultColor,
             maxLines: maxLine,
@@ -54,6 +57,7 @@ class AddressField extends StatelessWidget {
                     : null
                 : null,
             decoration: InputDecoration(
+            
               label: label != null ? Text(label!) : null,
               hintText: hintText,
               focusedBorder: const UnderlineInputBorder(

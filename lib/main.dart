@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:soagmb/core/global/services/service_locator.dart';
 import 'package:soagmb/core/global/style/themes.dart';
+import 'package:soagmb/core/global/views/my_location_map_view.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/views/shop_view.dart';
@@ -102,7 +103,8 @@ class Soagmb extends StatelessWidget {
               MyOrdersView.id: (context) => const MyOrdersView(),
               UpdateAddressView.id: (context) => const UpdateAddressView(),
               OrderItemView.id: (context) => const OrderItemView(),
-              ChangePasswordView.id: (context) => const ChangePasswordView()
+              ChangePasswordView.id: (context) => const ChangePasswordView(),
+              MyLocationMapView.id: (context) => const MyLocationMapView(),
             },
             theme: ThemeStyle.lightTheme(),
             darkTheme: ThemeStyle.darkTheme(),

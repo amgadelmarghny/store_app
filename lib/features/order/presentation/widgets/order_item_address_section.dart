@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:soagmb/features/address/domain/entities/address.dart';
 import 'package:soagmb/features/address/domain/entities/place.dart';
-import 'package:soagmb/features/order/presentation/views/custom_order_map.dart';
+import 'package:soagmb/core/global/widgets/custom_map_widget.dart';
 import 'package:soagmb/features/address/presentation/widgets/address_field.dart';
 
 class OrderItemAddressSection extends StatelessWidget {
@@ -80,7 +80,7 @@ class OrderItemAddressSection extends StatelessWidget {
             shape: BeveledRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
             ),
-            child: CustomOrderMap(
+            child: CustomMapWidget(
               placeModel: Place(
                 id: addressModel.id.toString(),
                 name: addressModel.name,

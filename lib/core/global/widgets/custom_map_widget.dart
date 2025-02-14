@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:soagmb/features/address/domain/entities/place.dart';
 
-class CustomOrderMap extends StatefulWidget {
-  const CustomOrderMap({super.key, required this.placeModel});
+class CustomMapWidget extends StatefulWidget {
+  const CustomMapWidget({super.key, required this.placeModel});
   final Place placeModel;
 
   @override
-  State<CustomOrderMap> createState() => _CustomOrderMapState();
+  State<CustomMapWidget> createState() => _CustomMapWidgetState();
 }
 
-class _CustomOrderMapState extends State<CustomOrderMap> {
+class _CustomMapWidgetState extends State<CustomMapWidget> {
   late CameraPosition initialCameraPosition;
   Set<Marker> markers = {};
   @override

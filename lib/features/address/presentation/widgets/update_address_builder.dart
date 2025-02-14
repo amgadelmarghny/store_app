@@ -13,6 +13,7 @@ class UpdateAddressBuilder extends StatelessWidget {
     required this.detailsController,
     required this.notesController,
     required this.formKey,
+    required this.isEditForUpdate,
   });
   final TextEditingController nameController;
   final TextEditingController cityController;
@@ -20,6 +21,7 @@ class UpdateAddressBuilder extends StatelessWidget {
   final TextEditingController detailsController;
   final TextEditingController notesController;
   final GlobalKey<FormState> formKey;
+  final bool isEditForUpdate;
   @override
   Widget build(BuildContext context) {
     return FadeInUp(
@@ -40,6 +42,8 @@ class UpdateAddressBuilder extends StatelessWidget {
                   hintText: 'address name',
                   messageValidationName: 'Address name',
                   textEditingController: nameController,
+                  readOnly: !isEditForUpdate,
+                  isRequired: isEditForUpdate,
                   label: 'name',
                 ),
                 const Spacer(),
@@ -49,6 +53,8 @@ class UpdateAddressBuilder extends StatelessWidget {
                   hintText: 'city',
                   messageValidationName: 'City',
                   textEditingController: cityController,
+                  readOnly: !isEditForUpdate,
+                  isRequired: isEditForUpdate,
                 ),
               ],
             ),
@@ -58,6 +64,8 @@ class UpdateAddressBuilder extends StatelessWidget {
               hintText: 'region',
               messageValidationName: 'Region',
               textEditingController: regionController,
+              readOnly: !isEditForUpdate,
+              isRequired: isEditForUpdate,
             ),
             const SizedBox(height: 20),
             AddressField(
@@ -65,16 +73,20 @@ class UpdateAddressBuilder extends StatelessWidget {
               hintText: 'details',
               messageValidationName: 'Details',
               textEditingController: detailsController,
+              readOnly: !isEditForUpdate,
+              isRequired: isEditForUpdate,
             ),
             const SizedBox(height: 20),
-            AddressField(
-              label: 'notes',
-              isRequired: false,
-              hintText: 'notes',
-              maxLine: 5,
-              messageValidationName: 'Notes',
-              textEditingController: notesController,
-            ),
+            if (isEditForUpdate || notesController.text.isNotEmpty)
+              AddressField(
+                label: 'notes',
+                isRequired: false,
+                hintText: 'notes',
+                maxLine: 5,
+                messageValidationName: 'Notes',
+                textEditingController: notesController,
+                readOnly: !isEditForUpdate,
+              ),
           ],
         ),
       ),
