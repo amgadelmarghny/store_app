@@ -3,7 +3,7 @@ import 'package:soagmb/features/category/domain/entities/category_datails_data.d
 
 class CategoryDetails extends Equatable {
   final bool status;
-  final String message;
+  final String? message;
   final CategoryDetailsData? categoryDetailsData;
 
   const CategoryDetails({
@@ -15,4 +15,3 @@ class CategoryDetails extends Equatable {
   @override
   List<Object?> get props => [status, message, categoryDetailsData];
 }
-

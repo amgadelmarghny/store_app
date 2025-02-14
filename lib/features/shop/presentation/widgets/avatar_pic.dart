@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:full_screen_image/full_screen_image.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
 class AvatarPic extends StatelessWidget {
@@ -25,18 +26,21 @@ class AvatarPic extends StatelessWidget {
           child: Container(
             clipBehavior: Clip.hardEdge,
             decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: CachedNetworkImage(
-              imageUrl: image,
-              placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator(
-                  color: defaultColor,
+            child: FullScreenWidget(
+              disposeLevel: DisposeLevel.High,
+              child: CachedNetworkImage(
+                imageUrl: image,
+                placeholder: (context, url) => const Center(
+                  child: CircularProgressIndicator(
+                    color: defaultColor,
+                  ),
                 ),
-              ),
-              errorWidget: (context, url, error) => const Center(
-                child: Icon(
-                  Icons.error_outline,
-                  size: 30,
-                  color: Colors.red,
+                errorWidget: (context, url, error) => const Center(
+                  child: Icon(
+                    Icons.error_outline,
+                    size: 30,
+                    color: Colors.red,
+                  ),
                 ),
               ),
             ),

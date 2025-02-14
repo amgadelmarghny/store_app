@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
@@ -22,71 +23,76 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
     final TextEditingController currentPasswordController =
         TextEditingController();
     final TextEditingController newPasswordController = TextEditingController();
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Form(
-        key: formKey,
-        autovalidateMode: autovalidationMode,
-        child: ListView(
-          children: [
-            ChangePasswordField(
-              validationMessage: 'Current Password',
-              prefixIcon: Icons.lock_outlined,
-              hintText: "Current Password",
-              textInputControl: currentPasswordController,
-            ),
-            const SizedBox(height: 7),
-            ChangePasswordField(
-              validationMessage: 'New Password',
-              prefixIcon: Icons.key_outlined,
-              hintText: "New Password",
-              textInputControl: newPasswordController,
-            ),
-            const SizedBox(height: 20),
-            BlocConsumer<AuthCubit, AuthState>(
-              listener: (BuildContext context, AuthState state) {
-                if (state is ChangePasswordSuccessState) {
-                  if (state.changePasswordModel.status) {
-                    toastShown(
-                      message: state.changePasswordModel.message,
-                      state: ToastState.success,
-                      context: context,
-                    );
-                  } else {
-                    toastShown(
-                      message: state.changePasswordModel.message,
-                      state: ToastState.error,
-                      context: context,
-                    );
+    return FadeInUp(
+      duration: Duration(milliseconds: 300),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Form(
+          key: formKey,
+          autovalidateMode: autovalidationMode,
+          child: Column(
+            children: [
+              ChangePasswordField(
+                validationMessage: 'Current Password',
+                prefixIcon: Icons.lock_outlined,
+                hintText: "Current Password",
+                textInputControl: currentPasswordController,
+              ),
+              const SizedBox(height: 7),
+              ChangePasswordField(
+                validationMessage: 'New Password',
+                prefixIcon: Icons.key_outlined,
+                hintText: "New Password",
+                textInputControl: newPasswordController,
+              ),
+              const SizedBox(height: 20),
+              BlocConsumer<AuthCubit, AuthState>(
+                listener: (BuildContext context, AuthState state) {
+                  if (state is ChangePasswordSuccessState) {
+                    if (state.changePasswordModel.status) {
+                      toastShown(
+                        message: state.changePasswordModel.message,
+                        state: ToastState.success,
+                        context: context,
+                      );
+                    } else {
+                      toastShown(
+                        message: state.changePasswordModel.message,
+                        state: ToastState.error,
+                        context: context,
+                      );
+                    }
                   }
-                }
-                if (state is ChangePasswordFailureState) {
-                  snacKBar(context, state.errMessage);
-                }
-              },
-              builder: (context, state) {
-                AuthCubit cubit = AuthCubit.get(context);
-                return CustomButton(
-                  text: 'Update Password',
-                  isLoading: state is ChangePasswordLoadingState,
-                  onTap: () {
-                    ChangeUserPasswordParameter parameter =
-                        ChangeUserPasswordParameter(
-                            currentPassword: currentPasswordController.text,
-                            newPassword: newPasswordController.text);
-                    updatePasswordOnTap(cubit, parameter, context);
-                  },
-                );
-              },
-            ),
-            const SizedBox(height: 20),
-            CustomButton(
-              text: 'Cancel',
-              color: Colors.grey.shade300,
-              textColor: Colors.black,
-              onTap: () => Navigator.pop(context),
-            ),
-          ],
+                  if (state is ChangePasswordFailureState) {
+                    snacKBar(context, state.errMessage);
+                  }
+                },
+                builder: (context, state) {
+                  AuthCubit cubit = AuthCubit.get(context);
+                  return CustomButton(
+                    dutrationTime: 0,
+                    text: 'Update Password',
+                    isLoading: state is ChangePasswordLoadingState,
+                    onTap: () {
+                      ChangeUserPasswordParameter parameter =
+                          ChangeUserPasswordParameter(
+                              currentPassword: currentPasswordController.text,
+                              newPassword: newPasswordController.text);
+                      updatePasswordOnTap(cubit, parameter, context);
+                    },
+                  );
+                },
+              ),
+              const SizedBox(height: 20),
+              CustomButton(
+                dutrationTime: 0,
+                text: 'Cancel',
+                color: Colors.grey.shade300,
+                textColor: Colors.black,
+                onTap: () => Navigator.pop(context),
+              ),
+            ],
+          ),
         ),
       ),
     );

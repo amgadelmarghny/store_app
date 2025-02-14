@@ -6,7 +6,6 @@ import 'package:soagmb/features/address/presentation/widgets/add_address_button.
 import 'package:soagmb/features/address/presentation/widgets/add_address_builder.dart';
 import 'package:soagmb/features/address/presentation/widgets/custom_add_location_map.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
-import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 
 class AddAddressViewBody extends StatelessWidget {
   const AddAddressViewBody({
@@ -78,18 +77,8 @@ class AddAddressViewBody extends StatelessWidget {
                       shape: BeveledRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      child: InkWell(
-                        onTap: () {
-                          navigatorPush(
-                            context,
-                            CustomAddLocationMap(
-                              locationName: nameController.text,
-                            ),
-                          );
-                        },
-                        child: CustomAddLocationMap(
-                          locationName: nameController.text,
-                        ),
+                      child: CustomAddLocationMap(
+                        locationName: nameController.text,
                       ),
                     ),
                   ),

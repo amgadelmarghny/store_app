@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:full_screen_image/full_screen_image.dart';
 import 'package:soagmb/features/shop/data/models/product_model.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 
@@ -24,16 +25,19 @@ class ProductImagesCollection extends StatelessWidget {
         itemCount:
             productModel.images != null ? productModel.images!.length : 1,
         itemBuilder: (context, index) {
-          return CachedNetworkImage(
-            imageUrl: productModel.images != null
-                ? productModel.images![index]
-                : productModel.image,
-            placeholder: (context, url) => const Center(
-              child: CircularProgressIndicator(
-                color: defaultColor,
+          return FullScreenWidget(
+            disposeLevel: DisposeLevel.High,
+            child: CachedNetworkImage(
+              imageUrl: productModel.images != null
+                  ? productModel.images![index]
+                  : productModel.image,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(
+                  color: defaultColor,
+                ),
               ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
           );
         },
       ),

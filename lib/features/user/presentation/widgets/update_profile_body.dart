@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
@@ -54,71 +55,77 @@ class UpdateProfileViewBody extends StatelessWidget {
         nameController.text = userModel.name!;
         emailController.text = userModel.email!;
         phoneController.text = userModel.phone!;
-        return SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Form(
-              key: formKey,
-              autovalidateMode: bloc.autovalidateMode,
-              child: Column(
-                children: [
-                  SizedBox(height: MediaQuery.sizeOf(context).height * .15),
-                  CustomTextField(
-                    controller: nameController,
-                    hintText: 'Enter Name',
-                    textInputType: TextInputType.name,
-                    labelText: "Name",
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomTextField(
-                    controller: emailController,
-                    hintText: ' Enter Email',
-                    textInputType: TextInputType.emailAddress,
-                    labelText: "Email",
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomTextField(
-                    controller: phoneController,
-                    hintText: 'Enter Phone Number',
-                    textInputType: TextInputType.phone,
-                    labelText: 'Phone',
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  if (state is UpdateProfileLoadingState)
-                    const LinearProgressIndicator(
-                      color: defaultColor,
+        return FadeInUp(
+          duration: Duration(milliseconds: 300),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Form(
+                key: formKey,
+                autovalidateMode: bloc.autovalidateMode,
+                child: Column(
+                  children: [
+                    SizedBox(height: MediaQuery.sizeOf(context).height * .15),
+                    CustomTextField(
+                      controller: nameController,
+                      hintText: 'Enter Name',
+                      textInputType: TextInputType.name,
+                      labelText: "Name",
                     ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  CustomButton(
-                    text: 'MODIFY',
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {
-                        formKey.currentState!.save();
-                        UpdateProfileParameter parameter =
-                            UpdateProfileParameter(
-                                name: nameController.text,
-                                email: emailController.text,
-                                phone: phoneController.text);
-                        bloc.updateUserInfo(parameter: parameter).then((value) {
-                          if (context.mounted) {
-                            BlocProvider.of<ShopCubit>(context)
-                                .getProfileInfo();
-                          }
-                        });
-                      } else {
-                        bloc.validateObserver();
-                      }
-                    },
-                  ),
-                ],
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    CustomTextField(
+                      controller: emailController,
+                      hintText: ' Enter Email',
+                      textInputType: TextInputType.emailAddress,
+                      labelText: "Email",
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    CustomTextField(
+                      controller: phoneController,
+                      hintText: 'Enter Phone Number',
+                      textInputType: TextInputType.phone,
+                      labelText: 'Phone',
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    if (state is UpdateProfileLoadingState)
+                      const LinearProgressIndicator(
+                        color: defaultColor,
+                      ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    CustomButton(
+                      dutrationTime: 0,
+                      text: 'MODIFY',
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          UpdateProfileParameter parameter =
+                              UpdateProfileParameter(
+                                  name: nameController.text,
+                                  email: emailController.text,
+                                  phone: phoneController.text);
+                          bloc
+                              .updateUserInfo(parameter: parameter)
+                              .then((value) {
+                            if (context.mounted) {
+                              BlocProvider.of<ShopCubit>(context)
+                                  .getProfileInfo();
+                            }
+                          });
+                        } else {
+                          bloc.validateObserver();
+                        }
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
