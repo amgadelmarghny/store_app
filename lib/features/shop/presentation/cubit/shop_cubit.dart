@@ -1,6 +1,15 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:soagmb/core/global/base_usecases/base_usecase.dart';
+import 'package:soagmb/features/auth/domain/usecases/change_user_password_usecase.dart';
+import 'package:soagmb/features/auth/domain/usecases/update_profile_usecase.dart';
+import 'package:soagmb/features/shop/data/models/user/change_user_password_parameter.dart';
+import 'package:soagmb/features/shop/data/models/user/update_profile_parameter.dart';
+import 'package:soagmb/features/shop/domain/entities/user/change_password.dart';
 import 'package:soagmb/features/shop/domain/entities/add_complaint_impl.dart';
 import 'package:soagmb/features/shop/domain/entities/cart/get_cart.dart';
 import 'package:soagmb/features/shop/domain/entities/cart/update_cart.dart';
@@ -27,7 +36,7 @@ import 'package:soagmb/features/shop/presentation/widgets/favorite_body.dart';
 import 'package:soagmb/features/shop/presentation/widgets/home_body.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
-import 'package:soagmb/features/user/domain/entities/profile.dart';
+import 'package:soagmb/features/shop/domain/entities/user/profile.dart';
 import '../widgets/favorite_notification_circle.dart';
 part 'shop_state.dart';
 
@@ -42,7 +51,9 @@ class ShopCubit extends Cubit<ShopStates> {
       this.addAndRemoveCartUsecase,
       this.addAndRemoveFavoritesUsecase,
       this.logoutUseCase,
-      this.addComplaintUsecase)
+      this.addComplaintUsecase,
+      this.updateProfileUsecase,
+      this.changeUserPasswordUsecase)
       : super(ShopInitial());
 
   static ShopCubit get(context) => BlocProvider.of(context);
@@ -57,6 +68,8 @@ class ShopCubit extends Cubit<ShopStates> {
   final AddAndRemoveFavoritesUsecase addAndRemoveFavoritesUsecase;
   final UserLogoutUsecase logoutUseCase;
   final AddComplaintUsecase addComplaintUsecase;
+  final UpdateProfileUsecase updateProfileUsecase;
+  final ChangeUserPasswordUsecase changeUserPasswordUsecase;
 
   ///////////////////////////////
   List<Widget>? drawerItems;
@@ -197,7 +210,7 @@ class ShopCubit extends Cubit<ShopStates> {
 //////////////////////////////////? GET PROFILE INFO ///////////////////////////
   Profile? profileModel;
 
-  Future getProfileInfo() async {
+  Future<void> getProfileInfo() async {
     emit(ProfileLoadingState());
     final result = await getProfileInfoUsecase(NoParameters());
     return result.fold(
@@ -206,6 +219,58 @@ class ShopCubit extends Cubit<ShopStates> {
         profileModel = r;
         emit(ProfileSuccessState());
       },
+    );
+  }
+
+  ////////////////////////////? UPDATE  USER  INFORMATION ////////////////////////
+  Future<void> updateUserInfo(
+      {required UpdateProfileParameter parameter}) async {
+    emit(UpdateProfileLoadingState());
+    final result = await updateProfileUsecase(parameter);
+    result.fold(
+      (l) => emit(UpdateProfileFailureState(errMessage: l.errMessage)),
+      (r) async {
+        emit(UpdateProfileSuccessState(profileModel: r));
+        await getProfileInfo();
+        // this to make photo in edit
+        imageFile = null;
+      },
+    );
+  }
+
+  File? imageFile;
+  Future<File?> pickImage({
+    ImageSource source = ImageSource.gallery,
+  }) async {
+    File? pickedImage;
+    final ImagePicker picker = ImagePicker();
+    final xFileImage = await picker.pickImage(source: source);
+    if (xFileImage != null) {
+      pickedImage = File(xFileImage.path);
+      imageFile = pickedImage;
+      emit(PickImageSuccessState());
+      return pickedImage;
+    } else {
+      emit(PickImageFailureState(errMessage: 'No image selected'));
+      return null;
+    }
+  }
+
+  String? image;
+  Future<String> encodeImageToBase64(File imageFile) async {
+    final bytes = await imageFile.readAsBytes();
+    image = base64Encode(bytes);
+    return image!;
+  }
+
+  ////////////////////////? Change Password /////////////////////////////
+  void changeAccPassword(
+      {required ChangeUserPasswordParameter parameter}) async {
+    emit(ChangePasswordLoadingState());
+    final result = await changeUserPasswordUsecase(parameter);
+    result.fold(
+      (l) => emit(ChangePasswordFailureState(errMessage: l.errMessage)),
+      (r) => emit(ChangePasswordSuccessState(changePasswordModel: r)),
     );
   }
 

@@ -20,15 +20,16 @@ class AvatarPic extends StatelessWidget {
         aspectRatio: 1,
         child: Container(
           padding: const EdgeInsets.all(3),
-          height: height,
           decoration:
               BoxDecoration(color: defaultColor[100], shape: BoxShape.circle),
           child: Container(
+            height: height,
             clipBehavior: Clip.hardEdge,
             decoration: const BoxDecoration(shape: BoxShape.circle),
             child: FullScreenWidget(
-              disposeLevel: DisposeLevel.High,
+              disposeLevel: DisposeLevel.Medium,
               child: CachedNetworkImage(
+                fit: height == 80 ? BoxFit.cover : null,
                 imageUrl: image,
                 placeholder: (context, url) => const Center(
                   child: CircularProgressIndicator(

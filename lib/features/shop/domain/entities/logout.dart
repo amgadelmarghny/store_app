@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:soagmb/features/user/domain/entities/user.dart';
+import 'package:soagmb/features/shop/domain/entities/user/user.dart';
 
 class Logout extends Equatable {
   final bool status;

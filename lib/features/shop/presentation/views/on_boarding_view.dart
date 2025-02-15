@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/core/global/style/themes.dart';
-import 'package:soagmb/features/user/presentation/views/login_view.dart';
+import 'package:soagmb/features/auth/presentation/views/login_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';

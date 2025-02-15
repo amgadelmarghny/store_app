@@ -13,7 +13,7 @@ import 'package:soagmb/features/shop/domain/entities/home.dart';
 import 'package:soagmb/features/shop/domain/entities/logout.dart';
 import 'package:soagmb/features/shop/domain/entities/update_cart_items_impl.dart';
 import 'package:soagmb/features/shop/domain/repositories/base_shop_repo.dart';
-import 'package:soagmb/features/user/domain/entities/profile.dart';
+import 'package:soagmb/features/shop/domain/entities/user/profile.dart';
 
 class ShopRepoImpl implements BaseShopRepo {
   final BaseShopDatasource baseShopDatasource;

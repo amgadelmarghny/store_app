@@ -4,7 +4,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:soagmb/features/search/presentation/views/search_view.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/drawer.dart';
-import 'package:soagmb/features/user/presentation/views/login_view.dart';
+import 'package:soagmb/features/auth/presentation/views/login_view.dart';
 import 'package:soagmb/core/global/app_cubit/app_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';

@@ -5,10 +5,10 @@ import 'package:soagmb/features/shop/data/models/categories_model.dart';
 import 'package:soagmb/features/shop/data/models/complaint_model.dart';
 import 'package:soagmb/features/shop/data/models/favorites_model.dart';
 import 'package:soagmb/features/shop/data/models/home_model.dart';
-import 'package:soagmb/features/shop/data/models/logout_model.dart';
+import 'package:soagmb/features/shop/data/models/user/logout_model.dart';
 import 'package:soagmb/features/shop/domain/entities/add_complaint_impl.dart';
 import 'package:soagmb/features/shop/domain/entities/update_cart_items_impl.dart';
-import 'package:soagmb/features/user/data/models/profile_model.dart';
+import 'package:soagmb/features/shop/data/models/user/profile_model.dart';
 
 abstract class BaseShopDatasource {
   Future<HomeModel> getHomeData();

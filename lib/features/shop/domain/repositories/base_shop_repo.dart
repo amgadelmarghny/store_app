@@ -10,7 +10,7 @@ import 'package:soagmb/features/shop/domain/entities/favorites.dart';
 import 'package:soagmb/features/shop/domain/entities/home.dart';
 import 'package:soagmb/features/shop/domain/entities/logout.dart';
 import 'package:soagmb/features/shop/domain/entities/update_cart_items_impl.dart';
-import 'package:soagmb/features/user/domain/entities/profile.dart';
+import 'package:soagmb/features/shop/domain/entities/user/profile.dart';
 
 abstract class BaseShopRepo {
   Future<Either<Failure, Home>> getHomeData();

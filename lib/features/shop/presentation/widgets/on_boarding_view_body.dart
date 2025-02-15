@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/features/user/presentation/views/login_view.dart';
+import 'package:soagmb/features/auth/presentation/views/login_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_smooth_page_indicator.dart';
 import 'package:soagmb/features/shop/presentation/widgets/on_boarding_page_view_bilder.dart';
 import 'package:soagmb/core/global/app_cubit/app_cubit.dart';

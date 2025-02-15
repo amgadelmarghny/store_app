@@ -7,6 +7,8 @@ import 'package:soagmb/features/address/domain/usecases/delete_address_usecase.d
 import 'package:soagmb/features/address/domain/usecases/get_addresses_usecase.dart';
 import 'package:soagmb/features/address/domain/usecases/update_address_usecase.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
+import 'package:soagmb/features/auth/domain/usecases/change_user_password_usecase.dart';
+import 'package:soagmb/features/auth/domain/usecases/update_profile_usecase.dart';
 import 'package:soagmb/features/category/data/datasources/category_datasource.dart';
 import 'package:soagmb/features/category/data/repositories/category_repo.dart';
 import 'package:soagmb/features/category/domain/repositories/base_category_repo.dart';
@@ -40,17 +42,15 @@ import 'package:soagmb/features/shop/domain/usecases/get_profile_info_usecase.da
 import 'package:soagmb/features/shop/domain/usecases/update_cart_item_usecase.dart';
 import 'package:soagmb/features/shop/domain/usecases/user_logout_usecase.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
-import 'package:soagmb/features/user/data/datasources/auth_datasource.dart';
-import 'package:soagmb/features/user/data/datasources/update_profile_datasorce.dart';
-import 'package:soagmb/features/user/data/repositories/auth_repo_implement.dart';
-import 'package:soagmb/features/user/data/repositories/update_profile_repo_implement.dart';
-import 'package:soagmb/features/user/domain/repositories/base_auth_repo.dart';
-import 'package:soagmb/features/user/domain/repositories/base_update_profile_repo.dart';
-import 'package:soagmb/features/user/domain/usecases/change_user_password_usecase.dart';
-import 'package:soagmb/features/user/domain/usecases/login_usecase.dart';
-import 'package:soagmb/features/user/domain/usecases/register_usecase.dart';
-import 'package:soagmb/features/user/domain/usecases/update_profile_usecase.dart';
-import 'package:soagmb/features/user/presentation/cubit/auth_cubit.dart';
+import 'package:soagmb/features/auth/data/datasources/auth_datasource.dart';
+import 'package:soagmb/features/shop/data/datasources/update_profile_datasorce.dart';
+import 'package:soagmb/features/auth/data/repositories/auth_repo_implement.dart';
+import 'package:soagmb/features/shop/data/repositories/update_profile_repo_implement.dart';
+import 'package:soagmb/features/auth/domain/repositories/base_auth_repo.dart';
+import 'package:soagmb/features/shop/domain/repositories/base_update_profile_repo.dart';
+import 'package:soagmb/features/auth/domain/usecases/login_usecase.dart';
+import 'package:soagmb/features/auth/domain/usecases/register_usecase.dart';
+import 'package:soagmb/features/auth/presentation/cubit/auth_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -62,8 +62,7 @@ class ServiceLocator {
         () => AuthRepoImplement(baseAuthDatasource: sl()));
     sl.registerLazySingleton(() => RegisterUsecase(repository: sl()));
     sl.registerLazySingleton(() => LoginUsecase(repository: sl()));
-    sl.registerLazySingleton<AuthCubit>(
-        () => AuthCubit(sl(), sl(), sl(), sl()));
+    sl.registerLazySingleton<AuthCubit>(() => AuthCubit(sl(), sl()));
 
     // shop
     sl.registerLazySingleton<BaseShopDatasource>(() => ShopDatasource());
@@ -79,10 +78,6 @@ class ServiceLocator {
     sl.registerLazySingleton(() => AddAndRemoveFavoritesUsecase(repo: sl()));
     sl.registerLazySingleton(() => UserLogoutUsecase(repo: sl()));
     sl.registerLazySingleton(() => AddComplaintUsecase(repo: sl()));
-    sl.registerLazySingleton<ShopCubit>(
-      () =>
-          ShopCubit(sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()),
-    );
 
     // Modify profile
     sl.registerLazySingleton<BaseUpdateProfileDatasorce>(
@@ -91,6 +86,10 @@ class ServiceLocator {
         () => UpdateProfileRepoImplement(repo: sl()));
     sl.registerLazySingleton(() => UpdateProfileUsecase(repo: sl()));
     sl.registerLazySingleton(() => ChangeUserPasswordUsecase(repo: sl()));
+    sl.registerLazySingleton<ShopCubit>(
+      () => ShopCubit(sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(),
+          sl(), sl(), sl()),
+    );
 
     // Search
     sl.registerLazySingleton<BaseSearchForProductDataSource>(
@@ -109,8 +108,12 @@ class ServiceLocator {
     sl.registerLazySingleton(() => UpdateAddressUsecase(repo: sl()));
     sl.registerLazySingleton(() => GetAddressesUsecase(repo: sl()));
     sl.registerLazySingleton(() => DeleteAddressUsecase(repo: sl()));
-    sl.registerLazySingleton<AddressCubit>(
-        () => AddressCubit(sl(), sl(), sl(), sl(),));
+    sl.registerLazySingleton<AddressCubit>(() => AddressCubit(
+          sl(),
+          sl(),
+          sl(),
+          sl(),
+        ));
 
     // orders
     sl.registerLazySingleton<BaseOrderDatasource>(() => OrderDatasource());
