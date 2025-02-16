@@ -19,13 +19,16 @@ class _CustomMapWidgetState extends State<CustomMapWidget> {
       target: widget.placeModel.location,
       zoom: 15.0,
     );
+    initMapStyle();
     initMarkers();
     super.initState();
   }
 
+  String? genericGmap;
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
+      style: genericGmap,
       initialCameraPosition: initialCameraPosition,
       markers: markers,
     );
@@ -39,5 +42,12 @@ class _CustomMapWidgetState extends State<CustomMapWidget> {
     );
     markers.add(myMarker);
     setState(() {});
+  }
+
+  void initMapStyle() {
+    setState(() async{
+        genericGmap = await DefaultAssetBundle.of(context)
+        .loadString('lib/core/global/style/map_styles.json');
+    });
   }
 }

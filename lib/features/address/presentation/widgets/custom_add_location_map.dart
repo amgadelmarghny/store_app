@@ -16,6 +16,7 @@ class _CustomAddLocationMapState extends State<CustomAddLocationMap> {
   late CameraPosition initialCameraPosition;
   GoogleMapController? mapController;
   Set<Marker> markers = {};
+  String? genericGmap;
 
   @override
   void initState() {
@@ -23,6 +24,7 @@ class _CustomAddLocationMapState extends State<CustomAddLocationMap> {
       target: LatLng(28.521461857709834, 30.730197300230614),
       zoom: 5,
     );
+    initMapStyle();
     getCurrentLocation();
     super.initState();
   }
@@ -36,6 +38,13 @@ class _CustomAddLocationMapState extends State<CustomAddLocationMap> {
         mapController = controller;
       },
     );
+  }
+
+  void initMapStyle() {
+    setState(() async {
+      genericGmap = await DefaultAssetBundle.of(context)
+          .loadString('lib/core/global/style/map_styles.json');
+    });
   }
 
   void getCurrentLocation() async {
