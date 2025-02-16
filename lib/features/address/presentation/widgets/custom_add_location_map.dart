@@ -34,6 +34,7 @@ class _CustomAddLocationMapState extends State<CustomAddLocationMap> {
     return GoogleMap(
       initialCameraPosition: initialCameraPosition,
       markers: markers,
+      style: genericGmap,
       onMapCreated: (controller) {
         mapController = controller;
       },
