@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 
-class DisonnectionMaterialApp extends StatelessWidget {
-  const DisonnectionMaterialApp({
+class DisconnectedMaterialApp extends StatelessWidget {
+  const DisconnectedMaterialApp({
     super.key,
   });
 
@@ -13,15 +13,18 @@ class DisonnectionMaterialApp extends StatelessWidget {
       theme: ThemeStyle.lightTheme(),
       themeMode: ThemeMode.light,
       home: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('lib/core/global/assets/images/no-connection.png'),
-            SizedBox(
-              height: 30,
-            ),
-            Text('Oops! 😓 \n No internet connection.'),
-          ],
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset('lib/core/global/assets/images/no-connection.png',height: 120,),
+              SizedBox(
+                height: 30,
+              ),
+              Text('Oops! 😓'),
+              Text('No internet connection.'),
+            ],
+          ),
         ),
       ),
     );

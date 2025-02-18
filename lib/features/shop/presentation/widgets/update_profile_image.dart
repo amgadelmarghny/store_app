@@ -63,12 +63,14 @@ class UpdateProfileImage extends StatelessWidget {
             ),
           ),
           Positioned(
-              bottom: 5,
-              right: 5,
-              child: CircleAvatar(
-                  radius: 16,
-                  backgroundColor: defaultColor[100],
-                  child: Icon(Icons.camera_alt_outlined)))
+            bottom: 5,
+            right: 5,
+            child: CircleAvatar(
+              radius: 16,
+              backgroundColor: defaultColor[100],
+              child: Icon(Icons.camera_alt_outlined),
+            ),
+          )
         ],
       ),
     );
