@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
-import 'package:soagmb/core/global/app_cubit/app_cubit.dart';
+import 'package:soagmb/core/global/cubits/app_cubit/app_cubit.dart';
 
 class SettingsMenu extends StatelessWidget {
   const SettingsMenu({super.key});

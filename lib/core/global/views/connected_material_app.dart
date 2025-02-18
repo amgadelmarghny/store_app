@@ -23,7 +23,7 @@ import 'package:soagmb/features/shop/presentation/views/profile_view.dart';
 import 'package:soagmb/features/shop/presentation/views/update_profile_view.dart';
 import 'package:soagmb/features/auth/presentation/views/register_view.dart';
 import 'package:soagmb/features/search/presentation/views/search_view.dart';
-import 'package:soagmb/core/global/app_cubit/app_cubit.dart';
+import 'package:soagmb/core/global/cubits/app_cubit/app_cubit.dart';
 import 'package:soagmb/features/category/presentation/category_cubit/category_cubit.dart';
 
 class ConnetedMaterialApp extends StatelessWidget {

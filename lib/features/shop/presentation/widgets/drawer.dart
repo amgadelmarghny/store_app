@@ -8,7 +8,7 @@ import 'package:soagmb/features/shop/data/models/drawer_item_model.dart';
 import 'package:soagmb/features/address/presentation/views/my_addresses_view.dart';
 import 'package:soagmb/features/shop/presentation/views/my_cart_view.dart';
 import 'package:soagmb/features/order/presentation/views/my_orders_view.dart';
-import 'package:soagmb/core/global/app_cubit/app_cubit.dart';
+import 'package:soagmb/core/global/cubits/app_cubit/app_cubit.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
