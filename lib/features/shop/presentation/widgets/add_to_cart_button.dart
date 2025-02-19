@@ -4,6 +4,7 @@ import 'package:soagmb/features/shop/data/models/product_model.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({
@@ -43,8 +44,8 @@ class AddToCartButton extends StatelessWidget {
               isLoading: state is AddToCartLoadingState,
               text: BlocProvider.of<ShopCubit>(context)
                       .inCartProductsMap[productModel.id]!
-                  ? 'Remove from Cart'
-                  : 'Add to Cart',
+                  ? S.of(context).remove_from_cart
+                  : S.of(context).add_to_cart,
               onTap: () async {
                 await BlocProvider.of<ShopCubit>(context).addAndRemoveCart(
                   productId: productModel.id,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:soagmb/features/order/domain/entities/order.dart';
 import 'package:soagmb/features/order/presentation/views/order_item_view.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class OrderItem extends StatelessWidget {
   const OrderItem({
@@ -48,7 +49,7 @@ class OrderItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'ID',
+                  S.of(context).id,
                   style: Theme.of(context).textTheme.bodySmall,
                 )
               ],
@@ -63,7 +64,7 @@ class OrderItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Total Price:',
+                        S.of(context).total_coast,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       Text(

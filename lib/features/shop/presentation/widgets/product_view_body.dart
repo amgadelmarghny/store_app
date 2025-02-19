@@ -5,6 +5,7 @@ import 'package:soagmb/features/shop/presentation/widgets/add_to_cart_button.dar
 import 'package:soagmb/features/shop/presentation/widgets/price_row.dart';
 import 'package:soagmb/features/shop/presentation/widgets/product_images_collection.dart';
 import 'package:soagmb/features/shop/presentation/widgets/smoth_page_idecator.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class ProductViewBody extends StatelessWidget {
   const ProductViewBody({
@@ -69,8 +70,8 @@ class ProductViewBody extends StatelessWidget {
                     color: Colors.grey, fontSize: 15.5, height: 1.2),
                 colorClickableText: Colors.teal,
                 trimMode: TrimMode.Line,
-                trimCollapsedText: 'Read more',
-                trimExpandedText: 'Read less',
+                trimCollapsedText: S.of(context).read_more,
+                trimExpandedText:  S.of(context).read_less,
                 moreStyle: const TextStyle(color: Colors.teal),
               )
             ],

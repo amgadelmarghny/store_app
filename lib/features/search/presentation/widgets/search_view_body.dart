@@ -10,6 +10,7 @@ import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.d
 import 'package:soagmb/features/shop/presentation/widgets/expanded_initial_screen.dart';
 import 'package:soagmb/features/shop/presentation/widgets/text_form_field.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({
@@ -23,7 +24,7 @@ class SearchViewBody extends StatelessWidget {
       child: Column(
         children: [
           CustomTextField(
-            hintText: 'Search',
+            hintText: S.of(context).search,
             onChange: (value) async {
               SearchForProductParameter parameter = SearchForProductParameter(
                 productName: value,
@@ -41,7 +42,7 @@ class SearchViewBody extends StatelessWidget {
                 return Expanded(
                   child: InitialScreen(
                     icon: Icons.search,
-                    text: 'Search for what you want',
+                    text: S.of(context).search_for_what_you_want,
                   ),
                 );
               } else if (state is SearchLoadingState) {
@@ -60,7 +61,7 @@ class SearchViewBody extends StatelessWidget {
                   );
                 } else {
                   return Expanded(
-                    child: EmptyScreen(itemName: 'product'),
+                    child: EmptyScreen(itemName: S.of(context).products),
                   );
                 }
               } else {

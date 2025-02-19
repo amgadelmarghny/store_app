@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/shop/data/models/product_model.dart';
 import 'package:soagmb/features/shop/presentation/widgets/quantity_counter.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class ProductPriceDetails extends StatelessWidget {
   const ProductPriceDetails(
@@ -22,12 +23,12 @@ class ProductPriceDetails extends StatelessWidget {
             children: [
               if (productModel.discount != 0 && productModel.discount != null)
                 OldPrice(
-                    text: 'Discount',
+                    text: S.of(context).discount,
                     oldPrice: productModel.discount.toString()),
               if (productModel.discount != 0 && productModel.discount != null)
                 OldPrice(
                   oldPrice: productModel.oldPrice.toString(),
-                  text: 'Old Price',
+                  text: S.of(context).old_price,
                 ),
               Price(
                 price: productModel.price.toString(),
@@ -90,7 +91,7 @@ class Price extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Price',
+          S.of(context).price,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 20),
         ),
         const Spacer(),

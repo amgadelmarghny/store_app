@@ -5,6 +5,7 @@ import 'package:soagmb/features/order/presentation/widgets/order_item_address_se
 import 'package:soagmb/features/order/presentation/widgets/cancelation_order_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/product_coast.dart';
 import 'package:soagmb/features/shop/presentation/widgets/total_coast.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class OrderItemViewBody extends StatelessWidget {
   const OrderItemViewBody({
@@ -35,7 +36,7 @@ class OrderItemViewBody extends StatelessWidget {
                 )
               ],
             ),
-            const Text('Products'),
+            Text(S.of(context).products),
             const SizedBox(height: 15),
             OrderProductItemsListView(
                 productModelList: orderDetailsData.products!),
@@ -44,15 +45,15 @@ class OrderItemViewBody extends StatelessWidget {
             ),
             if (orderDetailsData.discount > 0)
               ProductCoast(
-                title: 'Discount',
+                title: S.of(context).discount,
                 number: orderDetailsData.discount,
               ),
             ProductCoast(
-              title: 'Coast',
+              title: S.of(context).coast,
               number: orderDetailsData.cost,
             ),
             ProductCoast(
-              title: 'Vat',
+              title: S.of(context).vat,
               number: orderDetailsData.vat.round(),
             ),
             const Divider(
@@ -66,7 +67,7 @@ class OrderItemViewBody extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Text('Address'),
+            Text(S.of(context).address),
             const SizedBox(
               height: 20,
             ),

@@ -4,6 +4,7 @@ import 'package:soagmb/features/shop/domain/entities/user/user.dart';
 import 'package:soagmb/features/shop/presentation/views/update_profile_view.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/core/global/style/themes.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class UpdateProfileButtons extends StatelessWidget {
   const UpdateProfileButtons({super.key, required this.userModel});
@@ -22,7 +23,7 @@ class UpdateProfileButtons extends StatelessWidget {
                   arguments: userModel);
             },
             child: Text(
-              'Change your password',
+              S.of(context).change_password,
               style: underLineDecoration(context),
             ),
           ),
@@ -32,7 +33,7 @@ class UpdateProfileButtons extends StatelessWidget {
                   arguments: userModel);
             },
             child: Text(
-              'Modify your profile',
+              S.of(context).modify_profile,
               style: underLineDecoration(context),
             ),
           ),

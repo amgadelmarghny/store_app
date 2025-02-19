@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class FailureScreen extends StatelessWidget {
   const FailureScreen({
@@ -7,16 +8,20 @@ class FailureScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          Icons.warning_amber,
-          color: Colors.red,
-          size: 200,
-        ),
-        Text('Something went wrong\nPlease try again later'),
-      ],
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(
+            Icons.warning_amber,
+            color: Colors.red,
+            size: 200,
+          ),
+          Text(S.of(context).somthing_went_wrong),
+          Text(S.of(context).please_try_again_later),
+        ],
+      ),
     );
   }
 }

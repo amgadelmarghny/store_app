@@ -6,6 +6,7 @@ import 'package:soagmb/features/shop/presentation/widgets/change_password_text_f
 import 'package:soagmb/features/shop/data/models/user/change_user_password_parameter.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class ChangePasswordViewBody extends StatefulWidget {
   const ChangePasswordViewBody({super.key});
@@ -32,16 +33,16 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
           child: Column(
             children: [
               ChangePasswordField(
-                validationMessage: 'Current Password',
+                validationMessage: S.of(context).current_password,
                 prefixIcon: Icons.lock_outlined,
-                hintText: "Current Password",
+                hintText:  S.of(context).current_password,
                 textInputControl: currentPasswordController,
               ),
               const SizedBox(height: 7),
               ChangePasswordField(
-                validationMessage: 'New Password',
+                validationMessage: S.of(context).new_password,
                 prefixIcon: Icons.key_outlined,
-                hintText: "New Password",
+                hintText: S.of(context).new_password,
                 textInputControl: newPasswordController,
               ),
               const SizedBox(height: 20),
@@ -70,7 +71,7 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
                   ShopCubit cubit = ShopCubit.get(context);
                   return CustomButton(
                     dutrationTime: 0,
-                    text: 'Update Password',
+                    text:  S.of(context).update_password,
                     isLoading: state is ChangePasswordLoadingState,
                     onTap: () {
                       ChangeUserPasswordParameter parameter =
@@ -85,7 +86,7 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
               const SizedBox(height: 20),
               CustomButton(
                 dutrationTime: 0,
-                text: 'Cancel',
+                text:  S.of(context).cancel,
                 color: Colors.grey.shade300,
                 textColor: Colors.black,
                 onTap: () => Navigator.pop(context),

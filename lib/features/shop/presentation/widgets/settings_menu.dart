@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/core/global/cubits/app_cubit/app_cubit.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class SettingsMenu extends StatelessWidget {
   const SettingsMenu({super.key});
@@ -17,10 +18,10 @@ class SettingsMenu extends StatelessWidget {
           await BlocProvider.of<ShopCubit>(context).userLogout();
         }
       },
-      child: const ListTile(
+      child: ListTile(
         leading: Icon(Icons.settings_outlined),
         title: Text(
-          'Settings',
+          S.of(context).settings,
         ),
       ),
       itemBuilder: (context) => [
@@ -28,7 +29,7 @@ class SettingsMenu extends StatelessWidget {
           value: 1,
           child: ListTile(
             title: Text(
-              'Brightness (Light , Dark)',
+              S.of(context).theme,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             leading: const Icon(Icons.brightness_6_outlined),
@@ -38,7 +39,7 @@ class SettingsMenu extends StatelessWidget {
           value: 2,
           child: ListTile(
             title: Text(
-              'Language (En , Ar)',
+              S.of(context).language,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             leading: const Icon(Icons.translate_outlined),
@@ -48,7 +49,7 @@ class SettingsMenu extends StatelessWidget {
           value: 3,
           child: ListTile(
             title: Text(
-              'Logout',
+              S.of(context).logout,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             leading: const Icon(Icons.power_settings_new),

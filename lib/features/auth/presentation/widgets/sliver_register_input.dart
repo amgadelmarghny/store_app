@@ -3,6 +3,7 @@ import 'package:soagmb/features/auth/presentation/widgets/register_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/text_form_field.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class SliverRegisterInfo extends StatelessWidget {
   const SliverRegisterInfo({
@@ -35,9 +36,9 @@ class SliverRegisterInfo extends StatelessWidget {
                   CustomTextField(
                     prefixIcon: Icons.person_outline,
                     controller: nameController,
-                    hintText: 'Enter Name',
+                    hintText: S.of(context).name,
                     textInputType: TextInputType.name,
-                    labelText: "Name",
+                    labelText: S.of(context).name,
                     onFieldSubmitted: (p0) {
                       FocusScope.of(context).requestFocus(emailFocus);
                     },
@@ -49,9 +50,9 @@ class SliverRegisterInfo extends StatelessWidget {
                     focusNode: emailFocus,
                     prefixIcon: Icons.email_outlined,
                     controller: emailController,
-                    hintText: ' Enter Email',
+                    hintText: S.of(context).email,
                     textInputType: TextInputType.emailAddress,
-                    labelText: "Email",
+                    labelText:S.of(context).email,
                     onFieldSubmitted: (p0) {
                       FocusScope.of(context).requestFocus(passwordFocus);
                     },
@@ -65,13 +66,13 @@ class SliverRegisterInfo extends StatelessWidget {
                         BlocProvider.of<AuthCubit>(context).obscureText,
                     prefixIcon: Icons.lock_outline,
                     controller: passwordController,
-                    hintText: 'Enter Password',
+                    hintText: S.of(context).password,
                     textInputType: TextInputType.visiblePassword,
                     suffixIcon: BlocProvider.of<AuthCubit>(context).suffixIcon,
                     suffixOnPressed: () {
                       BlocProvider.of<AuthCubit>(context).onEyesPressed();
                     },
-                    labelText: "Password",
+                    labelText: S.of(context).password,
                     onFieldSubmitted: (p0) {
                       FocusScope.of(context).requestFocus(phoneFocus);
                     },
@@ -83,9 +84,9 @@ class SliverRegisterInfo extends StatelessWidget {
                     focusNode: phoneFocus,
                     prefixIcon: Icons.phone_outlined,
                     controller: phoneController,
-                    hintText: 'Enter Phone Number',
+                    hintText: S.of(context).phone,
                     textInputType: TextInputType.phone,
-                    labelText: 'Phone',
+                    labelText: S.of(context).phone,
                   ),
                   const SizedBox(
                     height: 30,

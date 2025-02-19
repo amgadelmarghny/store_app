@@ -6,6 +6,7 @@ import 'package:soagmb/features/auth/presentation/views/login_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
+import 'package:soagmb/generated/l10n.dart';
 import '../widgets/on_boarding_view_body.dart';
 
 class OnBoardingView extends StatelessWidget {
@@ -27,7 +28,7 @@ class OnBoardingView extends StatelessWidget {
               if (context.mounted) navigatorPushAndRemove(context, LoginView.id);
             },
             child: Text(
-              'Skip',
+              S.of(context).skip,
               style: TextStyle(
                   color: defaultColor,
                   fontSize: getResponsiveFontSize(fontSize: 25)),

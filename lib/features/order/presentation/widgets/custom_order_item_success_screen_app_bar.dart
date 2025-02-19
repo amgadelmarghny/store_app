@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class CustomOrderItemSuccessScreenAppBarDelegate
     extends SliverPersistentHeaderDelegate {
@@ -27,7 +28,7 @@ class CustomOrderItemSuccessScreenAppBarDelegate
         Opacity(
           opacity: (shrinkOffset / expandedHeight),
           child: AppBar(
-            title: const Text('Order Details'),
+            title: Text(S.of(context).order_details),
           ),
         ),
         Positioned(
@@ -45,14 +46,14 @@ class CustomOrderItemSuccessScreenAppBarDelegate
                     children: [
                       //! ID
                       Text(
-                        'Order ID: $id',
+                        '${S.of(context).order_id} : $id',
                         style: Theme.of(context)
                             .textTheme
                             .titleLarge!
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       //! status
-                      Text('Status: $status',
+                      Text('${S.of(context).status}: $status',
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium!

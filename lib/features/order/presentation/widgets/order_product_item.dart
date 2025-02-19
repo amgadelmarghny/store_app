@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/order/domain/entities/products_order.dart';
 import 'package:soagmb/core/global/cubits/app_cubit/app_cubit.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class OrderProductItem extends StatelessWidget {
   const OrderProductItem({super.key, required this.productModel});
@@ -53,14 +54,14 @@ class OrderProductItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'quantity : ${productModel.quantity}',
+                  '${S.of(context).quantity} : ${productModel.quantity}',
                   style: Theme.of(context)
                       .textTheme
                       .titleSmall!
                       .copyWith(fontSize: 16),
                 ),
                 Text(
-                  'Price : ${productModel.price} EGP',
+                  '${S.of(context).price} : ${productModel.price} EGP',
                   style: Theme.of(context)
                       .textTheme
                       .titleSmall!

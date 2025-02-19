@@ -4,6 +4,7 @@ import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/features/address/domain/entities/address.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/address/presentation/views/my_addresses_view.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class AddressOptions extends StatelessWidget {
   const AddressOptions({
@@ -21,7 +22,7 @@ class AddressOptions extends StatelessWidget {
           .addressModelsList;
 
       return ListTile(
-        title: const Text('Address'),
+        title:  Text(S.of(context).address),
         onTap: () {
           Navigator.of(context).pushNamed(MyAddressesView.id);
         },

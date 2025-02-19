@@ -9,6 +9,7 @@ import 'package:soagmb/features/address/presentation/widgets/addresses_view_head
 import 'package:soagmb/features/address/presentation/widgets/empty_address_view_body.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class MyAddressesViewBody extends StatelessWidget {
   const MyAddressesViewBody({
@@ -42,7 +43,7 @@ class MyAddressesViewBody extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: CustomButton(
-                      text: 'Add new address',
+                      text: S.of(context).add_new_address,
                       onTap: () =>
                           Navigator.pushNamed(context, AddAddressView.id),
                     ),

@@ -9,30 +9,31 @@ import 'package:soagmb/features/address/presentation/views/my_addresses_view.dar
 import 'package:soagmb/features/shop/presentation/views/my_cart_view.dart';
 import 'package:soagmb/features/order/presentation/views/my_orders_view.dart';
 import 'package:soagmb/core/global/cubits/app_cubit/app_cubit.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
 
-  static const List<DrawerItemModel> _drawerList = [
-    DrawerItemModel(
-      iconData: Icons.shopping_cart_outlined,
-      title: 'My Cart',
-      routName: MyCartView.id,
-      arguments: false,
-    ),
-    DrawerItemModel(
-      iconData: Icons.shopping_bag_outlined,
-      title: 'My Orders',
-      routName: MyOrdersView.id,
-      arguments: false,
-    ),
-    DrawerItemModel(
-      iconData: Icons.location_on_outlined,
-      title: 'My Addresses',
-      routName: MyAddressesView.id,
-      arguments: true,
-    ),
-  ];
+  static List<DrawerItemModel> _drawerList(context) => [
+        DrawerItemModel(
+          iconData: Icons.shopping_cart_outlined,
+          title: S.of(context).my_cart,
+          routName: MyCartView.id,
+          arguments: false,
+        ),
+        DrawerItemModel(
+          iconData: Icons.shopping_bag_outlined,
+          title: S.of(context).my_orders,
+          routName: MyOrdersView.id,
+          arguments: false,
+        ),
+        DrawerItemModel(
+          iconData: Icons.location_on_outlined,
+          title: S.of(context).my_addresses,
+          routName: MyAddressesView.id,
+          arguments: true,
+        ),
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +49,11 @@ class DrawerMenu extends StatelessWidget {
                   child: UserProfile(),
                 ),
                 SliverList.builder(
-                  itemCount: DrawerMenu._drawerList.length,
+                  itemCount: DrawerMenu._drawerList(context).length,
                   itemBuilder: (context, index) => Container(
                     color: Theme.of(context).scaffoldBackgroundColor,
                     child: DrawerItem(
-                      drawerItemModel: DrawerMenu._drawerList[index],
+                      drawerItemModel: DrawerMenu._drawerList(context)[index],
                     ),
                   ),
                 ),

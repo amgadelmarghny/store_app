@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/services/service_locator.dart';
 import 'package:soagmb/features/search/presentation/cubit/search_cubit.dart';
 import 'package:soagmb/features/search/presentation/widgets/search_view_body.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -13,7 +14,7 @@ class SearchView extends StatelessWidget {
       create: (context) => sl(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Search'),
+          title: Text(S.of(context).search),
         ),
         body: const SearchViewBody(),
       ),

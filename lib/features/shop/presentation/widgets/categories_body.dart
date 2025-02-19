@@ -5,6 +5,7 @@ import 'package:soagmb/features/shop/presentation/widgets/category_large_item_li
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class CategoryBody extends StatelessWidget {
   const CategoryBody({super.key});
@@ -28,7 +29,7 @@ class CategoryBody extends StatelessWidget {
               .catHomeData!
               .dataList;
           if (state is GetCategoriesFailureState) {
-            return const Center(child: Text('Somthing went wrong'));
+            return Center(child: Text(S.of(context).somthing_went_wrong));
           }
           return ConditionalBuilder(
             condition: categoriesList.isNotEmpty,

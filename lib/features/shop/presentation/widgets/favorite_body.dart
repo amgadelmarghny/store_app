@@ -1,11 +1,12 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/features/shop/presentation/widgets/expanded_initial_screen.dart';
 import 'package:soagmb/features/shop/presentation/widgets/favorite_data_screen.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
-import 'package:soagmb/features/shop/presentation/widgets/expanded_initial_screen.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class FavoriteBody extends StatelessWidget {
   const FavoriteBody({super.key});
@@ -30,10 +31,10 @@ class FavoriteBody extends StatelessWidget {
             .isEmpty) {
           return InitialScreen(
             icon: Icons.favorite,
-            text: 'There is no favorites yet',
+            text: S.of(context).the_is_no_favorites_yet,
           );
         } else if (state is GetFavoritesFailureState) {
-          return const Center(child: Text('There is an error'));
+          return Center(child: Text(S.of(context).somthing_went_wrong));
         }
         return ConditionalBuilder(
           condition: state is FavoriteLoadingState,

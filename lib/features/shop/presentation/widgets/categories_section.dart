@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/shop/presentation/widgets/category_in_home_item_list_view.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({
@@ -11,8 +12,8 @@ class CategoriesSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Categories',
+         Text(
+          S.of(context).categories,
         ),
         const SizedBox(
           height: 5,

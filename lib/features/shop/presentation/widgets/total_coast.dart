@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class TotalCoast extends StatelessWidget {
   const TotalCoast({
@@ -12,7 +13,7 @@ class TotalCoast extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Total Coast',
+          S.of(context).total_coast,
           style: Theme.of(context)
               .textTheme
               .titleMedium!

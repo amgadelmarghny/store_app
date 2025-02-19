@@ -9,6 +9,7 @@ import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/features/checkout/data/models/customer_payment_input_model.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class LoginButtonBlocConsumer extends StatelessWidget {
   const LoginButtonBlocConsumer({
@@ -31,7 +32,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
         }
         if (state is CustomerPatymentFailure) {
           toastShown(
-            message: 'Some thing went wrong',
+            message: state.errMessage,
             state: ToastState.error,
             context: context,
           );
@@ -65,7 +66,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
           dutrationTime: 0,
           isLoading:
               state is LoginLodingState || state is CustomerPatymentLoding,
-          text: 'Login',
+          text: S.of(context).login,
           onTap: () {
             loginTap(context, formKey, emailController, passwordController);
           },

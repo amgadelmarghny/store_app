@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class AddressField extends StatelessWidget {
   const AddressField({
@@ -39,7 +40,6 @@ class AddressField extends StatelessWidget {
                 size: 10.0,
               ),
           TextFormField(
-          
             keyboardType: keyboardType,
             readOnly: readOnly,
             style: const TextStyle(fontSize: 18),
@@ -50,14 +50,14 @@ class AddressField extends StatelessWidget {
                 ? isRequired
                     ? (value) {
                         if (value?.isEmpty ?? true) {
-                          return '$messageValidationName' ' is required';
+                          return '$messageValidationName'
+                              ' ${S.of(context).is_required}';
                         }
                         return null;
                       }
                     : null
                 : null,
             decoration: InputDecoration(
-            
               label: label != null ? Text(label!) : null,
               hintText: hintText,
               focusedBorder: const UnderlineInputBorder(

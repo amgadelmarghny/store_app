@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class TotalCoastListTile extends StatelessWidget {
   const TotalCoastListTile({
@@ -9,7 +10,7 @@ class TotalCoastListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: const Text('Total Coast'),
+      title:  Text(S.of(context).total_coast),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.baseline,

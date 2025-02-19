@@ -3,6 +3,7 @@ import 'package:soagmb/features/address/data/models/update_address_parameter.dar
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class UpdateAddressButton extends StatelessWidget {
   const UpdateAddressButton({
@@ -33,7 +34,7 @@ class UpdateAddressButton extends StatelessWidget {
       child: CustomButton(
         isLoading: state is UpdateAddressLoading,
         color: defaultColor,
-        text: 'Update my address',
+        text: S.of(context).modify_address,
         onTap: () {
           if (formKey.currentState!.validate()) {
             UpdateAddressParameter parameter = UpdateAddressParameter(

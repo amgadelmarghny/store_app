@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:soagmb/features/auth/presentation/widgets/login_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/text_form_field.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class SliverLoginInfo extends StatelessWidget {
   const SliverLoginInfo({
@@ -32,10 +33,10 @@ class SliverLoginInfo extends StatelessWidget {
               children: [
                 CustomTextField(
                   prefixIcon: Icons.email_outlined,
-                  hintText: 'Enter Email',
+                  hintText: S.of(context).email,
                   controller: emailController,
                   textInputType: TextInputType.emailAddress,
-                  labelText: "Email",
+                  labelText: S.of(context).email,
                   onFieldSubmitted: (value) {
                     FocusScope.of(context).requestFocus(passwordFocus);
                   },
@@ -53,13 +54,13 @@ class SliverLoginInfo extends StatelessWidget {
                     loginTap(
                         context, formKey, emailController, passwordController);
                   },
-                  hintText: 'Enter Password',
+                  hintText: S.of(context).password,
                   textInputType: TextInputType.visiblePassword,
                   suffixIcon: bloc.suffixIcon,
                   suffixOnPressed: () {
                     bloc.onEyesPressed();
                   },
-                  labelText: "Password",
+                  labelText: S.of(context).password,
                 ),
                 const SizedBox(
                   height: 20,

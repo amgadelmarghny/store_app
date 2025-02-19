@@ -4,6 +4,7 @@ import 'package:soagmb/features/address/domain/entities/address.dart';
 import 'package:soagmb/features/address/domain/entities/place.dart';
 import 'package:soagmb/core/global/widgets/custom_map_widget.dart';
 import 'package:soagmb/features/address/presentation/widgets/address_field.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class OrderItemAddressSection extends StatelessWidget {
   const OrderItemAddressSection({
@@ -36,12 +37,12 @@ class OrderItemAddressSection extends StatelessWidget {
           children: [
             AddressField(
               width: 110,
-              label: 'name',
+              label: S.of(context).name,
               isOrderView: true,
               textEditingController: nameController,
             ),
             AddressField(
-              label: 'city',
+              label: S.of(context).city,
               width: 140,
               isOrderView: true,
               textEditingController: cityController,
@@ -50,22 +51,22 @@ class OrderItemAddressSection extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         AddressField(
-          label: 'region',
+          label: S.of(context).region,
           isOrderView: true,
           textEditingController: regionController,
         ),
         const SizedBox(height: 8),
         AddressField(
-          label: 'details',
+          label: S.of(context).details,
           isOrderView: true,
           textEditingController: detailsController,
         ),
         if (notesController.text != '') const SizedBox(height: 10),
         if (notesController.text != '')
           AddressField(
-            label: 'notes',
+            label: S.of(context).Notes,
             maxLine: 3,
-            hintText: 'Note',
+            hintText: S.of(context).Notes,
             isRequired: false,
             isOrderView: true,
             textEditingController: notesController,

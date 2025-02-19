@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/address/presentation/widgets/address_field.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class UpdateAddressBuilder extends StatelessWidget {
   const UpdateAddressBuilder({
@@ -33,25 +34,25 @@ class UpdateAddressBuilder extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Add your address'),
+            Text(S.of(context).add_your_address),
             const SizedBox(height: 30),
             Row(
               children: [
                 AddressField(
                   width: 110,
-                  hintText: 'address name',
-                  messageValidationName: 'Address name',
+                  hintText: S.of(context).name,
+                  messageValidationName: S.of(context).name,
                   textEditingController: nameController,
                   readOnly: !isEditForUpdate,
                   isRequired: isEditForUpdate,
-                  label: 'name',
+                  label: S.of(context).name,
                 ),
                 const Spacer(),
                 AddressField(
-                  label: 'city',
+                  label: S.of(context).city,
                   width: 120,
-                  hintText: 'city',
-                  messageValidationName: 'City',
+                  hintText: S.of(context).city,
+                  messageValidationName: S.of(context).city,
                   textEditingController: cityController,
                   readOnly: !isEditForUpdate,
                   isRequired: isEditForUpdate,
@@ -60,18 +61,18 @@ class UpdateAddressBuilder extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             AddressField(
-              label: 'region',
-              hintText: 'region',
-              messageValidationName: 'Region',
+              label: S.of(context).region,
+              hintText: S.of(context).region,
+              messageValidationName: S.of(context).region,
               textEditingController: regionController,
               readOnly: !isEditForUpdate,
               isRequired: isEditForUpdate,
             ),
             const SizedBox(height: 20),
             AddressField(
-              label: 'details',
-              hintText: 'details',
-              messageValidationName: 'Details',
+              label: S.of(context).details,
+              hintText: S.of(context).details,
+              messageValidationName: S.of(context).details,
               textEditingController: detailsController,
               readOnly: !isEditForUpdate,
               isRequired: isEditForUpdate,
@@ -79,11 +80,11 @@ class UpdateAddressBuilder extends StatelessWidget {
             const SizedBox(height: 20),
             if (isEditForUpdate || notesController.text.isNotEmpty)
               AddressField(
-                label: 'notes',
+                label: S.of(context).Notes,
                 isRequired: false,
-                hintText: 'notes',
+                hintText: S.of(context).Notes,
                 maxLine: 5,
-                messageValidationName: 'Notes',
+                messageValidationName: S.of(context).Notes,
                 textEditingController: notesController,
                 readOnly: !isEditForUpdate,
               ),

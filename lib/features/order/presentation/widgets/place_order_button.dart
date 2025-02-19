@@ -10,6 +10,7 @@ import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.d
 import 'package:soagmb/features/checkout/data/models/payment_intent_input_model.dart';
 // import 'package:soagmb/shared/network/local/api_keys.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
+import 'package:soagmb/generated/l10n.dart';
 import '../../../../core/network/local/key_const.dart';
 
 class PlaceOrderButton extends StatelessWidget {
@@ -28,7 +29,8 @@ class PlaceOrderButton extends StatelessWidget {
       listener: (context, state) async {
         if (state is PaymentFailur) {
           toastShown(
-            message: 'The payment method has not been completed yet',
+            message:
+                S.of(context).the_payment_method_has_not_been_completed_yet,
             state: ToastState.error,
             context: context,
           );

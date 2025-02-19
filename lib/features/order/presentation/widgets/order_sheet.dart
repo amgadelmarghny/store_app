@@ -9,7 +9,6 @@ import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/add_to_orders_dialog.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_small_divider.dart';
-import 'package:soagmb/features/shop/presentation/widgets/hint_text.dart';
 import 'package:soagmb/features/shop/presentation/widgets/payment_method_options.dart';
 import 'package:soagmb/features/order/presentation/widgets/place_order_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/total_coast_list_tile.dart';
@@ -46,8 +45,6 @@ class OrderSheet extends StatelessWidget {
             const AddressOptions(),
             const Divider(),
             TotalCoastListTile(total: total),
-            const Divider(),
-            const HintTextOrderSheet(),
             const SizedBox(height: 20),
             MultiBlocProvider(
               providers: [

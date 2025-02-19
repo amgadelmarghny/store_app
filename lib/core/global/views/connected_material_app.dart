@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:soagmb/core/global/services/service_locator.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
@@ -25,6 +26,7 @@ import 'package:soagmb/features/auth/presentation/views/register_view.dart';
 import 'package:soagmb/features/search/presentation/views/search_view.dart';
 import 'package:soagmb/core/global/cubits/app_cubit/app_cubit.dart';
 import 'package:soagmb/features/category/presentation/category_cubit/category_cubit.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class ConnetedMaterialApp extends StatelessWidget {
   const ConnetedMaterialApp({super.key});
@@ -68,6 +70,13 @@ class ConnetedMaterialApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
+            localizationsDelegates: [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
             routes: {
               OnBoardingView.id: (context) => const OnBoardingView(),
               LoginView.id: (context) => const LoginView(),

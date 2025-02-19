@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/address/presentation/widgets/address_field.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class ComplaintDialogContent extends StatelessWidget {
   const ComplaintDialogContent({
@@ -29,8 +30,8 @@ class ComplaintDialogContent extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             AddressField(
-              hintText: 'name',
-              messageValidationName: 'name',
+              hintText: S.of(context).name,
+              messageValidationName: S.of(context).name,
               keyboardType: TextInputType.name,
               textEditingController: nameController,
             ),
@@ -38,27 +39,27 @@ class ComplaintDialogContent extends StatelessWidget {
               height: 8,
             ),
             AddressField(
-              hintText: 'email',
+              hintText: S.of(context).email,
               keyboardType: TextInputType.emailAddress,
-              messageValidationName: 'email',
+              messageValidationName: S.of(context).email,
               textEditingController: emailController,
             ),
             const SizedBox(
               height: 8,
             ),
             AddressField(
-              hintText: 'phone number',
+              hintText: S.of(context).phone,
               keyboardType: TextInputType.phone,
-              messageValidationName: 'phone number',
+              messageValidationName: S.of(context).phone,
               textEditingController: phoneController,
             ),
             const SizedBox(
               height: 8,
             ),
             AddressField(
-              hintText: 'message',
+              hintText: S.of(context).message,
               maxLine: 4,
-              messageValidationName: 'message',
+              messageValidationName: S.of(context).message,
               textEditingController: messageController,
             ),
           ],

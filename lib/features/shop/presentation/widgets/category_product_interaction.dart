@@ -15,8 +15,9 @@ class CategoryProductInteraction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CategoryProductCartButton(productModel: productModel),
-        //////////////!//////////////!//////////!
+        CategoryProductCartButton(
+          productModel: productModel,
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 10, left: 5, bottom: 6),
           child: AddToFavoriteButton(productModel: productModel),

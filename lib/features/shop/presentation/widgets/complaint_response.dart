@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class ComplaintResponse extends StatelessWidget {
   const ComplaintResponse({
@@ -20,7 +21,7 @@ class ComplaintResponse extends StatelessWidget {
           const SizedBox(height: 16),
           Row(
             children: [
-              const Text('Complaint number: '),
+              Text(S.of(context).complaint_number),
               Text(
                 '${cubit.complaintModel!.complaintData!.id}',
                 style: const TextStyle(decoration: TextDecoration.underline),
@@ -32,8 +33,8 @@ class ComplaintResponse extends StatelessWidget {
       actions: [
         ElevatedButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text(
-            'OK',
+          child: Text(
+            S.of(context).ok,
             style: TextStyle(color: Colors.teal),
           ),
         ),

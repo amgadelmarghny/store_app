@@ -9,6 +9,7 @@ import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/features/checkout/data/models/customer_payment_input_model.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class RegisterButtonConsumer extends StatelessWidget {
   const RegisterButtonConsumer({
@@ -35,7 +36,7 @@ class RegisterButtonConsumer extends StatelessWidget {
         }
         if (state is CustomerPatymentFailure) {
           toastShown(
-            message: 'Some thing went wrong',
+            message: state.errMessage,
             state: ToastState.error,
             context: context,
           );
@@ -71,7 +72,7 @@ class RegisterButtonConsumer extends StatelessWidget {
       builder: (context, state) {
         AuthCubit bloc = AuthCubit.get(context);
         return CustomButton(
-          text: 'Sign up',
+          text: S.of(context).register,
           dutrationTime: 0,
           isLoading:
               state is RegisterLodingState || state is CustomerPatymentLoding,

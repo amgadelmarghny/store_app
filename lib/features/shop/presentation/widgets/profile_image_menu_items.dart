@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class ProfileImageMenuItem extends StatelessWidget {
   const ProfileImageMenuItem({super.key});
@@ -37,7 +38,7 @@ class ProfileImageMenuItem extends StatelessWidget {
                   width: 5,
                 ),
                 Text(
-                  'Choose from library',
+                  S.of(context).choose_from_library,
                 )
               ],
             ),
@@ -69,7 +70,7 @@ class ProfileImageMenuItem extends StatelessWidget {
                   width: 5,
                 ),
                 Text(
-                  'Take new photo',
+                  S.of(context).take_new_photo,
                 )
               ],
             ),

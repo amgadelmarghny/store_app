@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
 import 'package:soagmb/features/order/presentation/views/my_orders_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class CancelationOrderButton extends StatefulWidget {
   const CancelationOrderButton({
@@ -25,7 +26,7 @@ class _CancelationOrderButtonState extends State<CancelationOrderButton> {
         if (state is CancelOrderSuccess) {
           if (state.cancelOrderModel.status) {
             toastShown(
-                message: 'the order has been successfully cancelled',
+                message: S.of(context).the_order_has_been_deleted_ssuccessfully,
                 state: ToastState.success,
                 context: context);
             Navigator.pop(context);
@@ -63,8 +64,8 @@ class _CancelationOrderButtonState extends State<CancelationOrderButton> {
                     color: Colors.red[900],
                   ),
                   const SizedBox(width: 4),
-                  const Text(
-                    'Cancel',
+                  Text(
+                    S.of(context).cancel,
                     style: TextStyle(fontSize: 18),
                   ),
                 ],

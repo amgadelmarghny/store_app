@@ -9,7 +9,7 @@ SmoothPageIndicator customSmoothPageIndicator(
   AppCubit appCubit = BlocProvider.of<AppCubit>(context);
   return SmoothPageIndicator(
     controller: pageController,
-    count: appCubit.boardList.length,
+    count: appCubit.boardList(context).length,
     effect: const ExpandingDotsEffect(
       expansionFactor: 2,
       spacing: 7.0,

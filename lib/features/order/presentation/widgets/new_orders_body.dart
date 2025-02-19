@@ -7,6 +7,7 @@ import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_item_list_view.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class NewOrdersBody extends StatelessWidget {
   const NewOrdersBody({super.key});
@@ -50,7 +51,7 @@ class NewOrdersBody extends StatelessWidget {
                   color: const Color.fromARGB(255, 255, 157, 0));
             },
             fallback: (BuildContext context) {
-              return EmptyScreen(itemName: 'orders');
+              return EmptyScreen(itemName: S.of(context).orders);
             },
           );
         },

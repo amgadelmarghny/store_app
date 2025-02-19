@@ -7,6 +7,7 @@ import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_item_list_view.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class CancelledOrdersBody extends StatelessWidget {
   const CancelledOrdersBody({super.key});
@@ -50,7 +51,7 @@ class CancelledOrdersBody extends StatelessWidget {
               );
             },
             fallback: (BuildContext context) {
-              return EmptyScreen(itemName: 'canceled order');
+              return EmptyScreen(itemName: S.of(context).cancelled_orders);
             },
           );
         },

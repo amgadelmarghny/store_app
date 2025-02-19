@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class EmptyScreen extends StatelessWidget {
   const EmptyScreen({super.key, required this.itemName});
@@ -12,7 +13,7 @@ class EmptyScreen extends StatelessWidget {
           'lib/core/global/assets/images/empty_box.png',
           height: 200,
         ),
-        Text('No $itemName found !'),
+        Text('${S.of(context).there_is_no} $itemName'),
       ],
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:soagmb/features/order/presentation/widgets/cancelled_order_body.dart';
 import 'package:soagmb/features/order/presentation/widgets/new_orders_body.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class MyOrdersViewBody extends StatelessWidget {
   const MyOrdersViewBody({super.key});
@@ -14,24 +15,24 @@ class MyOrdersViewBody extends StatelessWidget {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              title: const Row(
+              title:  Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
+                 const Icon(
                     Icons.shopping_bag_outlined,
                     size: 25,
                   ),
                   Text(
-                    'My Orders',
+                    S.of(context).my_orders,
                     style: TextStyle(),
                   ),
                 ],
               ),
               bottom: TabBar(
                 indicatorColor: defaultColor,
-                tabs: const [
-                  Tab(text: 'New'),
-                  Tab(text: 'Cancelled'),
+                tabs: [
+                  Tab(text: S.of(context).new_keyword),
+                  Tab(text: S.of(context).cancelled),
                 ],
                 overlayColor: WidgetStatePropertyAll(defaultColor.shade100),
                 labelColor: defaultColor,

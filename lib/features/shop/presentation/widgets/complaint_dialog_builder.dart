@@ -8,6 +8,7 @@ import 'package:soagmb/features/shop/presentation/widgets/complaint_response.dar
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/core/global/style/themes.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class ComplaintDialogBuilder extends StatefulWidget {
   const ComplaintDialogBuilder({
@@ -56,8 +57,8 @@ class _ComplaintDialogBuilderState extends State<ComplaintDialogBuilder> {
             actionsPadding: const EdgeInsets.only(right: 25, bottom: 10),
             contentPadding: const EdgeInsets.all(25),
             iconPadding: const EdgeInsets.all(0),
-            title: const Text(
-              'Complaint',
+            title: Text(
+              S.of(context).complaint,
               style: TextStyle(fontSize: 22),
             ),
             icon: Row(

@@ -9,6 +9,7 @@ import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.d
 import 'package:soagmb/features/shop/presentation/widgets/text_form_field.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/features/shop/presentation/widgets/update_profile_image.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class UpdateProfileViewBody extends StatefulWidget {
   const UpdateProfileViewBody({super.key, required this.userModel});
@@ -79,27 +80,27 @@ class _UpdateProfileViewBodyState extends State<UpdateProfileViewBody> {
                     ),
                     CustomTextField(
                       controller: nameController,
-                      hintText: 'Enter Name',
+                      hintText: S.of(context).name,
                       textInputType: TextInputType.name,
-                      labelText: "Name",
+                      labelText: S.of(context).name,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     CustomTextField(
                       controller: emailController,
-                      hintText: ' Enter Email',
+                      hintText: S.of(context).email,
                       textInputType: TextInputType.emailAddress,
-                      labelText: "Email",
+                      labelText: S.of(context).email,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     CustomTextField(
                       controller: phoneController,
-                      hintText: 'Enter Phone Number',
+                      hintText: S.of(context).phone,
                       textInputType: TextInputType.phone,
-                      labelText: 'Phone',
+                      labelText: S.of(context).phone,
                     ),
                     const SizedBox(
                       height: 15,
@@ -113,7 +114,7 @@ class _UpdateProfileViewBodyState extends State<UpdateProfileViewBody> {
                     ),
                     CustomButton(
                       dutrationTime: 0,
-                      text: 'MODIFY',
+                      text: S.of(context).modify,
                       onTap: () async {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
@@ -123,13 +124,23 @@ class _UpdateProfileViewBodyState extends State<UpdateProfileViewBody> {
                                   email: emailController.text,
                                   phone: phoneController.text,
                                   image: cubit.image);
-                        
+
                           await cubit.updateUserInfo(parameter: parameter);
                         } else {
                           autovalidateMode = AutovalidateMode.onUserInteraction;
                           setState(() {});
                         }
                       },
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    CustomButton(
+                      dutrationTime: 0,
+                      text: S.of(context).cancel,
+                      color: Colors.grey.shade300,
+                      textColor: Colors.black,
+                      onTap: () => Navigator.pop(context),
                     ),
                   ],
                 ),

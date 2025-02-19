@@ -3,6 +3,7 @@ import 'package:soagmb/features/address/data/models/add_new_address_parameter.da
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class AddAddressButton extends StatelessWidget {
   const AddAddressButton({
@@ -30,7 +31,7 @@ class AddAddressButton extends StatelessWidget {
       child: CustomButton(
         isLoading: state is AddAddressLoading,
         color: defaultColor,
-        text: 'Add new address',
+        text: S.of(context).add_new_address,
         onTap: () {
           AddressCubit cubit = AddressCubit.get(context);
           if (formKey.currentState!.validate()) {

@@ -4,6 +4,7 @@ import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/address/presentation/views/add_address_view.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_sheet.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class MakeOrderButton extends StatelessWidget {
   const MakeOrderButton({
@@ -21,7 +22,7 @@ class MakeOrderButton extends StatelessWidget {
           alignment: Alignment.centerRight,
           children: [
             CustomButton(
-              text: 'Make Order',
+              text: S.of(context).make_order,
               onTap: () {
                 orderButtonTap(context);
               },

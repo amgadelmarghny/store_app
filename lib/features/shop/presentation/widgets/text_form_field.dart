@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/core/global/style/themes.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -59,7 +60,7 @@ class CustomTextField extends StatelessWidget {
         obscureText: obscureText,
         validator: (data) {
           if (data!.isEmpty) {
-            return 'FIELD IS EMPTY';
+            return S.of(context).field_is_empty;
           }
           return null;
         },

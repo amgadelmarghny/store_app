@@ -6,6 +6,7 @@ import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/my_cart_data_screen.dart';
 import 'package:soagmb/features/shop/presentation/widgets/expanded_initial_screen.dart';
 import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class MyCartViewBody extends StatelessWidget {
   const MyCartViewBody({super.key});
@@ -23,10 +24,10 @@ class MyCartViewBody extends StatelessWidget {
         if (cartItemList.isEmpty) {
           return InitialScreen(
             icon: Icons.shopping_cart_outlined,
-            text: 'The cart is empty',
+            text: S.of(context).the_cart_is_empty,
           );
         } else if (state is GetCartFailureState) {
-          return const Center(child: Text('There is an error'));
+          return Center(child: Text(S.of(context).somthing_went_wrong));
         }
         return ConditionalBuilder(
           condition: state is GetCartSuccessState || cartItemList.isNotEmpty,

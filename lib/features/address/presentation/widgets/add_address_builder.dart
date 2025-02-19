@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/address/presentation/widgets/address_field.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class AddAddressBuilder extends StatelessWidget {
   const AddAddressBuilder({
@@ -27,49 +28,49 @@ class AddAddressBuilder extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Add your address'),
+          Text(S.of(context).add_your_address),
           const SizedBox(height: 30),
           Row(
             children: [
               AddressField(
                 width: 110,
-                label: 'name',
-                hintText: 'address name',
-                messageValidationName: 'name',
+                label: S.of(context).name,
+                hintText: S.of(context).name,
+                messageValidationName: S.of(context).name,
                 textEditingController: nameController,
               ),
               const Spacer(),
               AddressField(
                 width: 120,
-                hintText: 'city',
-                label: 'city',
-                messageValidationName: 'City',
+                hintText: S.of(context).city,
+                label: S.of(context).city,
+                messageValidationName: S.of(context).city,
                 textEditingController: cityController,
               ),
             ],
           ),
           const SizedBox(height: 20),
           AddressField(
-            label: 'region',
-            hintText: 'region',
-            messageValidationName: 'Region',
+            label: S.of(context).region,
+            hintText: S.of(context).region,
+            messageValidationName: S.of(context).region,
             textEditingController: regionController,
           ),
           const SizedBox(height: 20),
           AddressField(
-            label: 'details',
-            hintText: 'details',
-            messageValidationName: 'Details',
+            label: S.of(context).details,
+            hintText: S.of(context).details,
+            messageValidationName: S.of(context).details,
             textEditingController: detailsController,
           ),
           const SizedBox(height: 20),
           AddressField(
             isRequired: false,
-            hintText: 'notes',
+            hintText: S.of(context).Notes,
             maxLine: 5,
-            messageValidationName: 'Notes',
+            messageValidationName: S.of(context).Notes,
             textEditingController: notesController,
-            label: 'notes',
+            label: S.of(context).Notes,
           ),
         ],
       ),

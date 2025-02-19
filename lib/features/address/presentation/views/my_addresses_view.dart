@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/address/presentation/widgets/my_addresses_view_body.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class MyAddressesView extends StatelessWidget {
   const MyAddressesView({super.key});
@@ -10,7 +11,7 @@ class MyAddressesView extends StatelessWidget {
         ModalRoute.of(context)?.settings.arguments as bool? ?? false;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Addresses'),
+        title: Text(S.of(context).my_addresses),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/shop/presentation/widgets/complaint_dialog_builder.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class ComplaintContainer extends StatelessWidget {
   const ComplaintContainer({
@@ -35,7 +36,7 @@ class ComplaintContainer extends StatelessWidget {
                   color: Colors.black,
                 ),
                 Text(
-                  'What\'s the problem you are facing',
+                  S.of(context).what_is_the_problem_you_are_facting,
                   style: Theme.of(context)
                       .textTheme
                       .titleMedium!

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class DiscountWidget extends StatelessWidget {
   const DiscountWidget({
-    super.key, this.margin,
+    super.key,
+    this.margin,
   });
 
   final EdgeInsetsGeometry? margin;
@@ -16,7 +18,7 @@ class DiscountWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
       ),
       child: Text(
-        'DISCOUNT',
+        S.of(context).discount,
         style: Theme.of(context).textTheme.titleSmall,
       ),
     );

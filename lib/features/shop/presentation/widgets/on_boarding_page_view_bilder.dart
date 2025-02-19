@@ -18,9 +18,9 @@ class OnBoardingPageViewBuilder extends StatelessWidget {
     return PageView.builder(
       physics: const BouncingScrollPhysics(),
       controller: pageController,
-      itemCount: appCubit.boardList.length,
+      itemCount: appCubit.boardList(context).length,
       itemBuilder: (context, index) => OnBoardingItem(
-        onBoardModel: appCubit.boardList[index],
+        onBoardModel: appCubit.boardList(context)[index],
       ),
       onPageChanged: (index) {
         appCubit.pageNum = index;

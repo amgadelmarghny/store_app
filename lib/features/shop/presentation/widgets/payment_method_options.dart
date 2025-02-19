@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
+import 'package:soagmb/generated/l10n.dart';
 import 'payment_method_list_view.dart';
 
 class PaymentMethodOptions extends StatelessWidget {
@@ -33,7 +34,7 @@ class PaymentMethodOptions extends StatelessWidget {
           ),
         );
       },
-      title: const Text('Payment method'),
+      title: Text(S.of(context).payment_method),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
