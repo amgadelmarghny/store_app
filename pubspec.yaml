@@ -55,6 +55,8 @@ dependencies:
   readmore: ^3.0.0
   shared_preferences: ^2.3.5
   smooth_page_indicator: ^1.2.0+3
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -97,3 +99,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true

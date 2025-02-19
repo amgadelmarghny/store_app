@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:soagmb/core/global/base_usecases/base_usecase.dart';
-import 'package:soagmb/features/address/data/datasources/local/location_service.dart';
+import 'package:soagmb/core/global/services/location_service.dart';
 import 'package:soagmb/features/address/data/models/add_new_address_parameter.dart';
 import 'package:soagmb/features/address/data/models/update_address_parameter.dart';
 import 'package:soagmb/features/address/domain/entities/address.dart';
