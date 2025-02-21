@@ -7,7 +7,7 @@ class SearchModel extends Search {
       required super.message,
       required super.searchData});
 
-      factory SearchModel.fromJson(Map<String, dynamic> json) {
+  factory SearchModel.fromJson(Map<String, dynamic> json) {
     return SearchModel(
       status: json['status'],
       message: json['message'],

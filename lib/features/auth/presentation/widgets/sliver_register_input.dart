@@ -52,7 +52,7 @@ class SliverRegisterInfo extends StatelessWidget {
                     controller: emailController,
                     hintText: S.of(context).email,
                     textInputType: TextInputType.emailAddress,
-                    labelText:S.of(context).email,
+                    labelText: S.of(context).email,
                     onFieldSubmitted: (p0) {
                       FocusScope.of(context).requestFocus(passwordFocus);
                     },

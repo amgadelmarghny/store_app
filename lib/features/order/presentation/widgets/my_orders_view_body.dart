@@ -15,10 +15,10 @@ class MyOrdersViewBody extends StatelessWidget {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              title:  Row(
+              title: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                 const Icon(
+                  const Icon(
                     Icons.shopping_bag_outlined,
                     size: 25,
                   ),

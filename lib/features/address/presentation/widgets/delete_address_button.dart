@@ -35,7 +35,7 @@ class DeleteAddressButton extends StatelessWidget {
               Icons.delete_outline,
               color: Colors.red,
             ),
-             Text(
+            Text(
               S.of(context).delete,
               style: TextStyle(fontSize: 20),
             ),

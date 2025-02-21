@@ -7,7 +7,7 @@ class GetCartModel extends GetCart {
     required super.message,
     required super.data,
   });
-  
+
   factory GetCartModel.fromJson(Map<String, dynamic> json) {
     return GetCartModel(
       status: json['status'],

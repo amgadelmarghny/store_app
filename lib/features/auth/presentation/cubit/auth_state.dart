@@ -51,4 +51,3 @@ class RegisterFailureState extends AuthState {
 
   const RegisterFailureState({required this.err});
 }
-

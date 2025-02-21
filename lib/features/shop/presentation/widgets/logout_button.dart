@@ -13,8 +13,7 @@ class LogoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        BlocProvider.of<ShopCubit>(context)
-            .userLogout();
+        BlocProvider.of<ShopCubit>(context).userLogout();
       },
       child: Text(
         S.of(context).logout,

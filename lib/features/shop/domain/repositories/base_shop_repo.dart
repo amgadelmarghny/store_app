@@ -31,6 +31,6 @@ abstract class BaseShopRepo {
       UpdateCartItemsImpl implement);
 
   Future<Either<Failure, Logout>> userLogout();
-  
+
   Future<Either<Failure, Complaint>> addComplaint(AddComplaintImpl parameter);
 }

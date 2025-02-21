@@ -9,7 +9,7 @@ class ChangePasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text(S.of(context).change_password),
+        title: Text(S.of(context).change_password),
       ),
       body: const ChangePasswordViewBody(),
     );

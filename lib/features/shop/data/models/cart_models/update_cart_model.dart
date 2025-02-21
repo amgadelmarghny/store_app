@@ -18,8 +18,6 @@ class UpdateCartModel extends UpdateCart {
 }
 
 class UpdateCartModelData extends UpdateCartData {
-
-  
   const UpdateCartModelData(
       {required super.cartItemUpdated,
       required super.subTotal,

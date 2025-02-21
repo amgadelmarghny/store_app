@@ -13,7 +13,7 @@ class ProductModel extends Product {
     super.inFavorites,
     super.inCart,
   });
-  
+
   factory ProductModel.fromJson(dynamic json) {
     return ProductModel(
       id: json['id'],

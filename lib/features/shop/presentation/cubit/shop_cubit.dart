@@ -77,7 +77,8 @@ class ShopCubit extends Cubit<ShopStates> {
 
   int currentIndex = 0;
 
-  List<BottomNavigationBarItem> bottomNavBarItems(context,{required Color color}) {
+  List<BottomNavigationBarItem> bottomNavBarItems(context,
+      {required Color color}) {
     return [
       BottomNavigationBarItem(
           icon: currentIndex == 0
@@ -87,8 +88,8 @@ class ShopCubit extends Cubit<ShopStates> {
                 )
               : const Icon(Icons.store_mall_directory_outlined),
           label: S.of(context).home),
-       BottomNavigationBarItem(
-          icon: Icon(Icons.apps_outlined), label:  S.of(context).categories),
+      BottomNavigationBarItem(
+          icon: Icon(Icons.apps_outlined), label: S.of(context).categories),
       BottomNavigationBarItem(
           icon: Stack(
             clipBehavior: Clip.none,
@@ -115,7 +116,7 @@ class ShopCubit extends Cubit<ShopStates> {
                       FavoriteNotificationCircle(),
             ],
           ),
-          label:  S.of(context).favorites),
+          label: S.of(context).favorites),
     ];
   }
 

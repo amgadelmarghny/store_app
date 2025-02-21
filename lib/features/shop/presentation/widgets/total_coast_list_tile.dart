@@ -10,7 +10,7 @@ class TotalCoastListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title:  Text(S.of(context).total_coast),
+      title: Text(S.of(context).total_coast),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.baseline,

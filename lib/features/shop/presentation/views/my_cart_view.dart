@@ -10,7 +10,7 @@ class MyCartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text(S.of(context).my_cart),
+        title: Text(S.of(context).my_cart),
       ),
       body: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),

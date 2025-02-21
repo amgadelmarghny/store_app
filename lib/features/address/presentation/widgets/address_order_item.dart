@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:soagmb/features/address/domain/entities/address.dart';
 import 'package:soagmb/features/address/presentation/widgets/address_order_item_leading.dart';
 
-
 class AddressOrderItem extends StatelessWidget {
   const AddressOrderItem({
     super.key,

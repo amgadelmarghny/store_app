@@ -36,7 +36,8 @@ class ProductItem extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: ProductItemInfoWithInteraction(productModel: productModel),
+                  child: ProductItemInfoWithInteraction(
+                      productModel: productModel),
                 ),
               ],
             ),

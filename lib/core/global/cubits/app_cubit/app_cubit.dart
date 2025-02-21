@@ -11,7 +11,7 @@ class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitial());
   int pageNum = 0;
   static AppCubit get(context) => BlocProvider.of(context);
-  
+
   List<OnBoardModel> boardList(context) => [
         OnBoardModel(
           image: 'lib/core/global/assets/images/Sale3.jpg',

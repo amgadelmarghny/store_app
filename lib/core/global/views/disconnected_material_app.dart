@@ -17,7 +17,10 @@ class DisconnectedMaterialApp extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset('lib/core/global/assets/images/no-connection.png',height: 120,),
+              Image.asset(
+                'lib/core/global/assets/images/no-connection.png',
+                height: 120,
+              ),
               SizedBox(
                 height: 30,
               ),

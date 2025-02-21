@@ -35,7 +35,7 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
               ChangePasswordField(
                 validationMessage: S.of(context).current_password,
                 prefixIcon: Icons.lock_outlined,
-                hintText:  S.of(context).current_password,
+                hintText: S.of(context).current_password,
                 textInputControl: currentPasswordController,
               ),
               const SizedBox(height: 7),
@@ -71,7 +71,7 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
                   ShopCubit cubit = ShopCubit.get(context);
                   return CustomButton(
                     dutrationTime: 0,
-                    text:  S.of(context).update_password,
+                    text: S.of(context).update_password,
                     isLoading: state is ChangePasswordLoadingState,
                     onTap: () {
                       ChangeUserPasswordParameter parameter =
@@ -86,7 +86,7 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
               const SizedBox(height: 20),
               CustomButton(
                 dutrationTime: 0,
-                text:  S.of(context).cancel,
+                text: S.of(context).cancel,
                 color: Colors.grey.shade300,
                 textColor: Colors.black,
                 onTap: () => Navigator.pop(context),

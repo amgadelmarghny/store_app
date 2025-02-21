@@ -10,6 +10,6 @@ class GetCategoryDetailsUsecase implements BaseUsecase<CategoryDetails, int> {
   GetCategoryDetailsUsecase({required this.repo});
   @override
   Future<Either<Failure, CategoryDetails>> call(int parameters) async {
-   return await repo.getCategoryDetails(parameters);
+    return await repo.getCategoryDetails(parameters);
   }
 }

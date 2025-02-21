@@ -71,7 +71,7 @@ class ProductViewBody extends StatelessWidget {
                 colorClickableText: Colors.teal,
                 trimMode: TrimMode.Line,
                 trimCollapsedText: S.of(context).read_more,
-                trimExpandedText:  S.of(context).read_less,
+                trimExpandedText: S.of(context).read_less,
                 moreStyle: const TextStyle(color: Colors.teal),
               )
             ],

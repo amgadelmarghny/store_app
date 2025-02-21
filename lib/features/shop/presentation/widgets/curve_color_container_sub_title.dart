@@ -14,7 +14,7 @@ class SubtitleCurveColorContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     double hight = MediaQuery.sizeOf(context).height;
-    
+
     return Container(
       height: hight * 0.14,
       width: width,

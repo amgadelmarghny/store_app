@@ -33,7 +33,7 @@ class Soagmb extends StatelessWidget {
         return ConditionalBuilder(
             condition: state is DisConnectedState,
             builder: (context) => DisconnectedMaterialApp(),
-            fallback: (context) =>ConnetedMaterialApp() );
+            fallback: (context) => ConnetedMaterialApp());
       },
     );
   }

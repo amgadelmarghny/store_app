@@ -31,8 +31,7 @@ class CategoryDetailsItemListView extends StatelessWidget {
     } else {
       return Expanded(
         child: Center(
-          child: Text(
-        'There is no data \n Please try again'),
+          child: Text('There is no data \n Please try again'),
         ),
       );
     }

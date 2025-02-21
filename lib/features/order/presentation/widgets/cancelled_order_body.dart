@@ -33,7 +33,7 @@ class CancelledOrdersBody extends StatelessWidget {
         },
         builder: (context, state) {
           OrderCubit cubit = OrderCubit.get(context);
-            if (state is GetOrderLoading) {
+          if (state is GetOrderLoading) {
             return const Center(
               child: CircularProgressIndicator(
                 color: defaultColor,
@@ -42,10 +42,10 @@ class CancelledOrdersBody extends StatelessWidget {
           } else if (state is GetOrderFailure) {
             return FailureScreen();
           }
-           return ConditionalBuilder(
+          return ConditionalBuilder(
             condition: cubit.cancelledOrdersList.isNotEmpty,
             builder: (BuildContext context) {
-            return OrderItemListView(
+              return OrderItemListView(
                 orderModelList: cubit.cancelledOrdersList,
                 color: Colors.red,
               );

@@ -20,23 +20,17 @@ class ProductItemInfoWithInteraction extends StatelessWidget {
           productModel.name!,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium!
-              .copyWith(height: 1.2),
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.2),
         ),
         const SizedBox(
           height: 5,
         ),
         Row(
           children: [
-            Expanded(
-                child: ProductPrice(productModel: productModel)),
+            Expanded(child: ProductPrice(productModel: productModel)),
             Padding(
-              padding: const EdgeInsets.only(
-                  top: 10, left: 5, bottom: 6),
-              child:
-                  AddToFavoriteButton(productModel: productModel),
+              padding: const EdgeInsets.only(top: 10, left: 5, bottom: 6),
+              child: AddToFavoriteButton(productModel: productModel),
             ),
           ],
         ),

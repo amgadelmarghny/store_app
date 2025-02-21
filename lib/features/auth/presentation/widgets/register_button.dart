@@ -76,7 +76,7 @@ class RegisterButtonConsumer extends StatelessWidget {
           dutrationTime: 0,
           isLoading:
               state is RegisterLodingState || state is CustomerPatymentLoding,
-          onTap: ()async {
+          onTap: () async {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
               RegisterUserParameter parameter = RegisterUserParameter(
@@ -91,8 +91,8 @@ class RegisterButtonConsumer extends StatelessWidget {
                       email: emailController.text,
                       name: nameController.text,
                       phone: phoneController.text);
-             await bloc.createACustomForPayment(customerPaymentInputModel);
-             await bloc.userRegister(parameter: parameter);
+              await bloc.createACustomForPayment(customerPaymentInputModel);
+              await bloc.userRegister(parameter: parameter);
             } else {
               bloc.validateObserver();
             }

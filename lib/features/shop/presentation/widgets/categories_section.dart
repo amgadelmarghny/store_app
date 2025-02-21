@@ -12,7 +12,7 @@ class CategoriesSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         Text(
+        Text(
           S.of(context).categories,
         ),
         const SizedBox(

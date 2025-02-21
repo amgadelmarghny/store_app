@@ -20,7 +20,6 @@ class SettingsMenu extends StatelessWidget {
         } else if (value == 2) {
           await BlocProvider.of<AppCubit>(context).languageToggle();
           if (context.mounted) {
-            
             ShopCubit shopCubit = ShopCubit.get(context);
             AddressCubit addressCubit = AddressCubit.get(context);
             shopCubit.cartModel = null;

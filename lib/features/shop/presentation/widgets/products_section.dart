@@ -7,13 +7,12 @@ class ProductsSection extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         Text(S.of(context).products),
+        Text(S.of(context).products),
         const SizedBox(
           height: 7,
         ),

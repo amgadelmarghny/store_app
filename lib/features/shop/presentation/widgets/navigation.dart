@@ -10,6 +10,6 @@ void navigatorPushAndRemove(BuildContext context, String routName,
   );
 }
 
-void navigatorPush(context,Widget widget) {
+void navigatorPush(context, Widget widget) {
   Navigator.of(context).push(MaterialPageRoute(builder: (context) => widget));
 }

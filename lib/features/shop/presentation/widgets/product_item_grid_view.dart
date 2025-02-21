@@ -8,10 +8,10 @@ class ProductItemGridView extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
-  List productList =  BlocProvider.of<ShopCubit>(context).homeModel!.data!.productsList;
+    List productList =
+        BlocProvider.of<ShopCubit>(context).homeModel!.data!.productsList;
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
