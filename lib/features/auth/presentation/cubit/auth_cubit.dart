@@ -14,9 +14,10 @@ import 'package:soagmb/features/auth/domain/usecases/register_usecase.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(this.loginUsecase, this.registerUsecase, 
-     )
-      : super(AuthInitial());
+  AuthCubit(
+    this.loginUsecase,
+    this.registerUsecase,
+  ) : super(AuthInitial());
 
   static AuthCubit get(context) => BlocProvider.of(context);
 
@@ -43,7 +44,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
 //////////////////?  Login //////////////////
-  void userLogin({required LoginUserParameter loginParameter}) async {
+  Future<void> userLogin({required LoginUserParameter loginParameter}) async {
     emit(LoginLodingState());
     final result = await loginUsecase(loginParameter);
     result.fold(
@@ -53,7 +54,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
 //////////////? create a customer payment ///////////
-  Future createACustomForPayment(
+  Future<void> createACustomForPayment(
       CustomerPaymentInputModel customerPaymentInputModel) async {
     emit(CustomerPatymentLoding());
     try {
@@ -68,7 +69,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
 //////////////////////? registration  /////////////
-  void userRegister({required RegisterUserParameter parameter}) async {
+  Future<void> userRegister({required RegisterUserParameter parameter}) async {
     emit(RegisterLodingState());
     final result = await registerUsecase(parameter);
     result.fold(

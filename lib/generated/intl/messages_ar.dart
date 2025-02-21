@@ -117,7 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "place_order": MessageLookupByLibrary.simpleMessage("تقديم الطلب"),
     "please_login_with_your_personal_information":
         MessageLookupByLibrary.simpleMessage(
-          ".من فضلك سجل بواسطة معلوماتك الشخصية",
+          "من فضلك سجل بواسطة معلوماتك الشخصية",
         ),
     "please_try_again_later": MessageLookupByLibrary.simpleMessage(
       "الرجاء المحاولة مرة اخرى لاحقا",
@@ -162,7 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تحديث كلمة المرور",
     ),
     "vat": MessageLookupByLibrary.simpleMessage("ضريبة القيمة المضافة"),
-    "welcome": MessageLookupByLibrary.simpleMessage("مرحيا بك"),
+    "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك"),
     "what_is_the_problem_you_are_facting": MessageLookupByLibrary.simpleMessage(
       "ما هي المشكلة التي تواجهها",
     ),

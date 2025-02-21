@@ -1,4 +1,9 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
+import 'package:soagmb/core/network/local/key_const.dart';
+import 'package:soagmb/core/network/local/shared_helper.dart';
+import 'package:intl/intl.dart';
 
 abstract class DioHelper {
   static Dio? _dio;
@@ -12,16 +17,23 @@ abstract class DioHelper {
     );
   }
 
+  static bool _isArabic() {
+    if (CashHelper.getData(key: kIsArabic) != null) {
+      return CashHelper.getData(key: kIsArabic);
+    } else {
+      return Intl.getCurrentLocale() == 'ar';
+    }
+  }
+
   static Future<Response> getData({
     String? token,
-    String lang = 'en',
     required String url,
     Map<String, dynamic>? queryParameters,
   }) async {
     if (token != null) {
       _dio!.options.headers = {
         "Authorization": token,
-        "lang": lang,
+        "lang": _isArabic() ? 'ar' : 'en',
         "Content-Type": 'application/json',
       };
     }
@@ -33,14 +45,13 @@ abstract class DioHelper {
 
   static Future<Response> postData({
     String? token,
-    String lang = 'en',
     required String url,
     Object? data,
   }) async {
     if (token != null) {
       _dio!.options.headers = {
         "Authorization": token,
-        "lang": lang,
+        "lang": _isArabic() ? 'ar' : 'en',
         "Content-Type": 'application/json',
       };
     }
@@ -52,14 +63,13 @@ abstract class DioHelper {
 
   static Future<Response> putData({
     String? token,
-    String lang = 'en',
     required String url,
     Object? data,
   }) async {
     if (token != null) {
       _dio!.options.headers = {
         "Authorization": token,
-        "lang": lang,
+        "lang": _isArabic() ? 'ar' : 'en',
         "Content-Type": 'application/json',
       };
     }
@@ -71,14 +81,13 @@ abstract class DioHelper {
 
   static Future<Response> deleteData({
     String? token,
-    String lang = 'en',
     required String url,
     Object? data,
   }) async {
     if (token != null) {
       _dio!.options.headers = {
         "Authorization": token,
-        "lang": lang,
+        "lang": _isArabic() ? 'ar' : 'en',
         "Content-Type": 'application/json',
       };
     }

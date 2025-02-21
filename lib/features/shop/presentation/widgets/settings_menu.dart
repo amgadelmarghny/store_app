@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soagmb/core/global/services/service_locator.dart';
+import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/core/global/cubits/app_cubit/app_cubit.dart';
+import 'package:soagmb/features/shop/presentation/views/shop_view.dart';
+import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/generated/l10n.dart';
 
 class SettingsMenu extends StatelessWidget {
@@ -12,8 +16,27 @@ class SettingsMenu extends StatelessWidget {
     return PopupMenuButton(
       onSelected: (value) async {
         if (value == 1) {
-          BlocProvider.of<AppCubit>(context).brightnessChanged();
+          await BlocProvider.of<AppCubit>(context).brightnessChanged();
         } else if (value == 2) {
+          await BlocProvider.of<AppCubit>(context).languageToggle();
+          if (context.mounted) {
+            
+            ShopCubit shopCubit = ShopCubit.get(context);
+            AddressCubit addressCubit = AddressCubit.get(context);
+            shopCubit.cartModel = null;
+            shopCubit.categoryHomeModel = null;
+            shopCubit.homeModel = null;
+            shopCubit.profileModel = null;
+            addressCubit.addressModel = null;
+            sl<ShopCubit>()
+              ..getHomeData()
+              ..getCategories()
+              ..getFavoriteProducts()
+              ..getProfileInfo()
+              ..getCartItems();
+            sl<AddressCubit>().getAddresses();
+            navigatorPushAndRemove(context, ShopView.id);
+          }
         } else if (value == 3) {
           await BlocProvider.of<ShopCubit>(context).userLogout();
         }

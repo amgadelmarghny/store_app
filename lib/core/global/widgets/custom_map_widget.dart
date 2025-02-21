@@ -44,10 +44,9 @@ class _CustomMapWidgetState extends State<CustomMapWidget> {
     setState(() {});
   }
 
-  void initMapStyle() {
-    setState(() async{
-        genericGmap = await DefaultAssetBundle.of(context)
+  void initMapStyle() async {
+    genericGmap = await DefaultAssetBundle.of(context)
         .loadString('lib/core/global/style/map_styles.json');
-    });
+    setState(() {});
   }
 }

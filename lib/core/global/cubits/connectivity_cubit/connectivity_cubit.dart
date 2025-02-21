@@ -9,21 +9,13 @@ class ConnectivityCubit extends Cubit<ConnectivityState> {
 
   StreamSubscription? _subscription;
 
-  void _connected() {
-    emit(ConnectedState());
-  }
-
-  void _notConnected() {
-    emit(DisConnectedState());
-  }
-
   void checkConnection() async {
     _subscription = Connectivity().onConnectivityChanged.listen((result) {
       if (result.contains(ConnectivityResult.wifi) ||
           result.contains(ConnectivityResult.mobile)) {
-        _connected();
+        emit(ConnectedState());
       } else {
-        _notConnected();
+        emit(DisConnectedState());
       }
     });
   }

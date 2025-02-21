@@ -35,6 +35,8 @@ class ConnetedMaterialApp extends StatelessWidget {
   Widget build(BuildContext context) {
     bool? isSharedDark = CashHelper.getData(key: kIsDark);
     bool? isBoarding = CashHelper.getData(key: kOnBoarding);
+    bool? isArabic = CashHelper.getData(key: kIsArabic);
+
     late String routeApp;
 
     if (isBoarding != null) {
@@ -49,8 +51,9 @@ class ConnetedMaterialApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              AppCubit()..brightnessChanged(fromCash: isSharedDark),
+          create: (context) => AppCubit()
+            ..brightnessChanged(fromCash: isSharedDark)
+            ..languageToggle(fromCash: isArabic),
         ),
         BlocProvider<AddressCubit>(
             create: (context) => sl<AddressCubit>()
@@ -68,6 +71,7 @@ class ConnetedMaterialApp extends StatelessWidget {
       ],
       child: BlocBuilder<AppCubit, AppStates>(
         builder: (context, state) {
+          AppCubit appCubit = AppCubit.get(context);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             localizationsDelegates: [
@@ -100,9 +104,10 @@ class ConnetedMaterialApp extends StatelessWidget {
             },
             theme: ThemeStyle.lightTheme(),
             darkTheme: ThemeStyle.darkTheme(),
-            themeMode: BlocProvider.of<AppCubit>(context).isDark
-                ? ThemeMode.dark
-                : ThemeMode.light,
+            locale: appCubit.isArabicLang != null
+                ? Locale(appCubit.isArabicLang! ? 'ar' : 'en')
+                : null,
+            themeMode: appCubit.isDark ? ThemeMode.dark : ThemeMode.light,
             initialRoute: routeApp,
           );
         },

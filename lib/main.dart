@@ -31,9 +31,9 @@ class Soagmb extends StatelessWidget {
     return BlocBuilder<ConnectivityCubit, ConnectivityState>(
       builder: (context, state) {
         return ConditionalBuilder(
-            condition: state is ConnectedState,
-            builder: (context) => ConnetedMaterialApp(),
-            fallback: (context) => DisconnectedMaterialApp());
+            condition: state is DisConnectedState,
+            builder: (context) => DisconnectedMaterialApp(),
+            fallback: (context) =>ConnetedMaterialApp() );
       },
     );
   }

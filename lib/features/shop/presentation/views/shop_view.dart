@@ -76,6 +76,7 @@ class ShopView extends StatelessWidget {
                 bottomNavigationBar: BottomNavigationBar(
                   currentIndex: shopCubit.currentIndex,
                   items: shopCubit.bottomNavBarItems(
+                    context,
                     color: shopCubit.currentIndex == 0
                         ? defaultColor
                         : Colors.grey,

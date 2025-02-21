@@ -5,3 +5,5 @@ sealed class AppStates {}
 final class AppInitial extends AppStates {}
 
 final class AppBrightnessChange extends AppStates {}
+
+final class LangouageToggleState extends AppStates {}

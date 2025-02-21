@@ -37,6 +37,7 @@ import 'package:soagmb/features/shop/presentation/widgets/home_body.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
 import 'package:soagmb/features/shop/domain/entities/user/profile.dart';
+import 'package:soagmb/generated/l10n.dart';
 import '../widgets/favorite_notification_circle.dart';
 part 'shop_state.dart';
 
@@ -76,7 +77,7 @@ class ShopCubit extends Cubit<ShopStates> {
 
   int currentIndex = 0;
 
-  List<BottomNavigationBarItem> bottomNavBarItems({required Color color}) {
+  List<BottomNavigationBarItem> bottomNavBarItems(context,{required Color color}) {
     return [
       BottomNavigationBarItem(
           icon: currentIndex == 0
@@ -85,9 +86,9 @@ class ShopCubit extends Cubit<ShopStates> {
                   size: 27,
                 )
               : const Icon(Icons.store_mall_directory_outlined),
-          label: 'Home'),
-      const BottomNavigationBarItem(
-          icon: Icon(Icons.apps_outlined), label: 'Categories'),
+          label: S.of(context).home),
+       BottomNavigationBarItem(
+          icon: Icon(Icons.apps_outlined), label:  S.of(context).categories),
       BottomNavigationBarItem(
           icon: Stack(
             clipBehavior: Clip.none,
@@ -114,7 +115,7 @@ class ShopCubit extends Cubit<ShopStates> {
                       FavoriteNotificationCircle(),
             ],
           ),
-          label: 'Favorite'),
+          label:  S.of(context).favorites),
     ];
   }
 

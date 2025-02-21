@@ -41,11 +41,10 @@ class _CustomAddLocationMapState extends State<CustomAddLocationMap> {
     );
   }
 
-  void initMapStyle() {
-    setState(() async {
-      genericGmap = await DefaultAssetBundle.of(context)
-          .loadString('lib/core/global/style/map_styles.json');
-    });
+  void initMapStyle() async {
+    genericGmap = await DefaultAssetBundle.of(context)
+        .loadString('lib/core/global/style/map_styles.json');
+    setState(() {});
   }
 
   void getCurrentLocation() async {

@@ -3,13 +3,15 @@ import 'package:soagmb/features/shop/data/models/boarding_model.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
 import 'package:soagmb/generated/l10n.dart';
+import 'package:intl/intl.dart';
 
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitial());
   int pageNum = 0;
-
+  static AppCubit get(context) => BlocProvider.of(context);
+  
   List<OnBoardModel> boardList(context) => [
         OnBoardModel(
           image: 'lib/core/global/assets/images/Sale3.jpg',
@@ -37,6 +39,19 @@ class AppCubit extends Cubit<AppStates> {
       isDark = !isDark;
       await CashHelper.setData(key: kIsDark, value: isDark);
       emit(AppBrightnessChange());
+    }
+  }
+
+  bool? isArabicLang;
+  Future<void> languageToggle({bool? fromCash}) async {
+    if (fromCash != null) {
+      isArabicLang = fromCash;
+      emit(LangouageToggleState());
+    } else {
+      isArabicLang = Intl.getCurrentLocale() == 'ar' ? true : false;
+      isArabicLang = !isArabicLang!;
+      await CashHelper.setData(key: kIsArabic, value: isArabicLang);
+      emit(LangouageToggleState());
     }
   }
 }

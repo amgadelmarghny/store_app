@@ -79,16 +79,16 @@ class LoginButtonBlocConsumer extends StatelessWidget {
 }
 
 void loginTap(
-    BuildContext context, formKey, emailController, passwordController) {
-  AuthCubit bloc = AuthCubit.get(context);
+    BuildContext context, formKey, emailController, passwordController) async {
+  AuthCubit cubit = AuthCubit.get(context);
   if (formKey.currentState!.validate()) {
     LoginUserParameter parameter = LoginUserParameter(
         email: emailController.text, password: passwordController.text);
-    bloc.userLogin(loginParameter: parameter);
     // for create customer payment id
     CustomerPaymentInputModel customerPaymentInputModel =
         CustomerPaymentInputModel(email: emailController.text);
-    bloc.createACustomForPayment(customerPaymentInputModel);
+    await cubit.createACustomForPayment(customerPaymentInputModel);
+    await cubit.userLogin(loginParameter: parameter);
     formKey.currentState!.save();
   } else {
     BlocProvider.of<AuthCubit>(context).validateObserver();
