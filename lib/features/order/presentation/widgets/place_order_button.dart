@@ -89,22 +89,22 @@ class PlaceOrderButton extends StatelessWidget {
                             },
                             "description":
                                 "The payment transaction description.",
-                            // "item_list": {
-                            //   "items": [
-                            //     {
-                            //       "name": "Apple",
-                            //       "quantity": 4,
-                            //       "price": "10",
-                            //       "currency": "USD"
-                            //     },
-                            //     {
-                            //       "name": "Pineapple",
-                            //       "quantity": 5,
-                            //       "price": "12",
-                            //       "currency": "USD"
-                            //     }
-                            //   ],
-                            // }
+                            "item_list": {
+                              "items": [
+                                {
+                                  "name": "Apple",
+                                  "quantity": 4,
+                                  "price": "10",
+                                  "currency": "USD"
+                                },
+                                {
+                                  "name": "Pineapple",
+                                  "quantity": 5,
+                                  "price": "12",
+                                  "currency": "USD"
+                                }
+                              ],
+                            }
                           }
                         ],
                         note: "Contact us for any questions on your order.",

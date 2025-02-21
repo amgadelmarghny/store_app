@@ -25,7 +25,8 @@ class OnBoardingView extends StatelessWidget {
           TextButton(
             onPressed: () async {
               await CashHelper.setData(key: kOnBoarding, value: true);
-              if (context.mounted) navigatorPushAndRemove(context, LoginView.id);
+              if (context.mounted)
+                navigatorPushAndRemove(context, LoginView.id);
             },
             child: Text(
               S.of(context).skip,

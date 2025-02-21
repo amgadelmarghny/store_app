@@ -22,7 +22,7 @@ class AddressOptions extends StatelessWidget {
           .addressModelsList;
 
       return ListTile(
-        title:  Text(S.of(context).address),
+        title: Text(S.of(context).address),
         onTap: () {
           Navigator.of(context).pushNamed(MyAddressesView.id);
         },

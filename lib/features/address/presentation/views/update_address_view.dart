@@ -21,7 +21,8 @@ class _UpdateAddressViewState extends State<UpdateAddressView> {
         ModalRoute.of(context)!.settings.arguments as AddressModel;
     return Scaffold(
       appBar: AppBar(
-        title: Text(isEditForUpdate ?S.of(context).modify_address : addressModel.name),
+        title: Text(
+            isEditForUpdate ? S.of(context).modify_address : addressModel.name),
         actions: isEditForUpdate == false
             ? [
                 IconButton(
