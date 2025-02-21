@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/core/global/style/themes.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/generated/l10n.dart';
-import 'payment_method_list_view.dart';
+import '../../../checkout/presentation/widgets/payment_method_list_view.dart';
 
 class PaymentMethodOptions extends StatelessWidget {
   const PaymentMethodOptions({
@@ -17,13 +17,14 @@ class PaymentMethodOptions extends StatelessWidget {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            actionsPadding: const EdgeInsets.only(bottom: 16, right: 20),
+            actionsPadding:
+                const EdgeInsets.only(bottom: 16, right: 20, left: 20),
             content: const PaymentMethodItemListView(),
             actions: [
               ElevatedButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text(
-                  'Ok',
+                  S.of(context).ok,
                   style: TextStyle(
                     color: Colors.teal,
                     fontSize: getResponsiveFontSize(fontSize: 17),
@@ -38,7 +39,7 @@ class PaymentMethodOptions extends StatelessWidget {
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          BlocConsumer<AddressCubit, AddressState>(
+          BlocBuilder<AddressCubit, AddressState>(
             builder: (context, state) {
               return FittedBox(
                 child: Text(
@@ -50,7 +51,6 @@ class PaymentMethodOptions extends StatelessWidget {
                 ),
               );
             },
-            listener: (BuildContext context, state) {},
           ),
           const SizedBox(
             width: 3,

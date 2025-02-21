@@ -7,6 +7,7 @@ import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/core/global/views/my_location_map_view.dart';
+import 'package:soagmb/features/checkout/presentation/views/paypal_checkout_order_view.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/views/shop_view.dart';
 import 'package:soagmb/features/address/presentation/views/add_address_view.dart';
@@ -101,6 +102,8 @@ class ConnetedMaterialApp extends StatelessWidget {
               OrderItemView.id: (context) => const OrderItemView(),
               ChangePasswordView.id: (context) => const ChangePasswordView(),
               MyLocationMapView.id: (context) => const MyLocationMapView(),
+              PayPalCheckOutOrderView.id: (context) =>
+                  const PayPalCheckOutOrderView(),
             },
             theme: ThemeStyle.lightTheme(),
             darkTheme: ThemeStyle.darkTheme(),

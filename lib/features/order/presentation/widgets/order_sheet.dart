@@ -15,11 +15,7 @@ import 'package:soagmb/features/shop/presentation/widgets/total_coast_list_tile.
 import 'package:soagmb/features/checkout/data/repository/checkout_repo.dart';
 
 class OrderSheet extends StatelessWidget {
-  const OrderSheet({
-    super.key,
-    this.total,
-  });
-  final dynamic total;
+  const OrderSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +40,7 @@ class OrderSheet extends StatelessWidget {
             const Divider(),
             const AddressOptions(),
             const Divider(),
-            TotalCoastListTile(total: total),
+            TotalCoastListTile(),
             const SizedBox(height: 20),
             MultiBlocProvider(
               providers: [
@@ -88,9 +84,7 @@ class OrderSheet extends StatelessWidget {
                     if (context.mounted) snacKBar(context, state.error);
                   }
                 },
-                child: PlaceOrderButton(
-                  amount: total,
-                ),
+                child: PlaceOrderButton(),
               ),
             ),
           ],

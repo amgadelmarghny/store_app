@@ -3,19 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/address/presentation/views/add_address_view.dart';
 import 'package:soagmb/features/order/presentation/widgets/order_sheet.dart';
+import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
 import 'package:soagmb/generated/l10n.dart';
 
 class MakeOrderButton extends StatelessWidget {
   const MakeOrderButton({
     super.key,
-    required this.total,
     required this.productCost,
   });
-  final dynamic total;
   final dynamic productCost;
   @override
   Widget build(BuildContext context) {
+    int total =
+        BlocProvider.of<ShopCubit>(context).cartModel!.data!.total!.toInt();
     return BlocBuilder<AddressCubit, AddressState>(
       builder: (context, state) {
         return Stack(
@@ -27,7 +28,7 @@ class MakeOrderButton extends StatelessWidget {
                 orderButtonTap(context);
               },
             ),
-            if (total != null && total! > productCost)
+            if (total > productCost)
               Positioned(
                 right: 15,
                 child: Container(
@@ -69,7 +70,7 @@ class MakeOrderButton extends StatelessWidget {
         ),
         builder: (context) => Padding(
           padding: const EdgeInsets.all(20),
-          child: OrderSheet(total: total),
+          child: OrderSheet(),
         ),
       );
     }

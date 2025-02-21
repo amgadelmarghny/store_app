@@ -1,28 +1,13 @@
-import 'item.dart';
+import 'product_item_order.dart';
 
 class ProductItemsListModel {
-  List<Item>? items;
+  final List<ProductItemOrder> items;
 
-  ProductItemsListModel({this.items});
+  ProductItemsListModel({required this.items});
 
-  factory ProductItemsListModel.fromItemsNameAppleQuantity4Price10CurrencyUsdNamePineappleQuantity5Price12CurrencyUsd(
-      Map<String, dynamic> json) {
-    return ProductItemsListModel(
-      items: (json['items'] as List<dynamic>?)
-          ?.map((e) => Item
-              .fromItemsNameAppleQuantity4Price10CurrencyUsdNamePineappleQuantity5Price12CurrencyUsd(
-                  e as Map<String, dynamic>))
-          .toList(),
-    );
-  }
-
-  Map<String, dynamic>
-      toItemsNameAppleQuantity4Price10CurrencyUsdNamePineappleQuantity5Price12CurrencyUsd() {
+  Map<String, dynamic> toJson() {
     return {
-      'items': items
-          ?.map((e) => e
-              .toItemsNameAppleQuantity4Price10CurrencyUsdNamePineappleQuantity5Price12CurrencyUsd())
-          .toList(),
+      'items': items.map((e) => e.toJson()).toList(),
     };
   }
 }
