@@ -81,9 +81,6 @@ class ShopView extends StatelessWidget {
                         ? defaultColor
                         : Colors.grey,
                   ),
-                  onTap: (index) {
-                    shopCubit.selectIconChange(index);
-                  },
                 ),
                 body: shopCubit.currentBody[shopCubit.currentIndex],
               ),

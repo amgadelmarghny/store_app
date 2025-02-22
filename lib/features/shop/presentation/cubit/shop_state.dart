@@ -7,8 +7,6 @@ sealed class ShopStates {
 
 class ShopInitial extends ShopStates {}
 
-class NavBarChangeState extends ShopStates {}
-
 ///////////////////
 class GetHomeDataLoadingState extends ShopStates {}
 

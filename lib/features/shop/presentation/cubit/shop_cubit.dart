@@ -34,11 +34,8 @@ import 'package:soagmb/features/shop/domain/usecases/user_logout_usecase.dart';
 import 'package:soagmb/features/shop/presentation/widgets/categories_body.dart';
 import 'package:soagmb/features/shop/presentation/widgets/favorite_body.dart';
 import 'package:soagmb/features/shop/presentation/widgets/home_body.dart';
-import 'package:soagmb/core/network/local/key_const.dart';
-import 'package:soagmb/core/network/local/shared_helper.dart';
 import 'package:soagmb/features/shop/domain/entities/user/profile.dart';
 import 'package:soagmb/generated/l10n.dart';
-import '../widgets/favorite_notification_circle.dart';
 part 'shop_state.dart';
 
 class ShopCubit extends Cubit<ShopStates> {
@@ -91,44 +88,14 @@ class ShopCubit extends Cubit<ShopStates> {
       BottomNavigationBarItem(
           icon: Icon(Icons.apps_outlined), label: S.of(context).categories),
       BottomNavigationBarItem(
-          icon: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              currentIndex == 2
-                  ? const Icon(
-                      Icons.favorite,
-                      size: 26,
-                    )
-                  : const Icon(Icons.favorite_outline),
-              // if user in fav. view ,fav. notifi. will not show
-              if (currentIndex != 2)
-                // when the app opened and getFavorite request finish
-                if (favoritesModel != null)
-                  // and user add product to fav then show count of favorites
-                  // then the notification will appear
-                  if (favoritesModel!.favoritesDataModel != null &&
-                      favoritesModel!.favoritesDataModel!.total > 0)
-
-                    // this to make notification disappear when user press on Favorite screen
-                    // then favoriteNotifi. will deleted
-                    // so I check if it was deleted , the  notification will not appear again
-                    if (CashHelper.getData(key: kFavNotofication) != null)
-                      FavoriteNotificationCircle(),
-            ],
-          ),
+          icon: currentIndex == 2
+              ? const Icon(
+                  Icons.favorite,
+                  size: 26,
+                )
+              : const Icon(Icons.favorite_outline),
           label: S.of(context).favorites),
     ];
-  }
-
-////////////////
-  void selectIconChange(int index) {
-    currentIndex = index;
-    // to delete favNotification  from Cash Helper
-    // after pressing on fav button nav bar
-    if (currentIndex == 2) {
-      CashHelper.deleteCash(key: kFavNotofication);
-    }
-    emit(NavBarChangeState());
   }
 
   List<Widget> currentBody = const [
@@ -174,10 +141,6 @@ class ShopCubit extends Cubit<ShopStates> {
   //////////////////////////////? ADD  AND  REMOVE  FROM  FAVORITES ////////////
 
   void addAndRemoveFavorite({required int id}) async {
-    // when we  want to add a product to favorites ,
-    // the notification will be red notification on fav button vav bar
-    // so I cash bool value to allow the notifi. to appear
-    CashHelper.setData(key: kFavNotofication, value: true);
     favoriteProductsMap[id] = !favoriteProductsMap[id]!;
     emit(FavoriteLoadingState());
     final result = await addAndRemoveFavoritesUsecase(id);
