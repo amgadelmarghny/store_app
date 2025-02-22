@@ -46,7 +46,7 @@ class PayPalCheckOutOrderView extends StatelessWidget {
           context: context,
         );
         Navigator.pop(context);
-     await addNewOrderMethod(data.addressCubit, data.orderCubit);
+        await addNewOrderMethod(data.addressCubit, data.orderCubit);
       },
       onError: (error) {
         toastShown(
