@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soagmb/features/address/data/models/add_new_address_parameter.dart';
 import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
-import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
+import 'package:soagmb/core/global/widgets/custom_button.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/generated/l10n.dart';
 

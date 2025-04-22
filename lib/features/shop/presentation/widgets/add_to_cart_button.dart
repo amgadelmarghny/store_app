@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/data/models/product_model.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
-import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
+import 'package:soagmb/core/global/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/generated/l10n.dart';
 

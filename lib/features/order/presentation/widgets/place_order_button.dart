@@ -6,7 +6,7 @@ import 'package:soagmb/features/checkout/presentation/views/paypal_checkout_orde
 import 'package:soagmb/features/order/data/models/add_new_order__parameter.dart';
 import 'package:soagmb/features/order/presentation/cubit/order_cubit.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
-import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
+import 'package:soagmb/core/global/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';

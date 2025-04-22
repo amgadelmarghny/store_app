@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:soagmb/features/checkout/domain/repository/base_checkout_repo.dart';
@@ -14,7 +16,10 @@ class PaymentCubit extends Cubit<PaymentState> {
         .makePayment(paymentIntentInputModel: paymentIntentInputModel)
         .then(
           (value) => value.fold(
-            (l) => emit(PaymentFailur(errMessage: l.errMessage)),
+            (l) {
+              emit(PaymentFailur(errMessage: l.errMessage));
+              log("jjjjjjjjj: ${l.errMessage}");
+            },
             (r) => emit(PaymentSuccess()),
           ),
         );

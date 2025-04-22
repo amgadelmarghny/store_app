@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soagmb/features/shop/presentation/views/shop_view.dart';
 import 'package:soagmb/features/auth/data/models/register_user_parameter.dart';
 import 'package:soagmb/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
+import 'package:soagmb/core/global/widgets/custom_button.dart';
 import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.dart';
 import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/features/checkout/data/models/customer_payment_input_model.dart';

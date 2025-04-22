@@ -7,7 +7,7 @@ import 'package:soagmb/features/address/presentation/views/add_address_view.dart
 import 'package:soagmb/features/address/presentation/widgets/addresses_item_list_view.dart';
 import 'package:soagmb/features/address/presentation/widgets/addresses_view_header.dart';
 import 'package:soagmb/features/address/presentation/widgets/empty_address_view_body.dart';
-import 'package:soagmb/features/shop/presentation/widgets/custom_button.dart';
+import 'package:soagmb/core/global/widgets/custom_button.dart';
 import 'package:soagmb/core/global/style/colors.dart';
 import 'package:soagmb/generated/l10n.dart';
 
