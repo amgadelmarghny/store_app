@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soagmb/features/shop/domain/entities/product.dart';
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 
 class AddToFavoriteButton extends StatelessWidget {
   const AddToFavoriteButton({
     super.key,
-    required this.productModel,
+    required this.productId,
   });
 
-  final Product productModel;
+  final int productId;
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +16,13 @@ class AddToFavoriteButton extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        shopCubit.addAndRemoveFavorite(id: productModel.id);
+        shopCubit.addAndRemoveFavorite(id: productId);
       },
       child: Icon(
-        shopCubit.favoriteProductsMap[productModel.id]!
+        shopCubit.favoriteProductsMap[productId]!
             ? Icons.favorite
             : Icons.favorite_border,
-        color: shopCubit.favoriteProductsMap[productModel.id]!
+        color: shopCubit.favoriteProductsMap[productId]!
             ? Colors.red
             : Colors.grey,
       ),

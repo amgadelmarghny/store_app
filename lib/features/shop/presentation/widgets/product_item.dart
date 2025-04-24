@@ -30,7 +30,10 @@ class ProductItem extends StatelessWidget {
             decoration: customBoxDecoration(context),
             child: Column(
               children: [
-                ProductImage(productModel: productModel),
+                ProductImage(
+                  image: productModel.image,
+                  discount: productModel.discount,
+                ),
                 const SizedBox(
                   height: 5,
                 ),

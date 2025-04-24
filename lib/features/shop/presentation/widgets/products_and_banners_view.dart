@@ -6,18 +6,15 @@ import 'package:soagmb/features/shop/presentation/widgets/products_section.dart'
 import 'package:soagmb/features/shop/presentation/cubit/shop_cubit.dart';
 
 class ProductAndBannerView extends StatelessWidget {
-  const ProductAndBannerView({
-    super.key,
-  });
+  const ProductAndBannerView({super.key});
 
   @override
   Widget build(BuildContext context) {
     ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
     return Padding(
-      padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+      padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
       child: SingleChildScrollView(
         clipBehavior: Clip.none,
-        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

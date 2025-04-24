@@ -31,7 +31,8 @@ class CategoryProductItem extends StatelessWidget {
             child: Column(
               children: [
                 ProductImage(
-                  productModel: productModel,
+                  image: productModel.image,
+                  discount: productModel.discount,
                   discountPadding: true,
                 ),
                 const SizedBox(
@@ -40,7 +41,12 @@ class CategoryProductItem extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: CategoryProductItemInfoWithInteraction(
-                      productModel: productModel),
+                    discount: productModel.discount,
+                    productId: productModel.id,
+                    name: productModel.name!,
+                    price: productModel.price,
+                    oldPrice: productModel.oldPrice,
+                  ),
                 ),
               ],
             ),

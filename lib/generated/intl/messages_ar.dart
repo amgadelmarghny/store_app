@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "already_have_account": MessageLookupByLibrary.simpleMessage(
       "لديك حساب بالفعل؟",
     ),
+    "app_name": MessageLookupByLibrary.simpleMessage("سوَّقني"),
     "back_to_home": MessageLookupByLibrary.simpleMessage("العودة إلى الرئيسية"),
     "buy_and_order_what_you_want_from_home":
         MessageLookupByLibrary.simpleMessage("اشتري واطلب ما تريد من المنزل"),

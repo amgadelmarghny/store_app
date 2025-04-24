@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "already_have_account": MessageLookupByLibrary.simpleMessage(
       "Already have account?",
     ),
+    "app_name": MessageLookupByLibrary.simpleMessage("Sauqni"),
     "back_to_home": MessageLookupByLibrary.simpleMessage("Back to Home"),
     "buy_and_order_what_you_want_from_home":
         MessageLookupByLibrary.simpleMessage(

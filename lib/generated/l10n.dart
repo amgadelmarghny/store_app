@@ -55,6 +55,11 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Sauqni`
+  String get app_name {
+    return Intl.message('Sauqni', name: 'app_name', desc: '', args: []);
+  }
+
   /// `Home`
   String get home {
     return Intl.message('Home', name: 'home', desc: '', args: []);

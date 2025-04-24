@@ -41,6 +41,7 @@ dependencies:
   flutter_native_splash: ^2.4.4
   flutter_localizations:
     sdk: flutter
+  liquid_pull_to_refresh: ^3.0.1
 
 
 dev_dependencies:

@@ -27,10 +27,16 @@ class ProductItemInfoWithInteraction extends StatelessWidget {
         ),
         Row(
           children: [
-            Expanded(child: ProductPrice(productModel: productModel)),
+            Expanded(
+              child: ProductPrice(
+                price: productModel.price,
+                discount: productModel.discount,
+                oldPrice: productModel.oldPrice,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 10, left: 5, bottom: 6),
-              child: AddToFavoriteButton(productModel: productModel),
+              child: AddToFavoriteButton(productId: productModel.id),
             ),
           ],
         ),

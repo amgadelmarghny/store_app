@@ -74,28 +74,26 @@ class ShopCubit extends Cubit<ShopStates> {
 
   int currentIndex = 0;
 
-  List<BottomNavigationBarItem> bottomNavBarItems(context,
-      {required Color color}) {
+  List<BottomNavigationBarItem> bottomNavBarItems(context) {
     return [
       BottomNavigationBarItem(
           icon: currentIndex == 0
-              ? const Icon(
-                  Icons.store_mall_directory,
-                  size: 27,
-                )
+              ? const Icon(Icons.store_mall_directory)
               : const Icon(Icons.store_mall_directory_outlined),
           label: S.of(context).home),
       BottomNavigationBarItem(
           icon: Icon(Icons.apps_outlined), label: S.of(context).categories),
       BottomNavigationBarItem(
           icon: currentIndex == 2
-              ? const Icon(
-                  Icons.favorite,
-                  size: 26,
-                )
+              ? const Icon(Icons.favorite)
               : const Icon(Icons.favorite_outline),
           label: S.of(context).favorites),
     ];
+  }
+
+  void navigatBottomBar(int index) {
+    currentIndex = index;
+    emit(NatigateBottomBar());
   }
 
   List<Widget> currentBody = const [

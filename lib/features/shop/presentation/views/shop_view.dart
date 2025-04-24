@@ -10,7 +10,7 @@ import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.d
 import 'package:soagmb/features/shop/presentation/widgets/navigation.dart';
 import 'package:soagmb/core/network/local/key_const.dart';
 import 'package:soagmb/core/network/local/shared_helper.dart';
-import 'package:soagmb/core/global/style/colors.dart';
+import 'package:soagmb/generated/l10n.dart';
 
 class ShopView extends StatelessWidget {
   const ShopView({super.key});
@@ -57,13 +57,14 @@ class ShopView extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            ShopCubit shopCubit = BlocProvider.of<ShopCubit>(context);
+            final shopCubit = ShopCubit.get(context);
+
             return ModalProgressHUD(
               inAsyncCall: state is LogoutLoadingState,
               child: Scaffold(
                 drawer: const DrawerMenu(),
                 appBar: AppBar(
-                  title: const Text('soagmb'),
+                  title:  Text(S.of(context).app_name),
                   actions: [
                     IconButton(
                       onPressed: () {
@@ -74,13 +75,9 @@ class ShopView extends StatelessWidget {
                   ],
                 ),
                 bottomNavigationBar: BottomNavigationBar(
+                  onTap: shopCubit.navigatBottomBar,
                   currentIndex: shopCubit.currentIndex,
-                  items: shopCubit.bottomNavBarItems(
-                    context,
-                    color: shopCubit.currentIndex == 0
-                        ? defaultColor
-                        : Colors.grey,
-                  ),
+                  items: shopCubit.bottomNavBarItems(context),
                 ),
                 body: shopCubit.currentBody[shopCubit.currentIndex],
               ),

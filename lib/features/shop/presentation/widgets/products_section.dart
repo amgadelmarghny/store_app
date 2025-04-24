@@ -16,7 +16,7 @@ class ProductsSection extends StatelessWidget {
         const SizedBox(
           height: 7,
         ),
-        ProductItemGridView(),
+         ProductItemGridView(),
       ],
     );
   }
