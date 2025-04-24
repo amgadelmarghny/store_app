@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:soagmb/core/global/widgets/custom_refresh_page.dart';
+import 'package:soagmb/features/address/presentation/cubit/address_cubit.dart';
 import 'package:soagmb/features/address/presentation/widgets/my_addresses_view_body.dart';
 import 'package:soagmb/generated/l10n.dart';
 
@@ -13,10 +15,13 @@ class MyAddressesView extends StatelessWidget {
       appBar: AppBar(
         title: Text(S.of(context).my_addresses),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: MyAddressesViewBody(
-          isAddressItemFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet,
+      body: CustomRefreshPage(
+        onRefresh: () async => await AddressCubit.get(context).getAddresses(),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: MyAddressesViewBody(
+            isAddressItemFromDrawerNotOrderSheet: isFromDrawerNotOrderSheet,
+          ),
         ),
       ),
     );

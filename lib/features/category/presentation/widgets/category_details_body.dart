@@ -9,8 +9,10 @@ import 'package:soagmb/features/shop/presentation/widgets/custom_show_messages.d
 class CategoryDetailsViewBody extends StatelessWidget {
   const CategoryDetailsViewBody({
     super.key,
+    required this.categoryName,
   });
-
+  final String categoryName;
+  
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CategoryCubit, CategoryState>(
@@ -30,7 +32,8 @@ class CategoryDetailsViewBody extends StatelessWidget {
             children: [
               ConditionalBuilder(
                 condition: state is! CategoryDetailsLoading,
-                builder: (context) => CategoryDetailsItemListView(),
+                builder: (context) =>
+                    CategoryDetailsItemListView(categoryName: categoryName),
                 fallback: (context) => CategoryDetailsDataLoading(),
               ),
             ],
