@@ -16,10 +16,10 @@ class AddressOptions extends StatelessWidget {
     return BlocBuilder<AddressCubit, AddressState>(builder: (context, state) {
       Address? addressModel =
           BlocProvider.of<AddressCubit>(context).addressModel;
-      List<Address> addressModelsList = BlocProvider.of<AddressCubit>(context)
-          .getAddressesModel!
-          .data!
-          .addressModelsList;
+      final getAddressModel =
+          BlocProvider.of<AddressCubit>(context).getAddressesModel;
+      List<Address>? addressModelsList =
+          getAddressModel?.data!.addressModelsList;
 
       return ListTile(
         title: Text(S.of(context).address),
@@ -31,13 +31,13 @@ class AddressOptions extends StatelessWidget {
           children: [
             // this condition added to delete the address name
             // if addresses is empty
-            if (addressModelsList.isNotEmpty)
+            if (addressModelsList?.isNotEmpty ?? false)
               Text(
                 // when there is selected address it name will shown
                 addressModel != null
                     ? addressModel.name
                     // if not, first address in addresses will shown
-                    : addressModelsList[0].name,
+                    : addressModelsList![0].name,
                 style: Theme.of(context)
                     .textTheme
                     .titleSmall!
