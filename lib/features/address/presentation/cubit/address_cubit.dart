@@ -65,7 +65,7 @@ class AddressCubit extends Cubit<AddressState> {
   }
 
   //////////////////////////! UPDATE ADDRESS /////////////////////////////
-
+  UpdateAddressParameter? updateAddressParameter;
   Future updateAddress({required UpdateAddressParameter parameter}) async {
     emit(UpdateAddressLoading());
     final result = await updateAddressUsecase(parameter);

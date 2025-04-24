@@ -98,7 +98,8 @@ class UpdateAddressBody extends StatelessWidget {
                               Navigator.pushNamed(context, MyLocationMapView.id,
                                   arguments: placeModel);
                             },
-                            child: CustomMapWidget(placeModel: placeModel)),
+                            child: CustomMapWidget(placeModel: placeModel),
+                          ),
                   ),
                 ),
               ),

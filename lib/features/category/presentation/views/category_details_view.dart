@@ -11,7 +11,7 @@ class CategoryDetailsView extends StatelessWidget {
       appBar: AppBar(
         title: Text(categoryName),
       ),
-      body: const CategoryDetailsViewBody(),
+      body: CategoryDetailsViewBody(categoryName: categoryName),
     );
   }
 }

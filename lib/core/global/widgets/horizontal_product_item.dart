@@ -59,7 +59,7 @@ class HorizontalProductItem extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!
-                            .copyWith(height: 1, color: Colors.black),
+                            .copyWith(height: 1),
                       ),
                       const SizedBox(height: 3),
                       if (!isCart)

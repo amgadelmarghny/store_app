@@ -57,6 +57,7 @@ class _ComplaintDialogBuilderState extends State<ComplaintDialogBuilder> {
             actionsPadding: const EdgeInsets.only(right: 25, bottom: 10),
             contentPadding: const EdgeInsets.all(25),
             iconPadding: const EdgeInsets.all(0),
+            
             title: Text(
               S.of(context).complaint,
               style: TextStyle(fontSize: 22),
@@ -81,20 +82,23 @@ class _ComplaintDialogBuilderState extends State<ComplaintDialogBuilder> {
               formKey: formKey,
             ),
             actions: [
-              ElevatedButton(
-                onPressed: () {
-                  AddComplaintImpl parameter = AddComplaintImpl(
-                      name: nameController.text,
-                      email: emailController.text,
-                      phone: phoneController.text,
-                      message: messageController.text);
-                  onPress(context, parameter);
-                },
-                child: Text(
-                  'Send',
-                  style: TextStyle(
-                      fontSize: getResponsiveFontSize(fontSize: 18),
-                      color: defaultColor),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: ElevatedButton(
+                  onPressed: () {
+                    AddComplaintImpl parameter = AddComplaintImpl(
+                        name: nameController.text,
+                        email: emailController.text,
+                        phone: phoneController.text,
+                        message: messageController.text);
+                    onPress(context, parameter);
+                  },
+                  child: Text(
+                    S.of(context).send,
+                    style: TextStyle(
+                        fontSize: getResponsiveFontSize(fontSize: 18),
+                        color: defaultColor),
+                  ),
                 ),
               )
             ],
