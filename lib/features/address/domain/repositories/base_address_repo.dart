@@ -10,7 +10,7 @@ abstract class BaseAddressRepo {
   Future<Either<Failure, NewAddress>> addNewAddress(
       AddNewAddressParameter parameter);
 
-  Future<Either<Failure, GetAddresses>> getAddressess();
+  Future<Either<Failure, GetAddresses>> getAddresses();
 
   Future<Either<Failure, UpdateAddress>> updateAddress(
       UpdateAddressParameter parameter);

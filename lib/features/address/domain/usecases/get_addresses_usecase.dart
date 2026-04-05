@@ -11,6 +11,6 @@ class GetAddressesUsecase implements BaseUsecase<GetAddresses, NoParameters> {
 
   @override
   Future<Either<Failure, GetAddresses>> call(NoParameters parameters) async {
-    return await repo.getAddressess();
+    return await repo.getAddresses();
   }
 }

@@ -54,8 +54,8 @@ import 'package:soagmb/features/auth/presentation/cubit/auth_cubit.dart';
 
 final sl = GetIt.instance;
 
-class ServiceLocator {
-  static init() {
+abstract class ServiceLocator {
+  static void init() {
     // Auth
     sl.registerLazySingleton<BaseAuthDatasource>(() => AuthDatasource());
     sl.registerLazySingleton<BaseAuthRepo>(

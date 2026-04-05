@@ -26,7 +26,7 @@ class AddressRepo implements BaseAddressRepo {
   }
 
   @override
-  Future<Either<Failure, GetAddresses>> getAddressess() async {
+  Future<Either<Failure, GetAddresses>> getAddresses() async {
     final result = await baseAddressDatasource.getAddresses();
     try {
       return Right(result);

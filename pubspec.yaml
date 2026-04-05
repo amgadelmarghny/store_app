@@ -42,7 +42,12 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   liquid_pull_to_refresh: ^3.0.1
+  flutter_launcher_icons: ^0.14.3
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "lib/core/global/assets/images/app_logo_with_background.png"
 
 dev_dependencies:
   flutter_lints: ^5.0.0

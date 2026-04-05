@@ -20,20 +20,21 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   runApp(BlocProvider(
     create: (context) => ConnectivityCubit()..checkConnection(),
-    child: const Soagmb(),
+    child: const Sauqni(),
   ));
 }
 
-class Soagmb extends StatelessWidget {
-  const Soagmb({super.key});
+class Sauqni extends StatelessWidget {
+  const Sauqni({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ConnectivityCubit, ConnectivityState>(
       builder: (context, state) {
         return ConditionalBuilder(
-            condition: state is DisConnectedState,
-            builder: (context) => DisconnectedMaterialApp(),
-            fallback: (context) => ConnetedMaterialApp());
+          condition: state is DisConnectedState,
+          builder: (context) => DisconnectedMaterialApp(),
+          fallback: (context) => ConnetedMaterialApp(),
+        );
       },
     );
   }
